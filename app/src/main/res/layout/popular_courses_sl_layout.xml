@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Home_popular_courses_card_id"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_170sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_15sdp">
+
+        <LinearLayout
+            android:id="@+id/Home_popular_courses_card_layout_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="#0661AA"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_weight="4"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:background="@drawable/discout_view_back"
+                    android:backgroundTint="#08850D">
+
+
+                    <TextView
+                        android:id="@+id/Home_popular_courses_discount_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="50% OFF"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold|italic"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/Home_popular_courses_name_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11th Mathematics"
+                    app:autoSizeTextType="uniform"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="15sp"
+                    android:autoSizeMaxTextSize="25sp"
+                    android:autoSizeStepGranularity="2sp"
+                    app:autoSizeMinTextSize="15sp"
+                    app:autoSizeMaxTextSize="25sp"
+                    app:autoSizeStepGranularity="2sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <TextView
+                    android:id="@+id/fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Access your courses to start journey with us and progress your skill"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    app:autoSizeTextType="uniform"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/white"
+                    android:textStyle="italic"/>
+
+
+                <Button
+                    android:id="@+id/Home_popular_courses_enroll_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:text="Enroll "
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    android:textSize="@dimen/_15ssp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:backgroundTint="#CCB702"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="2">
+
+                <ImageView
+                    android:id="@+id/Home_popular_courses_image_id"
+                    android:layout_width="@dimen/_160sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="-30dp"
+                    android:src="@drawable/subject_icon"
+                    android:layout_marginTop="@dimen/_5sdp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

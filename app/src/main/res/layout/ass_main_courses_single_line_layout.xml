@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:elevation="8dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative_layout_AllCourses_id"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+             android:id="@+id/ass_main_course_layout_id"
+            android:weightSum="5">
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hsc_demo_image"
+                    android:id="@+id/Ass_mainCourse_Image_id"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_weight="3">
+                <!--                <TextView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:id="@+id/nametext"-->
+                <!--                    android:text="Course ID"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textSize="25sp"-->
+                <!--                    android:textColor="#000"-->
+                <!--                    android:layout_toRightOf="@id/img1"-->
+                <!--                    android:layout_marginLeft="10dp"/>-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Ass_mainCourse_name_text_id"
+                    android:text="Course Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_toRightOf="@id/Ass_mainCourse_Image_id"
+                    android:layout_marginLeft="10dp"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Ass_mainCourse_description_id"
+                    android:text="Description"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="italic"
+                    android:textColor="#5C5B5B"
+                    android:layout_toRightOf="@id/Ass_mainCourse_Image_id"
+                    android:layout_below="@id/Ass_mainCourse_name_text_id"
+                    android:layout_marginLeft="10dp"/>
+
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

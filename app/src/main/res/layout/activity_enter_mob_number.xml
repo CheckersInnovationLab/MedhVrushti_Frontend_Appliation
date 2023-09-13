@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Authentication.Enter_Mob_Number_activity">
+
+
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="@dimen/_5sdp">
+
+
+
+
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:src="@drawable/arrow_back_black"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:id="@+id/Enter_number_arrow_back_id"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter mobile number"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="#232323"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_below="@+id/Enter_number_arrow_back_id"
+        android:id="@+id/enter_text1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="We'll send uou OTP for Verification"
+        android:layout_below="@+id/enter_text1"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_12ssp"
+        android:id="@+id/enter_text2"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/layout_back"
+        android:layout_below="@+id/enter_text2"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:id="@+id/layout_id1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:gravity="center_vertical">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                app:ccp_showFullName="false"
+                app:ccp_showPhoneCode="false"
+                app:ccp_showNameCode="false"/>
+
+
+            <LinearLayout
+                android:layout_width="0.0001dp"
+                android:layout_height="30dp"
+                android:background="#474545"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:hint="Mobile Number"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="#272727"
+                android:textStyle="bold"
+                android:textColorHint="#272727"
+                android:id="@+id/Mobile_number_editeText_id"
+                android:background="@null"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/button_back_view"
+        android:backgroundTint="#353232"
+        app:backgroundTint="#353232"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:id="@+id/Auth_MobNo_Continue_button_id"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN WITH EMAIL"
+        android:layout_above="@+id/Auth_MobNo_Continue_button_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        android:id="@+id/email_login_text_id"/>
+     </RelativeLayout>
+
+
+</RelativeLayout>

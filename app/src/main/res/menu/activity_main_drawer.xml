@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home " />
+        <item
+            android:id="@+id/nav_subscription_id"
+            android:icon="@drawable/nav_subscriptions_icon"
+            android:title="Subscription" />
+        <item
+            android:id="@+id/nav_community"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Community" />
+        <item
+            android:id="@+id/nav_studentTestimonial"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Student Testimonial" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Setting" />
+
+
+
+    </group>
+    <item
+        android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/nav_how_use"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="How to use the App" />
+            <item
+                android:id="@+id/nav_privacy"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Privacy Policy" />
+            <item
+                android:id="@+id/nav_log_out"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Log Out" />
+        </menu>
+
+    </item>
+
+</menu>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:elevation="10dp"
+       android:background="@drawable/card_upper_corner_back"
+        android:layout_marginRight="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+
+
+        <TextView
+            android:id="@+id/edit_profile_pop_up_header_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:text="Elevate Your Academic Story: Edit Your Profile Today"
+            android:textColor="@color/themeColor"
+            android:textSize="25sp"
+            android:textStyle="bold|italic" />
+
+
+        <TextView
+            android:id="@+id/edit_profile_pop_up_message_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Empower Your Student Profile: Give it the makeover it deserves for a successful academic journey."
+            android:textStyle="italic"
+            android:textSize="19sp"
+            android:layout_below="@+id/edit_profile_pop_up_header_id"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="#5E5D59"/>
+
+        <RelativeLayout
+            android:id="@+id/edit_profile_pop_up_later_id"
+            android:layout_width="250dp"
+            android:layout_height="47dp"
+            android:layout_below="@+id/edit_profile_pop_up_edit_id"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_border">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Later"
+                android:textColor="@color/themeColor"
+                android:textStyle="bold"
+                android:textSize="23sp"/>
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/edit_profile_pop_up_edit_id"
+            android:layout_width="250dp"
+            android:layout_height="47dp"
+            android:layout_below="@+id/edit_profile_pop_up_message_id"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_back_view"
+            android:backgroundTint="@color/themeColor"
+            >
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="23sp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iiii"
+        android:layout_width="190dp"
+        android:layout_height="180dp"
+        android:background="@drawable/edit_profile_icon"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layout_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

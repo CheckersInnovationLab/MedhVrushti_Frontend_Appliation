@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Welcome_Screen_Activity">
+
+    <RelativeLayout
+        android:id="@+id/welcome_screen_lottie_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_id1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/welcome_screen_lottie" />
+    </RelativeLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_240sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/_1sdp"
+                android:layout_marginRight="@dimen/_1sdp"
+
+                app:cardCornerRadius="@dimen/_15ssp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="#374AC8">
+
+
+                    <TextView
+                        android:id="@+id/Welcome_screen_text1_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:text="Start learning with MedhVrushti"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_27ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Welcome_screen_text2_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Welcome_screen_text1_id"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="India's largest smart learning platform.Start learning with your friend."
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold|italic" />
+
+                    <Button
+                        android:id="@+id/welcome_screen_getStarted_button_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Welcome_screen_text2_id"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_25sdp"
+                        android:background="@drawable/button_back_view"
+                        android:backgroundTint="#1C9A23"
+                        android:padding="@dimen/_8sdp"
+                        android:text="Get started"
+                        app:backgroundTint="#1C9A23" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

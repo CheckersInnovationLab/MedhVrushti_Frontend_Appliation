@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_200sdp"
+    android:background="@drawable/back1"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+<LinearLayout
+    android:layout_width="@dimen/_70sdp"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:src="@drawable/profile_image"
+        app:civ_border_width="0.1dp"
+        app:civ_border_color="#FF000000"/>
+</LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/nav_student_name_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shubham Hadawale"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_19ssp"/>
+
+        <TextView
+            android:id="@+id/nav_student_email_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="shubhamhadawal99@gmal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textStyle="italic"
+            android:textSize="@dimen/_12ssp"
+           />
+        <TextView
+            android:id="@+id/nav_student_mobileNo_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9307852758"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic"
+            android:layout_marginTop="@dimen/_3sdp"
+           />
+        <TextView
+            android:id="@+id/nav_student_registerNo_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Id-CLF53545Sd"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textStyle="italic"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

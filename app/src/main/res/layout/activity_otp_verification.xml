@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Authentication.OTP_Verification_Activity">
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:src="@drawable/arrow_back_black"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:id="@+id/Verify_OTP_arrow_back_id2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify OTP"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="#2C2C2C"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_below="@+id/Verify_OTP_arrow_back_id2"
+        android:id="@+id/enter_text1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="We've sent it on the number +91xxxxxx65"
+        android:layout_below="@+id/enter_text1"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:textSize="@dimen/_12ssp"
+        android:id="@+id/enter_text2"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/enter_text2"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:id="@+id/linear1">
+
+
+        <com.chaos.view.PinView
+            android:id="@+id/PinView_id"
+            style="@style/PinWidget.PinView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:cursorVisible="true"
+            android:inputType="number"
+            android:itemBackground="#EDEBEB"
+            app:cursorColor="#8E8C8C"
+            app:hideLineWhenFilled="true"
+            app:itemCount="6"
+            app:itemSpacing="@dimen/_5sdp"
+            app:itemHeight="@dimen/_45sdp"
+            app:itemWidth="@dimen/_45sdp"
+            app:lineColor="#C1BCBC"
+            app:itemRadius="@dimen/_5sdp"
+            android:focusable="true"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resend OTP in 53s"
+        android:textStyle="italic|bold"
+        android:layout_below="@+id/linear1"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginLeft="@dimen/_15sdp"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/button_back_view"
+        android:backgroundTint="#353232"
+        app:backgroundTint="#353232"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:id="@+id/Verify_button_id2"/>
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hi,Dear Learner"
+        android:textSize="@dimen/_25ssp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:id="@+id/name_id1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To get started,please verify mobile number"
+        android:layout_below="@+id/name_id1"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:id="@+id/text_id1"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/black"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue with 9302456370"
+        android:layout_below="@+id/text_id1"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:padding="@dimen/_12sdp"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        android:backgroundTint="#353232"
+        app:backgroundTint="#353232"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:id="@+id/verify_number_button"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use Another Method"
+        android:layout_below="@+id/verify_number_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        android:textColor="#757575"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:id="@+id/use_another_methode_text_id"/>
+
+
+
+</RelativeLayout>

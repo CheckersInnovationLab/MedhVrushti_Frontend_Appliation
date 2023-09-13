@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AssessmentSection_pkg.Ass_Practice_Fragement">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/ass_mainCourses_searchView_layout"-->
+<!--            android:layout_marginTop="10dp">-->
+
+<!--            <androidx.appcompat.widget.SearchView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                android:layout_marginRight="@dimen/_10sdp"-->
+<!--                android:background="@drawable/search_bar_back_layout"-->
+<!--                />-->
+
+
+<!--        </RelativeLayout>-->
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="220dp"-->
+<!--            android:layout_marginTop="13dp"-->
+<!--            android:layout_marginLeft="@dimen/_6sdp"-->
+<!--            android:layout_marginRight="@dimen/_6sdp"-->
+<!--            app:cardCornerRadius="@dimen/_7sdp"-->
+<!--            android:layout_below="@+id/ass_mainCourses_searchView_layout"-->
+<!--            android:id="@+id/ass_mn_crs_Subscription_ads_cardView_id">-->
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:background="#DEEDEF">-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="250dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginBottom="20dp">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Ace Your Preparation "-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="23dp"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:id="@+id/ace_preparation_text_id"-->
+<!--                        android:textColor="@color/black"/>-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learn with live classes from top educators,get personalised guidance through 1:1 live mentorship and lot "-->
+<!--                        android:layout_below="@+id/ace_preparation_text_id"-->
+<!--                        android:layout_margin="5dp"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:id="@+id/text1_id"/>-->
+
+<!--                    <Button-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Get Subscription"-->
+<!--                        android:layout_below="@+id/text1_id"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:backgroundTint="#21B827"-->
+<!--                        app:backgroundTint="#21B827"-->
+<!--                        android:id="@+id/get_subscription_button_id"/>-->
+
+<!--                </RelativeLayout>-->
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="-70dp"-->
+<!--                    android:gravity="end">-->
+
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="@dimen/_170sdp"-->
+<!--                        android:layout_height="@dimen/_180sdp"-->
+<!--                        android:src="@drawable/assessmnet_main_courses"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_marginLeft="@dimen/_30sdp"-->
+<!--                        android:layout_marginRight="-20dp"-->
+<!--                        android:layout_marginTop="-20dp"/>-->
+
+
+
+<!--                    &lt;!&ndash;                        <com.airbnb.lottie.LottieAnimationView&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            android:layout_height="match_parent"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            app:lottie_autoPlay="true"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            app:lottie_loop="true"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            app:lottie_rawRes="@raw/standing_boy_studing_lottie" />&ndash;&gt;-->
+
+<!--                </RelativeLayout>-->
+<!--            </LinearLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="All Boards Assessment"-->
+<!--            android:id="@+id/ass_mns_text1_id"-->
+<!--            android:textSize="@dimen/_20ssp"-->
+<!--            android:textStyle="bold"-->
+<!--              android:layout_centerHorizontal="true"-->
+<!--            android:textColor="#535353"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--         -->
+<!--            android:layout_marginLeft="@dimen/_10sdp"/>-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Ass_MainCourses_recycleView_id"
+            />
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+</RelativeLayout>
