@@ -1,13 +1,16 @@
 package com.example.checkerslab_edulearning.mainHome_pkg;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -15,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Ass_standards_adapter;
+import com.example.checkerslab_edulearning.Course_Enroll_Activity;
 import com.example.checkerslab_edulearning.R;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
@@ -55,6 +59,7 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
                 .load(categoryItemModel.getCatImgUrl())
                 .fitCenter()
                 .into(holder.catImage);
+
     }
 
     @Override
@@ -67,11 +72,13 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
         TextView catName;
         LinearLayout layout;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             catImage = itemView.findViewById(R.id.top_categories_image_id);
             catName = itemView.findViewById(R.id.top_categories_name_id);
             layout = itemView.findViewById(R.id.top_categories_layout_id);
+
         }
     }
 }

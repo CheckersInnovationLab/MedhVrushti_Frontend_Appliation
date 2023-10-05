@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TheoryAssessmentPackage.Upload_Answer_Activity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/Upload_answer_toolbar_id"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#015A81"
+        app.background="#015A81"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/AssessmentTopicToolbar_back_button"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/arrow_back_black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question :Q1)"
+                android:id="@+id/edit_personal_detailsToolbar_title"
+                android:layout_marginLeft="25sp"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:textColor="#fff"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time: 3.00 HR"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:gravity="end"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:weightSum="7"
+        android:orientation="vertical"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_below="@+id/Upload_answer_toolbar_id"
+        android:layout_above="@+id/Answer_submit_button_id">
+
+        <ru.noties.jlatexmath.JLatexMathView
+            android:id="@+id/assessment_selected_question_id"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:background="@color/white"
+            app:jlmv_alignHorizontal="center"
+            app:jlmv_textSize="20sp" />
+
+
+
+        <LinearLayout
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/quest_001_id"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:layout_weight="3"
+
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_1sdp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Answer:"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:textColor="#5B5B5C"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:weightSum="5">
+
+
+
+
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_weight="2"
+                android:background="#C8C8C8">
+
+
+                <ImageView
+                    android:id="@+id/add_More_image_id"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:src="@drawable/add_more_icon"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add "
+                    android:layout_below="@+id/add_More_image_id"
+                    android:textSize="@dimen/_20ssp"
+                    android:textStyle="bold|italic"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Answer_submit_button_id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/Theory_Answer_Upload_button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#015378"
+            android:layout_weight="2" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload Answer"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

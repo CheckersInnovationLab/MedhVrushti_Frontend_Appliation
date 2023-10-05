@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_150sdp"-->
+<!--        android:layout_margin="@dimen/_5sdp"-->
+<!--        android:id="@+id/StoreSubCourses_cardView_id"-->
+<!--        app:cardCornerRadius="@dimen/_15sdp">-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/CourseSubject_layout_id"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:weightSum="5"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_weight="2">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="@dimen/_100sdp"-->
+<!--                    android:layout_height="@dimen/_100sdp"-->
+<!--                    android:src="@drawable/folders_icon"/>-->
+
+
+<!--            </RelativeLayout>-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_weight="3">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Subject name"-->
+<!--                    android:textSize="@dimen/_15ssp"-->
+<!--                    android:textColor="#191818"-->
+<!--                    android:id="@+id/CourseSubject_name_id"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="by Checkers Innovation lab"-->
+<!--                    android:textSize="@dimen/_12ssp"-->
+<!--                    android:layout_below="@+id/CourseSubject_name_id"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:layout_marginLeft="@dimen/_2sdp"-->
+<!--                    android:textStyle="italic"-->
+<!--                    android:id="@+id/CourseSubject_author_name"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Books"-->
+<!--                    android:layout_below="@+id/CourseSubject_author_name"-->
+<!--                    android:layout_marginTop="@dimen/_13sdp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="#495595"-->
+<!--                    android:id="@+id/CourseSubject_cat1_text"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Notes"-->
+<!--                    android:layout_below="@+id/CourseSubject_author_name"-->
+<!--                    android:layout_marginTop="@dimen/_13sdp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    android:textColor="#495595"-->
+<!--                    android:layout_toRightOf="@+id/CourseSubject_cat1_text"-->
+<!--                    android:id="@+id/CourseSubject_cat2_text"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Video lectures"-->
+<!--                    android:layout_below="@+id/CourseSubject_author_name"-->
+<!--                    android:layout_marginTop="@dimen/_13sdp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="#495595"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    android:layout_toRightOf="@+id/CourseSubject_cat2_text"-->
+<!--                    android:id="@+id/CourseSubject_cat3_text"/>-->
+
+<!--            </RelativeLayout>-->
+<!--        </LinearLayout>-->
+<!--    </androidx.cardview.widget.CardView>-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Ass_subject_cardView_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_15sdp">
+
+        <RelativeLayout
+            android:id="@+id/CourseSubject_layout_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F7F8FA"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/Ass_Subject_icon_id"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:src="@drawable/subject_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject Name"
+                    android:layout_below="@+id/Ass_Subject_icon_id"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:id="@+id/CourseSubject_name_id"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/total_chapter_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total chapter:20"
+                    android:textStyle="italic|bold"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="#2A3880"/>
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

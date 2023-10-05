@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Assessment_MainCourses_fragment;
 import com.example.checkerslab_edulearning.mainHome_pkg.Home_sub_screen_fragment;
+import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainFragment;
+import com.example.checkerslab_edulearning.storePackage.StoreMainFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home_Screen_Fragment extends Fragment {
@@ -43,12 +45,12 @@ public class Home_Screen_Fragment extends Fragment {
                         break;
 
                     case R.id.store_menu_id:
-                        selectedFragment=new Demo_Store_fragment();
+                        selectedFragment=new StoreMainFragment();
                         //toolbarTitle.setText("Store");
                         break;
 //
                     case R.id.my_learning_menu_id:
-                        selectedFragment=new Assessment_MainCourses_fragment();
+                        selectedFragment=new MyLearningMainFragment();
                         //   toolbarTitle.setText("Assessment");
                         break;
 

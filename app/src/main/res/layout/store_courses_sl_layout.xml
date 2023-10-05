@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_210sdp"
+        android:layout_height="@dimen/_220sdp"
+        app:cardCornerRadius="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+             android:background="#EFF2F3"
+            android:weightSum="8">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4">
+
+
+                <ImageView
+                    android:id="@+id/Store_course_image_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/profile_image"
+                    android:background="@drawable/card_color_1_back"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_weight="4">
+
+                <TextView
+                    android:id="@+id/Store_course_name_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="SSC 10th Science Test Series"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Access your courses to start journey with us and progress your skill"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:textSize="12sp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:weightSum="5"
+                    android:orientation="horizontal">
+
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="0dp"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:orientation="horizontal">-->
+
+                    <!--                        <ImageView-->
+                    <!--                            android:layout_width="30dp"-->
+                    <!--                            android:layout_height="20dp"-->
+                    <!--                            android:src="@drawable/rating_icon"/>-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:text="4.5"-->
+                    <!--                            android:textSize="18sp"-->
+                    <!--                            android:textStyle="bold"-->
+                    <!--                            android:layout_marginLeft="5dp"-->
+                    <!--                            android:textColor="#270168"-->
+                    <!--                            android:layout_gravity="center_vertical"/>-->
+
+
+                    <!--                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ruppes_icon"/>
+
+                        <TextView
+                            android:id="@+id/Store_course_price_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="500"
+                            android:textSize="@dimen/_15ssp"
+                            android:textStyle="bold"
+                            android:textColor="#270168"
+                            android:layout_gravity="center_vertical"/>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/Store_course_enroll_button_id"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_weight="3"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/button_back_view"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:backgroundTint="#BA8C04"
+                        app:backgroundTint="#BA8C04"
+                        android:text="Enroll Now"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+                <!--                <Button-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="@dimen/_32sdp"-->
+                <!--                    android:layout_marginLeft="@dimen/_7sdp"-->
+                <!--                    android:layout_marginRight="@dimen/_7sdp"-->
+                <!--                    android:background="@drawable/button_back"-->
+                <!--                    android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                    android:backgroundTint="#BA8C04"-->
+                <!--                    app:backgroundTint="#BA8C04"-->
+                <!--                    android:text="Enroll Now"-->
+                <!--                    android:textSize="16sp"-->
+                <!--                    android:textStyle="bold"/>-->
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

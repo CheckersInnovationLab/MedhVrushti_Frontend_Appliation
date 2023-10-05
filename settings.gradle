@@ -11,6 +11,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
+        jcenter() {
+            content {
+                includeModule("com.theartofdev.edmodo", "android-image-cropper")
+            }
+        }
     }
 }
 rootProject.name = "CheckersLab_Edulearning"
