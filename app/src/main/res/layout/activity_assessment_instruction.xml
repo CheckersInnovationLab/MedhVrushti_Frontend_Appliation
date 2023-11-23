@@ -41,7 +41,13 @@
                 android:layout_alignParentEnd="true"/>
 
 
-
+            <ProgressBar
+                android:id="@+id/idPBLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="20dp"
+                android:visibility="gone" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -271,6 +277,7 @@
         app:backgroundTint="#0778EA"
         android:backgroundTint="#0774E1"
         android:textSize="@dimen/_15ssp"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/_15sdp"
         android:layout_centerHorizontal="true"/>

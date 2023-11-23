@@ -8,23 +8,90 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ru.noties.jlatexmath.JLatexMathView
-            android:id="@+id/Theory_assessment_Main_Que_id"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/Theory_layout_id"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dip"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            app:jlmv_alignVertical="center"
-            app:jlmv_alignHorizontal="center"
-            app:jlmv_textSize="20sp" />
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_2sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:weightSum="11"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="5">
+
+                <TextView
+                    android:id="@+id/Main_question_Number_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Q. 1)"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="#5A5A5A"/>
+            </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1">
+
+            <ru.noties.jlatexmath.JLatexMathView
+                android:id="@+id/Theory_assessment_Main_Que_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:background="@color/white"
+                app:jlmv_alignVertical="center"
+                app:jlmv_textSize="20sp" />
+
+        </LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="5"
+    android:background="#C3C3C3"
+    android:gravity="center"
+
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/Main_question_marks_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 m"
+        android:textStyle="bold"
+        android:textSize="@dimen/_13ssp"
+        android:textColor="#5A5A5A"/>
+</LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/parent_recycleView_id"
-            android:layout_below="@+id/Theory_assessment_Main_Que_id"
+            android:layout_below="@+id/Theory_layout_id"
             android:padding="10dp"/>
 
 

@@ -51,17 +51,18 @@ public class StoreCoursesAdapter extends RecyclerView.Adapter<StoreCoursesAdapte
 
         // Set the background color of the CardView
 
-        holder.price.setText(CoursesModel.getCoursePrice());
-        holder.courseName.setText(CoursesModel.getCourseName());
+        holder.price.setText(CoursesModel.getSubscription_price());
+        holder.courseName.setText(CoursesModel.getSubscription_name());
         Glide.with(holder.itemView)
-                .load(CoursesModel.getCourseImgUrl())
+                .load(CoursesModel.getSubscription_img_url())
                 .fitCenter()
                 .into(holder.courseImage);
         holder.enrollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, Course_Enroll_Activity.class);
-                Toast.makeText(context, "fff", Toast.LENGTH_SHORT).show();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("subscription_id",CoursesModel.getSubscription_id());
                 v.getContext().startActivity(intent);
             }
         });

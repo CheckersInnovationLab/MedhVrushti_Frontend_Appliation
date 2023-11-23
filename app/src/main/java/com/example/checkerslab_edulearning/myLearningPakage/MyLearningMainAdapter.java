@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.checkerslab_edulearning.Course_Enroll_Activity;
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.commonActivityPackage.CourseChaptersActivity;
 import com.example.checkerslab_edulearning.commonActivityPackage.CourseSubjectsActivity;
 import com.example.checkerslab_edulearning.mainHome_pkg.PopularCoursesAdapter;
 import com.example.checkerslab_edulearning.storePackage.StoreCoursesAdapter;
@@ -28,7 +29,6 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
 
     private final List<MyLeaningMainModel> myLearningList;
     Context context;
-
 
     public MyLearningMainAdapter(List<MyLeaningMainModel> myLearningList, Context context) {
         this.myLearningList = myLearningList;
@@ -51,21 +51,44 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
         int[] cardColors = {R.drawable.card_color_1_back, R.drawable.card_color_2_back, R.drawable.card_color_4_back, R.drawable.card_color_3_back};
         int colorIndex = position % cardColors.length;
 
-        holder.price.setText(CoursesModel.getCoursePrice());
-        holder.courseName.setText(CoursesModel.getCourseName());
+      //  holder.price.setText(CoursesModel.getS());
+        holder.courseName.setText(CoursesModel.getSubscription_name());
         Glide.with(holder.itemView)
-                .load(CoursesModel.getCourseImgUrl())
+                .load(CoursesModel.getSubscription_image())
                 .fitCenter()
                 .into(holder.courseImage);
         holder.enrollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, CourseSubjectsActivity.class);
-                Toast.makeText(context, "fff", Toast.LENGTH_SHORT).show();
+                intent.putExtra("Subscription_id",CoursesModel.getSubscription_id());
                 v.getContext().startActivity(intent);
+
+
+
+
+
+             //   Toast.makeText(context, String.valueOf(CoursesModel.getSubject_id()), Toast.LENGTH_SHORT).show();
+//                if (CoursesModel.getStandard_id() !="null")
+//                {
+//                    Intent intent=new Intent(context, CourseChaptersActivity.class);
+//                    intent.putExtra("Subject_id",CoursesModel.getSubject_id());
+//                    v.getContext().startActivity(intent);
+//                }
+//                else if (CoursesModel.getStd_id()!= "null")
+//                {
+//
+//                        Intent intent=new Intent(context, CourseSubjectsActivity.class);
+//                    intent.putExtra("Standard_id",CoursesModel.getStd_id());
+//                        v.getContext().startActivity(intent);
+//
+//                }
+//                else {
+//                    Toast.makeText(context, "You have access of all the standards of this Board", Toast.LENGTH_SHORT).show();
+//                }
+
             }
         });
-
     }
 
     @Override
@@ -78,7 +101,6 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
         ImageView courseImage;
         TextView courseName, price;
         Button enrollButton;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             courseImage = itemView.findViewById(R.id.myLearning_course_image_id);

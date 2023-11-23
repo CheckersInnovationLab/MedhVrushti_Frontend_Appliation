@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NavigationDrawerPkg.PerformanceFragment">
+
+
+
+
+        <RelativeLayout
+           android:id="@+id/assessment_history_layout_id"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"
+            android:background="#233CCC">
+
+            <TextView
+                android:id="@+id/assessment_history_text_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Assessment History"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/assessment_history_text_id"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total Submitted"
+                        android:gravity="center"
+                        android:textSize="@dimen/_15ssp"
+                        android:textStyle="bold|italic"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold|italic"
+                        android:gravity="center"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"/>
+                <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                    android:layout_weight="1"
+                android:layout_marginTop="@dimen/_10sdp"
+
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Checked"
+                    android:gravity="center"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold|italic"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textSize="@dimen/_15ssp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold|italic"
+                    android:gravity="center"/>
+
+
+
+            </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/assessment_history_layout_id"
+        android:id="@+id/Assessment_history_recycler_id"/>
+
+
+
+
+
+
+</RelativeLayout>

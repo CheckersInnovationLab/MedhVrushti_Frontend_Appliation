@@ -28,7 +28,8 @@
                     android:id="@+id/myLearning_course_image_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/hsc_demo_image"
+                    android:src="@drawable/for_exmaple_image"
+                    android:background="#F5F5FA"
                     android:layout_alignParentBottom="true"/>
 
             </RelativeLayout>
@@ -136,9 +137,9 @@
                     android:background="@drawable/button_back_view"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#048309"
-                    app:backgroundTint="#DFA804"
+                    app:backgroundTint="#048309"
                     android:layout_gravity="center_horizontal"
-                    android:text="Enroll Now"
+                    android:text="Start"
                     android:textSize="@dimen/_12ssp"
                     android:textStyle="bold"/>
 

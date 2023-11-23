@@ -44,6 +44,9 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context,Assessment_Instruction_Activity.class);
+                intent.putExtra("assessment_id",allAssessmentModel.getAssId());
+                intent.putExtra("assessment_marks",allAssessmentModel.getAssMarks());
+                intent.putExtra("assessment_Name",allAssessmentModel.getAssName());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
 

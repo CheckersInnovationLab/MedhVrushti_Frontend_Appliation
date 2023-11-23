@@ -50,8 +50,8 @@ public class ParentAdapter  extends RecyclerView.Adapter<ParentAdapter.ViewHolde
                 .RecycledViewPool();
 
 
-        JLatexMathDrawable drawable = JLatexMathDrawable.builder("\\text{ "+parentModel.getMainQuestion()+"}")
-                .textSize(150)
+        JLatexMathDrawable drawable = JLatexMathDrawable.builder("\\textbf{ "+parentModel.getMainQuestion()+"}")
+                .textSize(90)
                 .padding(2)
                 .background(0xFFffffff)
                 .align(JLatexMathDrawable.ALIGN_RIGHT)
@@ -59,6 +59,8 @@ public class ParentAdapter  extends RecyclerView.Adapter<ParentAdapter.ViewHolde
 
 
         holder.latexMathView.setLatexDrawable(drawable);
+        holder.questionNumber.setText("Q."+parentModel.getMainQuestNo()+")");
+        holder.questionMarks.setText(parentModel.getMainQueTotalMarks()+"m");
         ///////////////
 
         LinearLayoutManager layoutManager
@@ -82,20 +84,9 @@ public class ParentAdapter  extends RecyclerView.Adapter<ParentAdapter.ViewHolde
         ChildAdapter childAdapter;
 
         Toast.makeText(context, String.valueOf(mainQuesList.get(0).subQuestionList.size()), Toast.LENGTH_SHORT).show();
-
-//        for (ChildModel childModel2:mainQuesList.get(0).subQuestionList)
-//        {
-//            Log.d("gog111",childModel2.subQuestion);
-//        }
-       // Log.d("sizee","list number="+String.valueOf(position)+"mianlistSize is="+String.valueOf(mainQuesList.size())+""+String.valueOf(mainQuesList.get(1).subQuestionList.size()));
-
         childAdapter=new ChildAdapter(parentModel.getSubQuestionList(),context);
         holder.mainRecyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false));
         holder.mainRecyclerView.setAdapter(childAdapter);
-
-//        childAdapter=new ChildAdapter(parentModelClassList2.get(position).childModelClassList,context);
-//        holder.recyclerView2.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
-//        holder.recyclerView2.setAdapter(childAdapter);
 
         holder
                 .mainRecyclerView
@@ -113,6 +104,7 @@ public class ParentAdapter  extends RecyclerView.Adapter<ParentAdapter.ViewHolde
         RecyclerView mainRecyclerView;
 
         JLatexMathView latexMathView;
+        TextView questionNumber,questionMarks;
 
 
         TextView mainQues;
@@ -120,6 +112,8 @@ public class ParentAdapter  extends RecyclerView.Adapter<ParentAdapter.ViewHolde
             super(itemView);
             mainRecyclerView=itemView.findViewById(R.id.parent_recycleView_id);
             latexMathView=itemView.findViewById(R.id.Theory_assessment_Main_Que_id);
+            questionNumber=itemView.findViewById(R.id.Main_question_Number_id);
+            questionMarks=itemView.findViewById(R.id.Main_question_marks_id);
             // recyclerView2=itemView.findViewById(R.id.Verticle_Child_recycleView_id);
            // mainQues=itemView.findViewById(R.id.Theory_assessment_Main_Que_id);
 

@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.checkerslab_edulearning" >
+    package="com.example.checkerslab_edulearning">
 
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:required="true"
+        android:requiredFeature="true" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:required="true"
+        android:requiredFeature="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.CAMERA"
+        android:required="true"
+        android:requiredFeature="true" />
 
     <application
         android:allowBackup="true"
@@ -18,33 +27,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.CheckersLab_Edulearning"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31" >
-
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.cameraview.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
+        tools:targetApi="31">
         <activity
-            android:name=".Main_screen_activity_activity"
-            android:exported="true" >
+            android:name=".NavigationDrawerPkg.AssessmentOverview"
+            android:exported="false" />
+        <activity
+            android:name=".NavigationDrawerPkg.AssessmentResult"
+            android:exported="false" />
+        <activity
+            android:name=".DummyPackage.Dummy_Match_Pair_Activity"
+            android:exported="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".TheoryAssessmentPackage.Upload_Answer_Activity"
+            android:name=".DummyPackage.Dummy_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".commonActivityPackage.assessmentHome.Assessment_home_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".TheoryAssessmentPackage.UploadAnswerpackage.Upload_Answer_Activity"
             android:exported="false" />
         <activity
             android:name=".TheoryAssessmentPackage.questionPaperPackage.Theory_assessment_Activity"
@@ -107,8 +117,12 @@
             android:exported="false" />
         <activity
             android:name=".Splash_Screen_Activity"
-            android:exported="true" >
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Welcome_Screen_Activity"

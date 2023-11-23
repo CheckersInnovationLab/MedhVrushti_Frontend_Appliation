@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/Enroll_layout_id"
     tools:context=".Course_Enroll_Activity">
 
     <LinearLayout
@@ -59,7 +60,7 @@
                     android:layout_marginTop="@dimen/_20sdp">
 
                     <TextView
-                        android:id="@+id/Header_id"
+                        android:id="@+id/Enroll_Subscription_Name_id"
                         android:layout_width="0dp"
                         android:layout_weight="5"
                         android:layout_height="wrap_content"
@@ -72,6 +73,7 @@
 
 
                     <TextView
+                        android:id="@+id/Enroll_Subscription_price_id"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="$ 500/month"
@@ -312,6 +314,7 @@
                             android:background="@drawable/cart_back"
                             android:backgroundTint="#0368B8"
                             android:layout_marginLeft="20dp"
+
                             app:backgroundTint="#C50808">
 
 
@@ -319,6 +322,7 @@
                                 android:layout_width="38dp"
                                 android:layout_height="25dp"
                                 android:src="@drawable/exam_icon"
+
                                 android:layout_centerInParent="true"
                                 />
                         </RelativeLayout>
@@ -424,6 +428,7 @@
         </RelativeLayout>
 
         <Button
+            android:id="@+id/Enroll_Course_button_id"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
             android:text="Enroll Now"

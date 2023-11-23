@@ -38,7 +38,7 @@ public class CourseChapterAdapter  extends RecyclerView.Adapter<CourseChapterAda
         final CourseChapterModel courseChapterModel = list.get(position);
 
 
-        holder.chapterName.setText(courseChapterModel.getChapterName());
+        holder.chapterName.setText(courseChapterModel.getChapter_name());
         holder.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

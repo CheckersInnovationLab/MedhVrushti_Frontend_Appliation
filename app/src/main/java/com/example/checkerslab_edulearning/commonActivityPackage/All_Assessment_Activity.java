@@ -41,12 +41,12 @@ public class All_Assessment_Activity extends AppCompatActivity {
 
 
 
-        assessmentList.add(new AllAssessmentModel("Chapter 1 Real Numbers","30"));
-        assessmentList.add(new AllAssessmentModel("Chapter 2 Polynomials","70"));
-        assessmentList.add(new AllAssessmentModel("Chapter 3 Pair of Linear Equations in Two Variables","70"));
-        assessmentList.add(new AllAssessmentModel("Chapter 4 Quadratic Equations","70"));
-        assessmentList.add(new AllAssessmentModel("Chapter 5 Arithmetic Progressions","70"));
-        AllAssessmentAdapter allAssessmentAdapter=new AllAssessmentAdapter(assessmentList,getApplicationContext());
-        recyclerView.setAdapter(allAssessmentAdapter);
+//        assessmentList.add(new AllAssessmentModel("Chapter 1 Real Numbers","30"));
+//        assessmentList.add(new AllAssessmentModel("Chapter 2 Polynomials","70"));
+//        assessmentList.add(new AllAssessmentModel("Chapter 3 Pair of Linear Equations in Two Variables","70"));
+//        assessmentList.add(new AllAssessmentModel("Chapter 4 Quadratic Equations","70"));
+//        assessmentList.add(new AllAssessmentModel("Chapter 5 Arithmetic Progressions","70"));
+//        AllAssessmentAdapter allAssessmentAdapter=new AllAssessmentAdapter(assessmentList,getApplicationContext());
+//        recyclerView.setAdapter(allAssessmentAdapter);
     }
 }

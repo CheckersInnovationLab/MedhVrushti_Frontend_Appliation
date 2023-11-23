@@ -30,7 +30,7 @@ public class Home_Screen_Fragment extends Fragment {
 ////        bottomNavigationView.setSelectedItemId(R.id.home_menu_id);
         if (savedInstanceState==null)
         {
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.layout_id,new Assessment_MainCourses_fragment()).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.layout_id,new Home_sub_screen_fragment()).commit();
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Ass_Chapters_activity;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Ass_Subjects_Model;
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.commonActivityPackage.assessmentHome.Assessment_home_Screen;
 import com.example.checkerslab_edulearning.mainHome_pkg.PopularCoursesAdapter;
 import com.example.checkerslab_edulearning.mainHome_pkg.popularCoursesModel;
 
@@ -49,12 +50,13 @@ public class CourseSubjectAdapter extends RecyclerView.Adapter<CourseSubjectAdap
         // Set the background color of the CardView
         //holder.layout.setBackgroundResource(cardColors[colorIndex]);
 
-        holder.subjectName.setText(courseSubjectModel.getSubjectName());
-        holder.totalChapter.setText("TotalChapter: "+courseSubjectModel.getTotalChapter());
+        holder.subjectName.setText(courseSubjectModel.getSubject_name());
+       // holder.totalChapter.setText("TotalChapter: "+courseSubjectModel.getTotal_chapters());
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             Intent intent=new Intent(context,CourseChaptersActivity.class);
+             Intent intent=new Intent(context, Assessment_home_Screen.class);
+              //  intent.putExtra("Subject_id",courseSubjectModel.getSubject_id());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
              v.getContext().startActivity(intent);
             }
