@@ -27,7 +27,7 @@ public class Home_Screen_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home__screen_, container, false);
         bottomNavigationView=view.findViewById(R.id.navigation_drawer_id);
-////        bottomNavigationView.setSelectedItemId(R.id.home_menu_id);
+////      bottomNavigationView.setSelectedItemId(R.id.home_menu_id);
         if (savedInstanceState==null)
         {
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.layout_id,new Home_sub_screen_fragment()).commit();
