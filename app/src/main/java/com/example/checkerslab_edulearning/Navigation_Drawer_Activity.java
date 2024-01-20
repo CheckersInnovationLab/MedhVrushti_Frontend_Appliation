@@ -59,7 +59,7 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
     private ImageView userProfileImage;
     static  String studName="",studEmailId="",studMobileNo="",studProfileImage="";
     public static String studCourseName="";
-    public static String userId="100003";
+    public static String userId="100001";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,7 +190,7 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
 
     private void getUserDetails() {
 
-        String url="http://apis-medhvrushti.checkerslab.com/api/v1/cil/users/get?";
+        String url="https://medhvrushti.checkerslab.com/api/v1/cil/users/get?";
         url=url+"user_id="+userId;
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -248,7 +248,7 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", getBodyContentType());
-                headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaHViaGFtaGFkYXdhbGVAZ21haWwuY29tIiwiZXhwIjoxNzAwNjMyNDQ0fQ.-SEhCjYYLEf4dGW3e-PKv1da2KJd16ujIQu_vCcdNP4");
+                headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFpdGFueWEuY2hhdWRoYXJpQGdtYWlsLmNvbSIsImV4cCI6MTcwNjk1NDQwN30.wpONQf_Tu-R3FK3f-wKICYBv4tp5qpOxwCQsc2D_Y5I");
                 return headers;
             }
         };

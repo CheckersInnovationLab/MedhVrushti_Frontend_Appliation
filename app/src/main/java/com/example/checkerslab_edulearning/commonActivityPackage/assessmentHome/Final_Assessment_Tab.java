@@ -36,7 +36,7 @@ public class Final_Assessment_Tab extends Fragment {
     ArrayList<AllAssessmentModel> assessmentList;
     LinearLayoutManager VerticalLayout;
     AllAssessmentAdapter allAssessmentAdapter;
-    private String Url="http://apis-medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/subject_id?subject_id=100001";
+    private String Url="https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/subject_id?subject_id=1001";
 
 
     @Override
@@ -61,7 +61,6 @@ public class Final_Assessment_Tab extends Fragment {
 
 
     private void AddItemsToTopCatRecyclerView() {
-
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 

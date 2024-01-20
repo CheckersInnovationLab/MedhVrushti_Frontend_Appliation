@@ -67,25 +67,4 @@ public class Home_Screen_Fragment extends Fragment {
         return view;
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.student_home_option_menu, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.log_out_id:
-//                FirebaseAuth.getInstance().signOut();
-//                Intent intent=new Intent(getApplicationContext(),StudentLogin_Activity.class);
-//                startActivity(intent);
-//                finish();
-//                break;
-//
-//
-//        }
-//
-//        return true;
-//    }
-//
 }

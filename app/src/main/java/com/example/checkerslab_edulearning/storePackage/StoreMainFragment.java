@@ -42,7 +42,7 @@ public class StoreMainFragment extends Fragment {
     //    String url01="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
 //    String url02="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
 //    String url03="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
-    private String Url = "http://apis-medhvrushti.checkerslab.com/api/v1/cil/main_subscriptions/get/all";
+    private String Url = "https://medhvrushti.checkerslab.com/api/v1/cil/main_subscriptions/get/all";
 
 
     @Override
@@ -69,7 +69,7 @@ public class StoreMainFragment extends Fragment {
 
         if (Navigation_Drawer_Activity.studCourseName.equals(null))
         {
-            Url = "http://apis-medhvrushti.checkerslab.com/api/v1/cil/main_subscriptions/get/all";
+            Url = "https://medhvrushti.checkerslab.com/api/v1/cil/main_subscriptions/get/all";
         }
         else
         {
@@ -111,7 +111,7 @@ public class StoreMainFragment extends Fragment {
                                         object.getString("total_validity"));
 
 
-                                if (object.getString("subscription_type").equals("assessment"))
+                                if (object.getString("subscription_type").equals("Assessment"))
                                 {
                                     ChildItemList.add(storeCoursesModel);
                                 }

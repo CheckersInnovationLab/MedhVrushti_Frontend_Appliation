@@ -32,7 +32,7 @@ public class Course_Enroll_Activity extends AppCompatActivity {
 
     ImageView imageView;
     Button enroll;
-    private String url="http://apis-medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/add";
+    private String url="https://medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/add";
 
     private static String subscription_code,subscription_name,subscription_type,subscription_category,standard_id,subject_id,
             access_id,subscription_price,description,default_discount,subscription_img_url;
@@ -72,7 +72,7 @@ public class Course_Enroll_Activity extends AppCompatActivity {
 
 
 
-        String url2="http://apis-medhvrushti.checkerslab.com/api/v1/cil/main_subscriptions/get?";
+        String url2="https://medhvrushti.checkerslab.com/api/v1/cil/main_subscriptions/get?";
       url2=url2+"subscription_id="+SubscriptionID;
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -163,7 +163,7 @@ public class Course_Enroll_Activity extends AppCompatActivity {
             }
             requestData.put("discount_applied", "20%");
             requestData.put("attempt_allowed", "2");
-            requestData.put("payment_id", "100001");
+            requestData.put("payment_id", "100006");
             requestData.put("total_validity", "2  months");
             requestData.put("auto_renewal", "true");
             requestData.put("status", "Active");
@@ -226,7 +226,7 @@ public class Course_Enroll_Activity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", getBodyContentType());
-                headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaHViaGFtaGFkYXdhbGVAZ21haWwuY29tIiwiZXhwIjoxNjk5NjIxMDc2fQ.dSB36WdBg6_oR3WUq7PMDyHHAvm7CCwV6wyUo-SsFo0");
+                headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFpdGFueWEuY2hhdWRoYXJpQGdtYWlsLmNvbSIsImV4cCI6MTcwNjk1NDQwN30.wpONQf_Tu-R3FK3f-wKICYBv4tp5qpOxwCQsc2D_Y5I");
                 return headers;
             }
         };

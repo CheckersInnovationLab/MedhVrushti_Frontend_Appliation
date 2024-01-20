@@ -3,12 +3,14 @@ package com.example.checkerslab_edulearning.AssessmentSection_pkg;
 public class Selected_Test_Data_Model {
 
     int questionId,marks;
-    String questionType,question,option1,option2,option3,option4,answer,answerDescription;
+    String questionType,question,option1,option2,option3,option4,answer,answerDescription,status,selectedAnswer;
+
 
     public Selected_Test_Data_Model() {
     }
 
-    public Selected_Test_Data_Model(int questionId, int marks, String questionType, String question, String option1, String option2, String option3, String option4, String answer, String answerDescription) {
+
+    public Selected_Test_Data_Model(int questionId, int marks, String questionType, String question, String option1, String option2, String option3, String option4, String answer, String answerDescription, String status, String selectedAnswer) {
         this.questionId = questionId;
         this.marks = marks;
         this.questionType = questionType;
@@ -19,6 +21,8 @@ public class Selected_Test_Data_Model {
         this.option4 = option4;
         this.answer = answer;
         this.answerDescription = answerDescription;
+        this.status = status;
+        this.selectedAnswer = selectedAnswer;
     }
 
     public int getQuestionId() {
@@ -99,5 +103,21 @@ public class Selected_Test_Data_Model {
 
     public void setAnswerDescription(String answerDescription) {
         this.answerDescription = answerDescription;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSelectedAnswer() {
+        return selectedAnswer;
+    }
+
+    public void setSelectedAnswer(String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
     }
 }

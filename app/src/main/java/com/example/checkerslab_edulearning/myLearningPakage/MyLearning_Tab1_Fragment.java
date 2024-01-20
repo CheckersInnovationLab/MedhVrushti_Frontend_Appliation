@@ -32,7 +32,7 @@ public class MyLearning_Tab1_Fragment extends Fragment {
     LinearLayoutManager VerticalLayout;
     MyLearningMainAdapter myLearningMainAdapter;
 
-    private String Url="http://apis-medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/get/all/by/user_id?";
+    private String Url="https://medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/get/all/by/user_id?";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F6FA"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".CompetitivePkg.Competitive_Ass_Result_Screen">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/AssessmentTopic_toolbar_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="#344AC1"
+                app.background="#344AC1"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/AssessmentTopicToolbar_back_button"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/back_icon_white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Test Result"
+                        android:layout_toRightOf="@id/edit_personal_detailsToolbar_back_button"
+                        android:id="@+id/edit_personal_detailsToolbar_title"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textSize="@dimen/_18sdp"
+                        android:layout_centerVertical="true"
+                        android:textColor="#D2F2F6"
+                        android:layout_gravity="center_vertical"
+                        android:textStyle="bold"
+                        />
+
+
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card2001"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_20sdp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/profile_top_layout_id"
+                    android:background="#344AC1">
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/circles"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/profile_image_id2001"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:src="@drawable/profile_image"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shubham hadawale"
+                        android:textColor="#CEF5FA"
+                        android:textStyle="bold"
+                        android:layout_below="@+id/profile_image_id2001"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:textSize="@dimen/_15ssp"
+                        android:id="@+id/Profile_Student_Name_id2001"/>
+                    <RelativeLayout
+                        android:id="@+id/horizontal_2001"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="#C1EFF4"
+                        android:layout_below="@+id/Profile_Student_Name_id2001"
+                        android:layout_marginTop="@dimen/_5sdp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/horizontal_2001"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/Current_score_id1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textColor="#CEF5FA"
+                                android:textSize="@dimen/_17ssp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Current Score"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:textColor="#CEF5FA"
+                                android:textStyle="bold|italic"
+                                android:textSize="@dimen/_11ssp"/>
+
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="@dimen/_1sdp"
+                            android:layout_height="match_parent"
+                            android:background="#C1EFF4"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="19"
+                                android:textColor="#CEF5FA"
+                                android:textSize="@dimen/_17ssp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Average Score"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:textColor="#CEF5FA"
+                                android:textStyle="bold|italic"
+                                android:textSize="@dimen/_11ssp"/>
+
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="@dimen/_1sdp"
+                            android:layout_height="match_parent"
+                            android:background="#C1EFF4"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2356"
+                                android:textColor="#CEF5FA"
+                                android:textSize="@dimen/_17ssp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ranking"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:textStyle="bold|italic"
+                                android:textColor="#CEF5FA"
+                                android:textSize="@dimen/_11ssp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:id="@+id/profile_top_layout_id"-->
+<!--                android:background="#233CCC">-->
+
+
+<!--                &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:id="@+id/assessment_result_text1"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:text="Hello Shubham,"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:textSize="30sp"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_marginLeft="20dp"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_marginRight="20dp"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_marginTop="@dimen/_10sdp"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:textStyle="bold"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:textColor="@color/white"/>&ndash;&gt;-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_80sdp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_marginTop="@dimen/_5sdp"-->
+<!--                    android:weightSum="3">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/assessment_result_current_score_id1"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="20"-->
+<!--                            android:textColor="#CEF5FA"-->
+<!--                            android:textSize="@dimen/_17ssp"-->
+<!--                            android:textStyle="bold"/>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Current Score"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:textColor="#CEF5FA"-->
+<!--                            android:textStyle="bold|italic"-->
+<!--                            android:textSize="@dimen/_11ssp"/>-->
+
+<!--                    </LinearLayout>-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="@dimen/_1sdp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="#C1EFF4"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:layout_marginBottom="@dimen/_10sdp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="90.25%"-->
+<!--                            android:textColor="#CEF5FA"-->
+<!--                            android:textSize="@dimen/_17ssp"-->
+<!--                            android:textStyle="bold"/>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Percentile"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:textColor="#CEF5FA"-->
+<!--                            android:textStyle="bold|italic"-->
+<!--                            android:textSize="@dimen/_11ssp"/>-->
+
+<!--                    </LinearLayout>-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="@dimen/_1sdp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="#C1EFF4"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:layout_marginBottom="@dimen/_10sdp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="2356"-->
+<!--                            android:textColor="#CEF5FA"-->
+<!--                            android:textSize="@dimen/_17ssp"-->
+<!--                            android:textStyle="bold"/>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Ranking"-->
+<!--                            android:layout_marginTop="@dimen/_5sdp"-->
+<!--                            android:textStyle="bold|italic"-->
+<!--                            android:textColor="#CEF5FA"-->
+<!--                            android:textSize="@dimen/_11ssp"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </RelativeLayout>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Performance: Learn!"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textSize="@dimen/_20ssp"
+                    android:textColor="#454444"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="learn th topic in key focus area and try again.we know you do better"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textSize="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp"/>
+
+
+            </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/card2001"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Score"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#454444"
+                android:textSize="@dimen/_20ssp"
+                android:layout_marginLeft="@dimen/_15sdp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:layout_weight="1">
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/circularProgressBar_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        app:cpb_background_progressbar_color="#EFE9E9"
+                        app:cpb_background_progressbar_width="15dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progressbar_color="#069F0E"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        app:cpb_progressbar_width="15dp"
+                        app:cpb_round_border="false" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/Current_score_id2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="@dimen/_15ssp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_2sdp"
+                            android:background="#787777" />
+
+                        <TextView
+                            android:id="@+id/total_question_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="30"
+                            android:textSize="@dimen/_15ssp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:src="@drawable/correct_icon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 correct"
+                            android:textSize="@dimen/_15ssp"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:src="@drawable/wrong_icon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 wrong"
+                            android:textSize="@dimen/_15ssp"/>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:src="@drawable/unanswered_icon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 Unanswered"
+                            android:textSize="@dimen/_15ssp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_10sdp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:background="@drawable/button_back_new" >
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Re-Test"
+                        android:textSize="@dimen/_15ssp"
+                        android:textColor="#454444"
+                        android:layout_centerInParent="true"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_7sdp"
+                        android:paddingBottom="@dimen/_7sdp"
+                        android:textStyle="bold"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:backgroundTint="#2E8832"
+                    android:background="@drawable/button_back_new" >
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Solutions"
+                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/white"
+                        android:layout_centerInParent="true"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_7sdp"
+                        android:paddingBottom="@dimen/_7sdp"
+                        android:textStyle="bold"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Analysis Report"
+               android:textStyle="bold"
+               android:layout_gravity="center_horizontal"
+               android:textColor="#454444"
+               android:textSize="@dimen/_20ssp"
+               android:layout_marginLeft="@dimen/_15sdp"/>
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:weightSum="5"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Accuracy"
+                   android:layout_weight="4"
+                   android:gravity="center"
+                   android:layout_gravity="center"
+                   android:textStyle="bold"
+                   android:layout_marginLeft="@dimen/_10sdp"/>
+
+               <com.daimajia.numberprogressbar.NumberProgressBar
+                   android:id="@+id/numberbar1"
+                   android:layout_width="match_parent"
+                   android:layout_weight="1"
+                   android:padding="20dp"
+                   custom:progress_unreached_bar_height="2dp"
+                   custom:progress_reached_bar_height="5dp"
+                   custom:progress_current="50"
+                   style="@style/NumberProgressBar_Default"
+                   android:layout_height="wrap_content" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:weightSum="5"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Time"
+                   android:layout_weight="4"
+                   android:gravity="center"
+                   android:layout_gravity="center"
+                   android:textStyle="bold"
+                   android:layout_marginLeft="@dimen/_10sdp"/>
+
+               <com.daimajia.numberprogressbar.NumberProgressBar
+                   android:id="@+id/numberbar2"
+                   android:layout_height="wrap_content"
+                   android:padding="20dp"
+                   android:layout_weight="1"
+                   custom:progress_current="20"
+                   custom:progress_unreached_bar_height="2dp"
+                   custom:progress_reached_bar_height="5dp"
+                   android:layout_width="match_parent"
+                   style="@style/NumberProgressBar_Passing_Green"
+                   />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:weightSum="5"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Correct"
+                   android:layout_weight="4"
+                   android:gravity="center"
+                   android:layout_gravity="center"
+                   android:textStyle="bold"
+                   android:layout_marginLeft="@dimen/_10sdp"/>
+
+               <com.daimajia.numberprogressbar.NumberProgressBar
+                   android:id="@+id/numberbar3"
+                   android:layout_margin="20dp"
+                   android:layout_weight="1"
+                   style="@style/NumberProgressBar_Relax_Blue"
+                   custom:progress_current="30"
+                   custom:progress_unreached_bar_height="2dp"
+                   custom:progress_reached_bar_height="5dp"
+                   android:layout_height="wrap_content" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:weightSum="5"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Wrong"
+                   android:layout_weight="4"
+                   android:gravity="center"
+                   android:layout_gravity="center"
+                   android:textStyle="bold"
+                   android:layout_marginLeft="@dimen/_10sdp"/>
+
+
+               <com.daimajia.numberprogressbar.NumberProgressBar
+                   android:id="@+id/numberbar4"
+                   android:layout_width="wrap_content"
+                   android:layout_margin="20dp"
+                   android:layout_weight="1"
+                   style="@style/NumberProgressBar_Grace_Yellow"
+                   custom:progress_current="40"
+                   custom:progress_unreached_bar_height="2dp"
+                   custom:progress_reached_bar_height="7dp"
+                   android:layout_height="wrap_content" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:weightSum="5"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Preview"
+                   android:layout_weight="4"
+                   android:gravity="center"
+                   android:layout_gravity="center"
+                   android:textStyle="bold"
+                   android:layout_marginLeft="@dimen/_10sdp"/>
+
+
+               <com.daimajia.numberprogressbar.NumberProgressBar
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_margin="20dp"
+                   android:layout_weight="1"
+                   custom:progress_unreached_color="#CCCCCC"
+                   custom:progress_reached_color="#3498DB"
+
+                   custom:progress_unreached_bar_height="2dp"
+                   custom:progress_reached_bar_height="7dp"
+
+                   custom:progress_text_size="10sp"
+                   custom:progress_text_color="#3498DB"
+                   custom:progress_text_offset="1dp"
+                   custom:progress_text_visibility="visible"
+
+                   custom:progress_max="100"
+                   custom:progress_current="80"
+                   />
+           </LinearLayout>
+
+
+       </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_140sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+
+                android:layout_marginRight="@dimen/_10sdp"
+
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#F9ECFB"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/progress_icon"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-10dp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Progress Report"
+                            android:textSize="@dimen/_20ssp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:textColor="#515151"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="@dimen/_15sdp" />
+
+                        <TextView
+                            android:id="@+id/Prediction_result_text_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Good.Your are doing good but you need more practice to achieve your goal"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_13sdp"
+                            android:gravity="center"
+                            android:textColor="#D1BC08"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"/>
+
+                        <Button
+                            android:id="@+id/Predict_button_id"
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:background="@drawable/std_back_color"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="Predict"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/card2001"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_170sdp"-->
+<!--        android:layout_marginTop="@dimen/_10sdp"-->
+<!--        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--        android:layout_marginRight="@dimen/_5sdp"-->
+<!--        app:cardCornerRadius="@dimen/_20sdp">-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/profile_top_layout_id"-->
+<!--            android:background="#233CCC">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="fill_parent"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/circles"/>-->
+
+<!--            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                android:id="@+id/profile_image_id2001"-->
+<!--                android:layout_width="@dimen/_70sdp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginTop="@dimen/_5sdp"-->
+<!--                android:layout_height="@dimen/_70sdp"-->
+<!--                android:src="@drawable/profile_image"-->
+<!--                app:civ_border_width="2dp"-->
+<!--                app:civ_border_color="#FF000000"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Shubham hadawale"-->
+<!--                android:textColor="#CEF5FA"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_below="@+id/profile_image_id2001"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginTop="@dimen/_5sdp"-->
+<!--                android:textSize="@dimen/_15ssp"-->
+<!--                android:id="@+id/Profile_Student_Name_id2001"/>-->
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/horizontal_2001"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_1sdp"-->
+<!--                android:background="#C1EFF4"-->
+<!--                android:layout_below="@+id/Profile_Student_Name_id2001"-->
+<!--                android:layout_marginTop="@dimen/_5sdp"/>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_80sdp"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_below="@+id/horizontal_2001"-->
+<!--                android:weightSum="3">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/Current_score_id1"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="20"-->
+<!--                        android:textColor="#CEF5FA"-->
+<!--                        android:textSize="@dimen/_17ssp"-->
+<!--                        android:textStyle="bold"/>-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Current Score"-->
+<!--                        android:layout_marginTop="@dimen/_5sdp"-->
+<!--                        android:textColor="#CEF5FA"-->
+<!--                        android:textStyle="bold|italic"-->
+<!--                        android:textSize="@dimen/_11ssp"/>-->
+
+<!--                </LinearLayout>-->
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="@dimen/_1sdp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="#C1EFF4"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:layout_marginBottom="@dimen/_10sdp"/>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="19"-->
+<!--                        android:textColor="#CEF5FA"-->
+<!--                        android:textSize="@dimen/_17ssp"-->
+<!--                        android:textStyle="bold"/>-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Average Score"-->
+<!--                        android:layout_marginTop="@dimen/_5sdp"-->
+<!--                        android:textColor="#CEF5FA"-->
+<!--                        android:textStyle="bold|italic"-->
+<!--                        android:textSize="@dimen/_11ssp"/>-->
+
+<!--                </LinearLayout>-->
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="@dimen/_1sdp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="#C1EFF4"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:layout_marginBottom="@dimen/_10sdp"/>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="2356"-->
+<!--                        android:textColor="#CEF5FA"-->
+<!--                        android:textSize="@dimen/_17ssp"-->
+<!--                        android:textStyle="bold"/>-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Ranking"-->
+<!--                        android:layout_marginTop="@dimen/_5sdp"-->
+<!--                        android:textStyle="bold|italic"-->
+<!--                        android:textColor="#CEF5FA"-->
+<!--                        android:textSize="@dimen/_11ssp"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+<!--        </RelativeLayout>-->
+<!--    </androidx.cardview.widget.CardView>-->
+
+
+
+
+
+</LinearLayout>

@@ -39,7 +39,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
     private Button verify;
     String enteredPin="";
     String generated_otp,mobileNumber="";
-    private  String registerURL="http://apis-medhvrushti.checkerslab.com/api/v1/cil/auth/authenticate/by/mobile_no?";
+    private  String registerURL="https://medhvrushti.checkerslab.com/api/v1/cil/auth/authenticate/by/mobile_no?";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +103,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
     }
 
     private void RegisteredUser() {
-        registerURL=registerURL+"mobile_number="+mobileNumber+"&role_id=100002";
+        registerURL=registerURL+"mobile_number="+mobileNumber+"&role_id=100001";
 
 
 

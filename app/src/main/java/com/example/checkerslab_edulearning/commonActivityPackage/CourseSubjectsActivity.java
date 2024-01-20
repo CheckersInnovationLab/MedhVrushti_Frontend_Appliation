@@ -36,7 +36,7 @@ public class CourseSubjectsActivity extends AppCompatActivity {
     ArrayList<CourseSubjectModel> subjectModelArrayList;
     static String subscription_id;
 
-    private String url="http://apis-medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/get/all/by/subscription_id_and_user_id?";
+    private String url="https://medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/get/all/by/subscription_id_and_user_id?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

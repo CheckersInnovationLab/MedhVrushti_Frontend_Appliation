@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:auto="http://schemas.android.com/apk/res-auto">
+
+
+    <io.github.kexanie.library.MathView
+        android:id="@+id/Competitive_Assessment_question_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        auto:engine="MathJax"
+        auto:layout_constraintTop_toTopOf="parent"
+        auto:layout_constraintStart_toStartOf="parent"
+        auto:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewOption1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        auto:cardCornerRadius="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        auto:layout_constraintTop_toBottomOf="@id/Competitive_Assessment_question_id"
+        auto:layout_constraintStart_toStartOf="parent"
+        auto:layout_constraintEnd_toEndOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/Competitive_option1_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            android:background="#fff">
+
+            <TextView
+                android:id="@+id/Competitive_number_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="a."
+                android:textColor="#0191A3"
+                android:textSize="@dimen/_19ssp"
+                android:textStyle="bold" />
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/Competitive_option_1_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Competitive_number_id"
+                android:layout_marginLeft="@dimen/_10sdp"
+                auto:engine="MathJax"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewOption2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        auto:cardCornerRadius="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        auto:layout_constraintTop_toBottomOf="@id/cardViewOption1"
+        auto:layout_constraintStart_toStartOf="parent"
+        auto:layout_constraintEnd_toEndOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/Competitive_option2_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            android:background="#fff">
+
+            <TextView
+                android:id="@+id/Competitive_number2_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="b."
+                android:textColor="#0191A3"
+                android:textSize="@dimen/_19ssp"
+                android:textStyle="bold" />
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/Competitive_option_2_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Competitive_number2_id"
+                android:layout_marginLeft="@dimen/_10sdp"
+                auto:engine="MathJax"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewOption3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        auto:cardCornerRadius="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        auto:layout_constraintTop_toBottomOf="@id/cardViewOption2"
+        auto:layout_constraintStart_toStartOf="parent"
+        auto:layout_constraintEnd_toEndOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/Competitive_option3_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            android:background="#fff">
+
+            <TextView
+                android:id="@+id/Competitive_number3_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="c."
+                android:textColor="#0191A3"
+                android:textSize="@dimen/_19ssp"
+                android:textStyle="bold" />
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/Competitive_option_3_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Competitive_number3_id"
+                android:layout_marginLeft="@dimen/_10sdp"
+                auto:engine="MathJax"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewOption4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        auto:cardCornerRadius="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        auto:layout_constraintTop_toBottomOf="@id/cardViewOption3"
+        auto:layout_constraintStart_toStartOf="parent"
+        auto:layout_constraintEnd_toEndOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/Competitive_option4_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            android:background="#fff">
+
+            <TextView
+                android:id="@+id/Competitive_number4_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="d."
+                android:textColor="#0191A3"
+                android:textSize="@dimen/_19ssp"
+                android:textStyle="bold" />
+
+            <io.github.kexanie.library.MathView
+                android:id="@+id/Competitive_option_4_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Competitive_number4_id"
+                android:layout_marginLeft="@dimen/_10sdp"
+                auto:engine="MathJax"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--        android:layout_marginRight="@dimen/_5sdp"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="#fff">-->
+
+
+<!--            <io.github.kexanie.library.MathView-->
+<!--                android:id="@+id/Competitive_Assessment_question_id"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                android:layout_marginTop="@dimen/_15sdp"-->
+<!--                android:layout_marginBottom="@dimen/_15sdp"-->
+<!--                android:layout_marginRight="@dimen/_10sdp"-->
+<!--                auto:engine="MathJax"/>-->
+
+
+
+<!--        </RelativeLayout>-->
+
+
+
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            auto:cardCornerRadius="@dimen/_5sdp"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--            android:layout_marginRight="@dimen/_10sdp">-->
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/Competitive_option1_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/_15sdp"-->
+<!--                android:layout_marginTop="@dimen/_10sdp"-->
+<!--                android:background="#fff">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/Competitive_number_id"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="a."-->
+<!--                    android:textColor="#0191A3"-->
+<!--                    android:textSize="@dimen/_19ssp"-->
+<!--                    android:textStyle="bold" />-->
+
+
+<!--                <io.github.kexanie.library.MathView-->
+<!--                    android:id="@+id/Competitive_option_1_id"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/Competitive_number_id"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    auto:engine="MathJax"/>-->
+
+<!--            </RelativeLayout>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            auto:cardCornerRadius="@dimen/_5sdp"-->
+<!--            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--            android:layout_marginRight="@dimen/_10sdp">-->
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/Competitive_option2_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/_15sdp"-->
+<!--                android:background="#fff"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/Competitive_number2_id"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="b."-->
+<!--                    android:textColor="#0191A3"-->
+<!--                    android:textSize="@dimen/_19ssp"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <io.github.kexanie.library.MathView-->
+<!--                    android:id="@+id/Competitive_option_2_id"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/Competitive_number2_id"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    auto:engine="MathJax"/>-->
+
+<!--            </RelativeLayout>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            auto:cardCornerRadius="@dimen/_5sdp"-->
+<!--            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--            android:layout_marginRight="@dimen/_10sdp">-->
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/Competitive_option3_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/_15sdp"-->
+<!--                android:background="#fff"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/Competitive_number3_id"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="c."-->
+<!--                    android:textColor="#0191A3"-->
+<!--                    android:textSize="@dimen/_19ssp"-->
+<!--                    android:textStyle="bold"/>-->
+<!--                <io.github.kexanie.library.MathView-->
+<!--                    android:id="@+id/Competitive_option_3_id"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/Competitive_number3_id"-->
+<!--                    android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                    auto:engine="MathJax"/>-->
+
+
+
+<!--            </RelativeLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            auto:cardCornerRadius="@dimen/_5sdp"-->
+<!--            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--            android:layout_marginRight="@dimen/_10sdp">-->
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/Competitive_option4_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/_15sdp"-->
+<!--                android:background="#fff"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/Competitive_number4_id"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="d."-->
+<!--                    android:textColor="#0191A3"-->
+<!--                    android:textSize="@dimen/_19ssp"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <io.github.kexanie.library.MathView-->
+<!--                    android:id="@+id/Competitive_option_4_id"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/Competitive_number4_id"-->
+<!--                    android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                    auto:engine="MathJax"/>-->
+
+<!--            </RelativeLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+
+<!--    </LinearLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

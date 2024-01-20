@@ -4,10 +4,9 @@ plugins {
 
 android {
     compileSdk 33
-
     defaultConfig {
         applicationId "com.example.checkerslab_edulearning"
-        minSdk 19
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -100,7 +99,13 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.1'
 
 
-    /////
+    //mathView updated
+    implementation 'io.github.kexanie.library:MathView:0.0.6'
+
+    //custom horizontal progress bar
+    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
+
+
 
 
 

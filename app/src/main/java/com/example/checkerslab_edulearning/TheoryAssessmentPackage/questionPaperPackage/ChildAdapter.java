@@ -177,11 +177,12 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder>{
                         question = question+typeObject.getString("text")+"\\\\\n";
                     }
                     JLatexMathDrawable drawable = JLatexMathDrawable.builder("\\textbf{ "+question+"}")
-                            .textSize(50)
+                            .textSize(90)
                             .padding(2)
                             .background(0xFFffffff)
                             .align(JLatexMathDrawable.ALIGN_RIGHT)
                             .build();
+
 
                     holder.latexMathView.setLatexDrawable(drawable);
                     String finalQuestion = question;
