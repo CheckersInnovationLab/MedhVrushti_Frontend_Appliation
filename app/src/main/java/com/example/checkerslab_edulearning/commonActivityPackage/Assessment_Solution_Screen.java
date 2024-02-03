@@ -1,16 +1,17 @@
-package com.example.checkerslab_edulearning.AssessmentSection_pkg;
+package com.example.checkerslab_edulearning.commonActivityPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.checkerslab_edulearning.AssessmentSection_pkg.Selected_Test_Data_Model;
+import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
 import com.example.checkerslab_edulearning.R;
 
 public class Assessment_Solution_Screen extends AppCompatActivity {

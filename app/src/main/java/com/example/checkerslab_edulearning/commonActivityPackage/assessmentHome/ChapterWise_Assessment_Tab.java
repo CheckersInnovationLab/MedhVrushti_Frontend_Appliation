@@ -33,7 +33,7 @@ public class ChapterWise_Assessment_Tab extends Fragment {
     RecyclerView recyclerView;
     ArrayList<CourseChapterModel> courseChapterList;
     LinearLayoutManager VerticalLayout;
-    private String url="http://apis-medhvrushti.checkerslab.com/api/v1/cil/chapter/get/all/by/subject_id?subject_id=100001";
+    private String url="https://medhvrushti.checkerslab.com/api/v1/cil/chapter/get/all/by/subject_id?subject_id=1001";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,8 +94,6 @@ public class ChapterWise_Assessment_Tab extends Fragment {
                 recyclerView.setAdapter(adapter);
 
                 Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
-
-
             }
         }, new Response.ErrorListener() {
             @Override

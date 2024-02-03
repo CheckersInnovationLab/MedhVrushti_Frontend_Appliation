@@ -1,6 +1,7 @@
 package com.example.checkerslab_edulearning.CompetitivePkg;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Selected_Test_Data_Model;
 import com.example.checkerslab_edulearning.R;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.List;
 import io.github.kexanie.library.MathView;
 
@@ -81,7 +86,41 @@ public class competitiveAssAdapter extends RecyclerView.Adapter<competitiveAssAd
 
             question.setNestedScrollingEnabled(true);
 
-            question.setText(assDataModel.getQuestion());
+
+            //////////////tested code latex
+//            question.setText(assDataModel.getQuestion());
+            /////////////////////////////////////////////
+            String finalQuestion="";
+            String UpdatedQuestion=assDataModel.getQuestion();
+
+            UpdatedQuestion = UpdatedQuestion.replace("\\", "\\\\");
+            try {
+                JSONArray jsonArray = new JSONArray(UpdatedQuestion);
+
+
+                // Iterate through the array
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    // Access the "text" value for each element
+                    JSONObject item = jsonArray.getJSONObject(i);
+
+                    String textValue = item.getString("text");
+
+                    finalQuestion=finalQuestion+textValue;
+
+                    // Now you can use the text value as needed
+                    Log.d("MainActivity", "Text value: " + textValue);
+
+                }
+            }
+            catch (Exception e)
+            {
+                Log.d("latexQuestion",e.getMessage());
+            }
+            Log.d("latexQuestionOverall:",UpdatedQuestion);
+            Log.d("latexQuestionFinal", finalQuestion);
+            question.setText(finalQuestion);
+
+
 
 
 

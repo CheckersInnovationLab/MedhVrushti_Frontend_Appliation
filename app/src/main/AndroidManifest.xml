@@ -31,11 +31,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ProfilePackage.EducationalDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfilePackage.PersonalProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".CompetitivePkg.Competitive_Ass_Result_Screen"
-            android:exported="true" >
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".CompetitivePkg.Competitive_Assessment_Main_Screen2"
             android:exported="false" />
@@ -45,7 +48,6 @@
         <activity
             android:name=".NavigationDrawerPkg.AssessmentResult"
             android:exported="false" />
-
         <activity
             android:name=".commonActivityPackage.assessmentHome.Assessment_home_Screen"
             android:exported="false" />
@@ -74,25 +76,17 @@
             android:name=".Welcome_instruction_screen"
             android:exported="false" />
         <activity
-            android:name=".AssessmentSection_pkg.Assessment_Solution_Screen"
+            android:name=".commonActivityPackage.Assessment_Solution_Screen"
             android:exported="false" />
         <activity
             android:name=".AssessmentSection_pkg.Assessment_Result_Screen"
-            android:exported="true" >
-
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".AssessmentSection_pkg.Assessment_Screen"
             android:exported="false" />
         <activity
             android:name=".AssessmentSection_pkg.Test_Reminder_activity"
-            android:exported="true">
-
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".AssessmentSection_pkg.Ass_Topic_activity"
             android:exported="false" />
@@ -122,13 +116,11 @@
         <activity
             android:name=".Splash_Screen_Activity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Welcome_Screen_Activity"

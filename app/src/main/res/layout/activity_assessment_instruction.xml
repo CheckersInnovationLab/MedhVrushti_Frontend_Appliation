@@ -10,7 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/are_you_ready_button">
+        android:layout_above="@+id/start_assessment_button">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -16,6 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ProgressBar
+                android:id="@+id/QuestionPaperGeneratorLoading_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="20dp"
+                />
+
 
             <com.scwang.wave.MultiWaveHeader
                 android:id="@+id/waveHeader"
@@ -271,6 +279,7 @@
         app:backgroundTint="#0778EA"
         android:backgroundTint="#0774E1"
         android:textSize="@dimen/_15ssp"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/_15sdp"
         android:layout_centerHorizontal="true"/>

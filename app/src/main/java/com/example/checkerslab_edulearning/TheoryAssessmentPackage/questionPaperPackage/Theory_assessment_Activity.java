@@ -50,7 +50,6 @@ public class Theory_assessment_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_theory_assessment);
 
 
-
         recyclerView=findViewById(R.id.Theory_assessment_Main_recyclerView_id);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 

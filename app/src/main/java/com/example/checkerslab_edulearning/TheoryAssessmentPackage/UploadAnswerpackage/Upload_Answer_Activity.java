@@ -211,21 +211,12 @@ public class Upload_Answer_Activity extends AppCompatActivity {
         return result==RESULT_OK;
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.M)
-//    private void requestStoragePermission() {
-//        requestPermissions(storagePermission, STORAGE_REQUEST);
-//    }
-
     private Boolean checkCameraPermission() {
         int result= ContextCompat.checkSelfPermission(Upload_Answer_Activity.this, Manifest.permission.CAMERA);
         int result1= ContextCompat.checkSelfPermission(Upload_Answer_Activity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result==RESULT_OK && result1==RESULT_OK;
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.M)
-//    private void requestCameraPermission() {
-//        requestPermissions(cameraPermission, CAMERA_REQUEST);
-//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

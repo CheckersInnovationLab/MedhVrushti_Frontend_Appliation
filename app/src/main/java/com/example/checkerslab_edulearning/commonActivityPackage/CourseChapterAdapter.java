@@ -10,9 +10,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.commonActivityPackage.assessmentHome.Chapter_Level_Assessment;
+import com.example.checkerslab_edulearning.commonActivityPackage.assessmentHome.Final_Assessment_Tab;
 
 import java.util.List;
 
@@ -42,9 +45,14 @@ public class CourseChapterAdapter  extends RecyclerView.Adapter<CourseChapterAda
         holder.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context,All_Assessment_Activity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                v.getContext().startActivity(intent);
+
+                AppCompatActivity activity = (AppCompatActivity) context;
+                activity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.layout,
+                                new Chapter_Level_Assessment()).commit();
+//                Intent intent=new Intent(context, Chapter_Level_Assessment.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                v.getContext().startActivity(intent);
 
 
             }

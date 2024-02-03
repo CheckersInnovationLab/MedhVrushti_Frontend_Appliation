@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,9 @@ public class Enter_Mob_Number_activity extends AppCompatActivity {
     private ImageView arrowBack;
     private Button mobContinue;
     private TextView emailButton;
+    private int code=123456;
+    private EditText mobNumberView;
+    private String mobileNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,7 @@ public class Enter_Mob_Number_activity extends AppCompatActivity {
 
         emailButton=findViewById(R.id.email_login_text_id);
         mobContinue=findViewById(R.id.Auth_MobNo_Continue_button_id);
+        mobNumberView=findViewById(R.id.Mobile_number_editeText_id);
         emailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +45,10 @@ public class Enter_Mob_Number_activity extends AppCompatActivity {
         mobContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mobileNumber=mobNumberView.getText().toString();
                 Intent intent=new Intent(Enter_Mob_Number_activity.this,OTP_Verification_Activity.class);
+                intent.putExtra("Generated_otp",String.valueOf(code));
+                intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
                 startActivity(intent);
                 finish();
             }

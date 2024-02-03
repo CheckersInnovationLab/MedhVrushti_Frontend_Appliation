@@ -1,6 +1,7 @@
 package com.example.checkerslab_edulearning.CompetitivePkg;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -33,6 +34,8 @@ import com.example.checkerslab_edulearning.R;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +66,8 @@ public class Competitive_Assessment_Main_Screen2 extends AppCompatActivity {
         setContentView(R.layout.comp_ass_questions_status_layout);
 
         //questionNumberT=findViewById(R.id.Competitive_Assessment_number_text_id);
+
+
 
         recyclerView = findViewById(R.id.competitive_recycler_view_id);
         nextButton = findViewById(R.id.Competitive_Assessment_next_layout);

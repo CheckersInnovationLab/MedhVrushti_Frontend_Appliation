@@ -2,6 +2,7 @@ package com.example.checkerslab_edulearning.commonActivityPackage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,7 @@ public class CourseSubjectAdapter extends RecyclerView.Adapter<CourseSubjectAdap
             @Override
             public void onClick(View v) {
              Intent intent=new Intent(context, Assessment_home_Screen.class);
-              //  intent.putExtra("Subject_id",courseSubjectModel.getSubject_id());
+               intent.putExtra("Subject_id",courseSubjectModel.getSubject_id());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
              v.getContext().startActivity(intent);
             }

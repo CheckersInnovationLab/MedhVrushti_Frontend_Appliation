@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.mainHome_pkg.PopularCoursesAdapter;
 import com.example.checkerslab_edulearning.mainHome_pkg.popularCoursesModel;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLeaningMainModel;
@@ -37,12 +39,7 @@ public class StoreMainFragment extends Fragment {
     RecyclerView recyclerView1;
     ArrayList<storeCoursesParentModel> storeCoursesList;
     LinearLayoutManager HorizontalLayout;
-    String type1="Assessment";
-
-    //    String url01="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
-//    String url02="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
-//    String url03="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
-    private String Url = "https://medhvrushti.checkerslab.com/api/v1/cil/main_subscriptions/get/all";
+   private String Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
 
 
     @Override
@@ -67,13 +64,16 @@ public class StoreMainFragment extends Fragment {
 
     private void AddItemsToTopCatRecyclerView() {
 
-        if (Navigation_Drawer_Activity.studCourseName.equals(null))
+        //Log.d("studcourseName",Navigation_Drawer_Activity.studCourseName);
+
+        if (Navigation_Drawer_Activity.studCourseName.isEmpty() )
         {
-            Url = "https://medhvrushti.checkerslab.com/api/v1/cil/main_subscriptions/get/all";
+            Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
         }
         else
         {
             Url=Url+"/by/std_id?standard_id="+Navigation_Drawer_Activity.studCourseName;
+
         }
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -120,7 +120,6 @@ public class StoreMainFragment extends Fragment {
                                     StudyMaterialList.add(storeCoursesModel);
 
                                 }
-
 
                             } catch (Exception e) {
                                 e.printStackTrace();

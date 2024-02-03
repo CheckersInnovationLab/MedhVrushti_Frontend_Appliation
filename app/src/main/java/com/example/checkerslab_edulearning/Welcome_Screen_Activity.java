@@ -15,6 +15,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,7 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
                 Intent intent=new Intent(Welcome_Screen_Activity.this, OTP_Verification_Activity.class);
                 intent.putExtra("Generated_otp",String.valueOf(code));
                 intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
+                Log.d("MobileNO",String.valueOf(mobileNumber));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

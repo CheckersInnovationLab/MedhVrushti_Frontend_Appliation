@@ -48,6 +48,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/store_icon.xml" value="0.136" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/test_series_icon.xml" value="0.136" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/video_lecture_icon.xml" value="0.1745" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/font/fonts.xml" value="0.1" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/font/poppins.xml" value="0.2518518518518518" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/access_mobile_number.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_all_assessment.xml" value="0.25" />
@@ -74,11 +75,13 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_course_subjects.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_dummy.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_dummy_match_pair.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_educational_details.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_enter_email_id.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_enter_mob_number.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_main_screen_activity.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.176" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_otp_verification.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_personal_profile.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_test_reminder.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_theory_assessment.xml" value="0.25" />
@@ -92,7 +95,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.20945319740500462" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/ass_chapters_sl_layout.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/ass_main_courses_single_line_layout.xml" value="0.25" />
-        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/ass_solution_sl_layout.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/ass_solution_sl_layout.xml" value="0.1" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/ass_standards_sl.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/ass_standards_sl_layoout.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/ass_subjects_sl_layout.xml" value="0.21739130434782608" />
@@ -106,9 +109,11 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/content_navigation_drawer.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/course_chapter_sl_layout.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/course_subject_single_line.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/courses_code_list_layout.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_ass__live_.xml" value="0.2359375" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_ass__practice__fragement.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_assessment__main_courses_fragment.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_chapter__level__assessment.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_chapter_wise__assessment__tab.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_demo__chat_bot_fragment.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_demo__store_fragment.xml" value="0.25" />

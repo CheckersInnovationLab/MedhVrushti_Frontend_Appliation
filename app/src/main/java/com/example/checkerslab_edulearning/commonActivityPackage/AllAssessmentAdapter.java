@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
 import com.example.checkerslab_edulearning.R;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
         holder.start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context,Assessment_Instruction_Activity.class);
+                Intent intent=new Intent(context, Test_Reminder_activity.class);
                 intent.putExtra("assessment_id",allAssessmentModel.getAssId());
                 intent.putExtra("assessment_marks",allAssessmentModel.getAssMarks());
                 intent.putExtra("assessment_Name",allAssessmentModel.getAssName());

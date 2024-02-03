@@ -2,14 +2,17 @@ package com.example.checkerslab_edulearning.CompetitivePkg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.daimajia.numberprogressbar.OnProgressBarListener;
+import com.example.checkerslab_edulearning.commonActivityPackage.Assessment_Solution_Screen;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
 import com.example.checkerslab_edulearning.R;
 
@@ -18,11 +21,11 @@ import java.util.TimerTask;
 
 public class Competitive_Ass_Result_Screen extends AppCompatActivity implements OnProgressBarListener {
 
-
-
     private Timer timer;
 
     private NumberProgressBar bnp;
+    private TextView currentScore1;
+    RelativeLayout solutionButton;
 
 
     @Override
@@ -30,11 +33,12 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_competitive_ass_result_screen);
 
-
+        solutionButton=findViewById(R.id.Ass_solutionButton_id);
 
         ///////////////vertical progress bar//////////
 
         bnp = (NumberProgressBar)findViewById(R.id.numberbar1);
+        currentScore1=findViewById(R.id.Current_score_id1);
         bnp.setOnProgressBarListener(this);
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -51,11 +55,15 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
 
     /////////////////////////////////////////////////////////
 
+        CalculateResult();
 
-
-
-
-       // CalculateResult();
+        solutionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Competitive_Ass_Result_Screen.this, Assessment_Solution_Screen.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void CalculateResult() {
@@ -80,7 +88,7 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
                 }
             }
         }
-
+        currentScore1.setText(String.valueOf(correctQuestion));
         Log.d("Result=","correct ="+correctQuestion+"\n wrong ="+wrong+"\n unattempt="+unAttempt);
 
     }

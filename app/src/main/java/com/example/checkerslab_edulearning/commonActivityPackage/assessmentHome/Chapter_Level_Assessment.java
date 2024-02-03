@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,35 +18,30 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.R;
-import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.commonActivityPackage.AllAssessmentAdapter;
 import com.example.checkerslab_edulearning.commonActivityPackage.AllAssessmentModel;
-import com.example.checkerslab_edulearning.myLearningPakage.MyLeaningMainModel;
-import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Final_Assessment_Tab extends Fragment {
+public class Chapter_Level_Assessment extends Fragment {
 
     RecyclerView recyclerView;
-    ArrayList<AllAssessmentModel> assessmentList;
+    ArrayList<AllAssessmentModel> chapterAssessmentList;
     LinearLayoutManager VerticalLayout;
     AllAssessmentAdapter allAssessmentAdapter;
-     int assCount=0;
-
+    int chapAssCount=0;
+    private String Url="https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/subject_id?subject_id=1001";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_final__assessment__tab, container, false);
-
-
-        recyclerView=view.findViewById(R.id.all_assessment_recyclerView_id);
-        assessmentList=new ArrayList<>();
+        View view= inflater.inflate(R.layout.fragment_chapter__level__assessment, container, false);
+        recyclerView=view.findViewById(R.id.Chapter_Assessment_recyclerView_id);
+        chapterAssessmentList=new ArrayList<>();
         VerticalLayout
                 = new LinearLayoutManager(
                 getContext(),
@@ -55,18 +49,12 @@ public class Final_Assessment_Tab extends Fragment {
                 false);
 
         recyclerView.setLayoutManager(VerticalLayout);
-        AddItemsToTopCatRecyclerView();
+        getChapterAssessment();
         return  view;
     }
 
-
-    private void AddItemsToTopCatRecyclerView() {
-
-         String Url= StaticFile.Url+"/api/v1/cil/assessments/get/all/by/subject_id?subject_id="+Assessment_home_Screen.SubjectId;
-
-        assCount=Assessment_home_Screen.finalMCQAssessmentCount;
-        Log.d("userId11",Assessment_home_Screen.SubjectId);
-        Log.d("userId",StaticFile.userId);
+    private void getChapterAssessment() {
+        chapAssCount=Assessment_home_Screen.chapterMCQAssessmentCount;
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
@@ -81,17 +69,18 @@ public class Final_Assessment_Tab extends Fragment {
                                 JSONObject object = response.getJSONObject(i);
                                 Toast.makeText(getContext(), object.getString("assessment_category"), Toast.LENGTH_SHORT).show();
 
-                                if (object.getString("assessment_category").equals("FINAL ASSESSMENT") ||object.getString("assessment_category")=="FINAL ASSESSMENT")
+                                if (object.getString("assessment_category").equals("CHAPTER ASSESSMENT") ||object.getString("assessment_category")=="CHAPTER ASSESSMENT")
                                 {
-                                    if (0<assCount)
+                                    if (0<chapAssCount)
                                     {
                                         AllAssessmentModel model=new AllAssessmentModel(
                                                 object.getString("assessment_name"),
                                                 object.getString("total_marks"),
                                                 object.getString("assessment_id"));
-                                        assessmentList.add(model);
-                                        assCount--;
+                                        chapterAssessmentList.add(model);
+                                        chapAssCount--;
                                     }
+
                                 }
 
                             } catch (Exception e) {
@@ -99,7 +88,7 @@ public class Final_Assessment_Tab extends Fragment {
                             }
                         }
 
-                        allAssessmentAdapter = new AllAssessmentAdapter(assessmentList, getContext());
+                        allAssessmentAdapter = new AllAssessmentAdapter(chapterAssessmentList, getContext());
                         recyclerView.setAdapter(allAssessmentAdapter);
                         Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
                     }
@@ -125,13 +114,5 @@ public class Final_Assessment_Tab extends Fragment {
             }
         };
         requestQueue.add(jsonObjectRequest);
-
-
-
-
-
-
-
-
     }
 }

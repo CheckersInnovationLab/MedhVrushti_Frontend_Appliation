@@ -1,17 +1,15 @@
 package com.example.checkerslab_edulearning;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.session.MediaSession;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,9 +24,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.checkerslab_edulearning.NavigationDrawerPkg.PerformanceFragment;
-import com.example.checkerslab_edulearning.NavigationDrawerPkg.ProfileFragment;
+import com.example.checkerslab_edulearning.ProfilePackage.ProfileFragment;
 import com.example.checkerslab_edulearning.databinding.ActivityNavigationDrawerBinding;
-import com.example.checkerslab_edulearning.mainHome_pkg.Home_sub_screen_fragment;
 import com.example.checkerslab_edulearning.subscription.User_Subscription_screen;
 import com.google.android.material.navigation.NavigationView;
 
@@ -59,7 +56,7 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
     private ImageView userProfileImage;
     static  String studName="",studEmailId="",studMobileNo="",studProfileImage="";
     public static String studCourseName="";
-    public static String userId="100001";
+   // public static String userId="100001";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,15 +66,8 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent=getIntent();
-        BearerToken=intent.getStringExtra("Bearer_token");
-
-
-
-
-
-       // Toast.makeText(this, BearerToken, Toast.LENGTH_SHORT).show();
-
+        BearerToken=StaticFile.bearToken;
+        Toast.makeText(this, BearerToken, Toast.LENGTH_SHORT).show();
 
         //**************** edit profile Dialog box
 
@@ -122,12 +112,13 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
         courseName=hView.findViewById(R.id.nav_student_CourseNo_id);
         userProfileImage=hView.findViewById(R.id.User_profile_image_id);
 
+
+
 //
 
         getUserDetails();
 
     }
-
 
 
 
@@ -137,7 +128,6 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
         getMenuInflater().inflate(R.menu.navigation__drawer_, menu);
         return true;
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -187,41 +177,28 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
         return true;
     }
 
-
     private void getUserDetails() {
-
-        String url="https://medhvrushti.checkerslab.com/api/v1/cil/users/get?";
-        url=url+"user_id="+userId;
+        String url=StaticFile.Url+"/api/v1/cil/users/get?"+"user_id="+StaticFile.userId;
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,null,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d("ProfileStatus","success");
                         // Handle success response from the server
                         try {
-                            studName = response.getString("first_name")+" "+response.getString("first_name");
+                            studName = response.getString("first_name");
                             studEmailId=response.getString("email_id");
                             studMobileNo=response.getString("mobile_no");
-                            studCourseName=response.getString("standard_id");
+//                            studCourseName=response.getString("standard_id");
                             studProfileImage=response.getString("profile_image_url");
-                                 Toast.makeText(Navigation_Drawer_Activity.this, studName, Toast.LENGTH_SHORT).show();
-                           // System.out.println("Error Status Code: " + "ssssss");
                             // Display or handle the message as needed
-                            userName.setText(studName);
-                            mobileNo.setText(studMobileNo);
-                            emailId.setText(studEmailId);
-                            courseName.setText(studCourseName);
-                            Glide.with(getApplicationContext())
-                                    .load(studProfileImage)
-                                    .fitCenter()
-                                    .into(userProfileImage);
+                            setUserDetails(studName,studEmailId,studCourseName,studMobileNo,studProfileImage);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -232,8 +209,7 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
+                            Log.d("ProfileStatus",errorMessage);
                         }
                     }
                 }
@@ -248,15 +224,36 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", getBodyContentType());
-                headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFpdGFueWEuY2hhdWRoYXJpQGdtYWlsLmNvbSIsImV4cCI6MTcwNjk1NDQwN30.wpONQf_Tu-R3FK3f-wKICYBv4tp5qpOxwCQsc2D_Y5I");
+                headers.put("Authorization", "Bearer " + StaticFile.bearToken);
                 return headers;
             }
         };
-
-
         requestQueue.add(jsonObjectRequest);
-
     }
 
+    private void setUserDetails(String studName, String studEmailId, String studCourseName, String studMobileNo, String studProfileImage)
+    {
 
+
+        Log.d("ProfileStatus",studName+","+studMobileNo);
+        if (!(studName =="null"))
+        {
+            userName.setText(studName);
+        }
+        if (!(studMobileNo =="null"))
+        {
+            mobileNo.setText(studMobileNo);
+        }
+        if (!(studCourseName =="null"))
+        {
+            courseName.setText(studCourseName);
+        }
+        if (!(studProfileImage== "null"))
+        {
+            Glide.with(getApplicationContext())
+                    .load(studProfileImage)
+                    .fitCenter()
+                    .into(userProfileImage);
+        }
+    }
 }

@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.StaticFile;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ public class MyLearning_Tab1_Fragment extends Fragment {
     LinearLayoutManager VerticalLayout;
     MyLearningMainAdapter myLearningMainAdapter;
 
-    private String Url="https://medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/get/all/by/user_id?";
+    private String Url= StaticFile.Url+"/api/v1/cil/user_subscriptions/get/all/by/user_id?";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,8 +41,8 @@ public class MyLearning_Tab1_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_my_learning__tab1_, container, false);
 
-
         recyclerView=view.findViewById(R.id.MyLearningMainRecyclerView_id);
+
         myLearningCoursesList=new ArrayList<>();
         VerticalLayout
                 = new LinearLayoutManager(
@@ -53,13 +54,12 @@ public class MyLearning_Tab1_Fragment extends Fragment {
         AddItemsToTopCatRecyclerView();
         Toast.makeText(getContext(), "Tab1 open ", Toast.LENGTH_SHORT).show();
 
-
         return view;
     }
 
     private void AddItemsToTopCatRecyclerView() {
 
-        Url=Url+"user_id="+ Navigation_Drawer_Activity.userId;
+        Url=Url+"user_id="+ StaticFile.userId;
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 

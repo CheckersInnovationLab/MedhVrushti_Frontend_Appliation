@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NavigationDrawerPkg.ProfileFragment">
+    tools:context=".ProfilePackage.ProfileFragment">
 
 
     <ScrollView
@@ -14,58 +14,6 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="match_parent">
-
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_220sdp"
-                android:id="@+id/profile_top_layout_id"
-                android:background="@drawable/profile_top_back_p">
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/circles"/>
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image_id"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:src="@drawable/profile_image"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Shubham hadawale"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/profile_image_id"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:textSize="@dimen/_15ssp"
-                    android:id="@+id/Profile_Student_Name_id"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Shubhamhadawale15@gmail.com"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/Profile_Student_Name_id"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:textSize="@dimen/_15ssp"
-                    android:id="@+id/Student_Name_id"/>
-
-            </RelativeLayout>
-
 
             <LinearLayout
                 android:id="@+id/profile_second_layout_id"
@@ -284,7 +232,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Your Details"
+                        android:text="Personal Details"
                         android:textStyle="bold"
                         android:textSize="@dimen/_13ssp"
                         android:layout_alignParentBottom="true"
@@ -329,7 +277,7 @@
                             android:id="@+id/your_detail_name_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Shubham Hadawale"
+                            android:text="Your Full Name"
                             android:textSize="@dimen/_11ssp"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:textColor="#474646"/>
@@ -361,7 +309,7 @@
                             android:id="@+id/your_detail_email_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Shubhamhadawale07@gmail.com"
+                            android:text="Email Id"
                             android:textSize="@dimen/_11ssp"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:textColor="#474646"/>
@@ -393,7 +341,7 @@
                             android:id="@+id/your_detail_mobile_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="9307524298"
+                            android:text="Phone Number"
                             android:textSize="@dimen/_11ssp"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:textColor="#474646"/>
@@ -403,38 +351,7 @@
                         android:layout_height="1dp"
                         android:background="#D3D1D1"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="@dimen/_5sdp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_10sdp"
-                        android:orientation="horizontal">
 
-
-                        <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:src="@drawable/enroll_numb_icon_p"
-                            android:layout_marginLeft="@dimen/_10sdp"/>
-
-                        <TextView
-                            android:id="@+id/your_detail_courseCode_id"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="IITFOUNDATION1920"
-                            android:textSize="@dimen/_11ssp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:textColor="#474646"/>
-                    </LinearLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#D3D1D1"/>
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -557,6 +474,38 @@
                         <ImageView
                             android:layout_width="@dimen/_20sdp"
                             android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/enroll_numb_icon_p"
+                            android:layout_marginLeft="@dimen/_10sdp"/>
+
+                        <TextView
+                            android:id="@+id/your_detail_courseCode_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="IITFOUNDATION1920"
+                            android:textSize="@dimen/_11ssp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:textColor="#474646"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D3D1D1"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_5sdp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
                             android:src="@drawable/location_icon_p"
                             android:layout_marginLeft="@dimen/_10sdp"/>
 
@@ -576,9 +525,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-
-
         </LinearLayout>
 
     </ScrollView>

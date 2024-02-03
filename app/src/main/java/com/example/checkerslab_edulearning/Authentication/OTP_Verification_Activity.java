@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 import com.chaos.view.PinView;
 import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.StaticFile;
+import com.example.checkerslab_edulearning.commonActivityPackage.assessmentHome.Assessment_home_Screen;
 import com.example.checkerslab_edulearning.storePackage.StoreCoursesModel;
 import com.example.checkerslab_edulearning.storePackage.storeCoursesParentAdapter;
 import com.example.checkerslab_edulearning.storePackage.storeCoursesParentModel;
@@ -39,7 +42,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
     private Button verify;
     String enteredPin="";
     String generated_otp,mobileNumber="";
-    private  String registerURL="https://medhvrushti.checkerslab.com/api/v1/cil/auth/authenticate/by/mobile_no?";
+    private  String userRegisterURL= StaticFile.Url+"/api/v1/cil/user-auth/authenticate";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,8 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         generated_otp=intent.getStringExtra("Generated_otp").toString();
         mobileNumber=intent.getStringExtra("Mobile_number");
 
+        Log.d("mobile Number",mobileNumber);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +68,6 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         pinView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -71,65 +75,66 @@ public class OTP_Verification_Activity extends AppCompatActivity {
                 String pin="";
                 pin=pin+s;
                 enteredPin=pin;
-             //    Toast.makeText(OTP_Verification_Activity.this, pin, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
 
         });
 
-
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(OTP_Verification_Activity.this, enteredPin, Toast.LENGTH_SHORT).show();
                 if (generated_otp.equals(enteredPin)){
                     RegisteredUser();
-//                   Intent intent=new Intent(OTP_Verification_Activity.this, Navigation_Drawer_Activity.class);
-//                   startActivity(intent);
-//                   finish();
                 }
                 else {
                     Toast.makeText(OTP_Verification_Activity.this, "OTP doesn't matched", Toast.LENGTH_SHORT).show();
                 }
             }
-
-
         });
-
     }
-
     private void RegisteredUser() {
-        registerURL=registerURL+"mobile_number="+mobileNumber+"&role_id=100001";
 
+        Log.d("mobile number",mobileNumber);
 
+        JSONObject requestData = new JSONObject();
+        try {
+            requestData.put("role_id", "100001");
+            requestData.put("authentication_type", "mobile");
+            requestData.put("mobile_number", "9307257049");
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, registerURL, null, new Response.Listener<JSONObject>() {
-
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, userRegisterURL, requestData,
+                new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+
+                        // Handle success response from the server
                         try {
-                            // Retrieve the token from the JSON response
-                            String token = response.getString("token");
-                        //    Toast.makeText(OTP_Verification_Activity.this, token, Toast.LENGTH_SHORT).show();
+                            String token = response.getString("jwt_token");
+                            String userId=response.getString("user_id");
+                            StaticFile.bearToken=token;
+                            StaticFile.userId=userId;
+
+                            Toast.makeText(OTP_Verification_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
                             Intent intent=new Intent(OTP_Verification_Activity.this, Navigation_Drawer_Activity.class);
-                            intent.putExtra("Bearer_token",token);
-                   startActivity(intent);
-                   finish();
-                            // Use the token as needed for your application logic
+                            startActivity(intent);
+                             finish();
+
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            // Handle the JSON Exception here
                         }
+
                     }
-                },new Response.ErrorListener() {
+                },
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // Handle error response
@@ -150,10 +155,6 @@ public class OTP_Verification_Activity extends AppCompatActivity {
             }
         };
         requestQueue.add(jsonObjectRequest);
-
-
-
-
 
     }
 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.commonActivityPackage.Assessment_Solution_Screen;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 public class Assessment_Result_Screen extends AppCompatActivity {
@@ -48,7 +49,7 @@ public class Assessment_Result_Screen extends AppCompatActivity {
         solution.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(Assessment_Result_Screen.this,Assessment_Solution_Screen.class);
+                Intent intent1=new Intent(Assessment_Result_Screen.this, Assessment_Solution_Screen.class);
                 startActivity(intent1);
             }
         });

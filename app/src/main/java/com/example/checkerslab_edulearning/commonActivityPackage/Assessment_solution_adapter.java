@@ -1,4 +1,4 @@
-package com.example.checkerslab_edulearning.AssessmentSection_pkg;
+package com.example.checkerslab_edulearning.commonActivityPackage;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,9 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.checkerslab_edulearning.AssessmentSection_pkg.Selected_Test_Data_Model;
 import com.example.checkerslab_edulearning.R;
 
 import java.util.List;
+
+import io.github.kexanie.library.MathView;
 
 public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment_solution_adapter.ViewHolder>{
     List<Selected_Test_Data_Model> list;
@@ -37,27 +40,33 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
         Selected_Test_Data_Model model=list.get(position);
 
         holder.ques.setText("Question:"+model.getQuestion());
+
+
         holder.opt1.setText("1)"+model.getOption1());
         holder.opt2.setText("2)"+model.getOption2());
         holder.opt3.setText("2)"+model.getOption3());
         holder.opt4.setText("4)"+model.getOption4());
-        if (model.getAnswer().equals(model.getOption1()))
-        {
-            holder.opt1.setTextColor(Color.parseColor("#009900"));
-        }
-        else if (model.getAnswer().equals(model.getOption2()))
-        {
-            holder.opt2.setTextColor(Color.parseColor("#009900"));
-        }
-        else if (model.getAnswer().equals(model.getOption3()))
-        {
-            holder.opt3.setTextColor(Color.parseColor("#009900"));
-        }
-        else if (model.getAnswer().equals(model.getOption4()))
-        {
-            holder.opt4.setTextColor(Color.parseColor("#009900"));
-        }
-        holder.descText.setText(model.getAnswerDescription());
+//        if (model.getAnswer().equals(model.getOption1()))
+//        {
+//            holder.opt1.setTextColor(Color.parseColor("#009900"));
+//        }
+//        else if (model.getAnswer().equals(model.getOption2()))
+//        {
+//            holder.opt2.setTextColor(Color.parseColor("#009900"));
+//        }
+//        else if (model.getAnswer().equals(model.getOption3()))
+//        {
+//            holder.opt3.setTextColor(Color.parseColor("#009900"));
+//        }
+//        else if (model.getAnswer().equals(model.getOption4()))
+//        {
+//            holder.opt4.setTextColor(Color.parseColor("#009900"));
+//        }
+
+
+//         String updatedOption1 = model.getAnswerDescription().replace("\n", "<br>");
+//         String styledOpt1 = "<font size='3' color='#4c4c4c'>" + updatedOption1 + "</font>";
+        holder.descText.setText(model.getAnswerDescription().replace("\n", "<br>"));
         holder.descriptionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,8 +89,8 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
-        TextView ques,opt1,opt2,opt3,opt4,descText;
+        MathView ques;
+        MathView opt1,opt2,opt3,opt4,descText;
         Button descriptionButton;
         LinearLayout descLayout;
 
