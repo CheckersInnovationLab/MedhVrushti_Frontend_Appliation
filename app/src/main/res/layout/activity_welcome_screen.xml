@@ -9,7 +9,8 @@
     <RelativeLayout
         android:id="@+id/welcome_screen_lottie_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_above="@+id/card_1_layout_id"
+        android:layout_height="match_parent">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie_id1"
@@ -22,18 +23,17 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_1_layout_id"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_240sdp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/_1sdp"
                 android:layout_marginRight="@dimen/_1sdp"
-
                 app:cardCornerRadius="@dimen/_15ssp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
                     android:background="#374AC8">
 
 

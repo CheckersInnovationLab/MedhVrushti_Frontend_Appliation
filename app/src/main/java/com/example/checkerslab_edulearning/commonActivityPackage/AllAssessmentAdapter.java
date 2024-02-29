@@ -2,6 +2,7 @@ package com.example.checkerslab_edulearning.commonActivityPackage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,17 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
 
 
         holder.assessmentName.setText(allAssessmentModel.getAssName());
+        holder.assessmentStatus.setText(allAssessmentModel.getAssStatus());
+
+        if (allAssessmentModel.getAssStatus().equals("Completed"))
+        {
+          holder.assessmentStatus.setTextColor(Color.parseColor("#026C02"));
+          holder.checkResult.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            holder.start.setVisibility(View.VISIBLE);
+        }
         holder.start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,14 +75,16 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView assessmentName;
-        Button start;
+        TextView assessmentName,assessmentStatus;
+        Button start,checkResult;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //courseImage = itemView.findViewById(R.id.Home_popular_courses_image_id);
             assessmentName = itemView.findViewById(R.id.Assessment_name_id);
             start = itemView.findViewById(R.id.Assessment_start_button_id);
+            assessmentStatus=itemView.findViewById(R.id.Assessment_status_id);
+            checkResult=itemView.findViewById(R.id.Assessment_Result_button_id);
         }
     }
 }

@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".commonActivityPackage.assessmentHome.Unite_Assessment_Tab">
 
+    <ImageView
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:src="@drawable/empty_icon"
+        android:layout_centerInParent="true"/>
 
 
 </RelativeLayout>

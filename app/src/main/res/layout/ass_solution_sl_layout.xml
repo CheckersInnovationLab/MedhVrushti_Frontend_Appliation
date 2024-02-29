@@ -1,180 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:auto="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:background="#F2F5F6"
     android:layout_height="match_parent">
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:layout_marginLeft="@dimen/_2sdp"
-        android:layout_marginRight="@dimen/_2sdp">
-
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+
+            android:background="@drawable/button_border"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp">
+                android:orientation="vertical">
 
-<!--                <TextView-->
-<!--                    android:id="@+id/Solution_question_id3001"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="What are MCQ questions?What are MCQ questions?-->
-<!--A multiple-choice question (MCQ) is composed of two parts: a stem that identifies the question or problem"-->
-<!--                    android:layout_marginLeft="@dimen/_5sdp"-->
-<!--                    android:textSize="@dimen/_12ssp"-->
-<!--                    android:textStyle="bold"/>-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/_15ssp"
+                        android:textStyle="bold"
+
+                        android:id="@+id/Competitive_Solution_questionNumber_id"/>
+
+                    <WebView
+                        android:id="@+id/Competitive_Solution_question_webView"
+                        android:layout_width="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@+id/Competitive_Solution_questionNumber_id"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:id="@+id/Solution_question_image_id"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:visibility="gone"
+                        android:layout_below="@+id/Competitive_Solution_question_webView"
+                        />
+
+                </RelativeLayout>
 
 
-                <io.github.kexanie.library.MathView
-                    android:id="@+id/Solution_question_id3001"
+
+
+                <LinearLayout
+                    android:id="@+id/Competitive_Solution_option1_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#fff">
+
+
+                    <TextView
+                        android:id="@+id/Competitive_numberA_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="a)"
+                        android:textColor="#0191A3"
+                        android:textSize="@dimen/_19ssp"
+                        android:textStyle="bold" />
+
+                    <WebView
+                        android:id="@+id/Competitive_Solution_option1_webView_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Competitive_Solution_option2_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#fff">
+
+
+
+
+
+                    <TextView
+                        android:id="@+id/Competitive_numberB_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="b)"
+                        android:textColor="#0191A3"
+                        android:textSize="@dimen/_19ssp"
+                        android:textStyle="bold" />
+
+                    <WebView
+                        android:id="@+id/Competitive_Solution_option2_webView_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Competitive_Solution_option3_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#fff">
+
+                    <TextView
+                        android:id="@+id/Competitive_numberC_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="c)"
+                        android:textColor="#0191A3"
+                        android:textSize="@dimen/_19ssp"
+                        android:textStyle="bold" />
+
+                    <WebView
+                        android:id="@+id/Competitive_Solution_option3_webView_id"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Competitive_Solution_option4_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#fff">
+
+
+                    <TextView
+                        android:id="@+id/Competitive_numberD_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="d)"
+                        android:textColor="#0191A3"
+                        android:textSize="@dimen/_19ssp"
+                        android:textStyle="bold" />
+
+                    <WebView
+                        android:id="@+id/Competitive_Solution_option4_webView_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/assessment_Answer_button_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Answer"
+                        android:backgroundTint="#8F8F8F"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:textColor="@color/white"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_7sdp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:background="#F6F6F6"
+                        android:id="@+id/assessment_Question_answer_layout_id">
+
+                        <WebView
+                            android:id="@+id/assessment_question_Answer_WebView_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/assessment_description_button_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    auto:engine="MathJax" />
+                    android:text="Explanation"
+                    android:backgroundTint="#8F8F8F"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:paddingRight="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:textColor="@color/white"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_7sdp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="#F6F6F6"
+                    android:id="@+id/assessment_description_layout_id">
+
+                    <WebView
+                        android:id="@+id/assessment_description_text_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:id="@+id/Solution_description_image_id"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:visibility="gone"
+                        android:layout_below="@+id/assessment_description_text_id"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
-<!--            <TextView-->
-<!--                android:id="@+id/Option1_id3001"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="1) Option 1"-->
-<!--                android:layout_marginTop="@dimen/_10sdp"-->
-<!--                android:layout_marginLeft="@dimen/_15sdp"-->
 
-<!--                android:textSize="@dimen/_13ssp"-->
-<!--                android:textStyle="italic"/>-->
 
-            <io.github.kexanie.library.MathView
-                android:id="@+id/Option1_id3001"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:overScrollMode="always"
-                auto:engine="MathJax" />
-
-            <io.github.kexanie.library.MathView
-                android:id="@+id/Option2_id3001"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:overScrollMode="always"
-                auto:engine="MathJax" />
-            <io.github.kexanie.library.MathView
-                android:id="@+id/Option3_id3001"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:overScrollMode="always"
-                auto:engine="MathJax" />
-            <io.github.kexanie.library.MathView
-                android:id="@+id/Option4_id3001"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                auto:engine="MathJax" />
-
-            <Button
-                android:id="@+id/assessment_description_button_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Explanation"
-                android:backgroundTint="#8F8F8F"
-                android:textSize="@dimen/_12ssp"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:textStyle="bold"
-                android:paddingLeft="@dimen/_10sdp"
-                android:paddingRight="@dimen/_10sdp"
-                android:paddingTop="@dimen/_8sdp"
-                android:textColor="@color/white"
-                android:paddingBottom="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_7sdp"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="#F6F6F6"
-            android:id="@+id/assessment_description_layout_id">
 
 
-
-
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_10sdp">
-
-<!--                <TextView-->
-<!--                    android:id="@+id/assessment_description_text_id"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="#8E8C8C"-->
-<!--                    android:text="A mean solar day on the Moon, a lunar day for short, is 29.5306 Earth days. Local lunar days can vary even more than solar days on Earth, over 6 hours shorte"-->
-<!--                    android:textSize="@dimen/_12ssp"/>-->
-
-                            <io.github.kexanie.library.MathView
-                                android:id="@+id/assessment_description_text_id"
-                                android:layout_width="500dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:layout_marginTop="@dimen/_15sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                auto:engine="MathJax" />
-
-
-            </LinearLayout>
-
-            </HorizontalScrollView>
-        </LinearLayout>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
 
-</LinearLayout>
+</RelativeLayout>

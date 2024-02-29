@@ -44,13 +44,6 @@ public class CourseSubjectAdapter extends RecyclerView.Adapter<CourseSubjectAdap
     public void onBindViewHolder(@NonNull CourseSubjectAdapter.ViewHolder holder, int position) {
         final CourseSubjectModel courseSubjectModel = list.get(position);
 
-//        int[] cardColors = {R.drawable.card_color_1_back, R.drawable.card_color_2_back,R.drawable.card_color_4_back,R.drawable.card_color_3_back };
-//        int colorIndex = position % cardColors.length;
-
-
-        // Set the background color of the CardView
-        //holder.layout.setBackgroundResource(cardColors[colorIndex]);
-
         holder.subjectName.setText(courseSubjectModel.getSubject_name());
        // holder.totalChapter.setText("TotalChapter: "+courseSubjectModel.getTotal_chapters());
         holder.layout.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +51,7 @@ public class CourseSubjectAdapter extends RecyclerView.Adapter<CourseSubjectAdap
             public void onClick(View v) {
              Intent intent=new Intent(context, Assessment_home_Screen.class);
                intent.putExtra("Subject_id",courseSubjectModel.getSubject_id());
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
              v.getContext().startActivity(intent);
             }
         });

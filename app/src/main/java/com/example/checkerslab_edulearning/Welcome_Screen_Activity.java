@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 ;
 
@@ -21,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.checkerslab_edulearning.Authentication.Enter_Mob_Number_activity;
 import com.example.checkerslab_edulearning.Authentication.OTP_Verification_Activity;
@@ -28,9 +31,9 @@ import com.example.checkerslab_edulearning.Authentication.OTP_Verification_Activ
 public class Welcome_Screen_Activity extends AppCompatActivity {
 
     private Button getStarted;
-    Dialog dialog;
+    private Dialog dialog;
     private String mobileNumber;
-    int code=123456;
+    private int code=123456;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -41,7 +44,6 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
         getStarted=findViewById(R.id.welcome_screen_getStarted_button_id);
         dialog=new Dialog(this);
 
-
         String[] permission={
                 android.Manifest.permission.READ_PHONE_NUMBERS
         };
@@ -51,11 +53,22 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
         getStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getAuthenticationDetails();
+
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                String userId = sharedPreferences.getString("userId", "");
+                String token = sharedPreferences.getString("token", "");
+                if (!userId.isEmpty() && !token.isEmpty()) {
+                    StaticFile.bearToken=token;
+                    StaticFile.userId=userId;
+
+                    Toast.makeText(Welcome_Screen_Activity.this, "Already Login", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(getApplicationContext(), Navigation_Drawer_Activity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    getAuthenticationDetails();
+                }
             }
-
-
-
         });
     }
     private void getAuthenticationDetails() {
@@ -99,8 +112,6 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
-
 
     }
 }

@@ -117,6 +117,7 @@
         android:layout_marginBottom="@dimen/_20sdp"
         android:textSize="@dimen/_12ssp"
         android:textStyle="bold"
+        android:visibility="gone"
         android:id="@+id/email_login_text_id"/>
      </RelativeLayout>
 

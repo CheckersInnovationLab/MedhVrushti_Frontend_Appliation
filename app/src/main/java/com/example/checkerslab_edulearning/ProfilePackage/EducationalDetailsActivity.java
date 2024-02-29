@@ -240,6 +240,8 @@ public class EducationalDetailsActivity extends AppCompatActivity {
 
     private void getCourseDetails() {
 
+        Log.d("getCourseDetails","ddd");
+
         String courseUrl=StaticFile.Url+"/api/v1/cil/board/get/all";
         coursesList.clear();
         RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());

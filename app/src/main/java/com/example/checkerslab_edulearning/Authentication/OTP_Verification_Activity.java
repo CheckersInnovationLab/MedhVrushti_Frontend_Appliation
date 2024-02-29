@@ -2,14 +2,18 @@ package com.example.checkerslab_edulearning.Authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -43,6 +47,9 @@ public class OTP_Verification_Activity extends AppCompatActivity {
     String enteredPin="";
     String generated_otp,mobileNumber="";
     private  String userRegisterURL= StaticFile.Url+"/api/v1/cil/user-auth/authenticate";
+    private TextView mobileNumberText,otpTimingText,resendButton;
+    private CountDownTimer countDownTimer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +58,16 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         back=findViewById(R.id.Verify_OTP_arrow_back_id2);
         pinView=findViewById(R.id.PinView_id);
         verify=findViewById(R.id.Verify_button_id2);
+        mobileNumberText=findViewById(R.id.verify_otp_mobileNumber_id);
+        otpTimingText=findViewById(R.id.otp_timingText_id);
+        resendButton=findViewById(R.id.otp_Resend_button_id);
 
         Intent intent=getIntent();
         generated_otp=intent.getStringExtra("Generated_otp").toString();
         mobileNumber=intent.getStringExtra("Mobile_number");
+        mobileNumberText.setText("We've sent it on the number: "+mobileNumber);
 
-        Log.d("mobile Number",mobileNumber);
+        setOTPTime();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +106,44 @@ public class OTP_Verification_Activity extends AppCompatActivity {
             }
         });
     }
+
+    private void setOTPTime() {
+
+        otpTimingText.setVisibility(View.VISIBLE);
+        resendButton.setVisibility(View.GONE);
+        long totalTimeInMillis = 1 * 60 * 1000;
+
+        countDownTimer = new CountDownTimer(totalTimeInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // Update the timer display on each tick
+                updateTimerDisplay(millisUntilFinished);
+            }
+
+            @Override
+            public void onFinish() {
+                // Handle the timer finish event (e.g., quiz submission)
+                //otpTimingText.setText("Timer: 00:00");
+                // Add any actions to perform when the timer finishes
+                otpTimingText.setVisibility(View.GONE);
+                resendButton.setVisibility(View.VISIBLE);
+
+            }
+        };
+
+        // Start the countdown timer
+        countDownTimer.start();
+    }
+
+    private void updateTimerDisplay(long millisUntilFinished) {
+        // Convert milliseconds to minutes and seconds
+        int minutes = (int) (millisUntilFinished / 1000) / 60;
+        int seconds = (int) (millisUntilFinished / 1000) % 60;
+
+        // Format the time and update the TextView
+        String timeLeftFormatted = String.format("%02d:%02d", minutes, seconds);
+        otpTimingText.setText("Resend OTP in " + timeLeftFormatted+"s");
+    }
     private void RegisteredUser() {
 
         Log.d("mobile number",mobileNumber);
@@ -103,7 +152,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         try {
             requestData.put("role_id", "100001");
             requestData.put("authentication_type", "mobile");
-            requestData.put("mobile_number", "9307257049");
+            requestData.put("mobile_number", "9307257088");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -121,6 +170,12 @@ public class OTP_Verification_Activity extends AppCompatActivity {
                             String userId=response.getString("user_id");
                             StaticFile.bearToken=token;
                             StaticFile.userId=userId;
+
+                            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("userId", userId);
+                            editor.putString("token", token);
+                            editor.apply();
 
                             Toast.makeText(OTP_Verification_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 

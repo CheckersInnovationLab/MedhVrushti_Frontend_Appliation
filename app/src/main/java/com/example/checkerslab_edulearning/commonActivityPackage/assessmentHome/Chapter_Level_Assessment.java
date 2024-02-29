@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.commonActivityPackage.AllAssessmentAdapter;
 import com.example.checkerslab_edulearning.commonActivityPackage.AllAssessmentModel;
 
@@ -33,13 +34,18 @@ public class Chapter_Level_Assessment extends Fragment {
     LinearLayoutManager VerticalLayout;
     AllAssessmentAdapter allAssessmentAdapter;
     int chapAssCount=0;
-    private String Url="https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/subject_id?subject_id=1001";
+    private String Url="https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/chapter_id?chapter_id=101";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_chapter__level__assessment, container, false);
+
+
+
+        Bundle bundle = getArguments();
+        String Chapter_id = bundle.getString("mText");
         recyclerView=view.findViewById(R.id.Chapter_Assessment_recyclerView_id);
         chapterAssessmentList=new ArrayList<>();
         VerticalLayout
@@ -49,11 +55,15 @@ public class Chapter_Level_Assessment extends Fragment {
                 false);
 
         recyclerView.setLayoutManager(VerticalLayout);
-        getChapterAssessment();
+        getChapterAssessment(Chapter_id);
+
         return  view;
     }
 
-    private void getChapterAssessment() {
+
+    private void getChapterAssessment(String chapter_id) {
+        String Url= StaticFile.Url+ "/api/v1/cil/assessments/get/all/by/chapter_id?chapter_id="+chapter_id;
+
         chapAssCount=Assessment_home_Screen.chapterMCQAssessmentCount;
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -76,7 +86,8 @@ public class Chapter_Level_Assessment extends Fragment {
                                         AllAssessmentModel model=new AllAssessmentModel(
                                                 object.getString("assessment_name"),
                                                 object.getString("total_marks"),
-                                                object.getString("assessment_id"));
+                                                object.getString("assessment_id"),
+                                                "Not Completed");
                                         chapterAssessmentList.add(model);
                                         chapAssCount--;
                                     }
@@ -115,4 +126,6 @@ public class Chapter_Level_Assessment extends Fragment {
         };
         requestQueue.add(jsonObjectRequest);
     }
+
+
 }

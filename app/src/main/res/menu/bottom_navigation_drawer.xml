@@ -16,10 +16,10 @@
         android:id="@+id/my_learning_menu_id"
         android:icon="@drawable/my_learning_icon"
         android:title="My Learning"/>
-    <item
-        android:id="@+id/chatBot_menu_id"
-        android:icon="@drawable/chatbot_icon"
-        android:title="chat Bot"/>
+<!--    <item-->
+<!--        android:id="@+id/chatBot_menu_id"-->
+<!--        android:icon="@drawable/chatbot_icon"-->
+<!--        android:title="chat Bot"/>-->
 
 
 </menu>

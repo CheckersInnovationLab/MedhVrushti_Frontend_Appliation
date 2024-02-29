@@ -63,8 +63,8 @@ public class questStatusGridAdapter extends BaseAdapter {
         myView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (context instanceof Competitive_Assessment_Main_Screen2) {
-                    ((Competitive_Assessment_Main_Screen2) context).gotoQuestion(i);
+                if (context instanceof CompetetiveAssessmentScreen) {
+                    ((CompetetiveAssessmentScreen) context).gotoQuestion(i);
                 }
             }
         });
@@ -88,7 +88,7 @@ public class questStatusGridAdapter extends BaseAdapter {
                 break;
             }
 
-            case "Review":
+            case "Preview":
             {
                 quesNo.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(myView.getContext(), R.color.Pink)));
                 break;

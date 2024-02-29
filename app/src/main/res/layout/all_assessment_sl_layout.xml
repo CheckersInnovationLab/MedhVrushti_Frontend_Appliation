@@ -7,10 +7,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_110sdp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
+
         app:cardCornerRadius="@dimen/_12sdp">
 
         <LinearLayout
@@ -135,8 +136,20 @@
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:text="Start"
+                        android:visibility="gone"
+
                         android:backgroundTint="#0DAC13"
                         app:backgroundTint="#0DAC13"
+                        android:layout_toRightOf="@+id/Assessment_status_id"/>
+                    <Button
+                        android:id="@+id/Assessment_Result_button_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Check Result"
+                        android:textSize="@dimen/_12ssp"
+                        android:visibility="gone"
+                        android:backgroundTint="#878887"
+                        app:backgroundTint="#878887"
                         android:layout_toRightOf="@+id/Assessment_status_id"/>
 
                 </RelativeLayout>

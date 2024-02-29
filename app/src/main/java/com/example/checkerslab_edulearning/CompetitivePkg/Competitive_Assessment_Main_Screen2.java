@@ -172,47 +172,50 @@ public class Competitive_Assessment_Main_Screen2 extends AppCompatActivity {
     }
 
 
-    private void LoadAssessmentData() {
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonArrayRequest arrayRequest = new JsonArrayRequest(Request.Method.GET, Url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                for (int i = 0; i <= response.length() - 1; i++) {
-                    try {
-                        JSONObject object = response.getJSONObject(i);
-                        Selected_Test_Data_Model model = new Selected_Test_Data_Model(object.getInt("id"),
-                                object.getInt("id"),
-                                object.getString("question"),
-                                object.getString("question"),
-                                object.getString("option1"),
-                                object.getString("option2"),
-                                object.getString("option3"),
-                                object.getString("option4"),
-                                object.getString("answer"),
-                                object.getString("description"),
-                                "Not_Visited",
-                                ""
-
-                        );
-
-                        assessmentDataList.add(model);
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                        e.printStackTrace();
-                    }
-                }
-
-                competitiveAssAdapter = new competitiveAssAdapter(assessmentDataList, getApplicationContext());
-                recyclerView.setAdapter(competitiveAssAdapter);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        requestQueue.add(arrayRequest);
-    }
+//    private void LoadAssessmentData() {
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        JsonArrayRequest arrayRequest = new JsonArrayRequest(Request.Method.GET, Url, null, new Response.Listener<JSONArray>() {
+//            @Override
+//            public void onResponse(JSONArray response) {
+//                for (int i = 0; i <= response.length() - 1; i++) {
+//                    try {
+//                        JSONObject object = response.getJSONObject(i);
+//                        Selected_Test_Data_Model model = new Selected_Test_Data_Model(object.getInt("id"),
+//                                object.getInt("id"),
+//                                object.getString("question"),
+//                                object.getString("question"),
+//                                object.getString("option1"),
+//                                object.getString("option2"),
+//                                object.getString("option3"),
+//                                object.getString("option4"),
+//                                object.getString("answer"),
+//                                object.getString("description"),
+//                                "Not_Visited",
+//                                "",
+//                                "No",
+//                                object.getString("question_diagrams_url"),
+//                                object.getString("description_diagrams_url")
+//
+//                        );
+//
+//                        assessmentDataList.add(model);
+//                    } catch (Exception e) {
+//                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//                competitiveAssAdapter = new competitiveAssAdapter(assessmentDataList, getApplicationContext());
+//                recyclerView.setAdapter(competitiveAssAdapter);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//            }
+//        });
+//        requestQueue.add(arrayRequest);
+//    }
 
 
 //    private void setSnapHelper() {

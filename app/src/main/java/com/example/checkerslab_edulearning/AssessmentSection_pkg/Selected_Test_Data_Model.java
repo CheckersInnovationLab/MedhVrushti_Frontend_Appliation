@@ -3,14 +3,14 @@ package com.example.checkerslab_edulearning.AssessmentSection_pkg;
 public class Selected_Test_Data_Model {
 
     int questionId,marks;
-    String questionType,question,option1,option2,option3,option4,answer,answerDescription,status,selectedAnswer;
+    String questionType,question,option1,option2,option3,option4,answer,answerDescription,status,selectedAnswer,questionDiagrams,descriptionDiagrams,questionTypeId;
+    Boolean bookmarkStatus;
 
 
     public Selected_Test_Data_Model() {
     }
 
-
-    public Selected_Test_Data_Model(int questionId, int marks, String questionType, String question, String option1, String option2, String option3, String option4, String answer, String answerDescription, String status, String selectedAnswer) {
+    public Selected_Test_Data_Model(int questionId, int marks, String questionType, String question, String option1, String option2, String option3, String option4, String answer, String answerDescription, String status, String selectedAnswer, String questionDiagrams, String descriptionDiagrams, String questionTypeId, Boolean bookmarkStatus) {
         this.questionId = questionId;
         this.marks = marks;
         this.questionType = questionType;
@@ -23,6 +23,10 @@ public class Selected_Test_Data_Model {
         this.answerDescription = answerDescription;
         this.status = status;
         this.selectedAnswer = selectedAnswer;
+        this.questionDiagrams = questionDiagrams;
+        this.descriptionDiagrams = descriptionDiagrams;
+        this.questionTypeId = questionTypeId;
+        this.bookmarkStatus = bookmarkStatus;
     }
 
     public int getQuestionId() {
@@ -119,5 +123,38 @@ public class Selected_Test_Data_Model {
 
     public void setSelectedAnswer(String selectedAnswer) {
         this.selectedAnswer = selectedAnswer;
+    }
+
+
+    public String getQuestionDiagrams() {
+        return questionDiagrams;
+    }
+
+    public void setQuestionDiagrams(String questionDiagrams) {
+        this.questionDiagrams = questionDiagrams;
+    }
+
+    public String getDescriptionDiagrams() {
+        return descriptionDiagrams;
+    }
+
+    public void setDescriptionDiagrams(String descriptionDiagrams) {
+        this.descriptionDiagrams = descriptionDiagrams;
+    }
+
+    public String getQuestionTypeId() {
+        return questionTypeId;
+    }
+
+    public void setQuestionTypeId(String questionTypeId) {
+        this.questionTypeId = questionTypeId;
+    }
+
+    public Boolean getBookmarkStatus() {
+        return bookmarkStatus;
+    }
+
+    public void setBookmarkStatus(Boolean bookmarkStatus) {
+        this.bookmarkStatus = bookmarkStatus;
     }
 }

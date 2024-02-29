@@ -10,6 +10,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/arrow_back_black.xml" value="0.136" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/ass_solution_sl_layout.xml" value="0.136" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/back1.xml" value="0.136" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/bookmark_filled_icon.xml" value="0.14" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/button_back_new.xml" value="0.146" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/button_back_view.xml" value="0.136" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/button_border.xml" value="0.136" />
@@ -37,6 +38,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/nav_subscriptions_icon.xml" value="0.1745" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/person_iconp.xml" value="0.127" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/profile_top_back_p.xml" value="0.127" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/question_border_layout.xml" value="0.14" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/question_number_back.xml" value="0.136" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/rating_icon.xml" value="0.1745" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/drawable/ruppes_icon.xml" value="0.1745" />
@@ -51,6 +53,8 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/font/fonts.xml" value="0.1" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/font/poppins.xml" value="0.2518518518518518" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/access_mobile_number.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/active_subscription_sl_layout.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_active_subscription.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_all_assessment.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_ass_chapters.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_ass_standards.xml" value="0.25" />
@@ -64,12 +68,14 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_assessment_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_assessment_solution_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_camera_testing.xml" value="0.2359375" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_competetive_assessment_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_competitive_ass_main_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_competitive_ass_result_screen.xml" value="0.264" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_competitive_assessment_main_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_competitive_assessment_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_competitive_assessment_screen_upd.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_compititive_assessment_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_contact_us_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_course_chapters.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_course_enroll.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_course_subjects.xml" value="0.25" />
@@ -82,6 +88,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.176" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_otp_verification.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_personal_profile.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_rate_us_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_test_reminder.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/activity_theory_assessment.xml" value="0.25" />
@@ -105,6 +112,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/assessment_overview_sl_layout.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/assessment_subqestion_sl_layout.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/comp_ass_questions_status_layout.xml" value="0.12107396149949341" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/competative_ass_sub_layout.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/compettive_ass_sl_layout.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/content_navigation_drawer.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/course_chapter_sl_layout.xml" value="0.25" />
@@ -120,11 +128,15 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_final__assessment__tab.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_home__screen_.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_home_sub_screen_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_m_y_learning__tab2_.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_main__store_fragment.xml" value="0.13722826086956522" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_my_learning__tab1_.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_my_learning__tab3_.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_my_learning_main.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_performance.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_privacy_policy_screen.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_self_generated__ass_tab.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_unite__assessment__tab.xml" value="0.2359375" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_user__subscription__layout.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/CheckersLab_Edulearning/app/src/main/res/layout/fragment_user__subscription__screen.xml" value="0.25" />

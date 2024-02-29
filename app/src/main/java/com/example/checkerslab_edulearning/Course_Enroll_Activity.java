@@ -154,7 +154,7 @@ public class Course_Enroll_Activity extends AppCompatActivity {
             requestData.put("discount_applied", "100%");
             requestData.put("payment_status", "Completed");
             requestData.put("payment_method", "online");
-            requestData.put("transaction_id", "254341HDS365"+String.valueOf(n));
+            requestData.put("transaction_id", "254341sHDS365"+String.valueOf(n));
 
         } catch (JSONException e) {
             e.printStackTrace();

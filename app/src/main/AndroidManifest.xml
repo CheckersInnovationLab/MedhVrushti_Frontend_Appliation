@@ -31,6 +31,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".BookMark_Ques_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".CompetitivePkg.CompetetiveAssessmentScreen"
+            android:exported="false" />
+        <activity
+            android:name=".mainHome_pkg.ActiveSubscriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".commonActivityPackage.Rate_Us_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".commonActivityPackage.Contact_Us_Screen"
+            android:exported="false" />
+        <activity
             android:name=".ProfilePackage.EducationalDetailsActivity"
             android:exported="false" />
         <activity

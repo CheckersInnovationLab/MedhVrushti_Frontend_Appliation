@@ -1,6 +1,9 @@
 package com.example.checkerslab_edulearning;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -25,6 +28,7 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.checkerslab_edulearning.NavigationDrawerPkg.PerformanceFragment;
 import com.example.checkerslab_edulearning.ProfilePackage.ProfileFragment;
+import com.example.checkerslab_edulearning.commonActivityPackage.PrivacyPolicyScreen;
 import com.example.checkerslab_edulearning.databinding.ActivityNavigationDrawerBinding;
 import com.example.checkerslab_edulearning.subscription.User_Subscription_screen;
 import com.google.android.material.navigation.NavigationView;
@@ -164,13 +168,29 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                 transaction3.replace(R.id.content_id,performanceFragment);
                 transaction3.commit();
                 break;
-//
-//            case R.id.nav_slideshow:
-////                InboxFragment inboxFragment=new InboxFragment();
-////                FragmentTransaction transaction2=getSupportFragmentManager().beginTransaction();
-////                transaction2.replace(R.id.contentid,inboxFragment);
-////                transaction2.commit();
-////                break;
+
+            case R.id.nav_log_out:
+
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+
+                // Create an Intent to navigate to the LoginActivity
+                Intent intent = new Intent(Navigation_Drawer_Activity.this, Welcome_Screen_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+                break;
+
+            case R.id.nav_privacy:
+                PrivacyPolicyScreen privacyPolicyScreen=new PrivacyPolicyScreen();
+                FragmentTransaction privacyPolicyTransaction=getSupportFragmentManager().beginTransaction();
+                privacyPolicyTransaction.replace(R.id.content_id,privacyPolicyScreen);
+                privacyPolicyTransaction.commit();
+                break;
+
+
         }
         DrawerLayout layout=findViewById(R.id.drawer_layout);
         layout.closeDrawer(GravityCompat.START);

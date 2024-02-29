@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.commonActivityPackage.CourseChapterAdapter;
 import com.example.checkerslab_edulearning.commonActivityPackage.CourseChapterModel;
 
@@ -28,19 +29,15 @@ import java.util.ArrayList;
 
 public class ChapterWise_Assessment_Tab extends Fragment {
 
-
-
     RecyclerView recyclerView;
     ArrayList<CourseChapterModel> courseChapterList;
     LinearLayoutManager VerticalLayout;
-    private String url="https://medhvrushti.checkerslab.com/api/v1/cil/chapter/get/all/by/subject_id?subject_id=1001";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_chapter_wise__assessment__tab, container, false);
-
 
         recyclerView=view.findViewById(R.id.Course_chapter_recyclerView_id);
         courseChapterList=new ArrayList<>();
@@ -57,10 +54,8 @@ public class ChapterWise_Assessment_Tab extends Fragment {
         return view;
     }
 
-
-
     private void AddItemsToTopCatRecyclerView() {
-
+        String url= StaticFile.Url+"/api/v1/cil/chapter/get/all/by/subject_id?subject_id="+Assessment_home_Screen.SubjectId;
 
 
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
@@ -122,11 +117,6 @@ public class ChapterWise_Assessment_Tab extends Fragment {
 //            }
         };
         requestQueue.add(arrayRequest);
-
-
-
-
-
 
 
 //        courseChapterList.add(new CourseChapterModel("Chapter 1 Real Numbers"));

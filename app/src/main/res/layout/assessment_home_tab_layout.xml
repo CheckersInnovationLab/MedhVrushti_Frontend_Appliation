@@ -42,36 +42,38 @@
 <!--            android:text="Algorithm"-->
 <!--            />-->
 <!--    </LinearLayout>-->
- <androidx.cardview.widget.CardView
-
-     android:layout_width="match_parent"
-     android:layout_height="@dimen/_40sdp"
-     app:cardCornerRadius="@dimen/_20sdp"
-     android:layout_marginLeft="@dimen/_10sdp"
-     android:layout_marginRight="@dimen/_10sdp"
-     android:layout_weight="1"
-   >
-
-
-     <RelativeLayout
-         android:onClick="onClick"
-         android:id="@+id/final_assessment_button_id"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:background="#EBEDF8">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            app:cardCornerRadius="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_weight="1"
+            >
 
 
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Final Assessment"
-             android:layout_centerInParent="true"
-             android:textColor="@color/black"/>
+
+            <RelativeLayout
+                android:onClick="onClick"
+                android:id="@+id/chapter_assessment_button_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EBEDF8">
 
 
-     </RelativeLayout>
- </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chapter Wise"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/black"/>
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
@@ -141,7 +143,9 @@
         <!--            android:text="Algorithm"-->
         <!--            />-->
         <!--    </LinearLayout>-->
+
         <androidx.cardview.widget.CardView
+
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             app:cardCornerRadius="@dimen/_20sdp"
@@ -151,11 +155,9 @@
             >
 
 
-
-
             <RelativeLayout
                 android:onClick="onClick"
-                android:id="@+id/chapter_assessment_button_id"
+                android:id="@+id/final_assessment_button_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#EBEDF8">
@@ -165,7 +167,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chapter Wise"
+                    android:text="Final Assessment"
                     android:layout_centerInParent="true"
                     android:textColor="@color/black"/>
 

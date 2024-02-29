@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.commonActivityPackage.AllAssessmentAdapter;
@@ -33,13 +34,12 @@ import java.util.ArrayList;
 public class Final_Assessment_Tab extends Fragment {
 
     RecyclerView recyclerView;
-    ArrayList<AllAssessmentModel> assessmentList;
+   ArrayList<AllAssessmentModel> assessmentList;
     LinearLayoutManager VerticalLayout;
     AllAssessmentAdapter allAssessmentAdapter;
      int assCount=0;
 
-
-    @Override
+     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -55,18 +55,21 @@ public class Final_Assessment_Tab extends Fragment {
                 false);
 
         recyclerView.setLayoutManager(VerticalLayout);
+//         allAssessmentAdapter = new AllAssessmentAdapter(Assessment_home_Screen.finalAssessmentList, getContext());
+//         recyclerView.setAdapter(allAssessmentAdapter);
+         Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
         AddItemsToTopCatRecyclerView();
         return  view;
     }
 
-
     private void AddItemsToTopCatRecyclerView() {
 
-         String Url= StaticFile.Url+"/api/v1/cil/assessments/get/all/by/subject_id?subject_id="+Assessment_home_Screen.SubjectId;
+         String Url= "http://89.116.33.21:5000/cet/assessment/get/all/by/status?user_id="+StaticFile.userId+"&subject_id="+Assessment_home_Screen.SubjectId;
 
         assCount=Assessment_home_Screen.finalMCQAssessmentCount;
         Log.d("userId11",Assessment_home_Screen.SubjectId);
         Log.d("userId",StaticFile.userId);
+        Log.d("assCount",String.valueOf(assCount));
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
@@ -83,25 +86,28 @@ public class Final_Assessment_Tab extends Fragment {
 
                                 if (object.getString("assessment_category").equals("FINAL ASSESSMENT") ||object.getString("assessment_category")=="FINAL ASSESSMENT")
                                 {
-                                    if (0<assCount)
+                                    if (0< assCount)
                                     {
+                                        Log.d("assCount","--"+String.valueOf(assCount));
                                         AllAssessmentModel model=new AllAssessmentModel(
                                                 object.getString("assessment_name"),
                                                 object.getString("total_marks"),
-                                                object.getString("assessment_id"));
+                                                object.getString("assessment_id"),
+                                                object.getString("assessment_status"));
                                         assessmentList.add(model);
                                         assCount--;
                                     }
                                 }
 
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
-
+                        Log.d("assCount",String.valueOf(assessmentList.size()));
                         allAssessmentAdapter = new AllAssessmentAdapter(assessmentList, getContext());
                         recyclerView.setAdapter(allAssessmentAdapter);
-                        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -125,13 +131,5 @@ public class Final_Assessment_Tab extends Fragment {
             }
         };
         requestQueue.add(jsonObjectRequest);
-
-
-
-
-
-
-
-
     }
 }

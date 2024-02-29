@@ -28,8 +28,7 @@
                     android:id="@+id/Store_course_image_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/profile_image"
-                    android:background="@drawable/card_color_1_back"/>
+                    android:src="@drawable/demo_suscription_image" />
 
             </LinearLayout>
             <LinearLayout

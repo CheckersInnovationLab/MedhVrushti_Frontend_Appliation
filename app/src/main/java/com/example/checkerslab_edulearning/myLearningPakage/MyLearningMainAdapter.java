@@ -2,6 +2,7 @@ package com.example.checkerslab_edulearning.myLearningPakage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,10 +54,15 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
 
       //  holder.price.setText(CoursesModel.getS());
         holder.courseName.setText(CoursesModel.getSubscription_name());
-        Glide.with(holder.itemView)
-                .load(CoursesModel.getSubscription_image())
-                .fitCenter()
-                .into(holder.courseImage);
+//        if (!CoursesModel.getSubscription_image().isEmpty())
+//        {
+//            Log.d("image",CoursesModel.getSubscription_image());
+//            Glide.with(holder.itemView)
+//                    .load(CoursesModel.getSubscription_image())
+//                    .fitCenter()
+//                    .into(holder.courseImage);
+//        }
+
         holder.enrollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +103,7 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView courseImage;
         TextView courseName, price;
         Button enrollButton;
@@ -105,7 +111,7 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
             super(itemView);
             courseImage = itemView.findViewById(R.id.myLearning_course_image_id);
             courseName = itemView.findViewById(R.id.myLearning_course_name_id);
-            price = itemView.findViewById(R.id.myLearning_course_price_id);
+          //  price = itemView.findViewById(R.id.myLearning_course_price_id);
             enrollButton=itemView.findViewById(R.id.myLearning_course_button_id);
         }
     }

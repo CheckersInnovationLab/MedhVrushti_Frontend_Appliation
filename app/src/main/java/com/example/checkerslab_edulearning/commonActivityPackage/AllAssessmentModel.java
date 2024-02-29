@@ -2,12 +2,13 @@ package com.example.checkerslab_edulearning.commonActivityPackage;
 
 public class AllAssessmentModel {
 
-    String assName,assMarks,assId;
+    String assName,assMarks,assId,assStatus;
 
-    public AllAssessmentModel(String assName, String assMarks, String assId) {
+    public AllAssessmentModel(String assName, String assMarks, String assId, String assStatus) {
         this.assName = assName;
         this.assMarks = assMarks;
         this.assId = assId;
+        this.assStatus = assStatus;
     }
 
     public AllAssessmentModel() {
@@ -35,5 +36,13 @@ public class AllAssessmentModel {
 
     public void setAssId(String assId) {
         this.assId = assId;
+    }
+
+    public String getAssStatus() {
+        return assStatus;
+    }
+
+    public void setAssStatus(String assStatus) {
+        this.assStatus = assStatus;
     }
 }

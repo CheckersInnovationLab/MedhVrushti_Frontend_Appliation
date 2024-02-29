@@ -1,8 +1,6 @@
 package com.example.checkerslab_edulearning;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.motion.widget.Animatable;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -13,10 +11,9 @@ import android.widget.Toast;
 
 public class Splash_Screen_Activity extends AppCompatActivity {
 
-
-    TextView appName;
-    ImageView appImage;
-    Animation fromBottom,fromTop;
+    private TextView appName;
+    private ImageView appImage;
+    private Animation fromBottom,fromTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +32,7 @@ public class Splash_Screen_Activity extends AppCompatActivity {
                 }
                 finally {
                     Intent intent=new Intent(Splash_Screen_Activity.this,Welcome_Screen_Activity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
             }
@@ -43,10 +41,10 @@ public class Splash_Screen_Activity extends AppCompatActivity {
         thread.start();
 
         appImage=findViewById(R.id.splash_screen_image_id);
-       // appName=findViewById(R.id.splash_screen_app_name_id);
+        appName=findViewById(R.id.splash_screen_app_name_id);
         fromBottom= AnimationUtils.loadAnimation(this,R.anim.splash_from_bottom);
         fromTop=AnimationUtils.loadAnimation(this,R.anim.splash_from_top);
         appImage.setAnimation(fromTop);
-      // appName.setAnimation(fromBottom);
+        appName.setAnimation(fromBottom);
     }
 }

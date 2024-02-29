@@ -65,6 +65,7 @@ public class StoreMainFragment extends Fragment {
     private void AddItemsToTopCatRecyclerView() {
 
         //Log.d("studcourseName",Navigation_Drawer_Activity.studCourseName);
+       // Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
 
         if (Navigation_Drawer_Activity.studCourseName.isEmpty() )
         {

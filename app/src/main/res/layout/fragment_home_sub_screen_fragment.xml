@@ -240,6 +240,7 @@
                                      android:textColor="@color/black"/>
 
                                  <TextView
+                                     android:id="@+id/Active_subscription_course_name_id"
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
                                      android:text="Hsc 11th Science Test Series"
@@ -366,6 +367,7 @@
 
 
                      <RelativeLayout
+                         android:id="@+id/Active_subscription_viewAll_id"
                          android:layout_width="match_parent"
                          android:layout_height="@dimen/_35sdp"
                          android:layout_below="@+id/Home_subscription_details_id"

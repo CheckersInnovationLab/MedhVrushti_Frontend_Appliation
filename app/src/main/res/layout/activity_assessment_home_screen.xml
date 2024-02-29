@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="#F9F9FB"
     tools:context=".commonActivityPackage.assessmentHome.Assessment_home_Screen">
-
 
 
         <LinearLayout
@@ -15,7 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             android:layout_marginTop="@dimen/_10sdp">
 
             <androidx.appcompat.widget.SearchView
@@ -28,7 +26,6 @@
                 android:background="@drawable/search_bar_back_layout" />
 
 
-
         </LinearLayout>
     <include
         layout="@layout/assessment_home_tab_layout"/>
@@ -37,6 +34,7 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#EBEDF8"
         />
 
 

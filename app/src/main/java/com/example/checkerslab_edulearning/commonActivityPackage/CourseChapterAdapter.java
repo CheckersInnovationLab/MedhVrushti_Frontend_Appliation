@@ -2,6 +2,7 @@ package com.example.checkerslab_edulearning.commonActivityPackage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.checkerslab_edulearning.R;
@@ -47,9 +49,16 @@ public class CourseChapterAdapter  extends RecyclerView.Adapter<CourseChapterAda
             public void onClick(View v) {
 
                 AppCompatActivity activity = (AppCompatActivity) context;
-                activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.layout,
-                                new Chapter_Level_Assessment()).commit();
+                Chapter_Level_Assessment newFragment = new Chapter_Level_Assessment();
+                Bundle mBundle = new Bundle();
+                mBundle.putString(
+                        "mText", String.valueOf(courseChapterModel.getChapter_id()));
+                newFragment.setArguments(mBundle);
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.layout, newFragment);
+
+                transaction.addToBackStack(null); // This line adds the transaction to the back stack
+                transaction.commit();
 //                Intent intent=new Intent(context, Chapter_Level_Assessment.class);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                v.getContext().startActivity(intent);

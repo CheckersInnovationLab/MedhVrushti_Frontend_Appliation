@@ -54,10 +54,10 @@ public class Home_Screen_Fragment extends Fragment {
                         //   toolbarTitle.setText("Assessment");
                         break;
 
-                    case R.id.chatBot_menu_id:
-                        selectedFragment=new Demo_Chat_bot_fragment();
-                        //   toolbarTitle.setText("Profile");
-                        break;
+//                    case R.id.chatBot_menu_id:
+//                        selectedFragment=new Demo_Chat_bot_fragment();
+//                        //   toolbarTitle.setText("Profile");
+//                        break;
                 }
 
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.layout_id,selectedFragment).commit();

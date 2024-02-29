@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -22,6 +23,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.BoardModelClass;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
+import com.example.checkerslab_edulearning.commonActivityPackage.Contact_Us_Screen;
+import com.example.checkerslab_edulearning.commonActivityPackage.Rate_Us_Screen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +38,8 @@ public class ProfileFragment extends Fragment {
 
     private ImageView editPersonalProfile,editEducationalDetails;
     private TextView userName,userEmailID,userMobileNumber,userCourseName,userAddress,userCollegeName;
+    private LinearLayout contactUsButton,rateUsButton;
+
 
 
     @Override
@@ -46,12 +51,31 @@ public class ProfileFragment extends Fragment {
         editPersonalProfile=view.findViewById(R.id.edit_personal_details_button_id);
         editEducationalDetails=view.findViewById(R.id.edit_education_details_button_id);
 
+        contactUsButton=view.findViewById(R.id.Contact_Us_button_id);
+
         userName=view.findViewById(R.id.your_detail_name_id);
         userEmailID=view.findViewById(R.id.your_detail_email_id);
         userMobileNumber=view.findViewById(R.id.your_detail_mobile_id);
         userCollegeName=view.findViewById(R.id.education_detail_college_name_id);
         userCourseName=view.findViewById(R.id.education_detail_department_name_id);
         userAddress=view.findViewById(R.id.education_detail_location_name_id);
+        rateUsButton=view.findViewById(R.id.Rate_Us_button_id);
+
+
+        contactUsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), Contact_Us_Screen.class);
+                startActivity(intent);
+            }
+        });
+        rateUsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), Rate_Us_Screen.class);
+                startActivity(intent);
+            }
+        });
 
         getProfileDetails();
         getEducationDetails();

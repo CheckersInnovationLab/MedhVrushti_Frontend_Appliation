@@ -118,7 +118,9 @@ public class competitiveAssAdapter extends RecyclerView.Adapter<competitiveAssAd
             }
             Log.d("latexQuestionOverall:",UpdatedQuestion);
             Log.d("latexQuestionFinal", finalQuestion);
+
             question.setText(finalQuestion);
+            Log.d("questionId",String.valueOf(assDataModel.getQuestionId()));
 
 
 
