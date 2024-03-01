@@ -81,6 +81,7 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
             return;
         }
         mobileNumber=telephonyManager.getLine1Number();
+        String country = telephonyManager.getSimCountryIso();
         showAuthenticationWindow();
     }
     private void showAuthenticationWindow() {

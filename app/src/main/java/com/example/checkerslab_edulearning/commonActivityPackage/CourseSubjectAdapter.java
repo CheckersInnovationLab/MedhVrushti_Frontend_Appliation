@@ -51,6 +51,7 @@ public class CourseSubjectAdapter extends RecyclerView.Adapter<CourseSubjectAdap
             public void onClick(View v) {
              Intent intent=new Intent(context, Assessment_home_Screen.class);
                intent.putExtra("Subject_id",courseSubjectModel.getSubject_id());
+               intent.putExtra("subject_Name",courseSubjectModel.getSubject_name());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
              v.getContext().startActivity(intent);
             }

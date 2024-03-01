@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,13 +28,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Chapter_Level_Assessment extends Fragment {
+public class Chapter_Level_Assessment extends Fragment  {
 
     RecyclerView recyclerView;
     ArrayList<AllAssessmentModel> chapterAssessmentList;
     LinearLayoutManager VerticalLayout;
     AllAssessmentAdapter allAssessmentAdapter;
     int chapAssCount=0;
+    private ProgressBar chapterLevelPb;
     private String Url="https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/chapter_id?chapter_id=101";
 
     @Override
@@ -44,9 +46,12 @@ public class Chapter_Level_Assessment extends Fragment {
 
 
 
+
         Bundle bundle = getArguments();
         String Chapter_id = bundle.getString("mText");
         recyclerView=view.findViewById(R.id.Chapter_Assessment_recyclerView_id);
+        chapterLevelPb=view.findViewById(R.id.chapter_level_ass_pbLoading);
+        chapterLevelPb.setVisibility(ProgressBar.VISIBLE);
         chapterAssessmentList=new ArrayList<>();
         VerticalLayout
                 = new LinearLayoutManager(
@@ -98,7 +103,7 @@ public class Chapter_Level_Assessment extends Fragment {
                                 e.printStackTrace();
                             }
                         }
-
+                        chapterLevelPb.setVisibility(ProgressBar.GONE);
                         allAssessmentAdapter = new AllAssessmentAdapter(chapterAssessmentList, getContext());
                         recyclerView.setAdapter(allAssessmentAdapter);
                         Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
@@ -109,6 +114,7 @@ public class Chapter_Level_Assessment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         // Handle error response
                         if (error.networkResponse != null) {
+                            chapterLevelPb.setVisibility(ProgressBar.GONE);
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
@@ -127,5 +133,8 @@ public class Chapter_Level_Assessment extends Fragment {
         requestQueue.add(jsonObjectRequest);
     }
 
+    public interface Backpressedlistener {
+        void onBackPressed();
+    }
 
 }

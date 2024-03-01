@@ -57,7 +57,7 @@ public class CourseChapterAdapter  extends RecyclerView.Adapter<CourseChapterAda
                 FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.layout, newFragment);
 
-                transaction.addToBackStack(null); // This line adds the transaction to the back stack
+               transaction.addToBackStack(null); // This line adds the transaction to the back stack
                 transaction.commit();
 //                Intent intent=new Intent(context, Chapter_Level_Assessment.class);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

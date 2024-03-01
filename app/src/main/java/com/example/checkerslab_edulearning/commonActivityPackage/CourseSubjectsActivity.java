@@ -2,41 +2,36 @@ package com.example.checkerslab_edulearning.commonActivityPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.checkerslab_edulearning.AssessmentSection_pkg.Ass_Standards_Model;
-import com.example.checkerslab_edulearning.AssessmentSection_pkg.Ass_standards_adapter;
-import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
+import com.example.checkerslab_edulearning.CompetitivePkg.CompetetiveAssessmentScreen;
+import com.example.checkerslab_edulearning.CompetitivePkg.Competitive_Ass_Result_Screen;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
-import com.example.checkerslab_edulearning.myLearningPakage.MyLeaningMainModel;
-import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainAdapter;
+import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainFragment;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CourseSubjectsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     ArrayList<CourseSubjectModel> subjectModelArrayList;
     static String subscription_id;
-
+    private ImageView backButton;
+    private ProgressBar courseSubjectPb;
     private String url="https://medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/get/all/by/subscription_id_and_user_id?";
 
     @Override
@@ -44,8 +39,23 @@ public class CourseSubjectsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_subjects);
 
+        backButton=findViewById(R.id.Courses_subject_back_button_id);
+        courseSubjectPb=findViewById(R.id.course_subject_pbLoading);
+        courseSubjectPb.setVisibility(ProgressBar.VISIBLE);
+
+
         Intent intent=getIntent();
         subscription_id=intent.getStringExtra("Subscription_id");
+
+
+
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         url=url+"subscription_id="+subscription_id+"&user_id="+ StaticFile.userId;
 
@@ -86,6 +96,7 @@ public class CourseSubjectsActivity extends AppCompatActivity {
                                 Toast.makeText(CourseSubjectsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
+                        courseSubjectPb.setVisibility(ProgressBar.GONE);
                         CourseSubjectAdapter adapter=new CourseSubjectAdapter(subjectModelArrayList,getApplicationContext());
                         recyclerView.setAdapter(adapter);
                     }
@@ -95,6 +106,7 @@ public class CourseSubjectsActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         // Handle error response
                         if (error.networkResponse != null) {
+                            courseSubjectPb.setVisibility(ProgressBar.GONE);
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string

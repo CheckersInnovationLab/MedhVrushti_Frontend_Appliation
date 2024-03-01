@@ -49,10 +49,6 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
 
         final MyLeaningMainModel CoursesModel = myLearningList.get(position);
 
-        int[] cardColors = {R.drawable.card_color_1_back, R.drawable.card_color_2_back, R.drawable.card_color_4_back, R.drawable.card_color_3_back};
-        int colorIndex = position % cardColors.length;
-
-      //  holder.price.setText(CoursesModel.getS());
         holder.courseName.setText(CoursesModel.getSubscription_name());
 //        if (!CoursesModel.getSubscription_image().isEmpty())
 //        {
@@ -63,35 +59,13 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
 //                    .into(holder.courseImage);
 //        }
 
-        holder.enrollButton.setOnClickListener(new View.OnClickListener() {
+        holder.startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, CourseSubjectsActivity.class);
                 intent.putExtra("Subscription_id",CoursesModel.getSubscription_id());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
-
-
-
-
-
-             //   Toast.makeText(context, String.valueOf(CoursesModel.getSubject_id()), Toast.LENGTH_SHORT).show();
-//                if (CoursesModel.getStandard_id() !="null")
-//                {
-//                    Intent intent=new Intent(context, CourseChaptersActivity.class);
-//                    intent.putExtra("Subject_id",CoursesModel.getSubject_id());
-//                    v.getContext().startActivity(intent);
-//                }
-//                else if (CoursesModel.getStd_id()!= "null")
-//                {
-//
-//                        Intent intent=new Intent(context, CourseSubjectsActivity.class);
-//                    intent.putExtra("Standard_id",CoursesModel.getStd_id());
-//                        v.getContext().startActivity(intent);
-//
-//                }
-//                else {
-//                    Toast.makeText(context, "You have access of all the standards of this Board", Toast.LENGTH_SHORT).show();
-//                }
 
             }
         });
@@ -106,13 +80,13 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView courseImage;
         TextView courseName, price;
-        Button enrollButton;
+        Button startButton;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             courseImage = itemView.findViewById(R.id.myLearning_course_image_id);
             courseName = itemView.findViewById(R.id.myLearning_course_name_id);
           //  price = itemView.findViewById(R.id.myLearning_course_price_id);
-            enrollButton=itemView.findViewById(R.id.myLearning_course_button_id);
+            startButton=itemView.findViewById(R.id.myLearning_course_button_id);
         }
     }
 }

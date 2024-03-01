@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,11 +30,8 @@ import java.util.ArrayList;
 public class MyLearning_Tab1_Fragment extends Fragment {
 
     private RecyclerView recyclerView;
-    ArrayList<MyLeaningMainModel> myLearningCoursesList;
-    LinearLayoutManager VerticalLayout;
-    MyLearningMainAdapter myLearningMainAdapter;
-
-    private String Url= StaticFile.Url+"/api/v1/cil/user_subscriptions/get/all/by/user_id?";
+    private LinearLayoutManager verticalLayout;
+    private MyLearningMainAdapter myLearningMainAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,79 +40,19 @@ public class MyLearning_Tab1_Fragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_my_learning__tab1_, container, false);
 
         recyclerView=view.findViewById(R.id.MyLearningMainRecyclerView_id);
-
-        myLearningCoursesList=new ArrayList<>();
-        VerticalLayout
+        verticalLayout
                 = new LinearLayoutManager(
                 getContext(),
                 LinearLayoutManager.VERTICAL,
                 false);
 
-        recyclerView.setLayoutManager(VerticalLayout);
-        AddItemsToTopCatRecyclerView();
-        Toast.makeText(getContext(), "Tab1 open ", Toast.LENGTH_SHORT).show();
+        //set adapter to recycler view
+        recyclerView.setLayoutManager(verticalLayout);
+        myLearningMainAdapter = new MyLearningMainAdapter(MyLearningMainFragment.myLearningCoursesList, getContext());
+        recyclerView.setAdapter(myLearningMainAdapter);
 
         return view;
+
     }
 
-    private void AddItemsToTopCatRecyclerView() {
-
-        Url=Url+"user_id="+ StaticFile.userId;
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-
-        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, Url,null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-
-                        // Handle success response from the server
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject object = response.getJSONObject(i);
-                                MyLeaningMainModel model=new MyLeaningMainModel(object.getString("user_subscription_id"),
-                                        object.getString("user_id"),
-                                        object.getString("subscription_id"),
-                                        object.getString("standard_id"),
-                                        object.getString("subscription_name"),
-                                        object.getString("subscription_type"),
-                                        object.getString("subscription_category"),
-                                        object.getString("description"),
-                                        object.getString("subscription_image"),
-                                        object.getString("subscription_date"),
-                                        object.getString("access_end_date"),
-                                        object.getString("attribute1"));
-                              myLearningCoursesList.add(model);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        myLearningMainAdapter = new MyLearningMainAdapter(myLearningCoursesList, getContext());
-                        recyclerView.setAdapter(myLearningMainAdapter);
-                        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Handle error response
-                        if (error.networkResponse != null) {
-                            int statusCode = error.networkResponse.statusCode;
-                            byte[] errorResponseData = error.networkResponse.data; // Error response data
-                            String errorMessage = new String(errorResponseData); // Convert error data to string
-                            // Print the error details
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
-                        }
-                    }
-                }
-        ) {
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-        };
-        requestQueue.add(jsonObjectRequest);
-    }
 }
