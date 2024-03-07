@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,6 +22,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -70,6 +73,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
     TextView update,userBirthDate;
     LinearLayout userBirthDateLayout;
     RadioGroup radioGroupGender;
+    RadioButton button1,button2;
     private static final int CAMERA_REQUEST = 100;
     private static final int STORAGE_REQUEST = 200;
     private static final int IMAGE_PICKCAMERA_REQUEST = 500;
@@ -78,7 +82,9 @@ public class PersonalProfileActivity extends AppCompatActivity {
     Uri imageuri;
     Bitmap bitmap;
     String selectedImgUrl="",selectedBirthDate="";
-
+    Dialog dialog;
+    String profileImgStatus="Not Updated";
+    Button okButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +103,23 @@ public class PersonalProfileActivity extends AppCompatActivity {
         profileImageView=findViewById(R.id.User_profile_image_id);
         radioGroupGender = findViewById(R.id.radioGroupGender);
         userBirthDateLayout=findViewById(R.id.edit_BirthDate_layout_id);
+        button1=findViewById(R.id.radioButtonMale);
+        button2=findViewById(R.id.radioButtonFemale);
+
+        //successful message Dialog box
+        dialog= new Dialog(PersonalProfileActivity.this);
+        dialog.setContentView(R.layout.dialog_message_layout);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        okButton=dialog.findViewById(R.id.successful_layout_OkButton_id);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+
 
         ///////////////
         userName.setEnabled(true);
@@ -128,16 +151,11 @@ public class PersonalProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Log.d("select Dated ddddddddddddddddd","date");
                 final Calendar c = Calendar.getInstance();
-
-// on below line we are getting
-// our day, month, and year.
                 int year = c.get(Calendar.YEAR);
                 int month = c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
-// on below line we are creating a variable for date picker dialog.
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         // on below line we are passing context.
                         PersonalProfileActivity.this,
@@ -146,26 +164,16 @@ public class PersonalProfileActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
 
-                                // create a Calendar instance and set it to the selected date
                                 Calendar selectedDate = Calendar.getInstance();
                                 selectedDate.set(year, monthOfYear, dayOfMonth);
-
-                                // create a SimpleDateFormat for the desired format
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-                                // format the selected date and set it to your text view.
                                 selectedBirthDate = dateFormat.format(selectedDate.getTime());
                                 userBirthDate.setText(selectedBirthDate);
                             }
                         },
-                        // on below line we are passing year,
-                        // month and day for the selected date in our date picker.
                         year, month, day);
-
-// show the date picker dialog.
                 datePickerDialog.show();
-                // at last we are calling show to
-                // display our date picker dialog.
                 datePickerDialog.show();
             }
         });
@@ -179,8 +187,6 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 int selectedRadioButtonId = radioGroupGender.getCheckedRadioButtonId();
                 RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
                 String selectedGender = selectedRadioButton.getText().toString();
-
-
                 String usernameL=userName.getText().toString();
                 String userMobNoL=userMobNo.getText().toString();
                 String userEmailIdL=userEmailId.getText().toString();
@@ -209,7 +215,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                         try {
                            String mobileNumber  = response.getString("mobile_no");
                             String name  = response.getString("first_name");
-                            String profileImage  = response.getString("profile_image_url");
+                            selectedImgUrl  = response.getString("profile_image_url");
                             String whatsappNo  = response.getString("user_whatsapp_no");
                             String emailID  = response.getString("email_id");
                             String birthDate  = response.getString("date_of_birth");
@@ -218,7 +224,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                             String parentMobNumber  = response.getString("parents_contact_no");
 
 
-                            showUserDetails(mobileNumber,name,profileImage,whatsappNo,emailID,birthDate,gender,address,parentMobNumber);
+                            showUserDetails(mobileNumber,name,selectedImgUrl,whatsappNo,emailID,birthDate,gender,address,parentMobNumber);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -261,6 +267,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
     private void showUserDetails(String mobileNumber, String name, String profileImage, String whatsappNo, String emailID, String birthDate, String gender, String address, String parentMobNumber)
     {
 
+
+        Log.d("PersonalProfileDetails",name+"\n"+mobileNumber+"\n"+profileImage+"\n"+whatsappNo+"\n"+emailID+"\n"+birthDate+"\n"+gender+"\n"+address+"\n"+parentMobNumber);
         if (!(name=="null"))
         {
             userName.setText(name);
@@ -289,10 +297,21 @@ public class PersonalProfileActivity extends AppCompatActivity {
         {
             userBirthDate.setText(birthDate);
         }
-//        if (!(gender =="null"))
-//        {
-//            radio1.setChecked(true);
-//        }
+        if (!(gender =="null"))
+        {
+
+            if (gender.equals("Male"))
+            {
+                Toast.makeText(this, gender, Toast.LENGTH_SHORT).show();
+                button1.setChecked(true);
+            }
+            else if (gender.equals("Female"))
+            {
+                button2.setChecked(true);
+            }
+
+
+        }
         if (!(profileImage== "null"))
         {
             Glide.with(getApplicationContext())
@@ -301,23 +320,12 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     .into(profileImageView);
         }
     }
-    private void updateProfile(String selectedImgUrl, String usernameL, String userMobNoL, String userEmailIdL, String userWhNoL, String parentMobNoL, String selectedBirthDate, String selectedGender, String userAddressL) {
 
+    private void updateProfileImg()
+    {
         String updateProfileUrl=StaticFile.Url+"/api/v1/cil/users/update?userId="+StaticFile.userId+"&roleId=100001";
 
-
         Map<String, String> params = new HashMap<>();
-        params.put("firstName",usernameL );
-        params.put("mobileNo",userMobNoL );
-        params.put("userWhatsappNo",userWhNoL );
-        params.put("emailId",userEmailIdL );
-        params.put("dateOfBirth", selectedBirthDate );
-        params.put("gender",selectedGender );
-        params.put("address",userAddressL );
-        params.put("parentsContactNo",parentMobNoL );
-        params.put("createdBy","Medhvrushti Mobile App" );
-        //params.put("createdBy","Medhvrushti Mobile App" );profile_status
-        //params.put("roleId","100001" );
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -328,6 +336,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        dialog.show();
                         Log.d("Response", response);
                         Toast.makeText(PersonalProfileActivity.this, "Response: " + response, Toast.LENGTH_LONG).show();
                     }
@@ -343,11 +352,14 @@ public class PersonalProfileActivity extends AppCompatActivity {
                             Log.e("Error Response Data", errorMessage);
                         }
                     }
-                }) {
+                })
+        {
             @Override
             public String getBodyContentType() {
                 return "multipart/form-data; boundary=" + boundary;
             }
+
+
 
             @Override
             public byte[] getBody() throws AuthFailureError {
@@ -361,8 +373,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     writer.append("\r\n").append(entry.getValue()).append("\r\n");
                 }
 
-
-
+                Log.d("ImageIssue",selectedImgUrl);
                 Uri imageUri = Uri.parse(selectedImgUrl); // Assuming AnswerImagedModel has a method named getUriString
                 Bitmap imageBitmap = null;
                 try {
@@ -413,11 +424,133 @@ public class PersonalProfileActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
 
-//        int selected=rGroup.getCheckedRadioButtonId();
-//        Log.d("selected",String.valueOf(selected));
-//        RadioButton radio=(RadioButton) findViewById(selected);
-//        Toast.makeText(PersonalProfileActivity.this,"You selected : "+radio.getText(),Toast.LENGTH_LONG).show();
+
+
+    }
+
+    private void updateProfile(String selectedImgUrl, String usernameL, String userMobNoL, String userEmailIdL, String userWhNoL, String parentMobNoL, String selectedBirthDate, String selectedGender, String userAddressL) {
+
+
+
+        String updateProfileUrl=StaticFile.Url+"/api/v1/cil/users/update?userId="+StaticFile.userId+"&roleId=100001";
+
+        Map<String, String> params = new HashMap<>();
+        params.put("firstName",usernameL );
+        params.put("mobileNo",userMobNoL );
+        params.put("userWhatsappNo",userWhNoL );
+        params.put("emailId",userEmailIdL );
+        params.put("dateOfBirth", selectedBirthDate );
+        params.put("gender",selectedGender );
+        params.put("address",userAddressL );
+        params.put("parentsContactNo",parentMobNoL );
+        params.put("createdBy","Medhvrushti Mobile App" );
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        String boundary = "boundary_" + UUID.randomUUID().toString();
+
+        Bitmap finalBitmap = bitmap;
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, updateProfileUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if (profileImgStatus.equals("Updated"))
+                        {
+                            Log.d("Updated",profileImgStatus);
+                            updateProfileImg();
+                        }
+                        else {
+                            dialog.show();
+                            Log.d("Response", response);
+                            Toast.makeText(PersonalProfileActivity.this, "Response: " + response, Toast.LENGTH_LONG).show();
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (error.networkResponse != null) {
+                            int statusCode = error.networkResponse.statusCode;
+                            byte[] errorResponseData = error.networkResponse.data;
+                            String errorMessage = new String(errorResponseData);
+                            Log.e("Error Status Code", String.valueOf(statusCode));
+                            Log.e("Error Response Data", errorMessage);
+                        }
+                    }
+                })
+                {
+            @Override
+            public String getBodyContentType() {
+                return "multipart/form-data; boundary=" + boundary;
+            }
+
+
+
+//            @Override
+//            public byte[] getBody() throws AuthFailureError {
+//                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//                PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8), true);
 //
+//                // Add parameters to the request body
+//                for (Map.Entry<String, String> entry : params.entrySet()) {
+//                    writer.append("--").append(boundary).append("\r\n");
+//                    writer.append("Content-Disposition: form-data; name=\"").append(entry.getKey()).append("\"\r\n");
+//                    writer.append("\r\n").append(entry.getValue()).append("\r\n");
+//                }
+//
+//                Log.d("ImageIssue",selectedImgUrl);
+//                Uri imageUri = Uri.parse(selectedImgUrl); // Assuming AnswerImagedModel has a method named getUriString
+//                Bitmap imageBitmap = null;
+//                try {
+//                    imageBitmap = MediaStore.Images.Media.getBitmap(PersonalProfileActivity.this.getContentResolver(), imageUri);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+//                byte[] imageBytes = byteArrayOutputStream.toByteArray();
+//
+//                // Add each image file to the request body
+//                writer.append("--").append(boundary).append("\r\n");
+//                writer.append("Content-Disposition: form-data; name=\"profileImgUrl\"; filename=\"image_" + 1 + ".jpg\"\r\n");
+//                writer.append("Content-Type: image/jpeg\r\n\r\n");
+//                writer.flush(); // Important!
+//
+//                try {
+//                    outputStream.write(imageBytes);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                try {
+//                    outputStream.flush();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                writer.append("\r\n"); // New line after image data
+//
+//
+//                writer.append("--").append(boundary).append("--").append("\r\n");
+//                writer.flush();
+//
+//                return outputStream.toByteArray();
+//            }
+
+
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", getBodyContentType());
+                headers.put("Authorization", "Bearer " + StaticFile.bearToken);
+                return headers;
+            }
+        };
+        requestQueue.add(stringRequest);
+
     }
 
 
@@ -534,6 +667,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     .load(selectedImgUrl)
                     .fitCenter()
                     .into(profileImageView);
+                profileImgStatus="Updated";
 
 
                 try {
@@ -544,10 +678,6 @@ public class PersonalProfileActivity extends AppCompatActivity {
             }
         }
     }
-
     /////////////////////profile Image End////////////////////////////////////////////////////////////
-
-
-
 
 }

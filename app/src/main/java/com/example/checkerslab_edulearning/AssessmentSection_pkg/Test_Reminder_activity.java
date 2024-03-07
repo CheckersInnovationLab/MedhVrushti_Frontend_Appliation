@@ -92,7 +92,7 @@ public class Test_Reminder_activity extends AppCompatActivity {
             requestData.put("user_id",StaticFile.userId);
             requestData.put("assessment_id",assessmentIDL);
             requestData.put("total_marks", totalMarksS);
-            requestData.put("total_time", "20:00");
+//            requestData.put("total_time", "20");
             requestData.put("ass_start_date", date);
             requestData.put("result_status", "Pending");
             requestData.put("status", "Active");

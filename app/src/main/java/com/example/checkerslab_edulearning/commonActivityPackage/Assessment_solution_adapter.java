@@ -166,185 +166,125 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
         }
 
 
-        holder.ques.getSettings().setJavaScriptEnabled(true);
-        holder.ques.setWebChromeClient(new WebChromeClient());
-        String htmlDatQuestion = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + finalQuestion.replace("\\n", "<br>") + "</body></html>";
-
-
-        holder.ques.loadDataWithBaseURL(null, htmlDatQuestion, "text/html", "UTF-8", null);
+//        holder.ques.getSettings().setJavaScriptEnabled(true);
+//        holder.ques.setWebChromeClient(new WebChromeClient());
+//        String htmlDatQuestion = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + finalQuestion.replace("\\n", "<br>") + "</body></html>";
+//
+//
+//        holder.ques.loadDataWithBaseURL(null, htmlDatQuestion, "text/html", "UTF-8", null);
+//
+//        // ############################################################################################## //
+//
+//
+//
+//
+//        holder.ans.getSettings().setJavaScriptEnabled(true);
+//        holder.ans.setWebChromeClient(new WebChromeClient());
+//        String htmlData = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getAnswer() + "</body></html>";
+//
+//
+//        holder.ans.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null);
+//
+//       //  ############################################################################################## //
+//
+//
+//        holder.opt1.getSettings().setJavaScriptEnabled(true);
+//        holder.opt1.setWebChromeClient(new WebChromeClient());
+//        String htmlDat1 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getOption1() + "</body></html>";
+//
+//
+//        holder.opt1.loadDataWithBaseURL(null, htmlDat1, "text/html", "UTF-8", null);
+//
+//        //  ############################################################################################## //
+//
+//        holder.opt2.getSettings().setJavaScriptEnabled(true);
+//        holder.opt2.setWebChromeClient(new WebChromeClient());
+//        String htmlDat2 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getOption2() + "</body></html>";
+//
+//
+//        holder.opt2.loadDataWithBaseURL(null, htmlDat2, "text/html", "UTF-8", null);
+//
+//        // ############################################################################################## //
+//
+//        holder.opt3.getSettings().setJavaScriptEnabled(true);
+//        holder.opt3.setWebChromeClient(new WebChromeClient());
+//        String htmlDat3 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getOption3() + "</body></html>";
+//
+//
+//        holder.opt3.loadDataWithBaseURL(null, htmlDat3, "text/html", "UTF-8", null);
+//
+//        // ############################################################################################## //
+//
+//        holder.opt4.getSettings().setJavaScriptEnabled(true);
+//        holder.opt4.setWebChromeClient(new WebChromeClient());
+//        String htmlDat4 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getOption4() + "</body></html>";
+//
+//
+//        holder.opt4.loadDataWithBaseURL(null, htmlDat4, "text/html", "UTF-8", null);
 
         // ############################################################################################## //
 
-
-
-
-        holder.ans.getSettings().setJavaScriptEnabled(true);
-        holder.ans.setWebChromeClient(new WebChromeClient());
-        String htmlData = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getAnswer() + "</body></html>";
-
-
-        holder.ans.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null);
-
-       //  ############################################################################################## //
-
-
-        holder.opt1.getSettings().setJavaScriptEnabled(true);
-        holder.opt1.setWebChromeClient(new WebChromeClient());
-        String htmlDat1 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getOption1() + "</body></html>";
-
-
-        holder.opt1.loadDataWithBaseURL(null, htmlDat1, "text/html", "UTF-8", null);
-
-        //  ############################################################################################## //
-
-        holder.opt2.getSettings().setJavaScriptEnabled(true);
-        holder.opt2.setWebChromeClient(new WebChromeClient());
-        String htmlDat2 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getOption2() + "</body></html>";
-
-
-        holder.opt2.loadDataWithBaseURL(null, htmlDat2, "text/html", "UTF-8", null);
-
-        // ############################################################################################## //
-
-        holder.opt3.getSettings().setJavaScriptEnabled(true);
-        holder.opt3.setWebChromeClient(new WebChromeClient());
-        String htmlDat3 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getOption3() + "</body></html>";
-
-
-        holder.opt3.loadDataWithBaseURL(null, htmlDat3, "text/html", "UTF-8", null);
-
-        // ############################################################################################## //
-
-        holder.opt4.getSettings().setJavaScriptEnabled(true);
-        holder.opt4.setWebChromeClient(new WebChromeClient());
-        String htmlDat4 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getOption4() + "</body></html>";
-
-
-        holder.opt4.loadDataWithBaseURL(null, htmlDat4, "text/html", "UTF-8", null);
-
-        // ############################################################################################## //
-
-
-
-
-
-//        holder.opt1.setText("1)"+model.getOption1());
-//        holder.opt2.setText("2)"+model.getOption2());
-//        holder.opt3.setText("2)"+model.getOption3());
-//        holder.opt4.setText("4)"+model.getOption4());
-//        if (model.getAnswer().equals(model.getOption1()))
-//        {
-//            holder.answerStatusOption1.setBackgroundResource(R.drawable.question_border_layout);
-//        }
-//        else if (model.getAnswer().equals(model.getOption2()))
-//        {
-//            holder.answerStatusOption2.setBackgroundResource(R.drawable.question_border_layout);
-//        }
-//        else if (model.getAnswer().equals(model.getOption3()))
-//        {
-//            holder.answerStatusOption3.setBackgroundResource(R.drawable.question_border_layout);
-//        }
-//        else if (model.getAnswer().equals(model.getOption4()))
-//        {
-//            holder.answerStatusOption4.setBackgroundResource(R.drawable.question_border_layout);
-//        }
-
-
-//         String updatedOption1 = model.getAnswerDescription().replace("\n", "<br>");
-//         String styledOpt1 = "<font size='3' color='#4c4c4c'>" + updatedOption1 + "</font>";
-      //  holder.descText.setText(model.getAnswerDescription().replace("\n", "<br>"));
-        /////////////////////////////////////////////////////////////////////////
-//
-//        String finalDesc="";
-//        String UpdatedDesc=model.getAnswerDescription().replace("\\n", "<br>");
-//
-//        UpdatedDesc = UpdatedDesc.replace("\\", "\\\\");
-//        try {
-//            JSONArray jsonArray = new JSONArray(UpdatedDesc);
-//
-//
-//            // Iterate through the array
-//            for (int i = 0; i < jsonArray.length(); i++) {
-//                // Access the "text" value for each element
-//                JSONObject item = jsonArray.getJSONObject(i);
-//
-//                String textValue = item.getString("text");
-//
-//                finalDesc=finalDesc+textValue;
-//
-//                // Now you can use the text value as needed
-//                Log.d("MainActivity", "Text value: " + textValue);
-//
-//            }
-//        }
-//        catch (Exception e)
-//        {
-//            Log.d("latexQuestion",e.getMessage());
-//        }
-//        Log.d("latexQuestionOverall:",UpdatedDesc);
-//        Log.d("latexQuestionFinal", finalDesc);
-//       // holder.descText.setText(finalDesc);
 
         holder.descDiagram.setVisibility(View.GONE);
         String finalDesc="";
         String descImgUrl="";
-        String UpdatedDesc= model.getAnswerDescription().replace("\\n", "<br>");
+        String UpdatedDesc= model.getAnswerDescription().replace("\\n","<br>");
         //String UpdatedQuestion="[{\"type\": \"text\", \"text\": \"The region shaded horizontally is represented by the\"}, {\"type\": \"text\",  \"text\": \" inequations\"}, {\"type\": \"chart\", \"texdt\": \"line\"}]";
-        UpdatedQuestion = UpdatedQuestion.replace("\\", "\\\\");
+        UpdatedDesc = UpdatedDesc.replace("\\", "\\\\");
         try {
             JSONArray jsonArray = new JSONArray(UpdatedDesc);
 
@@ -354,7 +294,7 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String textValue="";
-                if (item.getString("type").equals("text"))
+                if (item.getString("type").equals("text") || item.getString("type").equals("math"))
                 {
                     textValue = item.getString("text");
                 }
@@ -391,20 +331,31 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
         }
 
 
-        holder.descText.getSettings().setJavaScriptEnabled(true);
-        holder.descText.setWebViewClient(new WebViewClient());
-
-        String htmlDataDesc = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}" +
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + finalDesc + "</body></html>";
-
-        holder.descText.loadDataWithBaseURL(null, htmlDataDesc, "text/html", "UTF-8", null);
+//        holder.descText.getSettings().setJavaScriptEnabled(true);
+//        holder.descText.setWebViewClient(new WebViewClient());
+//
+//        String htmlDataDesc = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}" +
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + finalDesc + "</body></html>";
+//
+//        holder.descText.loadDataWithBaseURL(null, htmlDataDesc, "text/html", "UTF-8", null);
+//        Log.d("descTextINPUT",model.getAnswerDescription());
+//        Log.d("descText",finalDesc);
+//
+        String finalUpdatedQuestion=finalQuestion.replace("\\n","<br>");
+        setupWebView(holder.ques,finalUpdatedQuestion);
+        setupWebView(holder.opt1, model.getOption1());
+        setupWebView(holder.opt2, model.getOption2());
+        setupWebView(holder.opt3, model.getOption3());
+        setupWebView(holder.opt4, model.getOption4());
+        setupWebView(holder.ans, model.getAnswer());
+        setupWebView(holder.descText, finalDesc);
 
 
 
@@ -461,5 +412,21 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
 //            answerStatusOption4=itemView.findViewById(R.id.Competitive_Solution_option4_layout);
 
         }
+    }
+    private void setupWebView(WebView webView, String content) {
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebChromeClient(new WebChromeClient());
+        String htmlData = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+                "<script type=\"text/x-mathjax-config\">" +
+                "MathJax.Hub.Config({" +
+                "  messageStyle: 'none'," +
+                "  tex2jax: {preview: 'none'}," +
+                "  showMathMenu: false" + // This line disables the MathJax context menu
+                "});" +
+                "</script>" +
+                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+                "</head><body>" + content + "</body></html>";
+
+        webView.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null);
     }
 }

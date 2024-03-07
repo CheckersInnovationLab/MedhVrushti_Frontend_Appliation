@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_20sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
+            <ImageView
+                android:id="@+id/successful_layout_icon_id"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_65sdp"
+                android:src="@drawable/successfull_icon_3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+
+            <TextView
+                android:id="@+id/successful_layout_Title_id"
+                android:layout_below="@+id/successful_layout_icon_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Successful"
+                android:textSize="@dimen/_25ssp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="#009807"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/successful_layout_message_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You have successfully update the User Profile"
+                android:layout_below="@+id/successful_layout_Title_id"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/_15ssp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"/>
+
+            <Button
+                android:id="@+id/successful_layout_OkButton_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ok"
+                android:layout_below="@+id/successful_layout_message_id"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:backgroundTint="#10AE17"
+                android:layout_marginBottom="@dimen/_5sdp"/>
+
+</RelativeLayout>

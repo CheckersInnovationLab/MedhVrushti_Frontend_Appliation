@@ -84,10 +84,6 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
         filledBookMark=findViewById(R.id.Competitive_Assessment_Filled_bookmark_id);
         submit=findViewById(R.id.Competitive_Assessment_submit_button_id);
 
-
-
-
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,8 +249,6 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
                                 .into(questionDiagram);
 
                     }
-
-
                 }
                 finalQuestion=finalQuestion+textValue;
 
@@ -265,11 +259,105 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
             Log.d("latexQuestion",e.getMessage());
         }
 
-        question.getSettings().setJavaScriptEnabled(true);
-        question.setWebChromeClient(new WebChromeClient());
+//        question.getSettings().setJavaScriptEnabled(true);
+//        question.setWebChromeClient(new WebChromeClient());
+//
 
+//
+//        String htmlData = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" +finalUpdatedQuestion + "</body></html>";
+//
+//        Log.d("New Log",finalUpdatedQuestion);
+//
+//
+//        question.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null);
+
+
+//
+//        option1.getSettings().setJavaScriptEnabled(true);
+//        option1.setWebChromeClient(new WebChromeClient());
+//        String htmlDat1 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getOption1() + "</body></html>";
+//
+//        option1.loadDataWithBaseURL(null, htmlDat1, "text/html", "UTF-8", null);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+/////////////////////////////
+//        option2.getSettings().setJavaScriptEnabled(true);
+//        option2.setWebChromeClient(new WebChromeClient());
+//        String htmlDat2 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getOption2() + "</body></html>";
+//
+//        option2.loadDataWithBaseURL(null, htmlDat2, "text/html", "UTF-8", null);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////   option 3    ////////////////////////////////////
+//        option3.getSettings().setJavaScriptEnabled(true);
+//        option3.setWebViewClient(new WebViewClient());
+//        String htmlData3 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getOption3() + "</body></html>";
+//
+//        option3.loadDataWithBaseURL(null, htmlData3, "text/html", "UTF-8", null);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+////////////////////////////////////////////////   option 4    ////////////////////////////////////
+//        option4.getSettings().setJavaScriptEnabled(true);
+//        option4.setWebViewClient(new WebViewClient());
+//        String htmlData4 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
+//                "<script type=\"text/x-mathjax-config\">" +
+//                "MathJax.Hub.Config({" +
+//                "  messageStyle: 'none'," +
+//                "  tex2jax: {preview: 'none'}," +
+//                "  showMathMenu: false" + // This line disables the MathJax context menu
+//                "});" +
+//                "</script>" +
+//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
+//                "</head><body>" + model.getOption4() + "</body></html>";
+//
+//        option4.loadDataWithBaseURL(null, htmlData4, "text/html", "UTF-8", null);
         String finalUpdatedQuestion=finalQuestion.replace("\\n","<br>");
-
+        setupWebView(question,finalUpdatedQuestion);
+        setupWebView(option1, model.getOption1());
+        setupWebView(option2, model.getOption2());
+        setupWebView(option3, model.getOption3());
+        setupWebView(option4, model.getOption4());
+    }
+    private void setupWebView(WebView webView, String content) {
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebChromeClient(new WebChromeClient());
         String htmlData = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
                 "<script type=\"text/x-mathjax-config\">" +
                 "MathJax.Hub.Config({" +
@@ -279,81 +367,9 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
                 "});" +
                 "</script>" +
                 "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" +finalUpdatedQuestion + "</body></html>";
+                "</head><body>" + content + "</body></html>";
 
-        Log.d("New Log",finalUpdatedQuestion);
-
-
-        question.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null);
-
-
-        option1.getSettings().setJavaScriptEnabled(true);
-        option1.setWebChromeClient(new WebChromeClient());
-        String htmlDat1 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getOption1() + "</body></html>";
-
-        option1.loadDataWithBaseURL(null, htmlDat1, "text/html", "UTF-8", null);
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////
-        option2.getSettings().setJavaScriptEnabled(true);
-        option2.setWebChromeClient(new WebChromeClient());
-        String htmlDat2 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getOption2() + "</body></html>";
-
-        option2.loadDataWithBaseURL(null, htmlDat2, "text/html", "UTF-8", null);
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////   option 3    ////////////////////////////////////
-        option3.getSettings().setJavaScriptEnabled(true);
-        option3.setWebViewClient(new WebViewClient());
-        String htmlData3 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getOption3() + "</body></html>";
-
-        option3.loadDataWithBaseURL(null, htmlData3, "text/html", "UTF-8", null);
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////   option 4    ////////////////////////////////////
-        option4.getSettings().setJavaScriptEnabled(true);
-        option4.setWebViewClient(new WebViewClient());
-        String htmlData4 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-                "<script type=\"text/x-mathjax-config\">" +
-                "MathJax.Hub.Config({" +
-                "  messageStyle: 'none'," +
-                "  tex2jax: {preview: 'none'}," +
-                "  showMathMenu: false" + // This line disables the MathJax context menu
-                "});" +
-                "</script>" +
-                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-                "</head><body>" + model.getOption4() + "</body></html>";
-
-        option4.loadDataWithBaseURL(null, htmlData4, "text/html", "UTF-8", null);
-
+        webView.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null);
     }
 
     private void getQuestionStatus(int currentQuesNO) {

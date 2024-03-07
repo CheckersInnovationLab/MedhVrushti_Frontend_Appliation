@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -38,17 +39,14 @@ public class CourseSubjectsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_subjects);
-
+        recyclerView=findViewById(R.id.Courses_subject_recycler_id);
         backButton=findViewById(R.id.Courses_subject_back_button_id);
         courseSubjectPb=findViewById(R.id.course_subject_pbLoading);
-        courseSubjectPb.setVisibility(ProgressBar.VISIBLE);
-
 
         Intent intent=getIntent();
         subscription_id=intent.getStringExtra("Subscription_id");
-
-
-
+        courseSubjectPb.setVisibility(ProgressBar.VISIBLE);
+//        subscription_id="100008";
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,10 +58,12 @@ public class CourseSubjectsActivity extends AppCompatActivity {
         url=url+"subscription_id="+subscription_id+"&user_id="+ StaticFile.userId;
 
 
-       recyclerView=findViewById(R.id.Courses_subject_recycler_id);
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
         subjectModelArrayList=new ArrayList<>();
+
+
         AddItemsToTopCatRecyclerView();
     }
 
@@ -96,9 +96,10 @@ public class CourseSubjectsActivity extends AppCompatActivity {
                                 Toast.makeText(CourseSubjectsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
-                        courseSubjectPb.setVisibility(ProgressBar.GONE);
+
                         CourseSubjectAdapter adapter=new CourseSubjectAdapter(subjectModelArrayList,getApplicationContext());
                         recyclerView.setAdapter(adapter);
+                        courseSubjectPb.setVisibility(ProgressBar.GONE);
                     }
                 },
                 new Response.ErrorListener() {
@@ -106,7 +107,7 @@ public class CourseSubjectsActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         // Handle error response
                         if (error.networkResponse != null) {
-                            courseSubjectPb.setVisibility(ProgressBar.GONE);
+                           courseSubjectPb.setVisibility(ProgressBar.GONE);
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string

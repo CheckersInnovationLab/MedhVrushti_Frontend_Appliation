@@ -327,7 +327,7 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
             Selected_Test_Data_Model ansModel=Test_Reminder_activity.testDataList.get(i);
             try {
                 JSONObject answerObject = new JSONObject();
-                answerObject.put("user_id", 100001);
+                answerObject.put("user_id", StaticFile.userId);
                 answerObject.put("assessment_id", Test_Reminder_activity.assessmentID);
                 answerObject.put("question_id", ansModel.getQuestionId());
                 answerObject.put("question_type_id",ansModel.getQuestionTypeId() );
