@@ -60,6 +60,7 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
     TextView correctCountT,wrongCountT,unAnsweredT;
     Dialog dialog;
     Button cancelButton;
+    int correctQuestion=0,unAttempt=0,wrong=0;
 
 
     @Override
@@ -124,7 +125,7 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
     }
 
     private void CalculateResult() {
-        int correctQuestion=0,unAttempt=0,wrong=0;
+
         for (int i=0;i< Test_Reminder_activity.testDataList.size();i++)
         {
 
@@ -213,6 +214,9 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
             requestData.put("remarks", "Completed");
             requestData.put("created_by", "MedhVrushti App");
             requestData.put("last_updated_by", "MedhVrushti App");
+            requestData.put("attribute10", String.valueOf(correctQuestion));
+            requestData.put("attribute9", String.valueOf(unAttempt));
+            requestData.put("attribute8", String.valueOf(wrong));
 
         } catch (JSONException e) {
             e.printStackTrace();

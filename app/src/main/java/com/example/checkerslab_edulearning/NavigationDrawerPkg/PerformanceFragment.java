@@ -78,7 +78,10 @@ public class PerformanceFragment extends Fragment {
                                 myAssessmentModel model=new myAssessmentModel(object.getString("user_ass_id"),
                                         object.getString("assessment_name"),
                                         object.getString("result_status"),
-                                        object.getString("ass_end_date"));
+                                        object.getString("ass_end_date"),
+                                        object.getString("obtained_marks"),
+                                        object.getString("total_marks")
+                                );
                                 myAssessmentList.add(model);
                             } catch (Exception e) {
                                 e.printStackTrace();

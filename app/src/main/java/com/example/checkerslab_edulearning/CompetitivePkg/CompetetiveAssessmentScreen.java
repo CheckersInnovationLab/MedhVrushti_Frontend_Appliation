@@ -88,6 +88,7 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
         gridView.setAdapter(gridAdapter);
 
 
+
         option1.setOnTouchListener(this);
         option2.setOnTouchListener(this);
         option3.setOnTouchListener(this);

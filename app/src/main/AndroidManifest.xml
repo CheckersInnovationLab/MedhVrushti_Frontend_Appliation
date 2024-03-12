@@ -4,7 +4,6 @@
     package="com.example.checkerslab_edulearning">
 
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
-    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:required="true"
@@ -31,10 +30,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".NavigationDrawerPkg.AssessmentResultDetailsScreen"
+            android:exported="false" />
+        <activity
             android:name=".mainHome_pkg.TopCategoriesScreen"
             android:exported="false" />
         <activity
-            android:name=".BookMark_Ques_Screen"
+            android:name=".commonActivityPackage.BookMark_Ques_Screen"
             android:exported="false" />
         <activity
             android:name=".CompetitivePkg.CompetetiveAssessmentScreen"
@@ -61,12 +63,6 @@
             android:name=".commonActivityPackage.assessmentHome.Assessment_home_Screen"
             android:exported="false" />
         <activity
-            android:name=".TheoryAssessmentPackage.UploadAnswerpackage.Upload_Answer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TheoryAssessmentPackage.questionPaperPackage.Theory_assessment_Activity"
-            android:exported="false" />
-        <activity
             android:name=".commonActivityPackage.All_Assessment_Activity"
             android:exported="false" />
         <activity
@@ -77,9 +73,6 @@
             android:exported="false" />
         <activity
             android:name=".Course_Enroll_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Welcome_instruction_screen"
             android:exported="false" />
         <activity
             android:name=".commonActivityPackage.Assessment_Solution_Screen"

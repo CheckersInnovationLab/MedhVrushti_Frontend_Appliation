@@ -131,6 +131,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
        //fetch Profile Data from database and show on layout
         FetchProfileData();
 
+
         //set on click listen on profile image view
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
