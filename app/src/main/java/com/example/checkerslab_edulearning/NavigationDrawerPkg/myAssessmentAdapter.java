@@ -35,20 +35,20 @@ public class myAssessmentAdapter  extends RecyclerView.Adapter<myAssessmentAdapt
 
     @NonNull
     @Override
-    public myAssessmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.my_assessment_sl_layout, null, false);
-        return new myAssessmentAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull myAssessmentAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final myAssessmentModel myAssessmentModel = myAssessmentModelListList.get(position);
 
 //
         holder.assessmentName.setText(myAssessmentModel.getAssessmentName());
         holder.checkingStatus.setText(myAssessmentModel.getCheckingStatus());
 
-        if (myAssessmentModel.getCheckingStatus().equals("Checked") ||myAssessmentModel.getCheckingStatus().equals("checked"))
+        if (myAssessmentModel.getCheckingStatus().equals("Completed") ||myAssessmentModel.getCheckingStatus().equals("Completed"))
         {
             holder.viewResult.setVisibility(View.VISIBLE);
         }
@@ -56,9 +56,9 @@ public class myAssessmentAdapter  extends RecyclerView.Adapter<myAssessmentAdapt
         holder.viewResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, AssessmentResult.class);
-                intent.putExtra("User_assessment_id",myAssessmentModel.getUser_assessmentID());
-                v.getContext().startActivity(intent);
+//                Intent intent=new Intent(context, AssessmentResult.class);
+//                intent.putExtra("User_assessment_id",myAssessmentModel.getUser_assessmentID());
+//                v.getContext().startActivity(intent);
 
 
             }

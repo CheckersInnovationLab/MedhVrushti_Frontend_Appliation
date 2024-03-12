@@ -66,7 +66,6 @@ public class MyLearningMainAdapter extends RecyclerView.Adapter<MyLearningMainAd
                 intent.putExtra("Subscription_id",CoursesModel.getSubscription_id());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
-
             }
         });
     }

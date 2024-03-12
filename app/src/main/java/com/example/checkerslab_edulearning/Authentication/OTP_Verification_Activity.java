@@ -46,7 +46,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
     private Button verify;
     String enteredPin="";
     String generated_otp,mobileNumber="";
-    private  String userRegisterURL= StaticFile.Url+"/api/v1/cil/user-auth/authenticate";
+
     private TextView mobileNumberText,otpTimingText,resendButton;
     private CountDownTimer countDownTimer;
 
@@ -63,7 +63,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         resendButton=findViewById(R.id.otp_Resend_button_id);
 
         Intent intent=getIntent();
-        generated_otp=intent.getStringExtra("Generated_otp").toString();
+//        generated_otp=intent.getStringExtra("Generated_otp").toString();
         mobileNumber=intent.getStringExtra("Mobile_number");
         mobileNumberText.setText("We've sent it on the number: "+mobileNumber);
 
@@ -97,12 +97,15 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (generated_otp.equals(enteredPin)){
-                    RegisteredUser();
-                }
-                else {
-                    Toast.makeText(OTP_Verification_Activity.this, "OTP doesn't matched", Toast.LENGTH_SHORT).show();
-                }
+
+                RegisteredUser();
+
+//                if (generated_otp.equals(enteredPin)){
+//
+//                }
+//                else {
+//                    Toast.makeText(OTP_Verification_Activity.this, "OTP doesn't matched", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
     }
@@ -146,13 +149,13 @@ public class OTP_Verification_Activity extends AppCompatActivity {
     }
     private void RegisteredUser() {
 
-        Log.d("mobile number",mobileNumber);
+        String userRegisterURL= StaticFile.Url+"/api/v1/cil/user-auth/otp/verify?enter_otp="+enteredPin;
 
         JSONObject requestData = new JSONObject();
         try {
             requestData.put("role_id", "100001");
             requestData.put("authentication_type", "mobile");
-            requestData.put("mobile_number", "+91"+mobileNumber);
+            requestData.put("mobile_number", "91"+mobileNumber);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -163,6 +166,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d("ErrorMessage","success");
 
                         // Handle success response from the server
                         try {
@@ -200,6 +204,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
                             // Print the error details
                             System.out.println("Error Status Code: " + statusCode);
                             System.out.println("Error Response Data: " + errorMessage);
+                            Toast.makeText(OTP_Verification_Activity.this,"OTP Not Verified.Please Try Again", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

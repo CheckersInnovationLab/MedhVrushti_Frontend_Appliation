@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.R;
+import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLeaningMainModel;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainAdapter;
 
@@ -61,7 +62,7 @@ public class PerformanceFragment extends Fragment {
 
     private void getAssessmentHistoryData() {
 
-        String url2="http://apis-medhvrushti.checkerslab.com/api/v1/cil/user_assessments/get/all/by/user_id/custom?user_id=100003";
+        String url2= StaticFile.Url+ "/api/v1/cil/user_assessments/get/all/by/user_id/custom?user_id="+StaticFile.userId;
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 

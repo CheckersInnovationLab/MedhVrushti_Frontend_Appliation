@@ -28,6 +28,7 @@ import com.example.checkerslab_edulearning.commonActivityPackage.AllAssessmentAd
 import com.example.checkerslab_edulearning.commonActivityPackage.AllAssessmentModel;
 import com.example.checkerslab_edulearning.commonActivityPackage.CourseChapterAdapter;
 import com.example.checkerslab_edulearning.commonActivityPackage.CourseChapterModel;
+import com.example.checkerslab_edulearning.commonActivityPackage.CourseSubjectsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,9 +59,11 @@ public class Assessment_home_Screen extends AppCompatActivity {
         setContentView(R.layout.activity_assessment_home_screen);
 
 
-        Intent intent=getIntent();
-        SubjectId=intent.getStringExtra("Subject_id").toString();
-        subjectName=intent.getStringExtra("subject_Name").toString();
+//        Intent intent=getIntent();
+//        SubjectId=intent.getStringExtra("Subject_id").toString();
+//        subjectName=intent.getStringExtra("subject_Name").toString();
+        SubjectId= CourseSubjectsActivity.subjectId;
+        subjectName=CourseSubjectsActivity.SubjectName;
         finalAssTab=findViewById(R.id.final_assessment_button_id);
         chapterAssTab=findViewById(R.id.chapter_assessment_button_id);
         uniteAssTab=findViewById(R.id.Unite_assessment_button_id);
@@ -211,20 +214,11 @@ public class Assessment_home_Screen extends AppCompatActivity {
     }
 
     private void getFinalAssessment() {
-        Log.d("finalAssessmentList",String.valueOf(111));
 
 //        String assessmentUrl= "http://89.116.33.21:5000/cet/assessment/status";
-        String assessmentUrl= "http://89.116.33.21:5000/cet/assessment/get/all/by/status?user_id="+StaticFile.userId+"&subject_id="+SubjectId;
+       // String assessmentUrl= "http://89.116.33.21:5000/cet/assessment/get/all/by/status?user_id="+StaticFile.userId+"&subject_id="+SubjectId;
 
-
-        JSONObject requestData = new JSONObject();
-        try {
-            requestData.put("user_id",StaticFile.userId);
-            requestData.put("subject_id", SubjectId);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+             String assessmentUrl= "https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/subject_id/and/user_id?subject_id="+SubjectId+"&user_id="+StaticFile.userId;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, assessmentUrl,null,

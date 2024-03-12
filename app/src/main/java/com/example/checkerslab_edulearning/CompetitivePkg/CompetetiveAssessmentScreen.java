@@ -2,22 +2,20 @@ package com.example.checkerslab_edulearning.CompetitivePkg;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.system.StructUtsname;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,33 +24,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.checkerslab_edulearning.AssessmentSection_pkg.Assessment_Result_Screen;
-import com.example.checkerslab_edulearning.AssessmentSection_pkg.Assessment_Screen;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Selected_Test_Data_Model;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
 import com.example.checkerslab_edulearning.R;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.time.LocalDate;
 
 public class CompetetiveAssessmentScreen extends AppCompatActivity implements  View.OnTouchListener  {
     WebView question, option1,option2, option3, option4;
     LinearLayout optLayout1,optLayout2, optLayout3, optLayout4;
     ImageView questionDiagram;
-     TextView questionNumber,time,submit;
+    TextView questionNumber,time,submit;
 
     String selectedAnswer = "";
     private CountDownTimer countDownTimer;
     Selected_Test_Data_Model model;
-    private RelativeLayout nextButton, previousButton,previewButton;
+    RelativeLayout nextButton, previousButton,previewButton;
     private int currentQuesNO = 0;
     ImageView questionStatusB;
     private DrawerLayout drawerLayout;
-    private ImageView closeB,bookMarkButton,filledBookMark;
-    private GridView gridView;
+    ImageView closeB,bookMarkButton,filledBookMark;
+    GridView gridView;
      private questStatusGridAdapter gridAdapter;
     int totalQuestion;
      static  String assessmentID="";
@@ -84,15 +77,7 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
         filledBookMark=findViewById(R.id.Competitive_Assessment_Filled_bookmark_id);
         submit=findViewById(R.id.Competitive_Assessment_submit_button_id);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SubmitQuize();
-//                Intent intent=new Intent(CompetetiveAssessmentScreen.this,Competitive_Ass_Result_Screen.class);
-//                startActivity(intent);
-            }
-        });
-
+        submit.setOnClickListener(v -> SubmitQuize());
         questionStatusB = findViewById(R.id.Competitive_Assessment_view_all_id);
 
         drawerLayout = findViewById(R.id.drawer_layout_id);
@@ -114,6 +99,14 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
                 filledBookMark.setVisibility(View.VISIBLE);
                 bookMarkButton.setVisibility(View.GONE);
                 Log.d("Bookmark",String.valueOf(currentQuesNO)+"is bookmark");
+            }
+        });
+        filledBookMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                model.setBookmarkStatus(false);
+                filledBookMark.setVisibility(View.GONE);
+                bookMarkButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -153,8 +146,13 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
         previousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentQuesNO--;
-                loadNewQuestion();
+
+                if (currentQuesNO>0)
+                {
+                    currentQuesNO--;
+                    loadNewQuestion();
+                }
+
             }
         });
         previewButton.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +179,7 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
         optLayout4.setBackground(null);
         filledBookMark.setVisibility(View.GONE);
         bookMarkButton.setVisibility(View.VISIBLE);
+
         if(currentQuesNO == totalQuestion ){
             SubmitQuize();
             return;
@@ -194,14 +193,15 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
         {
             model.setStatus("UnAnswered");
         }
+        Log.d("getBookmarkStatus",String.valueOf(model.getBookmarkStatus()));
 
 
-
-        if (model.getBookmarkStatus().equals("Yes"))
+        if (model.getBookmarkStatus()==(true))
         {
             filledBookMark.setVisibility(View.VISIBLE);
             bookMarkButton.setVisibility(View.GONE);
         }
+
         if (!model.getSelectedAnswer().isEmpty())
         {
 //            Log.d("selected Answer",String.valueOf(currentQuesNO)+"---"+model.getSelectedAnswer());
@@ -555,13 +555,14 @@ private void updateTimerDisplay(long millisUntilFinished) {
         }
         return false;
     }
+
     private void SubmitQuize() {
         finishQuiz();
 
     }
     void finishQuiz(){
 
-
+        Log.d("Submitted","Submitted");
         ////////////////////
         AlertDialog.Builder builder = new AlertDialog.Builder(CompetetiveAssessmentScreen.this);
         builder.setMessage("Do you want to Submit the Test?");
@@ -580,13 +581,40 @@ private void updateTimerDisplay(long millisUntilFinished) {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
-
     }
 
     @Override
     public void onBackPressed() {
         finishQuiz();
-        super.onBackPressed();
+//        Intent intent=new Intent(CompetetiveAssessmentScreen.this, Competitive_Ass_Result_Screen.class);
+//        startActivity(intent);
+       // super.onBackPressed();
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_HOME) {
+            finishQuiz(); // Show confirmation dialog
+            // Handle Home button press
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_APP_SWITCH) { // For App Overview or Recent Apps button
+            finishQuiz(); // Show confirmation dialog
+            // Handle App Overview button press
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+//    @Override
+//    protected void onPause() {
+//
+//        finishQuiz(); // Show confirmation dialog or perform necessary actions
+//        super.onPause();
+//    }
+    @Override
+    protected void onUserLeaveHint() {
+        finishQuiz();
+       // super.onUserLeaveHint();
 
     }
+
 }

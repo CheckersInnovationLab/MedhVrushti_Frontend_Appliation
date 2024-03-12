@@ -58,7 +58,7 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
    public static  String BearerToken="";
     private TextView userName,emailId,mobileNo,courseName;
     private ImageView userProfileImage;
-    static  String studName="",studEmailId="",studMobileNo="",studProfileImage="";
+    public static  String studName="",studEmailId="",studMobileNo="",studProfileImage="";
     public static String studCourseName="";
    // public static String userId="100001";
     @Override
@@ -71,7 +71,6 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
         setSupportActionBar(toolbar);
 
         BearerToken=StaticFile.bearToken;
-        Toast.makeText(this, BearerToken, Toast.LENGTH_SHORT).show();
 
         //**************** edit profile Dialog box
 

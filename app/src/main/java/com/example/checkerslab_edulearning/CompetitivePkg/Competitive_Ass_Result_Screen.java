@@ -2,10 +2,13 @@ package com.example.checkerslab_edulearning.CompetitivePkg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,9 +21,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.daimajia.numberprogressbar.OnProgressBarListener;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Selected_Test_Data_Model;
+import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
+import com.example.checkerslab_edulearning.ProfilePackage.PersonalProfileActivity;
 import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.commonActivityPackage.Assessment_Solution_Screen;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
@@ -39,15 +45,21 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Competitive_Ass_Result_Screen extends AppCompatActivity implements OnProgressBarListener {
 
     private Timer timer;
 
     private NumberProgressBar bnp;
-    private TextView currentScore1,studentRank,currentScore2,totalMarks2;
-    RelativeLayout solutionButton;
+    private TextView currentScore1,studentRank,currentScore2,totalMarks2,studName;
+    RelativeLayout solutionButton,reTestButton;
     CircularProgressBar circularProgressBar;
     int obtainedMarks=0,totalMarks=0;
+    CircleImageView profileImage;
+    TextView correctCountT,wrongCountT,unAnsweredT;
+    Dialog dialog;
+    Button cancelButton;
 
 
     @Override
@@ -65,6 +77,25 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
         studentRank=findViewById(R.id.Competitive_assessment_ranking_text_id);
         currentScore2=findViewById(R.id.Current_score_id2);
         totalMarks2=findViewById(R.id.total_Marks_id);
+        profileImage=findViewById(R.id.profile_image_id2001);
+        studName=findViewById(R.id.Profile_Student_Name_id2001);
+        correctCountT=findViewById(R.id.total_correct_question_id);
+        wrongCountT=findViewById(R.id.total_wrong_question_id);
+        unAnsweredT=findViewById(R.id.total_UnAnswered_question_id);
+        reTestButton=findViewById(R.id.Ass_ReTestButton_id);
+//        previewT=findViewById(R.id.total_Preview_question_id);
+
+        if (!(Navigation_Drawer_Activity.studProfileImage == "null"))
+        {
+            Glide.with(getApplicationContext())
+                    .load(Navigation_Drawer_Activity.studProfileImage)
+                    .fitCenter()
+                    .into(profileImage);
+        }
+        if (!(Navigation_Drawer_Activity.studName == "null"))
+        {
+            studName.setText(Navigation_Drawer_Activity.studName);
+        }
         bnp.setOnProgressBarListener(this);
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -122,12 +153,41 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
         totalMarks2.setText(String.valueOf(totalMarks));
         circularProgressBar.setProgressMax(totalMarks);
         circularProgressBar.setProgress(obtainedMarks);
+        correctCountT.setText(String.valueOf(obtainedMarks));
+        wrongCountT.setText(String.valueOf(wrong));
+        unAnsweredT.setText(String.valueOf(unAttempt));
+//        previewT.setText(String.valueOf(correctQuestion));
 
         calculateRanking();
 
         uploadAssessmentDetails();
 
-       // Log.d("Result=","correct ="+correctQuestion+"\n wrong ="+wrong+"\n unattempt="+unAttempt);
+
+        //successful message Dialog box
+        dialog= new Dialog(Competitive_Ass_Result_Screen.this);
+        dialog.setContentView(R.layout.retest_unavailable_layout);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        cancelButton=dialog.findViewById(R.id.retest_unavailable_layout_cancelButton_id);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+        reTestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
+
+
+
+
+        // Log.d("Result=","correct ="+correctQuestion+"\n wrong ="+wrong+"\n unattempt="+unAttempt);
 
     }
 
@@ -243,7 +303,7 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
     @Override
     public void onProgressChange(int current, int max) {
         if(current == max) {
-            Toast.makeText(getApplicationContext(), "ddddd", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), "ddddd", Toast.LENGTH_SHORT).show();
             bnp.setProgress(0);
         }
     }
@@ -395,12 +455,13 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
             }
         };
         requestQueue.add(jsonObjectRequest);
-
-
-
-
-
-
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(Competitive_Ass_Result_Screen.this,Assessment_home_Screen.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        super.onBackPressed();
 
     }
 }

@@ -34,6 +34,7 @@ public class CourseSubjectsActivity extends AppCompatActivity {
     private ImageView backButton;
     private ProgressBar courseSubjectPb;
     private String url="https://medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/get/all/by/subscription_id_and_user_id?";
+    public static  String subjectId="",SubjectName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

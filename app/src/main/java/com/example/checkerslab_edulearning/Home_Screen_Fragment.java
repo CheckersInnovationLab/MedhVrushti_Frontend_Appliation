@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.checkerslab_edulearning.AssessmentSection_pkg.Assessment_MainCourses_fragment;
 import com.example.checkerslab_edulearning.mainHome_pkg.Home_sub_screen_fragment;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainFragment;
 import com.example.checkerslab_edulearning.storePackage.StoreMainFragment;

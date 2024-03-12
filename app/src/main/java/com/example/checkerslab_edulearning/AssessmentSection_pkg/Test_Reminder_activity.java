@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -14,17 +15,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.CompetitivePkg.CompetetiveAssessmentScreen;
-import com.example.checkerslab_edulearning.CompetitivePkg.Competitive_Assessment_Main_Screen2;
-import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
-import com.example.checkerslab_edulearning.TheoryAssessmentPackage.questionPaperPackage.ChildModel;
-import com.example.checkerslab_edulearning.TheoryAssessmentPackage.questionPaperPackage.ParentModel;
-import com.example.checkerslab_edulearning.commonActivityPackage.assessmentHome.Assessment_home_Screen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,18 +29,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Test_Reminder_activity extends AppCompatActivity {
 
     Button StartButton;
+    private TextView assessmentName,assessmentMarks,assessmentTotalQuestion,assessmentTime;
 
     public static ArrayList<Selected_Test_Data_Model> testDataList;
-    String topicId;
-    public static final int Not_Visited=0;
-    public static final int UnAnswered=1;
-    public static final int Answered=2;
+//    String topicId;
+//    public static final int Not_Visited=0;
+//    public static final int UnAnswered=1;
+//    public static final int Answered=2;
     public static final int Review=3;
     private ProgressBar questionPaperLoadingBar;
     public static String assessmentID="",AssessmentNameS="",assessmentTypeS="",assessmentCategoryS="",totalMarksS="",totalTimeS="",assessmentLanguageS=""
@@ -58,6 +53,12 @@ public class Test_Reminder_activity extends AppCompatActivity {
 
         Intent intent=getIntent();
         assessmentID=intent.getStringExtra("assessment_id");
+
+        assessmentName=findViewById(R.id.Test_name_oo1);
+        assessmentMarks=findViewById(R.id.Assessment_total_marks);
+        assessmentTime=findViewById(R.id.Assessment_total_time);
+
+
 
         getAssessmentDetails();
 
@@ -158,34 +159,38 @@ public class Test_Reminder_activity extends AppCompatActivity {
 
     private void generateQuestionPaper(String assessmentId) {
 
-        String Url="http://89.116.33.21:5000/generate/CET/questionPaper";
-        Log.d("assessmentIDD",assessmentId);
-
-        JSONObject requestData = new JSONObject();
-        try {
-            requestData.put("assessment_id", assessmentId);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        String Url = "http://89.116.33.21:5000/assessment/question/paper/generator?assessment_id=100015";
+//        Log.d("assessmentIDD", assessmentId);
+//
+//        JSONObject requestData = new JSONObject();
+//        try {
+//            requestData.put("assessment_id", assessmentId);
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+        Log.d("QuestionPaperGenerator", "Log1");
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Url, requestData,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, Url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("QuestionPaperGenerator","Success");
+                        Log.d("QuestionPaperGenerator", "log2");
 
                         try {
                             JSONArray jsonArray = response.getJSONArray("question_paper");
 
-                            Log.d("assessmentIDD",String.valueOf(jsonArray.length()));
+                            Log.d("QuestionPaperGenerator", "log3");
+
                             for (int n = 0; n < 1; n++) {
+                                Log.d("QuestionPaperGenerator", "log4");
                                 JSONObject typeObject = jsonArray.getJSONObject(n);
 
-                                JSONArray questionsArray=typeObject.getJSONArray("questions");
+                                JSONArray questionsArray = typeObject.getJSONArray("questions");
 
-                                for (int j=0;j<questionsArray.length();j++) {
+                                for (int j = 0; j < questionsArray.length(); j++) {
+                                    Log.d("QuestionPaperGenerator", "log5");
                                     JSONObject question = questionsArray.getJSONObject(j);
                                     Selected_Test_Data_Model model = new Selected_Test_Data_Model(question.getInt("question_id"),
                                             question.getInt("marks"),
@@ -206,11 +211,14 @@ public class Test_Reminder_activity extends AppCompatActivity {
                                     );
 
                                     testDataList.add(model);
+                                    Log.d("QuestionPaperGenerator", "log6");
 
                                 }
+
                                 questionPaperLoadingBar.setVisibility(View.GONE);
                                 StartButton.setVisibility(View.VISIBLE);
-                                Log.d("assessmentIDD",String.valueOf(testDataList.size()));
+                                Log.d("QuestionPaperGenerator", "log7");
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -227,7 +235,7 @@ public class Test_Reminder_activity extends AppCompatActivity {
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                         Log.d("QuestionPaperGenerator",errorMessage);
+                            Log.d("QuestionPaperGenerator", errorMessage);
                         }
                     }
                 }
@@ -238,153 +246,8 @@ public class Test_Reminder_activity extends AppCompatActivity {
             }
         };
         requestQueue.add(jsonObjectRequest);
-
-        //////////////////////////////////////////Tested Code for latex question///////////////////////////////////////////
-
-//        String Url="http://89.116.33.21:5000/generate/CET/questionPaper";
-//        //String Url="https://medhvrushti.checkerslab.com/api/v1/cil/cet_questions/get/all/by/subject_and_chapter_and_topic?subject_id=1001&chapter_id=105&topic_id=100128";
-//        Log.d("assessmentIDD",assessmentId);
-//
-//        JSONObject requestData = new JSONObject();
-//        try {
-//            requestData.put("assessment_id", assessmentId);
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, Url, requestData,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        Log.d("QuestionPaperGenerator","Success");
-//
-//                        try {
-//                            JSONArray jsonArray = response.getJSONArray("question_paper");
-//
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject typeObject = jsonArray.getJSONObject(i);
-//
-//                                JSONArray questionsArray=typeObject.getJSONArray("questions");
-//
-//                                for (int j=0;j<questionsArray.length();j++) {
-//                                    JSONObject question = questionsArray.getJSONObject(j);
-//                                    Selected_Test_Data_Model model = new Selected_Test_Data_Model(question.getInt("question_id"),
-//                                            question.getInt("marks"),
-//                                            question.getString("question_type"),
-//                                            question.getString("ques_line_by_latex"),
-//                                            question.getString("option1_latex"),
-//                                            question.getString("option2_latex"),
-//                                            question.getString("option3_latex"),
-//                                            question.getString("option4_latex"),
-//                                            question.getString("answer_latex"),
-//                                            question.getString("desc_line_by_latex"),
-//                                            "Not_Visited",
-//                                            ""
-//                                    );
-//
-//                                    testDataList.add(model);
-//
-//                                    questionPaperLoadingBar.setVisibility(View.GONE);
-//                                    StartButton.setVisibility(View.VISIBLE);
-//                                }
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        // Handle error response
-//                        if (error.networkResponse != null) {
-//                            questionPaperLoadingBar.setVisibility(View.GONE);
-//                            int statusCode = error.networkResponse.statusCode;
-//                            byte[] errorResponseData = error.networkResponse.data; // Error response data
-//                            String errorMessage = new String(errorResponseData); // Convert error data to string
-//                            // Print the error details
-//                         Log.d("QuestionPaperGenerator",errorMessage);
-//                        }
-//                    }
-//                }
-//        ) {
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//        };
-//        requestQueue.add(jsonObjectRequest);
-
-//        Log.d("status","success1");
-//        String Url="https://medhvrushti.checkerslab.com/api/v1/cil/cet_questions/get/all/by/subject_and_chapter_and_topic?subject_id=1005&chapter_id=117&topic_id=100222";
-//        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-//
-//        testDataList.clear();
-//        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, Url,null,
-//                new Response.Listener<JSONArray>() {
-//                    @Override
-//                    public void onResponse(JSONArray response) {
-//
-//                        Log.d("status","success2");
-//
-//                        // Handle success response from the server
-//                        for (int i = 0; i < response.length(); i++) {
-//                            try {
-//                                JSONObject object = response.getJSONObject(i);
-//                                Selected_Test_Data_Model model = new Selected_Test_Data_Model(object.getInt("question_id"),
-//                                            object.getInt("marks"),
-//                                            object.getString("question_type"),
-//                                            object.getString("ques_line_by_latex"),
-//                                            object.getString("option1_latex"),
-//                                            object.getString("option2_latex"),
-//                                            object.getString("option3_latex"),
-//                                            object.getString("option4_latex"),
-//                                            object.getString("answer_latex"),
-//                                            object.getString("desc_line_by_latex"),
-//                                            "Not_Visited",
-//                                            "",
-//                                            "No",
-//                                        object.getString("question_diagrams_url"),
-//                                        object.getString("description_diagrams_url")
-//                                );
-//
-//                                     testDataList.add(model);
-//                                    questionPaperLoadingBar.setVisibility(View.GONE);
-//                                    StartButton.setVisibility(View.VISIBLE);
-//
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                        Log.d("status",String.valueOf(testDataList.size()));
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        // Handle error response
-//                        if (error.networkResponse != null) {
-//                            int statusCode = error.networkResponse.statusCode;
-//                            byte[] errorResponseData = error.networkResponse.data; // Error response data
-//                            String errorMessage = new String(errorResponseData); // Convert error data to string
-//                            // Print the error details
-//                            Log.d("status","Failed");
-//                        }
-//                    }
-//                }
-//        ) {
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//        };
-//        requestQueue.add(jsonObjectRequest);
-
-
     }
+
     private void getAssessmentDetails() {
 
         String assDetailsId=StaticFile.Url+"/api/v1/cil/assessments/get?assessment_id="+assessmentID;
@@ -412,6 +275,9 @@ public class Test_Reminder_activity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        assessmentName.setText(AssessmentNameS);
+                        assessmentMarks.setText(totalMarksS);
+                        assessmentTime.setText(totalTimeS);
                     }
 
                 },

@@ -112,32 +112,50 @@ public class StoreMainFragment extends Fragment {
                                         object.getString("total_validity"));
 
 
-                                if (object.getString("subscription_type").equals("Assessment"))
+//                                if (object.getString("subscription_type").equals("Assessment"))
+//                                {
+//                                    ChildItemList.add(storeCoursesModel);
+//                                }
+//                                else if (object.getString("subscription_type").equals("study material"))
+//                                {
+//                                    StudyMaterialList.add(storeCoursesModel);
+//
+//                                }
+
+
+                                if(!(object.getString("subject_id")=="null"))
                                 {
                                     ChildItemList.add(storeCoursesModel);
                                 }
-                                else if (object.getString("subscription_type").equals("study material"))
+                                if(object.getString("subject_id")=="null")
                                 {
+                                    Log.d("subject_id", object.getString("subject_id"));
                                     StudyMaterialList.add(storeCoursesModel);
-
                                 }
+
 
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
 
-                        storeCoursesParentModel item
-                                = new storeCoursesParentModel(
-                                "Study Material",
-                                StudyMaterialList);
-                        storeCoursesParentModel item2
-                                = new storeCoursesParentModel(
-                                "Popular Test Series",
-                                ChildItemList);
+                        if (!StudyMaterialList.isEmpty())
+                        {
+                            storeCoursesParentModel item
+                                    = new storeCoursesParentModel(
+                                    "Popular Test Series ",
+                                    StudyMaterialList);
+                            itemList.add(item);
+                        }
+                        if (!ChildItemList.isEmpty())
+                        {
+                            storeCoursesParentModel item2
+                                    = new storeCoursesParentModel(
+                                    "Subject wise Test Series",
+                                    ChildItemList);
+                            itemList.add(item2);
+                        }
 
-                        itemList.add(item);
-                        itemList.add(item2);
                         storeCoursesParentAdapter myLearningMainAdapter = new storeCoursesParentAdapter(itemList, getContext());
                         recyclerView1.setAdapter(myLearningMainAdapter);
 

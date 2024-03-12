@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,8 +21,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.checkerslab_edulearning.AssessmentSection_pkg.Ass_Standards_Model;
-import com.example.checkerslab_edulearning.AssessmentSection_pkg.Ass_standards_adapter;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLeaningMainModel;
@@ -52,14 +49,14 @@ public class Home_sub_screen_fragment extends Fragment {
     String url03="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
 
     RecyclerView topCatRecyclerView,popularCoursesRecyclerView;
-    ArrayList<TopCategoriesModel> catItemsList;
+    public static  ArrayList<TopCategoriesModel> catItemsList;
     ArrayList<popularCoursesModel> popCoursesList;
     LinearLayoutManager HorizontalLayout,HorizontalLayout2;
 
    static public ArrayList<MyLeaningMainModel> activeSubscriptionList;
    private RelativeLayout activeSubViewALL;
     MyLearningMainAdapter activeSubscriptionMainAdapter;
-    TextView courseName;
+    TextView courseName,topCatSeeAll;
 
 
     @Override
@@ -73,6 +70,7 @@ public class Home_sub_screen_fragment extends Fragment {
 
         topCatRecyclerView=view.findViewById(R.id.Home_top_categories_recyclerview);
         popularCoursesRecyclerView=view.findViewById(R.id.Home_Popular_Courses_recyclerview);
+        topCatSeeAll=view.findViewById(R.id.Top_category_SeeAll_text_View);
 
         catItemsList=new ArrayList<>();
         popCoursesList=new ArrayList<>();
@@ -131,6 +129,14 @@ public class Home_sub_screen_fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getContext(),ActiveSubscriptionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        topCatSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),TopCategoriesScreen.class);
                 startActivity(intent);
             }
         });
@@ -214,45 +220,44 @@ public class Home_sub_screen_fragment extends Fragment {
 
     private void AddItemsToTopCatRecyclerView() {
 
-//        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-//        JsonArrayRequest arrayRequest=new JsonArrayRequest(Request.Method.GET, Url+ASS_MainBoardID, null, new Response.Listener<JSONArray>() {
-//            @Override
-//            public void onResponse(JSONArray response) {
-//                for (int i=0;i<=response.length();i++)
-//                {
-//                    try {
-//                        JSONObject object=response.getJSONObject(i);
-//                        Ass_Standards_Model model=new Ass_Standards_Model(object.getInt("stdId"),
-//                                object.getInt("totalSubjects"),
-//                                object.getString("stdName"),
-//                                object.getString("stdName"));
-//
-//                        standardsList.add(model);
-//                    }catch (Exception e)
-//                    {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                Ass_standards_adapter adapter=new Ass_standards_adapter(standardsList,getApplicationContext());
-//                recyclerView.setAdapter(adapter);
-//
-//                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-//
-//
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-// requestQueue.add(arrayRequest);
+        String url=StaticFile.Url+"/api/v1/cil/course_category/get/all";
 
-        catItemsList.add(new TopCategoriesModel("JEE & NEET Exam",url11));
-        catItemsList.add(new TopCategoriesModel("State Boards Exam",url12));
-        catItemsList.add(new TopCategoriesModel("UPSC & MPSC Exam",url13));
-        TopCategoriesAdapter topCategoriesAdapter=new TopCategoriesAdapter(catItemsList,getContext());
-        topCatRecyclerView.setAdapter(topCategoriesAdapter);
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        JsonArrayRequest arrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i=0;i<=response.length();i++)
+                {
+                    try {
+                        JSONObject object=response.getJSONObject(i);
+                        TopCategoriesModel model=new TopCategoriesModel(
+                                object.getString("course_cat_name"),
+                                object.getString("course_cat_img_url"));
+
+                        catItemsList.add(model);
+                    }catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                TopCategoriesAdapter topCategoriesAdapter=new TopCategoriesAdapter(catItemsList,getContext());
+                topCatRecyclerView.setAdapter(topCategoriesAdapter);
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+ requestQueue.add(arrayRequest);
+
+//        catItemsList.add(new TopCategoriesModel("JEE & NEET Exam",url11));
+//        catItemsList.add(new TopCategoriesModel("State Boards Exam",url12));
+//        catItemsList.add(new TopCategoriesModel("UPSC & MPSC Exam",url13));
+//        TopCategoriesAdapter topCategoriesAdapter=new TopCategoriesAdapter(catItemsList,getContext());
+//        topCatRecyclerView.setAdapter(topCategoriesAdapter);
 
 //
 //                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();

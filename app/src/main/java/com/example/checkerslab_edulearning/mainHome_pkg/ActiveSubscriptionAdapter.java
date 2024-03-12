@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,10 +45,16 @@ public class ActiveSubscriptionAdapter extends RecyclerView.Adapter<ActiveSubscr
         final MyLeaningMainModel categoryItemModel = activeSubList.get(position);
 
 
-
-
-
         holder.courseName.setText(categoryItemModel.getSubscription_name());
+        holder.startLearningButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, CourseSubjectsActivity.class);
+                intent.putExtra("Subscription_id",categoryItemModel.getSubscription_id());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                view.getContext().startActivity(intent);
+            }
+        });
 //        Glide.with(holder.itemView)
 //                .load(categoryItemModel.getCatImgUrl())
 //                .fitCenter()
@@ -62,6 +69,7 @@ public class ActiveSubscriptionAdapter extends RecyclerView.Adapter<ActiveSubscr
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView courseName,enrollmentDate,endDate,Attempts;
+        RelativeLayout startLearningButton;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -70,6 +78,7 @@ public class ActiveSubscriptionAdapter extends RecyclerView.Adapter<ActiveSubscr
             enrollmentDate = itemView.findViewById(R.id.Active_subscription_sl_Enrollment_date_id);
             endDate = itemView.findViewById(R.id.Active_subscription_sl_days_remaining_id);
             Attempts = itemView.findViewById(R.id.Active_subscription_sl_attempts_id);
+            startLearningButton=itemView.findViewById(R.id.Active_subscription_StartLearning_id);
 
         }
     }

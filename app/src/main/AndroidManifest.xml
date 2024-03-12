@@ -31,6 +31,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".mainHome_pkg.TopCategoriesScreen"
+            android:exported="false" />
+        <activity
             android:name=".BookMark_Ques_Screen"
             android:exported="false" />
         <activity
@@ -55,15 +58,6 @@
             android:name=".CompetitivePkg.Competitive_Ass_Result_Screen"
             android:exported="true" />
         <activity
-            android:name=".CompetitivePkg.Competitive_Assessment_Main_Screen2"
-            android:exported="false" />
-        <activity
-            android:name=".NavigationDrawerPkg.AssessmentOverview"
-            android:exported="false" />
-        <activity
-            android:name=".NavigationDrawerPkg.AssessmentResult"
-            android:exported="false" />
-        <activity
             android:name=".commonActivityPackage.assessmentHome.Assessment_home_Screen"
             android:exported="false" />
         <activity
@@ -71,9 +65,6 @@
             android:exported="false" />
         <activity
             android:name=".TheoryAssessmentPackage.questionPaperPackage.Theory_assessment_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".commonActivityPackage.Assessment_Instruction_Activity"
             android:exported="false" />
         <activity
             android:name=".commonActivityPackage.All_Assessment_Activity"
@@ -94,26 +85,8 @@
             android:name=".commonActivityPackage.Assessment_Solution_Screen"
             android:exported="false" />
         <activity
-            android:name=".AssessmentSection_pkg.Assessment_Result_Screen"
-            android:exported="true" />
-        <activity
-            android:name=".AssessmentSection_pkg.Assessment_Screen"
-            android:exported="false" />
-        <activity
             android:name=".AssessmentSection_pkg.Test_Reminder_activity"
             android:exported="true" />
-        <activity
-            android:name=".AssessmentSection_pkg.Ass_Topic_activity"
-            android:exported="false" />
-        <activity
-            android:name=".AssessmentSection_pkg.Ass_Chapters_activity"
-            android:exported="false" />
-        <activity
-            android:name=".AssessmentSection_pkg.Ass_Subjects_activity"
-            android:exported="false" />
-        <activity
-            android:name=".AssessmentSection_pkg.Ass_Standards_activity"
-            android:exported="false" />
         <activity
             android:name=".Navigation_Drawer_Activity"
             android:exported="false"

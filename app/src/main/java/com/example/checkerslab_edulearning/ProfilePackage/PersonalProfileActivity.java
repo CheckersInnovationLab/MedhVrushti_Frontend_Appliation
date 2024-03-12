@@ -43,9 +43,7 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
-import com.example.checkerslab_edulearning.TheoryAssessmentPackage.UploadAnswerpackage.AnswerImagedModel;
-import com.example.checkerslab_edulearning.TheoryAssessmentPackage.UploadAnswerpackage.AnswerImagesAdapter;
-import com.example.checkerslab_edulearning.TheoryAssessmentPackage.UploadAnswerpackage.Upload_Answer_Activity;
+
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 

@@ -64,7 +64,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card2001"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_170sdp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_5sdp"
@@ -76,24 +76,21 @@
                     android:id="@+id/profile_top_layout_id"
                     android:background="#344AC1">
 
-                    <ImageView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/circles"/>
+
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/profile_image_id2001"
-                        android:layout_width="@dimen/_70sdp"
+                        android:layout_width="@dimen/_80sdp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_height="@dimen/_70sdp"
+                        android:layout_height="@dimen/_80sdp"
                         android:src="@drawable/profile_image"
                         app:civ_border_width="2dp"
                         app:civ_border_color="#FF000000"/>
 
                     <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Shubham hadawale"
@@ -212,124 +209,6 @@
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:id="@+id/profile_top_layout_id"-->
-<!--                android:background="#233CCC">-->
-
-
-<!--                &lt;!&ndash;                    <TextView&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:id="@+id/assessment_result_text1"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:text="Hello Shubham,"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:textSize="30sp"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:layout_marginLeft="20dp"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:layout_marginRight="20dp"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:layout_marginTop="@dimen/_10sdp"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:textStyle="bold"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        android:textColor="@color/white"/>&ndash;&gt;-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="@dimen/_80sdp"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:layout_marginTop="@dimen/_5sdp"-->
-<!--                    android:weightSum="3">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="center"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/assessment_result_current_score_id1"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="20"-->
-<!--                            android:textColor="#CEF5FA"-->
-<!--                            android:textSize="@dimen/_17ssp"-->
-<!--                            android:textStyle="bold"/>-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Current Score"-->
-<!--                            android:layout_marginTop="@dimen/_5sdp"-->
-<!--                            android:textColor="#CEF5FA"-->
-<!--                            android:textStyle="bold|italic"-->
-<!--                            android:textSize="@dimen/_11ssp"/>-->
-
-<!--                    </LinearLayout>-->
-<!--                    <RelativeLayout-->
-<!--                        android:layout_width="@dimen/_1sdp"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:background="#C1EFF4"-->
-<!--                        android:layout_marginTop="@dimen/_10sdp"-->
-<!--                        android:layout_marginBottom="@dimen/_10sdp"/>-->
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="center"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="90.25%"-->
-<!--                            android:textColor="#CEF5FA"-->
-<!--                            android:textSize="@dimen/_17ssp"-->
-<!--                            android:textStyle="bold"/>-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Percentile"-->
-<!--                            android:layout_marginTop="@dimen/_5sdp"-->
-<!--                            android:textColor="#CEF5FA"-->
-<!--                            android:textStyle="bold|italic"-->
-<!--                            android:textSize="@dimen/_11ssp"/>-->
-
-<!--                    </LinearLayout>-->
-<!--                    <RelativeLayout-->
-<!--                        android:layout_width="@dimen/_1sdp"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:background="#C1EFF4"-->
-<!--                        android:layout_marginTop="@dimen/_10sdp"-->
-<!--                        android:layout_marginBottom="@dimen/_10sdp"/>-->
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="center"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="2356"-->
-<!--                            android:textColor="#CEF5FA"-->
-<!--                            android:textSize="@dimen/_17ssp"-->
-<!--                            android:textStyle="bold"/>-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Ranking"-->
-<!--                            android:layout_marginTop="@dimen/_5sdp"-->
-<!--                            android:textStyle="bold|italic"-->
-<!--                            android:textColor="#CEF5FA"-->
-<!--                            android:textSize="@dimen/_11ssp"/>-->
-
-<!--                    </LinearLayout>-->
-
-<!--                </LinearLayout>-->
-
-<!--            </RelativeLayout>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -365,7 +244,6 @@
         android:layout_marginLeft="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_10sdp">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -386,7 +264,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_120sdp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:weightSum="2">
@@ -444,7 +322,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -462,11 +340,18 @@
                             android:src="@drawable/correct_icon"/>
 
                         <TextView
+                            android:id="@+id/total_correct_question_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 correct"
+                            android:text="0"
+                            android:layout_marginLeft="@dimen/_2sdp"
                             android:textSize="@dimen/_15ssp"/>
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="correct"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_15ssp"/>
 
                     </LinearLayout>
 
@@ -483,11 +368,18 @@
                             android:src="@drawable/wrong_icon"/>
 
                         <TextView
+                            android:id="@+id/total_wrong_question_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 wrong"
+                            android:text="0"
+                            android:layout_marginLeft="@dimen/_2sdp"
                             android:textSize="@dimen/_15ssp"/>
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wrong"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_15ssp"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -503,12 +395,48 @@
                             android:src="@drawable/unanswered_icon"/>
 
                         <TextView
+                            android:id="@+id/total_UnAnswered_question_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 Unanswered"
+                            android:text="0"
+                            android:layout_marginLeft="@dimen/_2sdp"
+                            android:textSize="@dimen/_15ssp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Un-Answered"
+                            android:layout_marginLeft="@dimen/_5sdp"
                             android:textSize="@dimen/_15ssp"/>
 
                     </LinearLayout>
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_25sdp"-->
+<!--                            android:layout_height="@dimen/_25sdp"-->
+<!--                            android:src="@drawable/preview_icon"/>-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/total_Preview_question_id"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="0"-->
+<!--                            android:layout_marginLeft="@dimen/_2sdp"-->
+<!--                            android:textSize="@dimen/_15ssp"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Un-Answered"-->
+<!--                            android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                            android:textSize="@dimen/_15ssp"/>-->
+
+<!--                    </LinearLayout>-->
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -523,6 +451,7 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/Ass_ReTestButton_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -778,9 +707,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_140sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
-
                 android:layout_marginRight="@dimen/_10sdp"
-
                 app:cardCornerRadius="@dimen/_10sdp">
 
                 <LinearLayout
@@ -848,7 +775,7 @@
     </ScrollView>
 
 
-    <!--    <androidx.cardview.widget.CardView-->
+<!--        <androidx.cardview.widget.CardView-->
 <!--        android:id="@+id/card2001"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="@dimen/_170sdp"-->

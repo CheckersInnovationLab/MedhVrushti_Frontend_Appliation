@@ -67,8 +67,7 @@ public class Chapter_Level_Assessment extends Fragment  {
 
 
     private void getChapterAssessment(String chapter_id) {
-        String Url= StaticFile.Url+ "/api/v1/cil/assessments/get/all/by/chapter_id?chapter_id="+chapter_id;
-
+        String Url= StaticFile.Url+ "/api/v1/cil/assessments/get/all/by/chapter_id/and/user_id?chapter_id="+chapter_id+"&user_id="+StaticFile.userId;
         chapAssCount=Assessment_home_Screen.chapterMCQAssessmentCount;
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -92,7 +91,7 @@ public class Chapter_Level_Assessment extends Fragment  {
                                                 object.getString("assessment_name"),
                                                 object.getString("total_marks"),
                                                 object.getString("assessment_id"),
-                                                "Not Completed");
+                                                object.getString("assessment_status"));
                                         chapterAssessmentList.add(model);
                                         chapAssCount--;
                                     }

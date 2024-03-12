@@ -25,6 +25,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.Authentication.Enter_Mob_Number_activity;
 import com.example.checkerslab_edulearning.Authentication.OTP_Verification_Activity;
 
@@ -33,7 +39,7 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
     private Button getStarted;
     private Dialog dialog;
     private String mobileNumber;
-    private int code=123456;
+  //  private int code=123456;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -81,6 +87,13 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
             return;
         }
         mobileNumber=telephonyManager.getLine1Number();
+        if (mobileNumber.startsWith("+91")) {
+            mobileNumber = mobileNumber.substring(3);
+        } else if (mobileNumber.length() > 10) {
+            mobileNumber = mobileNumber.substring(mobileNumber.length() - 10);
+        }
+
+
         String country = telephonyManager.getSimCountryIso();
         showAuthenticationWindow();
     }
@@ -97,12 +110,14 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Welcome_Screen_Activity.this, OTP_Verification_Activity.class);
-                intent.putExtra("Generated_otp",String.valueOf(code));
-                intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
-                Log.d("MobileNO",String.valueOf(mobileNumber));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+
+                SendOTP(mobileNumber);
+//                Intent intent=new Intent(Welcome_Screen_Activity.this, OTP_Verification_Activity.class);
+//                intent.putExtra("Generated_otp",String.valueOf(code));
+//                intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
+//                Log.d("MobileNO",String.valueOf(mobileNumber));
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
             }
         });
         useAnMeth.setOnClickListener(new View.OnClickListener() {
@@ -114,5 +129,29 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
             }
         });
 
+    }
+    private void SendOTP(String mobileNumber) {
+
+        String url="https://medhvrushti.checkerslab.com/api/v1/cil/user-auth/otp/send?mobile_number=91"+mobileNumber;
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("ErrorMessage", response);
+                Toast.makeText(Welcome_Screen_Activity.this, "OTP Sent TO Entered Mobile Number", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Welcome_Screen_Activity.this,OTP_Verification_Activity.class);
+                intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("ErrorMessage", error.getMessage().toString());
+                Toast.makeText(Welcome_Screen_Activity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(request);
     }
 }

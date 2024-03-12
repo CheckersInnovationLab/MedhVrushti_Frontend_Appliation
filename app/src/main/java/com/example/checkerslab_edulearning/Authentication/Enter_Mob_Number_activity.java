@@ -1,5 +1,6 @@
 package com.example.checkerslab_edulearning.Authentication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,15 +12,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.R;
 import com.hbb20.CountryCodePicker;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Enter_Mob_Number_activity extends AppCompatActivity {
 
     private ImageView arrowBack;
     private Button mobContinue;
     private TextView emailButton;
-    private int code=123456;
+    //private int code=123456;
     private EditText mobNumberView;
     private String mobileNumber;
     private CountryCodePicker codePicker;
@@ -66,17 +77,38 @@ public class Enter_Mob_Number_activity extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent intent=new Intent(Enter_Mob_Number_activity.this,OTP_Verification_Activity.class);
-                    intent.putExtra("Generated_otp",String.valueOf(code));
-                    intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
-                    startActivity(intent);
-                    finish();
+                    SendOTP(mobileNumber);
+                  //  intent.putExtra("Generated_otp",String.valueOf(code));
+
                 }
 
             }
-        });
+
+            });
 
 
 
     }
+    private void SendOTP(String mobileNumber) {
+
+        String url="https://medhvrushti.checkerslab.com/api/v1/cil/user-auth/otp/send?mobile_number=91"+mobileNumber;
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(Enter_Mob_Number_activity.this, "OTP Sent TO Entered Mobile Number", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Enter_Mob_Number_activity.this,OTP_Verification_Activity.class);
+                intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
+                startActivity(intent);
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Enter_Mob_Number_activity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(request);
+    }
+
 }
