@@ -79,6 +79,7 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 view.getContext().startActivity(intent);
 
+
             }
         });
     }
