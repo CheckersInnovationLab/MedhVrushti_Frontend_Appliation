@@ -80,6 +80,7 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
                 view.getContext().startActivity(intent);
 
 
+
             }
         });
     }
