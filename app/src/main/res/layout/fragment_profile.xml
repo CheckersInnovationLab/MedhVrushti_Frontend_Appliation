@@ -3,7 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".ProfilePackage.ProfileFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_id">
+
+
 
 
     <ScrollView
@@ -15,207 +24,208 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/profile_second_layout_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_top_layout_id"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/_10sdp">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/profile_second_layout_id"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/profile_top_layout_id"-->
+<!--                android:background="@color/white"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginTop="@dimen/_10sdp">-->
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:weightSum="2" >
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_45sdp"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:weightSum="2" >-->
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:background="@drawable/layout_back_p"
-                        android:layout_weight="1">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                        android:layout_marginRight="@dimen/_5sdp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:gravity="center"-->
+<!--                        android:background="@drawable/layout_back_p"-->
+<!--                        android:layout_weight="1">-->
 
-                        <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:src="@drawable/enrollment_icon_p"/>
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_20sdp"-->
+<!--                            android:layout_height="@dimen/_20sdp"-->
+<!--                            android:src="@drawable/enrollment_icon_p"/>-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Enrollment"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold"
-                            android:textColor="#5E5D5D"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Enrollment"-->
+<!--                            android:textSize="@dimen/_12ssp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textColor="#5E5D5D"-->
+<!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                            />-->
 
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:background="@drawable/layout_back_p"
-                        android:layout_weight="1">
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                        android:layout_marginRight="@dimen/_5sdp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:gravity="center"-->
+<!--                        android:background="@drawable/layout_back_p"-->
+<!--                        android:layout_weight="1">-->
 
-                        <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:src="@drawable/bookmark_icon_p"/>
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_20sdp"-->
+<!--                            android:layout_height="@dimen/_20sdp"-->
+<!--                            android:src="@drawable/bookmark_icon_p"/>-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Bookmark"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold"
-                            android:textColor="#5E5D5D"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Bookmark"-->
+<!--                            android:textSize="@dimen/_12ssp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textColor="#5E5D5D"-->
+<!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                            />-->
 
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:weightSum="2" >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:background="@drawable/layout_back_p"
-                        android:layout_weight="1">
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_45sdp"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:weightSum="2" >-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                        android:layout_marginRight="@dimen/_5sdp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:gravity="center"-->
+<!--                        android:background="@drawable/layout_back_p"-->
+<!--                        android:layout_weight="1">-->
 
-                        <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:src="@drawable/assignment_icon_p"/>
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_20sdp"-->
+<!--                            android:layout_height="@dimen/_20sdp"-->
+<!--                            android:src="@drawable/assignment_icon_p"/>-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Assignment"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold"
-                            android:textColor="#5E5D5D"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Assignment"-->
+<!--                            android:textSize="@dimen/_12ssp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textColor="#5E5D5D"-->
+<!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                            />-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:background="@drawable/layout_back_p"
-                        android:layout_weight="1">
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/performance_button_id"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                        android:layout_marginRight="@dimen/_5sdp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:gravity="center"-->
+<!--                        android:background="@drawable/layout_back_p"-->
+<!--                        android:layout_weight="1">-->
 
-                        <ImageView
-                            android:layout_width="@dimen/_30sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:src="@drawable/performance_icon_p"/>
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_30sdp"-->
+<!--                            android:layout_height="@dimen/_20sdp"-->
+<!--                            android:src="@drawable/performance_icon_p"/>-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Performance"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold"
-                            android:textColor="#5E5D5D"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Performance"-->
+<!--                            android:textSize="@dimen/_12ssp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textColor="#5E5D5D"-->
+<!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                            />-->
 
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:weightSum="2" >
+<!--                    </LinearLayout>-->
 
 
-                    <LinearLayout
-                        android:id="@+id/Rate_Us_button_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:background="@drawable/layout_back_p"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:layout_width="@dimen/_30sdp"
-                            android:layout_height="@dimen/_25sdp"
-                            android:src="@drawable/rating_icon_p"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rate Us"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold"
-                            android:textColor="#5E5D5D"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/Contact_Us_button_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:background="@drawable/layout_back_p"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:src="@drawable/contact_us_icon_p"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Contact Us"
-                            android:textSize="@dimen/_12ssp"
-                            android:textStyle="bold"
-                            android:textColor="#5E5D5D"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            />
-
-                    </LinearLayout>
-
-                </LinearLayout>
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_45sdp"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                    android:weightSum="2" >-->
 
 
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/Rate_Us_button_id"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                        android:layout_marginRight="@dimen/_5sdp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:gravity="center"-->
+<!--                        android:background="@drawable/layout_back_p"-->
+<!--                        android:layout_weight="1">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_30sdp"-->
+<!--                            android:layout_height="@dimen/_25sdp"-->
+<!--                            android:src="@drawable/rating_icon_p"/>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Rate Us"-->
+<!--                            android:textSize="@dimen/_12ssp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textColor="#5E5D5D"-->
+<!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                            />-->
+
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/Contact_Us_button_id"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginLeft="@dimen/_5sdp"-->
+<!--                        android:layout_marginRight="@dimen/_5sdp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:gravity="center"-->
+<!--                        android:background="@drawable/layout_back_p"-->
+<!--                        android:layout_weight="1">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_20sdp"-->
+<!--                            android:layout_height="@dimen/_20sdp"-->
+<!--                            android:src="@drawable/contact_us_icon_p"/>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Contact Us"-->
+<!--                            android:textSize="@dimen/_12ssp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textColor="#5E5D5D"-->
+<!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                            />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
 
 
 
-            </LinearLayout>
+
+
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -228,8 +238,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
-                    android:background="@drawable/layout_back_p"
-                    android:layout_marginTop="@dimen/_10sdp">
+                    android:background="@drawable/layout_back_p">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -530,6 +539,6 @@
         </LinearLayout>
 
     </ScrollView>
-
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F0F7FA"
+    android:id="@+id/my_learning_layout_id"
     tools:context=".myLearningPakage.MyLearningMainFragment">
 
 

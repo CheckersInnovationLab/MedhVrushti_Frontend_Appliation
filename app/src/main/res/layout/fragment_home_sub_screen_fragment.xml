@@ -14,142 +14,6 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/home_cardView_id"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/card_corner_back_view"-->
-<!--        android:backgroundTint="@color/purple_700"-->
-<!--        android:layout_marginTop="@dimen/_10sdp">-->
-
-<!--        <LinearLayout-->
-<!--            android:id="@+id/home_card_header_id"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_marginLeft="@dimen/_20ssp">-->
-
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Hi, Adam"-->
-<!--                    android:textSize="@dimen/_20ssp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/white"-->
-
-<!--                    android:layout_marginTop="@dimen/_20ssp"/>-->
-
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Let's Start Learning"-->
-<!--                    android:textStyle="italic"-->
-<!--                    android:textSize="@dimen/_15ssp"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:layout_marginTop="@dimen/_8sdp"/>-->
-
-<!--            </LinearLayout>-->
-<!--            -->
-<!--            -->
-<!--            -->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <RelativeLayout-->
-<!--                    android:layout_width="@dimen/_35sdp"-->
-<!--                    android:layout_height="@dimen/_35sdp"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:background="@drawable/card_corner_back_view"-->
-<!--                    android:backgroundTint="#4B5BB5">-->
-
-<!--                     <ImageView-->
-<!--                         android:layout_width="@dimen/_25sdp"-->
-<!--                         android:layout_height="@dimen/_25sdp"-->
-<!--                         android:src="@drawable/cart_icon"-->
-<!--                         android:layout_centerInParent="true"/>-->
-
-
-<!--                </RelativeLayout>-->
-<!--                <RelativeLayout-->
-<!--                    android:layout_width="@dimen/_35sdp"-->
-<!--                    android:layout_height="@dimen/_35sdp"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:layout_marginLeft="@dimen/_20sdp"-->
-<!--                    android:background="@drawable/card_corner_back_view"-->
-<!--                    android:backgroundTint="#4B5BB5">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="@dimen/_25sdp"-->
-<!--                        android:layout_height="@dimen/_25sdp"-->
-<!--                        android:src="@drawable/notification_icon"-->
-<!--                        android:layout_centerInParent="true"/>-->
-
-
-<!--                </RelativeLayout>-->
-
-<!--            </LinearLayout>-->
-
-<!--           -->
-<!--        </LinearLayout>-->
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/ass_subject_searchView_layout"-->
-<!--            android:layout_below="@+id/home_card_header_id"-->
-<!--            android:layout_marginBottom="@dimen/_10sdp"-->
-<!--            android:layout_marginTop="@dimen/_15sdp">-->
-
-<!--            <androidx.appcompat.widget.SearchView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/_35sdp"-->
-<!--                android:layout_marginLeft="@dimen/_15sdp"-->
-<!--                android:layout_marginRight="@dimen/_15sdp"-->
-<!--                android:hint="search anything here"-->
-<!--                android:backgroundTint="@color/white"-->
-<!--                android:background="@drawable/search_bar_back_layout"-->
-
-<!--                />-->
-
-
-<!--        </RelativeLayout>-->
-
-
-<!--    </RelativeLayout>-->
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/Home_Search_bar_id"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-
-<!--        android:layout_marginTop="@dimen/_7sdp">-->
-
-<!--        <androidx.appcompat.widget.SearchView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="@dimen/_40sdp"-->
-<!--            android:layout_marginLeft="@dimen/_5sdp"-->
-<!--            android:layout_marginRight="@dimen/_5sdp"-->
-<!--            android:hint="search anything here"-->
-<!--            android:backgroundTint="#EAECFA"-->
-<!--            android:background="@drawable/search_bar_back_layout" />-->
-
-
-
-<!--    </LinearLayout>-->
    <RelativeLayout
        android:id="@+id/Home_imageSlider_layout_id"
        android:layout_width="match_parent"
@@ -182,223 +46,302 @@
 
    </RelativeLayout>
 
-             <androidx.cardview.widget.CardView
-                 android:id="@+id/Home_active_subscription_details_id"
+             <RelativeLayout
+                 android:id="@+id/active_subscription_layout_id"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 app:cardCornerRadius="@dimen/_15sdp"
-                 android:layout_below="@+id/Home_imageSlider_layout_id"
-                 android:layout_margin="@dimen/_10sdp">
+                 android:layout_below="@+id/Home_imageSlider_layout_id">
 
-                 <RelativeLayout
+                 <androidx.cardview.widget.CardView
+                     android:id="@+id/Home_active_subscription_details_id"
                      android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:background="#EEF3F8">
+                     android:layout_height="wrap_content"
+                     android:visibility="gone"
+                     app:cardCornerRadius="@dimen/_15sdp"
 
-
-
-
-                     <TextView
-                         android:id="@+id/Home_subscriptionDetails_heading_id"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:textColor="#3C1A78"
-                         android:text="Active Subscriptions"
-                         android:textSize="@dimen/_20ssp"
-                         android:textStyle="bold"
-                         android:layout_centerHorizontal="true"
-                         android:layout_marginTop="@dimen/_15sdp"/>
-
-                     <LinearLayout
-                         android:id="@+id/Home_subscription_details_id"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_below="@+id/Home_subscriptionDetails_heading_id"
-                         android:layout_marginTop="@dimen/_10sdp"
-                         android:weightSum="2"
-                         android:orientation="horizontal">
-
-
-                         <LinearLayout
-                             android:layout_width="0dp"
-                             android:layout_height="wrap_content"
-                             android:layout_weight="1"
-                             android:orientation="vertical">
-                             <LinearLayout
-                                 android:layout_width="match_parent"
-                                 android:layout_height="0dp"
-                                 android:orientation="vertical"
-                                 android:layout_weight="1">
-
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="Course:"
-                                     android:textSize="@dimen/_15ssp"
-                                     android:textStyle="bold"
-                                     android:layout_marginLeft="@dimen/_10sdp"
-                                     android:textColor="@color/black"/>
-
-                                 <TextView
-                                     android:id="@+id/Active_subscription_course_name_id"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="Hsc 11th Science Test Series"
-                                     android:textSize="@dimen/_15ssp"
-                                     android:textStyle="bold"
-                                     android:textColor="#6F6F70"
-
-                                     android:layout_marginLeft="@dimen/_10sdp"
-                                     android:layout_marginTop="@dimen/_5sdp"/>
-
-                             </LinearLayout>
-
-                             <LinearLayout
-                                 android:layout_width="match_parent"
-                                 android:layout_height="0dp"
-                                 android:orientation="vertical"
-                                 android:layout_weight="1">
-
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="Enrollment Date:"
-                                     android:layout_marginTop="@dimen/_10sdp"
-                                     android:textStyle="bold"
-                                     android:textColor="@color/black"
-                                     android:textSize="@dimen/_15ssp"
-                                     android:layout_marginLeft="@dimen/_10sdp"/>
-
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="12-Aug-2023"
-                                     android:layout_marginLeft="@dimen/_10sdp"
-                                     android:layout_marginTop="@dimen/_5sdp"
-                                     android:textSize="@dimen/_15ssp"
-                                     android:textColor="#6F6F70"
-                                     android:textStyle="bold"/>
-
-                             </LinearLayout>
-
-
-
-
-
-                         </LinearLayout>
-
-                         <LinearLayout
-                             android:layout_width="@dimen/_1sdp"
-                             android:layout_height="match_parent"
-                             android:background="#B6B6B6"
-                             android:layout_marginTop="@dimen/_10sdp"
-                             android:layout_marginBottom="@dimen/_10sdp"/>
-
-
-
-                         <LinearLayout
-                             android:layout_width="0dp"
-                             android:layout_height="match_parent"
-                             android:layout_weight="1"
-                             android:orientation="vertical">
-
-
-                             <LinearLayout
-                                 android:layout_width="match_parent"
-                                 android:layout_height="0dp"
-                                 android:orientation="vertical"
-                                 android:layout_weight="1">
-
-
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="Days Remaining:"
-                                     android:textStyle="bold"
-                                     android:textColor="@color/black"
-                                     android:textSize="@dimen/_15ssp"
-                                     android:layout_marginLeft="@dimen/_10sdp"/>
-
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="35 days"
-                                     android:layout_marginLeft="@dimen/_10sdp"
-                                     android:layout_marginTop="@dimen/_5sdp"
-                                     android:textColor="#6F6F70"
-                                     android:textSize="@dimen/_15ssp"
-                                     android:textStyle="bold"/>
-
-                             </LinearLayout>
-                             <LinearLayout
-                                 android:layout_width="match_parent"
-                                 android:layout_height="0dp"
-                                 android:orientation="vertical"
-                                 android:layout_weight="1">
-
-
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="Attempts:"
-                                     android:layout_marginTop="@dimen/_10sdp"
-                                     android:textStyle="bold"
-                                     android:layout_marginRight="@dimen/_10sdp"
-                                     android:textColor="@color/black"
-                                     android:textSize="@dimen/_15ssp"
-                                     android:layout_marginLeft="@dimen/_10sdp"/>
-
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="10 "
-                                     android:layout_marginLeft="@dimen/_10sdp"
-                                     android:layout_marginTop="@dimen/_5sdp"
-                                     android:textColor="#6F6F70"
-                                     android:textSize="@dimen/_15ssp"
-                                     android:textStyle="bold"/>
-                             </LinearLayout>
-                         </LinearLayout>
-
-
-
-
-                     </LinearLayout>
-
+                     android:layout_margin="@dimen/_10sdp">
 
                      <RelativeLayout
-                         android:id="@+id/Active_subscription_viewAll_id"
                          android:layout_width="match_parent"
-                         android:layout_height="@dimen/_35sdp"
-                         android:layout_below="@+id/Home_subscription_details_id"
-                         android:background="@drawable/button_back_view"
-                         android:backgroundTint="#441F85"
-                         android:layout_marginLeft="@dimen/_20sdp"
-                         android:layout_marginRight="@dimen/_20sdp"
-                         android:layout_marginTop="@dimen/_15sdp"
-                         android:layout_marginBottom="@dimen/_10sdp">
+                         android:layout_height="match_parent"
+                         android:background="#EEF3F8">
+
+
+
+
+                         <TextView
+                             android:id="@+id/Home_subscriptionDetails_heading_id"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:textColor="#3C1A78"
+                             android:text="Active Subscriptions"
+                             android:textSize="@dimen/_20ssp"
+                             android:textStyle="bold"
+                             android:layout_centerHorizontal="true"
+                             android:layout_marginTop="@dimen/_15sdp"/>
+
+                         <LinearLayout
+                             android:id="@+id/Home_subscription_details_id"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_below="@+id/Home_subscriptionDetails_heading_id"
+                             android:layout_marginTop="@dimen/_10sdp"
+                             android:weightSum="2"
+                             android:orientation="horizontal">
+
+
+                             <LinearLayout
+                                 android:layout_width="0dp"
+                                 android:layout_height="wrap_content"
+                                 android:layout_weight="1"
+                                 android:orientation="vertical">
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="vertical"
+                                     android:layout_weight="1">
+
+                                     <TextView
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="Course:"
+                                         android:textSize="@dimen/_15ssp"
+                                         android:textStyle="bold"
+                                         android:layout_marginLeft="@dimen/_10sdp"
+                                         android:textColor="@color/black"/>
+
+                                     <TextView
+                                         android:id="@+id/Active_subscription_course_name_id"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="Hsc 11th Science Test Series sc 11th Science Test Series"
+                                         android:textSize="@dimen/_15ssp"
+                                         android:textStyle="bold"
+                                         android:textColor="#6F6F70"
+
+                                         android:layout_marginLeft="@dimen/_10sdp"
+                                         android:layout_marginTop="@dimen/_5sdp"/>
+
+                                 </LinearLayout>
+
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="vertical"
+                                     android:layout_weight="1">
+
+                                     <TextView
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="Enrollment Date:"
+                                         android:layout_marginTop="@dimen/_10sdp"
+                                         android:textStyle="bold"
+                                         android:textColor="@color/black"
+                                         android:textSize="@dimen/_15ssp"
+                                         android:layout_marginLeft="@dimen/_10sdp"/>
+
+                                     <TextView
+                                         android:id="@+id/Active_subscription_Enrollment_Date_id"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="12-Aug-2023"
+                                         android:layout_marginLeft="@dimen/_10sdp"
+                                         android:layout_marginTop="@dimen/_5sdp"
+                                         android:textSize="@dimen/_15ssp"
+                                         android:textColor="#6F6F70"
+                                         android:textStyle="bold"/>
+
+                                 </LinearLayout>
+
+
+
+
+
+                             </LinearLayout>
+
+                             <LinearLayout
+                                 android:layout_width="@dimen/_1sdp"
+                                 android:layout_height="match_parent"
+                                 android:background="#B6B6B6"
+                                 android:layout_marginTop="@dimen/_10sdp"
+                                 android:layout_marginBottom="@dimen/_10sdp"/>
+
+
+
+                             <LinearLayout
+                                 android:layout_width="0dp"
+                                 android:layout_height="match_parent"
+                                 android:layout_weight="1"
+                                 android:orientation="vertical">
+
+
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="vertical"
+                                     android:layout_weight="1">
+
+
+                                     <TextView
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="Subscription Type"
+                                         android:textStyle="bold"
+                                         android:textColor="@color/black"
+                                         android:textSize="@dimen/_15ssp"
+                                         android:layout_marginLeft="@dimen/_10sdp"/>
+
+                                     <TextView
+                                         android:id="@+id/Active_subscription_SubscriptionTUpe_id"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="Assessment"
+                                         android:layout_marginLeft="@dimen/_10sdp"
+                                         android:layout_marginTop="@dimen/_5sdp"
+                                         android:textColor="#6F6F70"
+                                         android:textSize="@dimen/_15ssp"
+                                         android:textStyle="bold"/>
+
+                                 </LinearLayout>
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="vertical"
+                                     android:layout_weight="1">
+
+
+                                     <TextView
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="Access End Date"
+                                         android:layout_marginTop="@dimen/_10sdp"
+                                         android:textStyle="bold"
+                                         android:layout_marginRight="@dimen/_10sdp"
+                                         android:textColor="@color/black"
+                                         android:textSize="@dimen/_15ssp"
+                                         android:layout_marginLeft="@dimen/_10sdp"/>
+
+                                     <TextView
+                                         android:id="@+id/Active_subscription_End_Date_id"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="10 "
+                                         android:layout_marginLeft="@dimen/_10sdp"
+                                         android:layout_marginTop="@dimen/_5sdp"
+                                         android:textColor="#6F6F70"
+                                         android:textSize="@dimen/_15ssp"
+                                         android:textStyle="bold"/>
+                                 </LinearLayout>
+                             </LinearLayout>
+
+
+
+
+                         </LinearLayout>
+
+
+                         <RelativeLayout
+                             android:id="@+id/Active_subscription_viewAll_id"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/_35sdp"
+                             android:layout_below="@+id/Home_subscription_details_id"
+                             android:background="@drawable/button_back_view"
+                             android:backgroundTint="#441F85"
+                             android:layout_marginLeft="@dimen/_20sdp"
+                             android:layout_marginRight="@dimen/_20sdp"
+                             android:layout_marginTop="@dimen/_15sdp"
+                             android:layout_marginBottom="@dimen/_10sdp">
+
+                             <TextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="View All"
+                                 android:textSize="@dimen/_15ssp"
+                                 android:textStyle="bold"
+                                 android:textColor="@color/white"
+                                 android:layout_centerInParent="true"/>
+                         </RelativeLayout>
+
+
+
+                     </RelativeLayout>
+                 </androidx.cardview.widget.CardView>
+                 <androidx.cardview.widget.CardView
+                     android:id="@+id/Home_active_subscription_details2_id"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     app:cardCornerRadius="@dimen/_15sdp"
+
+                     android:layout_margin="@dimen/_10sdp">
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:orientation="vertical"
+                         android:background="#EEF3F8">
+
+
+
+
+                         <TextView
+                             android:id="@+id/Home_subscriptionDetails_heading2_id"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:textColor="#3C1A78"
+                             android:text="Active Subscriptions"
+                             android:textSize="@dimen/_20ssp"
+                             android:textStyle="bold"
+                             android:layout_gravity="center_horizontal"
+                             android:gravity="center_horizontal"
+                             android:layout_marginTop="@dimen/_15sdp"/>
 
                          <TextView
                              android:layout_width="wrap_content"
                              android:layout_height="wrap_content"
-                             android:text="View All"
-                             android:textSize="@dimen/_15ssp"
+                             android:text="You don't have any active subscription.Please unlock course to start learning journey"
+                             android:textSize="@dimen/_13ssp"
                              android:textStyle="bold"
-                             android:textColor="@color/white"
+                             android:gravity="center_horizontal"
+                             android:layout_marginTop="@dimen/_10sdp"
                              android:layout_centerInParent="true"/>
-                     </RelativeLayout>
+
+
+                         <RelativeLayout
+                             android:id="@+id/Active_subscription_Unlock_id"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/_35sdp"
+                             android:layout_below="@+id/Home_subscriptionDetails_heading2_id"
+                             android:background="@drawable/button_back_view"
+                             android:backgroundTint="#2FA634"
+                             android:layout_marginLeft="@dimen/_20sdp"
+                             android:layout_marginRight="@dimen/_20sdp"
+                             android:layout_marginTop="@dimen/_15sdp"
+                             android:layout_marginBottom="@dimen/_15sdp">
+
+                             <TextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="Unlock"
+                                 android:textSize="@dimen/_15ssp"
+                                 android:textStyle="bold"
+                                 android:textColor="@color/white"
+                                 android:layout_centerInParent="true"/>
+                         </RelativeLayout>
 
 
 
-                 </RelativeLayout>
-             </androidx.cardview.widget.CardView>
+                     </LinearLayout>
+                 </androidx.cardview.widget.CardView>
+             </RelativeLayout>
+
+
 
    <LinearLayout
        android:id="@+id/Top_categories_MN_layout_id"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="vertical"
-       android:layout_below="@+id/Home_active_subscription_details_id">
+       android:layout_below="@+id/active_subscription_layout_id">
 
       <LinearLayout
           android:layout_width="match_parent"
@@ -465,6 +408,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
+                android:id="@+id/Home_Popular_Courses_ViewAll_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="See All"

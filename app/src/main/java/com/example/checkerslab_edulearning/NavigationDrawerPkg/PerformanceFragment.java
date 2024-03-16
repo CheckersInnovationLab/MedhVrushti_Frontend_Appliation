@@ -75,12 +75,14 @@ public class PerformanceFragment extends Fragment {
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject object = response.getJSONObject(i);
-                                myAssessmentModel model=new myAssessmentModel(object.getString("user_ass_id"),
+                                myAssessmentModel model=new myAssessmentModel(
+                                        object.getString("user_ass_id"),
                                         object.getString("assessment_name"),
                                         object.getString("result_status"),
                                         object.getString("ass_end_date"),
                                         object.getString("obtained_marks"),
-                                        object.getString("total_marks")
+                                        object.getString("total_marks"),
+                                        object.getString("assessment_id")
                                 );
                                 myAssessmentList.add(model);
                             } catch (Exception e) {

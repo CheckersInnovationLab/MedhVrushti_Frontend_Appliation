@@ -5,41 +5,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/_210sdp"
-        android:layout_height="@dimen/_220sdp"
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_15sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:minWidth="@dimen/_230sdp"
+        android:layout_marginRight="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_10sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-             android:background="#EFF2F3"
-            android:weightSum="8">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="4">
-
+             android:background="#EFF2F3">
 
                 <ImageView
                     android:id="@+id/Store_course_image_id"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="@dimen/_110sdp"
+                    android:src="@drawable/profile_icon"/>
 
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                android:layout_weight="4">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/Store_course_name_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="3"
                     android:textSize="@dimen/_15ssp"
                     android:text="SSC 10th Science Test Series"
                     android:layout_marginLeft="@dimen/_7sdp"
@@ -54,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="Access your courses to start journey with us and progress your skill"
                     android:layout_marginLeft="@dimen/_7sdp"
+                    android:maxLines="2"
                     android:layout_marginRight="@dimen/_7sdp"
                     android:textSize="12sp"
                     android:layout_marginTop="@dimen/_2sdp"
@@ -92,9 +89,9 @@
                     <!--                    </LinearLayout>-->
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="3"
                         android:gravity="center"
                         android:layout_marginRight="10dp"
                         android:orientation="horizontal">
@@ -109,25 +106,25 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="500"
-                            android:textSize="@dimen/_15ssp"
+                            android:textSize="@dimen/_13ssp"
                             android:textStyle="bold"
                             android:textColor="#270168"
-                            android:layout_gravity="center_vertical"/>
+                            />
 
                     </LinearLayout>
 
                     <Button
                         android:id="@+id/Store_course_enroll_button_id"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_weight="3"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
                         android:background="@drawable/button_back_view"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:backgroundTint="#BA8C04"
                         app:backgroundTint="#BA8C04"
-                        android:text="Enroll Now"
+                        android:text="Enroll"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
 

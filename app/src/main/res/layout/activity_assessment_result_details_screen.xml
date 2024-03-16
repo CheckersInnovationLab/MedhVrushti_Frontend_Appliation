@@ -370,9 +370,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Correct"
-                    android:layout_gravity="center"
-                    android:textSize="@dimen/_15ssp"
+                    android:text="Un-Answered"
+                    android:gravity="center"
+                    android:textSize="@dimen/_13ssp"
                     android:textColor="#717171"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:textStyle="bold"
@@ -399,6 +399,75 @@
 
 
     </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/Result_details_buttons_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/Result_details_card_2_id"
+    android:weightSum="2"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/Result_details_ViewRankingButton_id"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:background="@drawable/cart_back"
+
+
+        android:layout_marginTop="@dimen/_3sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#6B6C6B">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Ranking"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/Result_details_ViewSolutionButton_id"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:background="@drawable/cart_back"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#34A538">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Solution"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+</LinearLayout>
+
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/Result_details_card_3_id"
         android:layout_width="match_parent"
@@ -407,7 +476,7 @@
         android:layout_marginLeft="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:layout_below="@+id/Result_details_card_2_id"
+        android:layout_below="@+id/Result_details_buttons_layout"
         app:cardCornerRadius="@dimen/_10sdp">
 
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,11 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.checkerslab_edulearning.BoardModelClass;
+import com.example.checkerslab_edulearning.NavigationDrawerPkg.PerformanceFragment;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
-import com.example.checkerslab_edulearning.commonActivityPackage.Contact_Us_Screen;
-import com.example.checkerslab_edulearning.commonActivityPackage.Rate_Us_Screen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +37,7 @@ public class ProfileFragment extends Fragment {
 
     private ImageView editPersonalProfile,editEducationalDetails;
     private TextView userName,userEmailID,userMobileNumber,userCourseName,userAddress,userCollegeName;
-    private LinearLayout contactUsButton,rateUsButton;
+    private LinearLayout contactUsButton,rateUsButton,performanceButton;
 
 
 
@@ -51,7 +50,7 @@ public class ProfileFragment extends Fragment {
         editPersonalProfile=view.findViewById(R.id.edit_personal_details_button_id);
         editEducationalDetails=view.findViewById(R.id.edit_education_details_button_id);
 
-        contactUsButton=view.findViewById(R.id.Contact_Us_button_id);
+
 
         userName=view.findViewById(R.id.your_detail_name_id);
         userEmailID=view.findViewById(R.id.your_detail_email_id);
@@ -59,23 +58,24 @@ public class ProfileFragment extends Fragment {
         userCollegeName=view.findViewById(R.id.education_detail_college_name_id);
         userCourseName=view.findViewById(R.id.education_detail_department_name_id);
         userAddress=view.findViewById(R.id.education_detail_location_name_id);
-        rateUsButton=view.findViewById(R.id.Rate_Us_button_id);
-
-
-        contactUsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getContext(), Contact_Us_Screen.class);
-                startActivity(intent);
-            }
-        });
-        rateUsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getContext(), Rate_Us_Screen.class);
-                startActivity(intent);
-            }
-        });
+//        rateUsButton=view.findViewById(R.id.Rate_Us_button_id);
+//        contactUsButton=view.findViewById(R.id.Contact_Us_button_id);
+//        performanceButton=view.findViewById(R.id.performance_button_id);
+//
+//        contactUsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(getContext(), Contact_Us_Screen.class);
+//                startActivity(intent);
+//            }
+//        });
+//        rateUsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(getContext(), Rate_Us_Screen.class);
+//                startActivity(intent);
+//            }
+//        });
 
         getProfileDetails();
         getEducationDetails();
@@ -93,6 +93,18 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+//        performanceButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                PerformanceFragment fragment1 = new PerformanceFragment();
+//                FragmentTransaction transaction2=getActivity().getSupportFragmentManager().beginTransaction();
+//               // FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                transaction2.replace(android.R.id.content, fragment1);
+//                transaction2.disallowAddToBackStack();
+//                transaction2.commit();
+//            }
+//        });
         return view;
     }
 

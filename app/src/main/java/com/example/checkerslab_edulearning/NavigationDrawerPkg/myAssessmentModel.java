@@ -3,7 +3,7 @@ package com.example.checkerslab_edulearning.NavigationDrawerPkg;
 public class myAssessmentModel {
 
 
-    String user_assessmentID,assessmentName,checkingStatus,ass_end_date,assObtainedMarks,assTotalMarks;
+    String user_assessmentID,assessmentName,checkingStatus,ass_end_date,assObtainedMarks,assTotalMarks,assessmentId;
 
     public myAssessmentModel(String user_assessmentID, String assessmentName, String checkingStatus, String ass_end_date, String assObtainedMarks, String assTotalMarks) {
         this.user_assessmentID = user_assessmentID;
@@ -12,6 +12,16 @@ public class myAssessmentModel {
         this.ass_end_date = ass_end_date;
         this.assObtainedMarks = assObtainedMarks;
         this.assTotalMarks = assTotalMarks;
+    }
+
+    public myAssessmentModel(String user_assessmentID, String assessmentName, String checkingStatus, String ass_end_date, String assObtainedMarks, String assTotalMarks, String assessmentId) {
+        this.user_assessmentID = user_assessmentID;
+        this.assessmentName = assessmentName;
+        this.checkingStatus = checkingStatus;
+        this.ass_end_date = ass_end_date;
+        this.assObtainedMarks = assObtainedMarks;
+        this.assTotalMarks = assTotalMarks;
+        this.assessmentId = assessmentId;
     }
 
     public myAssessmentModel() {
@@ -63,5 +73,13 @@ public class myAssessmentModel {
 
     public void setAssTotalMarks(String assTotalMarks) {
         this.assTotalMarks = assTotalMarks;
+    }
+
+    public String getAssessmentId() {
+        return assessmentId;
+    }
+
+    public void setAssessmentId(String assessmentId) {
+        this.assessmentId = assessmentId;
     }
 }

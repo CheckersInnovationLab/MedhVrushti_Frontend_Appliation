@@ -111,8 +111,6 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
             }
         });
 
-
-
         questionStatusB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,11 +163,6 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
 
             }
         });
-
-//        option1.setOnClickListener(this);
-//        option2.setOnClickListener(this);
-//        option3.setOnClickListener(this);
-//        option4.setOnClickListener(this);
 
     }
     private void loadNewQuestion() {
@@ -449,7 +442,7 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
 //        // Start the countdown timer
 //        countDownTimer.start();
 
-         totalTimeInMillis =  10 * 60 * 1000; // Example: 10 minutes
+         totalTimeInMillis =  Test_Reminder_activity.totalTimeS * 60 * 1000; // Example: 10 minutes
 
         // Create a countdown timer
         countDownTimer = new CountDownTimer(totalTimeInMillis, 1000) {
@@ -463,6 +456,7 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
             public void onFinish() {
                 // Handle the timer finish event (e.g., quiz submission)
                 time.setText("Time: 00:00");
+                finishQuiz();
               //  elapsedTimeTextView.setText("Elapsed Time: " + getElapsedTimeFormatted());
                 // Add any actions to perform when the timer finishes
             }
@@ -558,10 +552,7 @@ private void updateTimerDisplay(long millisUntilFinished) {
     }
 
     private void SubmitQuize() {
-        finishQuiz();
 
-    }
-    void finishQuiz(){
 
         Log.d("Submitted","Submitted");
         ////////////////////
@@ -573,7 +564,8 @@ private void updateTimerDisplay(long millisUntilFinished) {
             finish();
             countDownTimer.cancel();
             Intent intent=new Intent(CompetetiveAssessmentScreen.this, Competitive_Ass_Result_Screen.class);
-           startActivity(intent);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
         builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
             dialog.dismiss();
@@ -582,23 +574,47 @@ private void updateTimerDisplay(long millisUntilFinished) {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
+
+        //finishQuiz();
+
+    }
+    void finishQuiz(){
+        finish();
+        countDownTimer.cancel();
+        Intent intent=new Intent(CompetetiveAssessmentScreen.this, Competitive_Ass_Result_Screen.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+//
+//        Log.d("Submitted","Submitted");
+//        ////////////////////
+//        AlertDialog.Builder builder = new AlertDialog.Builder(CompetetiveAssessmentScreen.this);
+//        builder.setMessage("Do you want to Submit the Test?");
+//        builder.setTitle("Submit Test");
+//        builder.setCancelable(false);
+//        builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+//
+//        });
+//        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+//            dialog.dismiss();
+//
+//        });
+//        AlertDialog alertDialog = builder.create();
+//        alertDialog.show();
+
     }
 
     @Override
     public void onBackPressed() {
-        finishQuiz();
-//        Intent intent=new Intent(CompetetiveAssessmentScreen.this, Competitive_Ass_Result_Screen.class);
-//        startActivity(intent);
-       // super.onBackPressed();
+        SubmitQuize();
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_HOME) {
-            finishQuiz(); // Show confirmation dialog
+            SubmitQuize(); // Show confirmation dialog
             // Handle Home button press
             return true;
         } else if (keyCode == KeyEvent.KEYCODE_APP_SWITCH) { // For App Overview or Recent Apps button
-            finishQuiz(); // Show confirmation dialog
+            SubmitQuize(); // Show confirmation dialog
             // Handle App Overview button press
             return true;
         }
@@ -613,7 +629,7 @@ private void updateTimerDisplay(long millisUntilFinished) {
 //    }
     @Override
     protected void onUserLeaveHint() {
-        finishQuiz();
+        SubmitQuize();
        // super.onUserLeaveHint();
 
     }

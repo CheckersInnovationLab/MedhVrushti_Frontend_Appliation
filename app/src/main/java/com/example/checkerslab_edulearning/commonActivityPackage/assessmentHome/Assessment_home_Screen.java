@@ -22,6 +22,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.commonActivityPackage.AllAssessmentAdapter;
@@ -49,9 +51,10 @@ public class Assessment_home_Screen extends AppCompatActivity {
     private RelativeLayout finalAssTab,chapterAssTab,uniteAssTab,selfAssTab;
     public static ArrayList<AllAssessmentModel> finalAssessmentList;
     public static ArrayList<CourseChapterModel> courseChapterList;
-    private ProgressBar assessmentHomePb;
     private TextView assSubjectName;
     private ImageView backButton;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +65,16 @@ public class Assessment_home_Screen extends AppCompatActivity {
 //        Intent intent=getIntent();
 //        SubjectId=intent.getStringExtra("Subject_id").toString();
 //        subjectName=intent.getStringExtra("subject_Name").toString();
+
+        loadingDialog=new LoadingDialog(Assessment_home_Screen.this);
+        errorStatusDialog=new ErrorStatusDialog(Assessment_home_Screen.this);
         SubjectId= CourseSubjectsActivity.subjectId;
         subjectName=CourseSubjectsActivity.SubjectName;
         finalAssTab=findViewById(R.id.final_assessment_button_id);
         chapterAssTab=findViewById(R.id.chapter_assessment_button_id);
         uniteAssTab=findViewById(R.id.Unite_assessment_button_id);
         selfAssTab=findViewById(R.id.Self_generated_assessment_button_id);
-        assessmentHomePb=findViewById(R.id.assessment_home_pbLoading);
-        assessmentHomePb.setVisibility(ProgressBar.VISIBLE);
+
 
         assSubjectName=findViewById(R.id.Courses_allAss_subject_text_id);
         assSubjectName.setText(subjectName);
@@ -97,6 +102,7 @@ public class Assessment_home_Screen extends AppCompatActivity {
     }
 
     private void getSubscriptionDetails(String SubjectIdL) {
+        loadingDialog.startLoadingDialog();
 
       String Url="http://89.116.33.21:5000/get-subscription-access-data";
 
@@ -142,9 +148,7 @@ public class Assessment_home_Screen extends AppCompatActivity {
                             }
                              if (chapterMCQAssessmentCount!=0)
                             {
-                                Log.d("getChapterDetails","110");
                                 getChapterDetails();
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -156,6 +160,8 @@ public class Assessment_home_Screen extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
@@ -214,11 +220,7 @@ public class Assessment_home_Screen extends AppCompatActivity {
     }
 
     private void getFinalAssessment() {
-
-//        String assessmentUrl= "http://89.116.33.21:5000/cet/assessment/status";
-       // String assessmentUrl= "http://89.116.33.21:5000/cet/assessment/get/all/by/status?user_id="+StaticFile.userId+"&subject_id="+SubjectId;
-
-             String assessmentUrl= "https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/subject_id/and/user_id?subject_id="+SubjectId+"&user_id="+StaticFile.userId;
+        String assessmentUrl= "https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/subject_id/and/user_id?subject_id="+SubjectId+"&user_id="+StaticFile.userId;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, assessmentUrl,null,
@@ -239,19 +241,21 @@ public class Assessment_home_Screen extends AppCompatActivity {
                                                 object.getString("assessment_name"),
                                                 object.getString("total_marks"),
                                                 object.getString("assessment_id"),
-                                                object.getString("assessment_status"));
+                                                object.getString("assessment_status"),
+                                                object.getString("total_question"),
+                                                object.getInt("total_time")
+                                        );
                                         finalAssessmentList.add(model);
                                         finalMCQAssessmentCount--;
                                     }
                                 }
-
-
+                                loadingDialog.dismissDialog();
 
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
-                        assessmentHomePb.setVisibility(ProgressBar.GONE);
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -259,7 +263,8 @@ public class Assessment_home_Screen extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         // Handle error response
                         if (error.networkResponse != null) {
-                            assessmentHomePb.setVisibility(ProgressBar.GONE);
+                          loadingDialog.dismissDialog();
+                          errorStatusDialog.showErrorMessage();
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
@@ -322,16 +327,15 @@ public class Assessment_home_Screen extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                assessmentHomePb.setVisibility(ProgressBar.GONE);
-                Log.d("getChapter",String.valueOf(courseChapterList.size()));
                 setChapterFragments();
-
+                loadingDialog.dismissDialog();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                loadingDialog.startLoadingDialog();
+                errorStatusDialog.showErrorMessage();
                 if (error.networkResponse != null) {
-                    assessmentHomePb.setVisibility(ProgressBar.GONE);
                     int statusCode = error.networkResponse.statusCode;
                     byte[] errorResponseData = error.networkResponse.data; // Error response data
                     String errorMessage = new String(errorResponseData); // Convert error data to string
@@ -352,7 +356,7 @@ public class Assessment_home_Screen extends AppCompatActivity {
 
 //    @Override
 //    public void onBackPressed() {
-//        super.onBackPressed();
+////        super.onBackPressed();
 //        finish();
 //    }
 }

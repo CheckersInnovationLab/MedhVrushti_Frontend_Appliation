@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#F7F8FB"
-    tools:context=".commonActivityPackage.Rate_Us_Screen">
+    tools:context=".NavigationDrawerPkg.RateUsFragment">
+
+
 
 
 
@@ -62,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                 android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
                 android:rating="3.5"
                 android:focusable="false"
                 android:focusableInTouchMode="false" />
@@ -78,6 +80,7 @@
                 android:textSize="@dimen/_15sdp"/>
 
             <TextView
+                android:id="@+id/rateMayBeLater_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="May be later"
@@ -90,8 +93,6 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-
 
 
 

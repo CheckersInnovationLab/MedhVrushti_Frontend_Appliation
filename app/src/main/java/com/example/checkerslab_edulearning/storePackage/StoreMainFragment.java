@@ -3,6 +3,8 @@ package com.example.checkerslab_edulearning.storePackage;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,6 +60,7 @@ public class StoreMainFragment extends Fragment {
 
         recyclerView1.setLayoutManager(HorizontalLayout);
         AddItemsToTopCatRecyclerView();
+
 
         return view;
     }

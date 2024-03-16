@@ -18,6 +18,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.CompetitivePkg.CompetetiveAssessmentScreen;
 import com.example.checkerslab_edulearning.CompetitivePkg.Competitive_Ass_Result_Screen;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainFragment;
@@ -32,9 +34,10 @@ public class CourseSubjectsActivity extends AppCompatActivity {
     ArrayList<CourseSubjectModel> subjectModelArrayList;
     static String subscription_id;
     private ImageView backButton;
-    private ProgressBar courseSubjectPb;
     private String url="https://medhvrushti.checkerslab.com/api/v1/cil/user_subscriptions/get/all/by/subscription_id_and_user_id?";
     public static  String subjectId="",SubjectName="";
+    LoadingDialog loadingDialog;
+    ErrorStatusDialog errorStatusDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +45,11 @@ public class CourseSubjectsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course_subjects);
         recyclerView=findViewById(R.id.Courses_subject_recycler_id);
         backButton=findViewById(R.id.Courses_subject_back_button_id);
-        courseSubjectPb=findViewById(R.id.course_subject_pbLoading);
+        loadingDialog=new LoadingDialog(CourseSubjectsActivity.this);
+        errorStatusDialog=new ErrorStatusDialog(CourseSubjectsActivity.this);
 
         Intent intent=getIntent();
         subscription_id=intent.getStringExtra("Subscription_id");
-        courseSubjectPb.setVisibility(ProgressBar.VISIBLE);
-//        subscription_id="100008";
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +71,7 @@ public class CourseSubjectsActivity extends AppCompatActivity {
     }
 
     private void AddItemsToTopCatRecyclerView() {
+        loadingDialog.startLoadingDialog();
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url,null,
@@ -100,15 +103,15 @@ public class CourseSubjectsActivity extends AppCompatActivity {
 
                         CourseSubjectAdapter adapter=new CourseSubjectAdapter(subjectModelArrayList,getApplicationContext());
                         recyclerView.setAdapter(adapter);
-                        courseSubjectPb.setVisibility(ProgressBar.GONE);
+                        loadingDialog.dismissDialog();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle error response
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         if (error.networkResponse != null) {
-                           courseSubjectPb.setVisibility(ProgressBar.GONE);
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string

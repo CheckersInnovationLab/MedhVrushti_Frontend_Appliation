@@ -3,7 +3,10 @@ package com.example.checkerslab_edulearning.mainHome_pkg;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,12 +29,18 @@ import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLeaningMainModel;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainAdapter;
+import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainFragment;
+import com.example.checkerslab_edulearning.storePackage.StoreAllCoursesScreen;
+import com.example.checkerslab_edulearning.storePackage.StoreCoursesAdapter;
+import com.example.checkerslab_edulearning.storePackage.StoreCoursesModel;
+import com.example.checkerslab_edulearning.storePackage.storeCoursesParentModel;
 import com.smarteist.autoimageslider.SliderView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Home_sub_screen_fragment extends Fragment {
@@ -40,14 +50,6 @@ public class Home_sub_screen_fragment extends Fragment {
     String url3 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fsubscription3.jpg?alt=media&token=31121357-58b4-45b9-9935-e64e922c57b5";
 
 
-    String url11 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2FCIL_image1.png?alt=media&token=98e82363-4be9-4672-b3e4-dd7d9a7d5f7b";
-    String url13 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2FCIL_image3.png?alt=media&token=ff96d1aa-e64b-46cc-9495-fab42e0a0012";
-    String url12 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2FCIL_image4.png?alt=media&token=9cc4f22b-ecef-4cef-ad56-33e3a557e9d6";
-
-    String url01="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
-    String url02="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
-    String url03="https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fimg2.png?alt=media&token=83219b93-cb17-4ee3-998d-131cfdfe5647";
-
     RecyclerView topCatRecyclerView,popularCoursesRecyclerView;
     public static  ArrayList<TopCategoriesModel> catItemsList;
     ArrayList<popularCoursesModel> popCoursesList;
@@ -56,7 +58,9 @@ public class Home_sub_screen_fragment extends Fragment {
    static public ArrayList<MyLeaningMainModel> activeSubscriptionList;
    private RelativeLayout activeSubViewALL;
     MyLearningMainAdapter activeSubscriptionMainAdapter;
-    TextView courseName,topCatSeeAll;
+    TextView courseName,topCatSeeAll,courseStartDate,courseEndDate,courseTypeName,popularCoursesViewAll;
+    private CardView activeSubCard1,activeSubCard2;
+    private RelativeLayout unlockButton;
 
 
     @Override
@@ -71,6 +75,31 @@ public class Home_sub_screen_fragment extends Fragment {
         topCatRecyclerView=view.findViewById(R.id.Home_top_categories_recyclerview);
         popularCoursesRecyclerView=view.findViewById(R.id.Home_Popular_Courses_recyclerview);
         topCatSeeAll=view.findViewById(R.id.Top_category_SeeAll_text_View);
+        courseStartDate=view.findViewById(R.id.Active_subscription_Enrollment_Date_id);
+        courseEndDate=view.findViewById(R.id.Active_subscription_End_Date_id);
+        courseTypeName=view.findViewById(R.id.Active_subscription_SubscriptionTUpe_id);
+        activeSubCard1=view.findViewById(R.id.Home_active_subscription_details_id);
+        activeSubCard2=view.findViewById(R.id.Home_active_subscription_details2_id);
+        unlockButton=view.findViewById(R.id.Active_subscription_Unlock_id);
+
+        popularCoursesViewAll=view.findViewById(R.id.Home_Popular_Courses_ViewAll_id);
+        unlockButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent=new Intent(getContext(), StoreAllCoursesScreen.class);
+               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+               startActivity(intent);
+            }
+        });
+
+        popularCoursesViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),StoreAllCoursesScreen.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
 
         catItemsList=new ArrayList<>();
         popCoursesList=new ArrayList<>();
@@ -181,9 +210,19 @@ public class Home_sub_screen_fragment extends Fragment {
 
 
                         Log.d("size",String.valueOf(activeSubscriptionList.size()));
-                    //*    courseName.setText(activeSubscriptionList.get(0).getSubscription_name());
+                        if (activeSubscriptionList.size()>0)
+                        {
+                            activeSubCard2.setVisibility(View.GONE);
+                            activeSubCard1.setVisibility(View.VISIBLE);
+                            courseName.setText(activeSubscriptionList.get(0).getSubscription_name());
+                            courseStartDate.setText(activeSubscriptionList.get(0).getSubscription_date());
+                            courseEndDate.setText(activeSubscriptionList.get(0).getAccess_end_date());
+                            courseTypeName.setText(activeSubscriptionList.get(0).getSubscription_type());
+                        }
+
+
 //                        activeSubscriptionMainAdapter = new MyLearningMainAdapter(activeSubscriptionList, getContext());
-////                        recyclerView.setAdapter(myLearningMainAdapter);
+//                        recyclerView.setAdapter(myLearningMainAdapter);
                     }
                 },
                 new Response.ErrorListener() {
@@ -207,13 +246,6 @@ public class Home_sub_screen_fragment extends Fragment {
             }
         };
         requestQueue.add(jsonObjectRequest);
-
-
-
-
-
-
-
 
     }
 
@@ -248,7 +280,7 @@ public class Home_sub_screen_fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
  requestQueue.add(arrayRequest);
@@ -269,11 +301,72 @@ public class Home_sub_screen_fragment extends Fragment {
 
 
     private void addPopularCoursesToRecyclerView() {
+        Log.d("addPopularCoursesToRecyclerView","addPopularCoursesToRecyclerView1");
 
-        popCoursesList.add(new popularCoursesModel(url01,"50% off","SSC 10th Test series"));
-        popCoursesList.add(new popularCoursesModel(url02,"70% off","HSC 11th Test series"));
-        popCoursesList.add(new popularCoursesModel(url03,"30% off","CBSC 12th Test series"));
-        PopularCoursesAdapter popCoursesAdapter=new PopularCoursesAdapter(popCoursesList,getContext());
-        popularCoursesRecyclerView.setAdapter(popCoursesAdapter);
+        String Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, Url,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                Log.d("addPopularCoursesToRecyclerView","addPopularCoursesToRecyclerView2");
+
+                                popularCoursesModel storeCoursesModel=new popularCoursesModel(
+                                        object.getString("subscription_img_url"),
+                                        object.getString("subscription_id"));
+
+                                popCoursesList.add(storeCoursesModel);
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                        PopularCoursesAdapter storeCoursesAdapter
+                                = new PopularCoursesAdapter(popCoursesList,getContext());
+                        popularCoursesRecyclerView.setAdapter(storeCoursesAdapter);
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error response
+                        if (error.networkResponse != null) {
+                            Log.d("addPopularCoursesToRecyclerView","addPopularCoursesToRecyclerView4");
+
+                            int statusCode = error.networkResponse.statusCode;
+                            byte[] errorResponseData = error.networkResponse.data; // Error response data
+                            String errorMessage = new String(errorResponseData); // Convert error data to string
+                            // Print the error details
+                            System.out.println("Error Status Code: " + statusCode);
+                            System.out.println("Error Response Data: " + errorMessage);
+                        }
+                    }
+                }
+        ) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+
+
+
+
+//        popCoursesList.add(new popularCoursesModel(url1,"50% off","SSC 10th Test series"));
+//        popCoursesList.add(new popularCoursesModel(url2,"70% off","HSC 11th Test series"));
+//        popCoursesList.add(new popularCoursesModel(url3,"30% off","CBSC 12th Test series"));
+//        PopularCoursesAdapter popCoursesAdapter=new PopularCoursesAdapter(popCoursesList,getContext());
+//        popularCoursesRecyclerView.setAdapter(popCoursesAdapter);
+
+
     }
 }

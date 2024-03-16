@@ -46,6 +46,10 @@ public class ActiveSubscriptionAdapter extends RecyclerView.Adapter<ActiveSubscr
 
 
         holder.courseName.setText(categoryItemModel.getSubscription_name());
+        holder.enrollmentDate.setText(categoryItemModel.getSubscription_date());
+        holder.subType.setText(categoryItemModel.getSubscription_type());
+        holder.endDate.setText(categoryItemModel.getAccess_end_date());
+
         holder.startLearningButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +72,7 @@ public class ActiveSubscriptionAdapter extends RecyclerView.Adapter<ActiveSubscr
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView courseName,enrollmentDate,endDate,Attempts;
+        TextView courseName,enrollmentDate,endDate,subType;
         RelativeLayout startLearningButton;
 
 
@@ -76,8 +80,8 @@ public class ActiveSubscriptionAdapter extends RecyclerView.Adapter<ActiveSubscr
             super(itemView);
             courseName = itemView.findViewById(R.id.Active_subscription_sl_course_name_id);
             enrollmentDate = itemView.findViewById(R.id.Active_subscription_sl_Enrollment_date_id);
-            endDate = itemView.findViewById(R.id.Active_subscription_sl_days_remaining_id);
-            Attempts = itemView.findViewById(R.id.Active_subscription_sl_attempts_id);
+            endDate = itemView.findViewById(R.id.Active_subscription_sl_endDate_id);
+            subType = itemView.findViewById(R.id.Active_subscription_sl_type_id);
             startLearningButton=itemView.findViewById(R.id.Active_subscription_StartLearning_id);
 
         }

@@ -8,15 +8,18 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/home_icon"
             android:title="Home " />
-        <item
-            android:id="@+id/nav_subscription_id"
-            android:icon="@drawable/nav_subscriptions_icon"
-            android:title="Subscription" />
 
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/profile_icon"
             android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_subscription_id"
+            android:icon="@drawable/nav_subscriptions_icon"
+            android:title="Subscription" />
+
+
 
 
         <item
@@ -25,17 +28,17 @@
             android:title="Performance" />
 
         <item
-            android:id="@+id/nav_community"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Community" />
+            android:id="@+id/nav_Contact_Us"
+            android:icon="@drawable/nav_contact_us_icon"
+            android:title="Contact Us" />
         <item
-            android:id="@+id/nav_studentTestimonial"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Student Testimonial" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Setting" />
+            android:id="@+id/nav_Rate_Us"
+            android:icon="@drawable/nav_rating_icon"
+            android:title="Rate Us" />
+<!--        <item-->
+<!--            android:id="@+id/nav_setting"-->
+<!--            android:icon="@drawable/ic_menu_slideshow"-->
+<!--            android:title="Setting" />-->
 
 
 
@@ -44,10 +47,10 @@
         android:title="">
 
         <menu>
-            <item
-                android:id="@+id/nav_how_use"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="How to use the App" />
+<!--            <item-->
+<!--                android:id="@+id/nav_how_use"-->
+<!--                android:icon="@drawable/ic_menu_slideshow"-->
+<!--                android:title="How to use the App" />-->
             <item
                 android:id="@+id/nav_privacy"
                 android:icon="@drawable/ic_menu_slideshow"

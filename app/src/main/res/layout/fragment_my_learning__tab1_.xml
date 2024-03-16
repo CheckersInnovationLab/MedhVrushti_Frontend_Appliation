@@ -3,7 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".myLearningPakage.MyLearning_Tab1_Fragment">
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/MyLearning_empty_Message_details2_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_15sdp"
+
+        android:layout_margin="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#EEF3F8">
+
+
+
+
+            <TextView
+                android:id="@+id/MyLearning_heading2_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#3C1A78"
+                android:text="No Subscriptions"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_15sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You don't have any active subscription.Please unlock course to start learning journey"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_centerInParent="true"/>
+
+
+            <RelativeLayout
+                android:id="@+id/MyLearning_EnrollButton_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_below="@+id/Home_subscriptionDetails_heading2_id"
+                android:background="@drawable/button_back_view"
+                android:backgroundTint="#673AB7"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enroll New Course"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MyLearningMainRecyclerView_id"

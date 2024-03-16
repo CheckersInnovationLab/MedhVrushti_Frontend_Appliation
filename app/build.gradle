@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
 }
-
 android {
     compileSdk 33
     defaultConfig {
@@ -99,5 +98,6 @@ dependencies {
 
     //custom horizontal progress bar
     implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
+
 
 }

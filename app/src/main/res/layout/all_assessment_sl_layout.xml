@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:background="#EDEFED"
+
             android:orientation="horizontal"
             >
 
@@ -56,12 +57,14 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/AssessmentTotalQuestion_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30Qs"
                         android:textSize="@dimen/_12ssp"
                         android:textColor="#605F5F"/>
                     <TextView
+                        android:id="@+id/AssessmentTotalTime_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30mins"
@@ -69,6 +72,7 @@
                         android:textSize="@dimen/_12ssp"
                         android:textColor="#605F5F"/>
                     <TextView
+                        android:id="@+id/AssessmentTotalMarks_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30marks"

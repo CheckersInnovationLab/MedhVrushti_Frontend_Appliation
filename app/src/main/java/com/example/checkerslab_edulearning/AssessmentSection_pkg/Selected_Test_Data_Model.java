@@ -29,6 +29,22 @@ public class Selected_Test_Data_Model {
         this.bookmarkStatus = bookmarkStatus;
     }
 
+    public Selected_Test_Data_Model(int questionId, int marks, String questionType, String question, String option1, String option2, String option3, String option4, String answer, String answerDescription,  String questionDiagrams, String descriptionDiagrams, String questionTypeId) {
+        this.questionId = questionId;
+        this.marks = marks;
+        this.questionType = questionType;
+        this.question = question;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.option4 = option4;
+        this.answer = answer;
+        this.answerDescription = answerDescription;
+        this.questionDiagrams = questionDiagrams;
+        this.descriptionDiagrams = descriptionDiagrams;
+        this.questionTypeId = questionTypeId;
+    }
+
     public int getQuestionId() {
         return questionId;
     }

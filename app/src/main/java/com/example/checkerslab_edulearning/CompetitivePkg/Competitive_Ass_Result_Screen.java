@@ -1,5 +1,7 @@
 package com.example.checkerslab_edulearning.CompetitivePkg;
 
+import static com.example.checkerslab_edulearning.NavigationDrawerPkg.AssessmentResultDetailsScreen.assessmentId;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -25,6 +27,8 @@ import com.bumptech.glide.Glide;
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.daimajia.numberprogressbar.OnProgressBarListener;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Selected_Test_Data_Model;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
 import com.example.checkerslab_edulearning.ProfilePackage.PersonalProfileActivity;
 import com.example.checkerslab_edulearning.StaticFile;
@@ -52,7 +56,7 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
     private Timer timer;
 
     private NumberProgressBar bnp;
-    private TextView currentScore1,studentRank,currentScore2,totalMarks2,studName;
+    private TextView currentScore1,studentRank,currentScore2,totalMarks2,studName,assAverageScore;
     RelativeLayout solutionButton,reTestButton;
     CircularProgressBar circularProgressBar;
     int obtainedMarks=0,totalMarks=0;
@@ -61,6 +65,8 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
     Dialog dialog;
     Button cancelButton;
     int correctQuestion=0,unAttempt=0,wrong=0;
+    private ErrorStatusDialog errorStatusDialog;
+    private LoadingDialog loadingDialog;
 
 
     @Override
@@ -69,6 +75,8 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
         setContentView(R.layout.activity_competitive_ass_result_screen);
 
         solutionButton=findViewById(R.id.Ass_solutionButton_id);
+        loadingDialog=new LoadingDialog(Competitive_Ass_Result_Screen.this);
+        errorStatusDialog=new ErrorStatusDialog(Competitive_Ass_Result_Screen.this);
 
         ///////////////vertical progress bar//////////
 
@@ -84,7 +92,7 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
         wrongCountT=findViewById(R.id.total_wrong_question_id);
         unAnsweredT=findViewById(R.id.total_UnAnswered_question_id);
         reTestButton=findViewById(R.id.Ass_ReTestButton_id);
-//        previewT=findViewById(R.id.total_Preview_question_id);
+        assAverageScore=findViewById(R.id.AssessmentResult_average_score_id);
 
         if (!(Navigation_Drawer_Activity.studProfileImage == "null"))
         {
@@ -119,13 +127,13 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Competitive_Ass_Result_Screen.this, Assessment_Solution_Screen.class);
+                intent.putExtra("assessment_id",Test_Reminder_activity.assessmentID);
                 startActivity(intent);
             }
         });
     }
 
     private void CalculateResult() {
-
         for (int i=0;i< Test_Reminder_activity.testDataList.size();i++)
         {
 
@@ -157,12 +165,9 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
         correctCountT.setText(String.valueOf(obtainedMarks));
         wrongCountT.setText(String.valueOf(wrong));
         unAnsweredT.setText(String.valueOf(unAttempt));
-//        previewT.setText(String.valueOf(correctQuestion));
 
-        calculateRanking();
 
         uploadAssessmentDetails();
-
 
         //successful message Dialog box
         dialog= new Dialog(Competitive_Ass_Result_Screen.this);
@@ -185,15 +190,12 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
             }
         });
 
-
-
-
-        // Log.d("Result=","correct ="+correctQuestion+"\n wrong ="+wrong+"\n unattempt="+unAttempt);
-
     }
 
 
     private void uploadAssessmentDetails() {
+        loadingDialog.startLoadingDialog();
+
 
         String userAssessmentUrl= StaticFile.Url+"/api/v1/cil/user_assessments/update";
 
@@ -231,9 +233,6 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
 
                         // Handle success response from the server
                         try {
-//                            Intent intent=new Intent(Competitive_Ass_Result_Screen.this, Competitive_Assessment_Main_Screen2.class);
-//                            startActivity(intent);
-
                             uploadAssessmentAnswer();
                             String message = response.getString("message");
                             Toast.makeText(getApplicationContext(), "Assessment Completed", Toast.LENGTH_SHORT).show();
@@ -247,6 +246,8 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
@@ -277,106 +278,6 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
     }
 
 
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        timer.cancel();
-    }
-    @Override
-    public void onProgressChange(int current, int max) {
-        if(current == max) {
-           // Toast.makeText(getApplicationContext(), "ddddd", Toast.LENGTH_SHORT).show();
-            bnp.setProgress(0);
-        }
-    }
-
-    private void calculateRanking() {
-        String userRankingUrl= "http://89.116.33.21:5000/get/CET/Ranking";
-
-
-        JSONObject requestData = new JSONObject();
-        try {
-            // requestData.put("user_id", Navigation_Drawer_Activity.userId);
-            requestData.put("user_id",StaticFile.userId);
-            requestData.put("assessment_id",Test_Reminder_activity.assessmentID);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, userRankingUrl,requestData,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-
-                        // Handle success response from the server
-                        try {
-//                            Intent intent=new Intent(Competitive_Ass_Result_Screen.this, Competitive_Assessment_Main_Screen2.class);
-//                            startActivity(intent);
-                            String message = response.getString("message");
-                            Toast.makeText(getApplicationContext(), "Assessment Completed", Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Handle error response
-                        if (error.networkResponse != null) {
-                            int statusCode = error.networkResponse.statusCode;
-                            byte[] errorResponseData = error.networkResponse.data; // Error response data
-                            String errorMessage = new String(errorResponseData); // Convert error data to string
-                            // Print the error details
-                            Log.d("userSubscription :",errorMessage);
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
-                        }
-                    }
-                }
-        ){
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", getBodyContentType());
-                headers.put("Authorization", "Bearer " +StaticFile.bearToken);
-                return headers;
-            }
-        };
-        requestQueue.add(jsonObjectRequest);
-
-    }
 
     private void uploadAssessmentAnswer() {
 
@@ -384,7 +285,7 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
 
         JSONArray answersArray = new JSONArray();
 
-         Log.d("status","upload Answer");
+        Log.d("onErrorResponse","details3");
 
         for (int i=0;i<Test_Reminder_activity.testDataList.size();i++)
         {
@@ -420,27 +321,32 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
 
         }
 
-
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.POST, Url, answersArray,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("QuestionPaperGenerator","Success");
+                        Log.d("onErrorResponse","details4");
+                        loadingDialog.dismissDialog();
+                        calculateRanking();
 
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        calculateRanking();
+                        loadingDialog.dismissDialog();
+
                         // Handle error response
                         if (error.networkResponse != null) {
-                            int statusCode = error.networkResponse.statusCode;
+                            errorStatusDialog.showErrorMessage();
+                            //int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                            Log.d("QuestionPaperGenerator",errorMessage);
+
                         }
                     }
                 }
@@ -460,6 +366,89 @@ public class Competitive_Ass_Result_Screen extends AppCompatActivity implements 
         };
         requestQueue.add(jsonObjectRequest);
     }
+    private void calculateRanking() {
+        String userRankingUrl= "http://89.116.33.21:5000/get/CET/Ranking";
+
+        Log.d("studentRank","Into the Rank");
+        JSONObject requestData = new JSONObject();
+        try {
+            // requestData.put("user_id", Navigation_Drawer_Activity.userId);
+            requestData.put("user_id",StaticFile.userId);
+            requestData.put("assessment_id",Test_Reminder_activity.assessmentID);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, userRankingUrl,requestData,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            int rank=response.getInt("rank");
+                            int assAvgScore=response.getInt("average_score");
+
+                            studentRank.setText(String.valueOf(rank));
+                            assAverageScore.setText(String.valueOf(assAvgScore));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("studentRank",error.getMessage());
+
+                        // Handle error response
+                        if (error.networkResponse != null) {
+                            int statusCode = error.networkResponse.statusCode;
+                            byte[] errorResponseData = error.networkResponse.data; // Error response data
+                            String errorMessage = new String(errorResponseData); // Convert error data to string
+                            // Print the error details
+                            Log.d("userSubscription :",errorMessage);
+                            System.out.println("Error Status Code: " + statusCode);
+                            System.out.println("Error Response Data: " + errorMessage);
+                        }
+                    }
+                }
+        ){
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", getBodyContentType());
+                headers.put("Authorization", "Bearer " +StaticFile.bearToken);
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timer.cancel();
+    }
+    @Override
+    public void onProgressChange(int current, int max) {
+        if(current == max) {
+            // Toast.makeText(getApplicationContext(), "ddddd", Toast.LENGTH_SHORT).show();
+            bnp.setProgress(0);
+        }
+    }
+
+
     @Override
     public void onBackPressed() {
         Intent intent =new Intent(Competitive_Ass_Result_Screen.this,Assessment_home_Screen.class);

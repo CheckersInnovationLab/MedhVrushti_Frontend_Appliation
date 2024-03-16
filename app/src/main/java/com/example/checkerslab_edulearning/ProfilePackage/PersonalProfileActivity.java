@@ -41,6 +41,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.checkerslab_edulearning.Course_Enroll_Activity;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 
@@ -322,6 +323,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
     private void updateProfileImg()
     {
+        Log.d("Response", "response1");
         String updateProfileUrl=StaticFile.Url+"/api/v1/cil/users/update?userId="+StaticFile.userId+"&roleId=100001";
 
         Map<String, String> params = new HashMap<>();
@@ -429,20 +431,20 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
     private void updateProfile(String selectedImgUrl, String usernameL, String userMobNoL, String userEmailIdL, String userWhNoL, String parentMobNoL, String selectedBirthDate, String selectedGender, String userAddressL) {
 
-
-
-        String updateProfileUrl=StaticFile.Url+"/api/v1/cil/users/update?userId="+StaticFile.userId+"&roleId=100001";
+        String updateProfileUrl=StaticFile.Url+"/api/v1/cil/users/update?userId="+StaticFile.userId+"&roleId="+StaticFile.roleId;
 
         Map<String, String> params = new HashMap<>();
+        Log.d("usernameL",usernameL);
         params.put("firstName",usernameL );
         params.put("mobileNo",userMobNoL );
-        params.put("userWhatsappNo",userWhNoL );
+       params.put("userWhatsappNo",userWhNoL );
         params.put("emailId",userEmailIdL );
-        params.put("dateOfBirth", selectedBirthDate );
+        //params.put("dateOfBirth", selectedBirthDate );
         params.put("gender",selectedGender );
         params.put("address",userAddressL );
         params.put("parentsContactNo",parentMobNoL );
         params.put("createdBy","Medhvrushti Mobile App" );
+        params.put("profileStatus","Completed");
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -461,8 +463,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
                         }
                         else {
                             dialog.show();
-                            Log.d("Response", response);
-                            Toast.makeText(PersonalProfileActivity.this, "Response: " + response, Toast.LENGTH_LONG).show();
+                          //  Log.d("Response", response.getString());
+                           // Toast.makeText(PersonalProfileActivity.this, "Response: " + response, Toast.LENGTH_LONG).show();
                         }
 
 
@@ -471,6 +473,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.d("Updated","error");
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data;
@@ -481,73 +484,45 @@ public class PersonalProfileActivity extends AppCompatActivity {
                     }
                 })
                 {
-            @Override
-            public String getBodyContentType() {
-                return "multipart/form-data; boundary=" + boundary;
-            }
+                    @Override
+                    public String getBodyContentType() {
+                        return "multipart/form-data; boundary=" + boundary;
+                    }
 
 
 
-//            @Override
-//            public byte[] getBody() throws AuthFailureError {
-//                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//                PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8), true);
-//
-//                // Add parameters to the request body
-//                for (Map.Entry<String, String> entry : params.entrySet()) {
-//                    writer.append("--").append(boundary).append("\r\n");
-//                    writer.append("Content-Disposition: form-data; name=\"").append(entry.getKey()).append("\"\r\n");
-//                    writer.append("\r\n").append(entry.getValue()).append("\r\n");
-//                }
-//
-//                Log.d("ImageIssue",selectedImgUrl);
-//                Uri imageUri = Uri.parse(selectedImgUrl); // Assuming AnswerImagedModel has a method named getUriString
-//                Bitmap imageBitmap = null;
-//                try {
-//                    imageBitmap = MediaStore.Images.Media.getBitmap(PersonalProfileActivity.this.getContentResolver(), imageUri);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-//                byte[] imageBytes = byteArrayOutputStream.toByteArray();
-//
-//                // Add each image file to the request body
-//                writer.append("--").append(boundary).append("\r\n");
-//                writer.append("Content-Disposition: form-data; name=\"profileImgUrl\"; filename=\"image_" + 1 + ".jpg\"\r\n");
-//                writer.append("Content-Type: image/jpeg\r\n\r\n");
-//                writer.flush(); // Important!
-//
-//                try {
-//                    outputStream.write(imageBytes);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                try {
-//                    outputStream.flush();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                writer.append("\r\n"); // New line after image data
-//
-//
-//                writer.append("--").append(boundary).append("--").append("\r\n");
-//                writer.flush();
-//
-//                return outputStream.toByteArray();
-//            }
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                        PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8), true);
+
+                        // Add parameters to the request body
+                        for (Map.Entry<String, String> entry : params.entrySet()) {
+                            writer.append("--").append(boundary).append("\r\n");
+                            writer.append("Content-Disposition: form-data; name=\"").append(entry.getKey()).append("\"\r\n");
+                            writer.append("\r\n").append(entry.getValue()).append("\r\n");
+                        }
+
+
+                        writer.append("\r\n"); // New line after image data
+
+
+                        writer.append("--").append(boundary).append("--").append("\r\n");
+                        writer.flush();
+
+                        return outputStream.toByteArray();
+                    }
 
 
 
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", getBodyContentType());
-                headers.put("Authorization", "Bearer " + StaticFile.bearToken);
-                return headers;
-            }
-        };
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> headers = new HashMap<>();
+                        headers.put("Content-Type", getBodyContentType());
+                        headers.put("Authorization", "Bearer " + StaticFile.bearToken);
+                        return headers;
+                    }
+                };
         requestQueue.add(stringRequest);
 
     }

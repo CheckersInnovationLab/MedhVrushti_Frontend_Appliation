@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,9 +21,14 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.checkerslab_edulearning.CompetitivePkg.Competitive_Ass_Result_Screen;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.ProfilePackage.EducationalDetailsActivity;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
+import com.example.checkerslab_edulearning.commonActivityPackage.Assessment_Solution_Screen;
+import com.example.checkerslab_edulearning.commonActivityPackage.RankingLeaderBoard;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,17 +42,25 @@ public class AssessmentResultDetailsScreen extends AppCompatActivity {
 
     private TextView assessmentName,obtainedMarks,totalMarks,userRanking,totalParticipants,correctQuesCount,wrongQuesCount,unAnsweredQuesCount;
     private String userAssessmentId,assessmentNameS;
+    public static String assessmentId="";
     private ImageView backButton;
+    private RelativeLayout viewSolutionButton,viewRankingButton;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment_result_details_screen);
         
         Intent intent=getIntent();
-        userAssessmentId=intent.getStringExtra("User_assessment_id");
+//        userAssessmentId=intent.getStringExtra("User_assessment_id");
         assessmentNameS=intent.getStringExtra("User_assessment_name");
+        assessmentId=intent.getStringExtra("assessment_id");
 
-        
+        loadingDialog=new LoadingDialog(AssessmentResultDetailsScreen.this);
+        errorStatusDialog=new ErrorStatusDialog(AssessmentResultDetailsScreen.this);
+
+
        assessmentName=findViewById(R.id.AssessmentResultDetails_AssessmentName_id);
         obtainedMarks=findViewById(R.id.AssessmentResultDetails_ObtainedMarks_id);
         totalMarks=findViewById(R.id.AssessmentResultDetails_OutOfMarks_id);
@@ -56,6 +70,28 @@ public class AssessmentResultDetailsScreen extends AppCompatActivity {
         wrongQuesCount=findViewById(R.id.AssessmentResultDetails_WrongQuestionCount_id);
         unAnsweredQuesCount=findViewById(R.id.AssessmentResultDetails_UnAnsweredCountCount_id);
         backButton=findViewById(R.id.assessmentResultDetails_Toolbar_back_button);
+        viewSolutionButton=findViewById(R.id.Result_details_ViewSolutionButton_id);
+        viewRankingButton=findViewById(R.id.Result_details_ViewRankingButton_id);
+        viewRankingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(getApplicationContext(), RankingLeaderBoard.class);
+                intent1.putExtra("assessmentId",AssessmentResultDetailsScreen.assessmentId);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent1);
+            }
+        });
+
+        viewSolutionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AssessmentResultDetailsScreen.this, Assessment_Solution_Screen.class);
+                intent.putExtra("assessment_id",assessmentId);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+            }
+        });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,18 +101,15 @@ public class AssessmentResultDetailsScreen extends AppCompatActivity {
         });
 
         
-        getAssessmentDetails(userAssessmentId);
+        getAssessmentDetails(assessmentId);
         assessmentName.setText(assessmentNameS);
 
-        
-        
-        
     }
 
-    private void getAssessmentDetails(String userAssessmentId) {
-        Log.d("getAssessmentDetails","log1");
+    private void getAssessmentDetails(String assessmentId) {
+       loadingDialog.startLoadingDialog();
 
-        String url= StaticFile.Url+"/api/v1/cil/user_assessments/get?user_ass_id="+userAssessmentId;
+        String url= StaticFile.Url+"/api/v1/cil/user_assessments/get/by/user_id_and_assessment_id?user_id="+StaticFile.userId+"&assessment_id="+assessmentId;
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -84,17 +117,14 @@ public class AssessmentResultDetailsScreen extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("getAssessmentDetails","log2");
-                        // Handle success response from the server
+                       loadingDialog.dismissDialog();
                             try {
-
-
 
                              String obtainedMarksL=response.getString("obtained_marks");
                              String totalMarksL=response.getString("total_marks");
                              String correctAnswerCountL=response.getString("attribute10");
-                             String wrongAnswerCountL=response.getString("attribute9");
-                             String unAnsweredQuesCountL=response.getString("attribute8");
+                             String wrongAnswerCountL=response.getString("attribute8");
+                             String unAnsweredQuesCountL=response.getString("attribute9");
                              String assessmentIdL=response.getString("assessment_id");
                              getRankingDetails(StaticFile.userId,assessmentIdL);
 
@@ -104,16 +134,14 @@ public class AssessmentResultDetailsScreen extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                     }
-
-
-
-
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // Handle error response
                         if (error.networkResponse != null) {
+                            loadingDialog.dismissDialog();
+                            errorStatusDialog.showErrorMessage();
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
@@ -174,9 +202,8 @@ public class AssessmentResultDetailsScreen extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Log.d("Response","Not Updated");
-                        // Handle error response
                         if (error.networkResponse != null) {
+                            errorStatusDialog.showErrorMessage();
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string

@@ -27,6 +27,8 @@ import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainFragme
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -37,7 +39,7 @@ public class Course_Enroll_Activity extends AppCompatActivity {
     Button enroll;
     private String url=StaticFile.Url+"/api/v1/cil/user_subscriptions/add";
 
-    private static String subscription_id,subscription_name,subscription_type,subscription_category,standard_id,subject_id,
+    public static String subscription_id,subscription_name,subscription_type,subscription_category,standard_id,subject_id,
             access_id,subscription_price,description,default_discount,subscription_img_url;
 
     private TextView subscriptionNameT,subscriptionPriceT;
@@ -63,7 +65,12 @@ public class Course_Enroll_Activity extends AppCompatActivity {
           enroll.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  AddUserPayment();
+//                  AddUserPayment();
+                 // AddUserSubscription("100022");
+
+                  Intent intent1=new Intent(Course_Enroll_Activity.this,SubscriptionPaymentScreen.class);
+                  intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                  startActivity(intent1);
               }
           });
     }
@@ -154,7 +161,7 @@ public class Course_Enroll_Activity extends AppCompatActivity {
             requestData.put("discount_applied", "100%");
             requestData.put("payment_status", "Completed");
             requestData.put("payment_method", "online");
-            requestData.put("transaction_id", "254341sHDS365s"+String.valueOf(n));
+            requestData.put("transaction_id", "25434133sHDS365s"+String.valueOf(n));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -212,6 +219,8 @@ public class Course_Enroll_Activity extends AppCompatActivity {
 
     }
     private void AddUserSubscription(String paymentId) {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String date = df.format(Calendar.getInstance().getTime());
 
         JSONObject requestData = new JSONObject();
         try {
@@ -228,6 +237,8 @@ public class Course_Enroll_Activity extends AppCompatActivity {
             requestData.put("total_validity", "2  months");
             requestData.put("auto_renewal", "true");
             requestData.put("status", "Active");
+//            requestData.put("subscription_date", date);
+//            requestData.put("access_end_date", StaticFile.todayDate);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -243,7 +254,6 @@ public class Course_Enroll_Activity extends AppCompatActivity {
                         // Handle success response from the server
                         try {
                             String message = response.getString("message");
-                            Log.d("User_Subscription_Status",message);
                             FragmentManager fragmentManager = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.Enroll_layout_id, new MyLearningMainFragment());

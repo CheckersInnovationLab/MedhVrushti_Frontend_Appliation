@@ -52,8 +52,9 @@ public class myAssessmentAdapter  extends RecyclerView.Adapter<myAssessmentAdapt
             public void onClick(View v) {
 
                 Intent intent=new Intent(context, AssessmentResultDetailsScreen.class);
-                 intent.putExtra("User_assessment_id",myAssessmentModel.getUser_assessmentID());
+                 //intent.putExtra("User_assessment_id",myAssessmentModel.getUser_assessmentID());
                  intent.putExtra("User_assessment_name",myAssessmentModel.getAssessmentName());
+                 intent.putExtra("assessment_id",myAssessmentModel.getAssessmentId());
                  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
 

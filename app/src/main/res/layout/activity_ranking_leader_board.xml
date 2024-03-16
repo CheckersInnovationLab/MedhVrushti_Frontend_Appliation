@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".commonActivityPackage.RankingLeaderBoard">
+
+    <TextView
+        android:id="@+id/LeaderBoard_Heading_rank_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leader Board"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="#056D9C"
+        android:textStyle="bold"/>
+
+
+    <RelativeLayout
+        android:layout_below="@+id/LeaderBoard_Heading_rank_id"
+        android:id="@+id/LeaderBoard_lottie_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_id1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_140sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/leader_board_lottie" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/headerLayout_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LeaderBoard_lottie_id"
+        android:weightSum="7"
+        android:background="#CED0D1"
+        android:paddingBottom="@dimen/_12sdp"
+        android:paddingTop="@dimen/_12sdp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/RankingLeaderBoard_rank_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rank "
+
+             android:layout_marginLeft="@dimen/_5sdp"
+                android:backgroundTint="#0583BC"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/RankingLeaderBoard_UserName_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0583BC"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:text="User Name"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="end"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/RankingLeaderBoard_UserMarks_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marks"
+                android:textColor="#13A819"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerLayout_id">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RankingLeaderBoard_recyclerView_id"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

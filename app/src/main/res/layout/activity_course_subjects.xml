@@ -37,13 +37,6 @@
 
 
   </androidx.recyclerview.widget.RecyclerView>
-  <ProgressBar
-      android:id="@+id/course_subject_pbLoading"
-      android:visibility="gone"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:layout_gravity="center"/>
 
 
 

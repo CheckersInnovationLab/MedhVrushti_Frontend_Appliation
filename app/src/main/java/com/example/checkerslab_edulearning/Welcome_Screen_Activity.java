@@ -39,8 +39,6 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
     private Button getStarted;
     private Dialog dialog;
     private String mobileNumber;
-  //  private int code=123456;
-
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -53,7 +51,6 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
         String[] permission={
                 android.Manifest.permission.READ_PHONE_NUMBERS
         };
-
 
         requestPermissions(permission,102);
         getStarted.setOnClickListener(new View.OnClickListener() {
@@ -112,12 +109,6 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 SendOTP(mobileNumber);
-//                Intent intent=new Intent(Welcome_Screen_Activity.this, OTP_Verification_Activity.class);
-//                intent.putExtra("Generated_otp",String.valueOf(code));
-//                intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
-//                Log.d("MobileNO",String.valueOf(mobileNumber));
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
             }
         });
         useAnMeth.setOnClickListener(new View.OnClickListener() {
@@ -148,8 +139,16 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("ErrorMessage", error.getMessage().toString());
-                Toast.makeText(Welcome_Screen_Activity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Welcome_Screen_Activity.this, "Error! Please Check Internet Connection Or Restart Activity", Toast.LENGTH_SHORT).show();
+                if (error.networkResponse != null) {
+                    int statusCode = error.networkResponse.statusCode;
+                    byte[] errorResponseData = error.networkResponse.data; // Error response data
+                    String errorMessage = new String(errorResponseData); // Convert error data to string
+                    // Print the error details
+                    System.out.println("Error Status Code: " + statusCode);
+                    System.out.println("Error Response Data: " + errorMessage);
+
+                }
             }
         });
         requestQueue.add(request);

@@ -3,12 +3,17 @@ package com.example.checkerslab_edulearning.mainHome_pkg;
 public class popularCoursesModel {
 
 
-    String courseImage,courseDiscount,courseName;
+    String courseImage,courseDiscount,courseName,subscriptionId;
 
     public popularCoursesModel(String courseImage, String courseDiscount, String courseName) {
         this.courseImage = courseImage;
         this.courseDiscount = courseDiscount;
         this.courseName = courseName;
+    }
+
+    public popularCoursesModel(String courseImage, String subscriptionId) {
+        this.courseImage = courseImage;
+        this.subscriptionId = subscriptionId;
     }
 
     public popularCoursesModel() {
@@ -36,5 +41,13 @@ public class popularCoursesModel {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public String getSubscriptionId() {
+        return subscriptionId;
+    }
+
+    public void setSubscriptionId(String subscriptionId) {
+        this.subscriptionId = subscriptionId;
     }
 }

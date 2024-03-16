@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/payment_layout_id"
+    tools:context=".SubscriptionPaymentScreen">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/welcome_screen_lottie_id"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/CouponCode_card_id"
+        android:layout_height="match_parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_id1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+          android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            app:lottie_rawRes="@raw/coupon_code_lottie" />
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CouponCode_card_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+       android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:backgroundTint="#4E0383"
+            android:background="@drawable/card_upper_corner_back">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter Coupon Code"
+                android:textStyle="bold"
+                android:textSize="@dimen/_25ssp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="please,Enter Coupon Code to unlock your course and start learning "
+                android:textSize="@dimen/_12ssp"
+                android:textColor="#DCDDDD"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"/>
+
+
+            <EditText
+                android:id="@+id/CouponCode_EditText_Id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_back"
+                android:backgroundTint="@color/white"
+                android:hint="Enter Coupon Code"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:drawablePadding="@dimen/_5sdp"
+                android:drawableLeft="@drawable/discount_icon"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"/>
+
+            <Button
+                android:id="@+id/CouponCode_submitButton_Id"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:text="Submit"
+                app:backgroundTint="#00AC07"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/button_border"
+                android:layout_marginBottom="@dimen/_10sdp"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
+</RelativeLayout>

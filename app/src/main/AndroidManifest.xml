@@ -30,6 +30,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".commonActivityPackage.RankingLeaderBoard"
+            android:exported="false" />
+        <activity
+            android:name=".storePackage.StoreAllCoursesScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SubscriptionPaymentScreen"
+            android:exported="false" />
+        <activity
             android:name=".NavigationDrawerPkg.AssessmentResultDetailsScreen"
             android:exported="false" />
         <activity
@@ -43,12 +52,6 @@
             android:exported="false" />
         <activity
             android:name=".mainHome_pkg.ActiveSubscriptionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".commonActivityPackage.Rate_Us_Screen"
-            android:exported="false" />
-        <activity
-            android:name=".commonActivityPackage.Contact_Us_Screen"
             android:exported="false" />
         <activity
             android:name=".ProfilePackage.EducationalDetailsActivity"

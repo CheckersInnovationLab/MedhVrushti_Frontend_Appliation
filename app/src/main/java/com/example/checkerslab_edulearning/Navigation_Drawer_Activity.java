@@ -26,10 +26,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.checkerslab_edulearning.NavigationDrawerPkg.ContactUsFragment;
 import com.example.checkerslab_edulearning.NavigationDrawerPkg.PerformanceFragment;
+import com.example.checkerslab_edulearning.NavigationDrawerPkg.RateUsFragment;
+import com.example.checkerslab_edulearning.ProfilePackage.PersonalProfileActivity;
 import com.example.checkerslab_edulearning.ProfilePackage.ProfileFragment;
 import com.example.checkerslab_edulearning.commonActivityPackage.PrivacyPolicyScreen;
 import com.example.checkerslab_edulearning.databinding.ActivityNavigationDrawerBinding;
+import com.example.checkerslab_edulearning.myLearningPakage.MyLearningMainFragment;
 import com.example.checkerslab_edulearning.subscription.User_Subscription_screen;
 import com.google.android.material.navigation.NavigationView;
 
@@ -39,26 +43,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
+
 public class Navigation_Drawer_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
     private ActivityNavigationDrawerBinding binding;
-
     private RelativeLayout editButton;
     private RelativeLayout laterButton;
     Dialog dialog;
-   public static  String BearerToken="";
+    public static  String BearerToken="";
     private TextView userName,emailId,mobileNo,courseName;
     private ImageView userProfileImage;
-    public static  String studName="",studEmailId="",studMobileNo="",studProfileImage="";
+    public static  String studName="",studEmailId="",studMobileNo="",studProfileImage="",userProfileStatus="";
     public static String studCourseName="";
    // public static String userId="100001";
     @Override
@@ -81,10 +92,18 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         dialog.setCancelable(false);
         dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-        dialog.show();
+
 
         editButton=dialog.findViewById(R.id.edit_profile_pop_up_edit_id);
         laterButton=dialog.findViewById(R.id.edit_profile_pop_up_later_id);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), PersonalProfileActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
 
         laterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,10 +133,6 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
         mobileNo=hView.findViewById(R.id.nav_student_mobileNo_id);
         courseName=hView.findViewById(R.id.nav_student_CourseNo_id);
         userProfileImage=hView.findViewById(R.id.User_profile_image_id);
-
-
-
-//
 
         getUserDetails();
 
@@ -154,6 +169,8 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
 
             case R.id.nav_profile:
 
+
+
                 ProfileFragment profileFragment=new ProfileFragment();
                 FragmentTransaction transaction2=getSupportFragmentManager().beginTransaction();
                 transaction2.replace(R.id.content_id,profileFragment);
@@ -166,6 +183,20 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                 FragmentTransaction transaction3=getSupportFragmentManager().beginTransaction();
                 transaction3.replace(R.id.content_id,performanceFragment);
                 transaction3.commit();
+                break;
+            case R.id.nav_Contact_Us:
+
+                ContactUsFragment contactUsFragment=new ContactUsFragment();
+                FragmentTransaction transaction01=getSupportFragmentManager().beginTransaction();
+                transaction01.replace(R.id.content_id,contactUsFragment);
+                transaction01.commit();
+                break;
+            case R.id.nav_Rate_Us:
+
+                RateUsFragment rateUsFragment=new RateUsFragment();
+                FragmentTransaction transaction02=getSupportFragmentManager().beginTransaction();
+                transaction02.replace(R.id.content_id,rateUsFragment);
+                transaction02.commit();
                 break;
 
             case R.id.nav_log_out:
@@ -212,10 +243,17 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                             studMobileNo=response.getString("mobile_no");
 //                            studCourseName=response.getString("standard_id");
                             studProfileImage=response.getString("profile_image_url");
+                            userProfileStatus=response.getString("profile_status");
+
                             // Display or handle the message as needed
                             setUserDetails(studName,studEmailId,studCourseName,studMobileNo,studProfileImage);
                         } catch (JSONException e) {
                             e.printStackTrace();
+                        }
+                        Log.d("userProfileStatus",userProfileStatus);
+                        if (!(userProfileStatus=="Completed"|| userProfileStatus.equals("Completed")))
+                        {
+                            dialog.show();
                         }
                     }
                 },
@@ -275,4 +313,35 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                     .into(userProfileImage);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+       // super.onBackPressed();
+
+//        dialog= new Dialog(Navigation_Drawer_Activity.this);
+//        dialog.setContentView(R.layout.dialog_message_layout);
+//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        dialog.setCancelable(false);
+////
+////        StartLearningButton=dialog.findViewById(R.id.successful_layout_OkButton_id);
+////        StartLearningButton.setText("Start Learning");
+////        StartLearningButton.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                dialog.cancel();
+////                FragmentManager fragmentManager = getSupportFragmentManager();
+////                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+////                fragmentTransaction.replace(R.id.payment_layout_id, new MyLearningMainFragment());
+////                fragmentTransaction.addToBackStack(null);
+////                fragmentTransaction.commit();
+////            }
+////        });
+//        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+//        dialog.show();
+
+//        Intent intent=new Intent(getApplicationContext(),Welcome_Screen_Activity.class);
+//        startActivity(intent);
+    }
+
+
 }

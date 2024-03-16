@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
+import com.example.checkerslab_edulearning.NavigationDrawerPkg.AssessmentResultDetailsScreen;
 import com.example.checkerslab_edulearning.R;
 
 import java.util.List;
@@ -43,6 +44,9 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
 
         holder.assessmentName.setText(allAssessmentModel.getAssName());
         holder.assessmentStatus.setText(allAssessmentModel.getAssStatus());
+        holder.totalTime.setText(String.valueOf(allAssessmentModel.getTotalTime())+"min");
+        holder.totalMarks.setText(allAssessmentModel.getTotalMarks()+"marks");
+        holder.totalQuestion.setText(allAssessmentModel.getTotalQuestion()+"Qs");
 
         if (allAssessmentModel.getAssStatus().equals("Completed"))
         {
@@ -58,11 +62,22 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
             public void onClick(View v) {
                 Intent intent=new Intent(context, Test_Reminder_activity.class);
                 intent.putExtra("assessment_id",allAssessmentModel.getAssId());
-                intent.putExtra("assessment_marks",allAssessmentModel.getAssMarks());
-                intent.putExtra("assessment_Name",allAssessmentModel.getAssName());
+//                intent.putExtra("assessment_marks",allAssessmentModel.getAssMarks());
+//                intent.putExtra("assessment_Name",allAssessmentModel.getAssName());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
 
+
+            }
+        });
+        holder.checkResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, AssessmentResultDetailsScreen.class);
+                intent.putExtra("User_assessment_name",allAssessmentModel.getAssName());
+                intent.putExtra("assessment_id",allAssessmentModel.getAssId());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                view.getContext().startActivity(intent);
 
             }
         });
@@ -75,7 +90,7 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView assessmentName,assessmentStatus;
+        TextView assessmentName,assessmentStatus,totalMarks,totalTime,totalQuestion;
         Button start,checkResult;
 
         public ViewHolder(@NonNull View itemView) {
@@ -85,6 +100,9 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
             start = itemView.findViewById(R.id.Assessment_start_button_id);
             assessmentStatus=itemView.findViewById(R.id.Assessment_status_id);
             checkResult=itemView.findViewById(R.id.Assessment_Result_button_id);
+            totalMarks=itemView.findViewById(R.id.AssessmentTotalMarks_id);
+            totalQuestion=itemView.findViewById(R.id.AssessmentTotalQuestion_id);
+            totalTime=itemView.findViewById(R.id.AssessmentTotalTime_id);
         }
     }
 }
