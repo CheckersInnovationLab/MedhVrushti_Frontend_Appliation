@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.BoardModelClass;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.standardModelClass;
@@ -43,18 +46,30 @@ public class EducationalDetailsActivity extends AppCompatActivity {
     private EditText userSchoolName,userDepartment;
     private AutoCompleteTextView courseAutoCompleteTxt,standardAutoCompleteTxt;
     private TextView saveButton;
-    String academicId="";
-    String selectedCourseID="",selectedStandardID="";
-    List<BoardModelClass> coursesList;
-    List<String> courseNames,standardName;
-    List<standardModelClass> standardList;
-    ArrayAdapter<BoardModelClass> courseAdapterItems,standardAdapterItems;
+    private String academicId="";
+    private String selectedCourseID="",selectedStandardID="";
+    private List<BoardModelClass> coursesList;
+    private List<String> courseNames,standardName;
+    private List<standardModelClass> standardList;
+    private ArrayAdapter<BoardModelClass> courseAdapterItems,standardAdapterItems;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
+    private ImageView backButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_educational_details);
+        loadingDialog=new LoadingDialog(EducationalDetailsActivity.this);
+        errorStatusDialog=new ErrorStatusDialog(EducationalDetailsActivity.this);
+        backButton=findViewById(R.id.edit_education_detailsToolbar_back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         userSchoolName=findViewById(R.id.edit_schoolName_id);
         courseAutoCompleteTxt=findViewById(R.id.edit_courseName_id);
@@ -82,9 +97,8 @@ public class EducationalDetailsActivity extends AppCompatActivity {
     }
 
     private void getUserEducationData() {
+        loadingDialog.startLoadingDialog();
 
-
-        //////////////////////// get Academic Details/////////////////////////////
         String url2= StaticFile.Url+"/api/v1/cil/user-academic-details/get/by/user?";
         url2=url2+"user_id="+StaticFile.userId;
 
@@ -94,6 +108,7 @@ public class EducationalDetailsActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        loadingDialog.dismissDialog();
                         // Handle success response from the server
                         try {
                             String schoolName  = response.getString("school_name");
@@ -112,14 +127,15 @@ public class EducationalDetailsActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
+                            Toast.makeText(EducationalDetailsActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -169,9 +185,8 @@ public class EducationalDetailsActivity extends AppCompatActivity {
 
 
     private void UpdateDetails(String userSchoolNameL, String userCourseNameL, String userStandardL, String userDepartmentL) {
-        Log.d("IN the Update",selectedCourseID+"standard="+selectedStandardID);
-
-        String Url="https://medhvrushti.checkerslab.com/api/v1/cil/user-academic-details/update?academic_id="+academicId;
+       loadingDialog.startLoadingDialog();
+        String Url=StaticFile.Url+"/api/v1/cil/user-academic-details/update?academic_id="+academicId;
 
         JSONObject requestData = new JSONObject();
         try {
@@ -183,6 +198,7 @@ public class EducationalDetailsActivity extends AppCompatActivity {
 ////            }
             requestData.put("board_id", selectedCourseID);
             requestData.put("std_id", selectedStandardID);
+            requestData.put("attribute1",userDepartmentL);
 
 
         } catch (JSONException e) {
@@ -194,6 +210,7 @@ public class EducationalDetailsActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        loadingDialog.dismissDialog();
                         try {
                             String message = response.getString("message");
                             Toast.makeText(EducationalDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -206,16 +223,14 @@ public class EducationalDetailsActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
-                        Log.d("Response","Not Updated");
+                            loadingDialog.dismissDialog();
+                            errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
-                            // Print the error details
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
+                            Toast.makeText(EducationalDetailsActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -416,7 +431,6 @@ public class EducationalDetailsActivity extends AppCompatActivity {
 
                 // Extract the id
                 selectedStandardID= selectedStandard.getId();
-                Log.d("selected Board Id", selectedStandardID);
             }
         });
 

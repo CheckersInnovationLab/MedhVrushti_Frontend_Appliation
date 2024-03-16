@@ -48,7 +48,6 @@ public class ChapterWise_Assessment_Tab extends Fragment {
 
         recyclerView.setLayoutManager(VerticalLayout);
 
-        Log.d("getChapter",String.valueOf(Assessment_home_Screen.courseChapterList.size()));
 
         CourseChapterAdapter adapter=new CourseChapterAdapter(Assessment_home_Screen.courseChapterList,getContext());
         recyclerView.setAdapter(adapter);

@@ -52,7 +52,7 @@ public class Final_Assessment_Tab extends Fragment {
                 LinearLayoutManager.VERTICAL,
                 false);
 
-        recyclerView.setLayoutManager(VerticalLayout);
+         recyclerView.setLayoutManager(VerticalLayout);
          allAssessmentAdapter = new AllAssessmentAdapter(Assessment_home_Screen.finalAssessmentList, getContext());
          recyclerView.setAdapter(allAssessmentAdapter);
 

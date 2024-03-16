@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -42,6 +43,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.checkerslab_edulearning.Course_Enroll_Activity;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 
@@ -67,28 +70,35 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PersonalProfileActivity extends AppCompatActivity {
 
-    EditText userName,userMobNo,userWhNo,userEmailId,userGender,userAddress,parentMobNo,userProfileImg;
-    CircleImageView profileImageView;
-    TextView update,userBirthDate;
-    LinearLayout userBirthDateLayout;
-    RadioGroup radioGroupGender;
-    RadioButton button1,button2;
+    private EditText userName,userMobNo,userWhNo,userEmailId,userGender,userAddress,parentMobNo,userProfileImg;
+    private CircleImageView profileImageView;
+    private TextView update,userBirthDate;
+    private LinearLayout userBirthDateLayout;
+    private RadioGroup radioGroupGender;
+    private RadioButton button1,button2;
     private static final int CAMERA_REQUEST = 100;
     private static final int STORAGE_REQUEST = 200;
     private static final int IMAGE_PICKCAMERA_REQUEST = 500;
-    String cameraPermission[];
-    String storagePermission[];
-    Uri imageuri;
-    Bitmap bitmap;
-    String selectedImgUrl="",selectedBirthDate="";
-    Dialog dialog;
-    String profileImgStatus="Not Updated";
-    Button okButton;
+    private String cameraPermission[];
+    private String storagePermission[];
+    private Uri imageuri;
+    private Bitmap bitmap;
+    private String selectedImgUrl="",selectedBirthDate="";
+    private Dialog dialog;
+    private String profileImgStatus="Not Updated";
+    private Button okButton;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
+    public static String emailID="";
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_profile);
+
+        loadingDialog=new LoadingDialog(PersonalProfileActivity.this);
+        errorStatusDialog=new ErrorStatusDialog(PersonalProfileActivity.this);
 
         //initialization
         userName=findViewById(R.id.edit_studName_id);
@@ -104,6 +114,14 @@ public class PersonalProfileActivity extends AppCompatActivity {
         userBirthDateLayout=findViewById(R.id.edit_BirthDate_layout_id);
         button1=findViewById(R.id.radioButtonMale);
         button2=findViewById(R.id.radioButtonFemale);
+        backButton=findViewById(R.id.edit_personal_detailsToolbar_back_button);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         //successful message Dialog box
         dialog= new Dialog(PersonalProfileActivity.this);
@@ -194,6 +212,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 String parentMobNoL=parentMobNo.getText().toString();
                 String userAddressL=userAddress.getText().toString();
 
+
                 updateProfile(selectedImgUrl,usernameL,userMobNoL,userEmailIdL,userWhNoL,parentMobNoL,selectedBirthDate,selectedGender,userAddressL);
             }
 
@@ -201,6 +220,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
     }
 
     private void FetchProfileData() {
+        loadingDialog.startLoadingDialog();
 
         String url2= StaticFile.Url+"/api/v1/cil/users/get?";
         url2=url2+"user_id="+StaticFile.userId;
@@ -211,13 +231,14 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        loadingDialog.dismissDialog();
                         // Handle success response from the server
                         try {
                            String mobileNumber  = response.getString("mobile_no");
                             String name  = response.getString("first_name");
                             selectedImgUrl  = response.getString("profile_image_url");
                             String whatsappNo  = response.getString("user_whatsapp_no");
-                            String emailID  = response.getString("email_id");
+                            emailID  = response.getString("email_id");
                             String birthDate  = response.getString("date_of_birth");
                             String gender  = response.getString("gender");
                             String address  = response.getString("address");
@@ -235,6 +256,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
@@ -323,7 +346,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
     private void updateProfileImg()
     {
-        Log.d("Response", "response1");
+        loadingDialog.startLoadingDialog();
         String updateProfileUrl=StaticFile.Url+"/api/v1/cil/users/update?userId="+StaticFile.userId+"&roleId=100001";
 
         Map<String, String> params = new HashMap<>();
@@ -337,14 +360,16 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        loadingDialog.dismissDialog();
                         dialog.show();
-                        Log.d("Response", response);
-                        Toast.makeText(PersonalProfileActivity.this, "Response: " + response, Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data;
@@ -431,6 +456,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
     private void updateProfile(String selectedImgUrl, String usernameL, String userMobNoL, String userEmailIdL, String userWhNoL, String parentMobNoL, String selectedBirthDate, String selectedGender, String userAddressL) {
 
+        loadingDialog.startLoadingDialog();
         String updateProfileUrl=StaticFile.Url+"/api/v1/cil/users/update?userId="+StaticFile.userId+"&roleId="+StaticFile.roleId;
 
         Map<String, String> params = new HashMap<>();
@@ -438,7 +464,10 @@ public class PersonalProfileActivity extends AppCompatActivity {
         params.put("firstName",usernameL );
         params.put("mobileNo",userMobNoL );
        params.put("userWhatsappNo",userWhNoL );
-        params.put("emailId",userEmailIdL );
+        if (!((userEmailIdL.equals(emailID))||(userEmailIdL == emailID)))
+        {
+            params.put("emailId",userEmailIdL );
+        }
         //params.put("dateOfBirth", selectedBirthDate );
         params.put("gender",selectedGender );
         params.put("address",userAddressL );
@@ -455,6 +484,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        loadingDialog.dismissDialog();
 
                         if (profileImgStatus.equals("Updated"))
                         {
@@ -473,7 +503,8 @@ public class PersonalProfileActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Updated","error");
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data;

@@ -168,7 +168,7 @@ public class Assessment_home_Screen extends AppCompatActivity {
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                           Log.d("abcd",errorMessage);
+
                         }
                     }
                 }

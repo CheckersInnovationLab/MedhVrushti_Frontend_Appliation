@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,6 +22,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.NavigationDrawerPkg.PerformanceFragment;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
@@ -36,19 +39,23 @@ public class ProfileFragment extends Fragment {
 
 
     private ImageView editPersonalProfile,editEducationalDetails;
-    private TextView userName,userEmailID,userMobileNumber,userCourseName,userAddress,userCollegeName;
-    private LinearLayout contactUsButton,rateUsButton,performanceButton;
+    private TextView userName,userEmailID,userMobileNumber,userCourseName,userAddress,userCollegeName,department;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
 
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_profile, container, false);
+
+        loadingDialog=new LoadingDialog(getActivity());
+        errorStatusDialog=new ErrorStatusDialog(getActivity());
 
         editPersonalProfile=view.findViewById(R.id.edit_personal_details_button_id);
         editEducationalDetails=view.findViewById(R.id.edit_education_details_button_id);
+        department=view.findViewById(R.id.education_detail_department_name_id);
 
 
 
@@ -58,27 +65,8 @@ public class ProfileFragment extends Fragment {
         userCollegeName=view.findViewById(R.id.education_detail_college_name_id);
         userCourseName=view.findViewById(R.id.education_detail_department_name_id);
         userAddress=view.findViewById(R.id.education_detail_location_name_id);
-//        rateUsButton=view.findViewById(R.id.Rate_Us_button_id);
-//        contactUsButton=view.findViewById(R.id.Contact_Us_button_id);
-//        performanceButton=view.findViewById(R.id.performance_button_id);
-//
-//        contactUsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(getContext(), Contact_Us_Screen.class);
-//                startActivity(intent);
-//            }
-//        });
-//        rateUsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(getContext(), Rate_Us_Screen.class);
-//                startActivity(intent);
-//            }
-//        });
-
         getProfileDetails();
-        getEducationDetails();
+        getUserEducationData();
         editPersonalProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,24 +81,13 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-//        performanceButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                PerformanceFragment fragment1 = new PerformanceFragment();
-//                FragmentTransaction transaction2=getActivity().getSupportFragmentManager().beginTransaction();
-//               // FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                transaction2.replace(android.R.id.content, fragment1);
-//                transaction2.disallowAddToBackStack();
-//                transaction2.commit();
-//            }
-//        });
         return view;
     }
 
 
 
     private void getProfileDetails() {
+        loadingDialog.startLoadingDialog();
 
         String url2= StaticFile.Url+"/api/v1/cil/users/get?";
         url2=url2+"user_id="+StaticFile.userId;
@@ -121,6 +98,7 @@ public class ProfileFragment extends Fragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        loadingDialog.dismissDialog();
                         // Handle success response from the server
                         try {
                             String mobileNumber  = response.getString("mobile_no");
@@ -146,14 +124,14 @@ public class ProfileFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
-                            // Print the error details
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
+                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -189,49 +167,119 @@ public class ProfileFragment extends Fragment {
             userEmailID.setText(emailID);
         }
     }
-    private void getEducationDetails() {
+    private void getUserEducationData() {
+        //loadingDialog.startLoadingDialog();
 
-        String courseUrl=StaticFile.Url+"/api/v1/cil/board/get/all";
-        RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
+        String url2= StaticFile.Url+"/api/v1/cil/user-academic-details/get/by/user?";
+        url2=url2+"user_id="+StaticFile.userId;
 
-        JsonArrayRequest jsonObjectRequest2 = new JsonArrayRequest(Request.Method.GET, courseUrl,null,
-                new Response.Listener<JSONArray>() {
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url2,null,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
+                        loadingDialog.dismissDialog();
                         // Handle success response from the server
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject object = response.getJSONObject(i);
-
-                                object.getString("board_name");
-                                object.getString("board_id");
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                        try {
+                            String schoolName  = response.getString("school_name");
+                            String boardId  = response.getString("board_id");
+                            String stdId  = response.getString("std_id");
+//                            academicId  = response.getString("academic_id");
+                            String departmentName=response.getString("attribute1");
+                            userCollegeName.setText(schoolName);
+                            department.setText(departmentName);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
+                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-        ) {
+        ){
+
             @Override
             public String getBodyContentType() {
                 return "application/json; charset=utf-8";
             }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", getBodyContentType());
+                headers.put("Authorization", "Bearer " + StaticFile.bearToken);
+                return headers;
+            }
         };
-        requestQueue2.add(jsonObjectRequest2);
+        requestQueue.add(jsonObjectRequest);
+
     }
+
+
+
+
+
+
+//         private void getEducationDetails() {
+//        loadingDialog.startLoadingDialog();
+//
+//        String courseUrl=StaticFile.Url+"/api/v1/cil/board/get/all";
+//        RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
+//
+//        JsonArrayRequest jsonObjectRequest2 = new JsonArrayRequest(Request.Method.GET, courseUrl,null,
+//                new Response.Listener<JSONArray>() {
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+//                        loadingDialog.dismissDialog();
+//                        // Handle success response from the server
+//                        for (int i = 0; i < response.length(); i++) {
+//                            try {
+//
+//                                JSONObject object = response.getJSONObject(i);
+//
+//                                object.getString("board_name");
+//                                object.getString("board_id");
+//
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        loadingDialog.dismissDialog();
+//                        errorStatusDialog.showErrorMessage();
+//                        // Handle error response
+//                        if (error.networkResponse != null) {
+//                            int statusCode = error.networkResponse.statusCode;
+//                            byte[] errorResponseData = error.networkResponse.data; // Error response data
+//                            String errorMessage = new String(errorResponseData); // Convert error data to string
+//                            // Print the error details
+//                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                }
+//        ) {
+//            @Override
+//            public String getBodyContentType() {
+//                return "application/json; charset=utf-8";
+//            }
+//        };
+//        requestQueue2.add(jsonObjectRequest2);
+//    }
 }

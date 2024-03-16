@@ -187,7 +187,6 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
         {
             model.setStatus("UnAnswered");
         }
-        Log.d("getBookmarkStatus",String.valueOf(model.getBookmarkStatus()));
 
 
         if (model.getBookmarkStatus()==(true))
@@ -198,7 +197,6 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
 
         if (!model.getSelectedAnswer().isEmpty())
         {
-//            Log.d("selected Answer",String.valueOf(currentQuesNO)+"---"+model.getSelectedAnswer());
 
             getQuestionStatus(currentQuesNO);
 
@@ -253,95 +251,6 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
             Log.d("latexQuestion",e.getMessage());
         }
 
-//        question.getSettings().setJavaScriptEnabled(true);
-//        question.setWebChromeClient(new WebChromeClient());
-//
-
-//
-//        String htmlData = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-//                "<script type=\"text/x-mathjax-config\">" +
-//                "MathJax.Hub.Config({" +
-//                "  messageStyle: 'none'," +
-//                "  tex2jax: {preview: 'none'}," +
-//                "  showMathMenu: false" + // This line disables the MathJax context menu
-//                "});" +
-//                "</script>" +
-//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-//                "</head><body>" +finalUpdatedQuestion + "</body></html>";
-//
-//        Log.d("New Log",finalUpdatedQuestion);
-//
-//
-//        question.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null);
-
-
-//
-//        option1.getSettings().setJavaScriptEnabled(true);
-//        option1.setWebChromeClient(new WebChromeClient());
-//        String htmlDat1 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-//                "<script type=\"text/x-mathjax-config\">" +
-//                "MathJax.Hub.Config({" +
-//                "  messageStyle: 'none'," +
-//                "  tex2jax: {preview: 'none'}," +
-//                "  showMathMenu: false" + // This line disables the MathJax context menu
-//                "});" +
-//                "</script>" +
-//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-//                "</head><body>" + model.getOption1() + "</body></html>";
-//
-//        option1.loadDataWithBaseURL(null, htmlDat1, "text/html", "UTF-8", null);
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//
-/////////////////////////////
-//        option2.getSettings().setJavaScriptEnabled(true);
-//        option2.setWebChromeClient(new WebChromeClient());
-//        String htmlDat2 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-//                "<script type=\"text/x-mathjax-config\">" +
-//                "MathJax.Hub.Config({" +
-//                "  messageStyle: 'none'," +
-//                "  tex2jax: {preview: 'none'}," +
-//                "  showMathMenu: false" + // This line disables the MathJax context menu
-//                "});" +
-//                "</script>" +
-//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-//                "</head><body>" + model.getOption2() + "</body></html>";
-//
-//        option2.loadDataWithBaseURL(null, htmlDat2, "text/html", "UTF-8", null);
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////   option 3    ////////////////////////////////////
-//        option3.getSettings().setJavaScriptEnabled(true);
-//        option3.setWebViewClient(new WebViewClient());
-//        String htmlData3 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-//                "<script type=\"text/x-mathjax-config\">" +
-//                "MathJax.Hub.Config({" +
-//                "  messageStyle: 'none'," +
-//                "  tex2jax: {preview: 'none'}," +
-//                "  showMathMenu: false" + // This line disables the MathJax context menu
-//                "});" +
-//                "</script>" +
-//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-//                "</head><body>" + model.getOption3() + "</body></html>";
-//
-//        option3.loadDataWithBaseURL(null, htmlData3, "text/html", "UTF-8", null);
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//
-////////////////////////////////////////////////   option 4    ////////////////////////////////////
-//        option4.getSettings().setJavaScriptEnabled(true);
-//        option4.setWebViewClient(new WebViewClient());
-//        String htmlData4 = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-//                "<script type=\"text/x-mathjax-config\">" +
-//                "MathJax.Hub.Config({" +
-//                "  messageStyle: 'none'," +
-//                "  tex2jax: {preview: 'none'}," +
-//                "  showMathMenu: false" + // This line disables the MathJax context menu
-//                "});" +
-//                "</script>" +
-//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-//                "</head><body>" + model.getOption4() + "</body></html>";
-//
-//        option4.loadDataWithBaseURL(null, htmlData4, "text/html", "UTF-8", null);
         String finalUpdatedQuestion=finalQuestion.replace("\\n","<br>");
         setupWebView(question,finalUpdatedQuestion);
         setupWebView(option1, model.getOption1());
@@ -389,58 +298,8 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
         }
     }
 
-    //    @Override
-//    public void onClick(View view) {
-//
-//        option1.setBackgroundColor(Color.WHITE);
-//        option2.setBackgroundColor(Color.WHITE);
-//        option3.setBackgroundColor(Color.WHITE);
-//        option4.setBackgroundColor(Color.WHITE);
-//
-//        WebView clickedButton=(WebView) view;
-//        if (clickedButton.getId()==R.id.option1WebView_id){
-//            selectedAnswer  =model.getOption1() ;
-//            option1.getSettings();
-//            option1.setBackgroundColor(Color.BLUE);
-//
-//        }
-//        if (clickedButton.getId()==R.id.option2WebView_id){
-//            selectedAnswer  =model.getOption2() ;
-//                option2.setBackgroundColor(Color.GRAY);
-//        }
-//        if (clickedButton.getId()==R.id.option3WebView_id){
-//            selectedAnswer  =model.getOption3() ;
-//            option4.setBackgroundColor(Color.GRAY);
-//        }
-//        if (clickedButton.getId()==R.id.option4WebView_id){
-//            selectedAnswer  =model.getOption4() ;
-//                option4.setBackgroundColor(Color.GRAY);
-//        }
-//       // option4.setBackgroundColor(Color.GRAY);
-//         clickedButton.setBackgroundColor(Color.GRAY);
-//        model.setSelectedAnswer(selectedAnswer);
-//    }
-    private void startTimer() {
 
-//        long totalTimeInMillis = 10 * 60 * 1000;
-//
-//        countDownTimer = new CountDownTimer(totalTimeInMillis, 1000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//                // Update the timer display on each tick
-//                updateTimerDisplay(millisUntilFinished);
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                // Handle the timer finish event (e.g., quiz submission)
-//                time.setText("Timer: 00:00");
-//                // Add any actions to perform when the timer finishes
-//            }
-//        };
-//
-//        // Start the countdown timer
-//        countDownTimer.start();
+    private void startTimer() {
 
          totalTimeInMillis =  Test_Reminder_activity.totalTimeS * 60 * 1000; // Example: 10 minutes
 
@@ -467,15 +326,6 @@ public class CompetetiveAssessmentScreen extends AppCompatActivity implements  V
 
 
     }
-//    private void updateTimerDisplay(long millisUntilFinished) {
-//        // Convert milliseconds to minutes and seconds
-//        int minutes = (int) (millisUntilFinished / 1000) / 60;
-//        int seconds = (int) (millisUntilFinished / 1000) % 60;
-//
-//        // Format the time and update the TextView
-//        String timeLeftFormatted = String.format("%02d:%02d", minutes, seconds);
-//        time.setText("Timer: " + timeLeftFormatted);
-//    }
 private void updateTimerDisplay(long millisUntilFinished) {
     // Convert milliseconds to minutes and seconds
     int minutes = (int) (millisUntilFinished / 1000) / 60;
@@ -485,13 +335,10 @@ private void updateTimerDisplay(long millisUntilFinished) {
     String remainingTimeFormatted = String.format("%02d:%02d", minutes, seconds);
     time.setText("Time: " + remainingTimeFormatted);
 
-    // Update elapsed time
     elapsedTime = totalTimeInMillis - millisUntilFinished;
 
-    // Format the elapsed time and update the elapsed time TextView
     AssTimeTaken=getElapsedTimeFormatted();
-    Log.d("AssTimeTaken",AssTimeTaken);
-//   elapsedTimeTextView.setText("Elapsed Time: " + getElapsedTimeFormatted());
+
 }
 
     private String getElapsedTimeFormatted() {
@@ -552,10 +399,6 @@ private void updateTimerDisplay(long millisUntilFinished) {
     }
 
     private void SubmitQuize() {
-
-
-        Log.d("Submitted","Submitted");
-        ////////////////////
         AlertDialog.Builder builder = new AlertDialog.Builder(CompetetiveAssessmentScreen.this);
         builder.setMessage("Do you want to Submit the Test?");
         builder.setTitle("Submit Test");
@@ -584,22 +427,6 @@ private void updateTimerDisplay(long millisUntilFinished) {
         Intent intent=new Intent(CompetetiveAssessmentScreen.this, Competitive_Ass_Result_Screen.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-//
-//        Log.d("Submitted","Submitted");
-//        ////////////////////
-//        AlertDialog.Builder builder = new AlertDialog.Builder(CompetetiveAssessmentScreen.this);
-//        builder.setMessage("Do you want to Submit the Test?");
-//        builder.setTitle("Submit Test");
-//        builder.setCancelable(false);
-//        builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
-//
-//        });
-//        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
-//            dialog.dismiss();
-//
-//        });
-//        AlertDialog alertDialog = builder.create();
-//        alertDialog.show();
 
     }
 

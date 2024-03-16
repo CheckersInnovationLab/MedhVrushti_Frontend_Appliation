@@ -25,6 +25,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 import com.example.checkerslab_edulearning.myLearningPakage.MyLeaningMainModel;
@@ -45,22 +47,23 @@ import java.util.List;
 
 public class Home_sub_screen_fragment extends Fragment {
 
-    String url1 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fsubscription2.jpg?alt=media&token=92966636-cadc-4eb8-b916-1aed700b2f8c";
-    String url2 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fsubscription1.jpg?alt=media&token=f52200ed-4c91-4b04-8586-dda6bfb1a517";
-    String url3 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fsubscription3.jpg?alt=media&token=31121357-58b4-45b9-9935-e64e922c57b5";
+    String url1 = "https://medhvrushti.checkerslab.com/api/v1/cil/advertisements/images/advertisement-images/1003/4579611b-e4c2-40e8-933f-c84c70375fe7.png";
+//    String url2 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fsubscription1.jpg?alt=media&token=f52200ed-4c91-4b04-8586-dda6bfb1a517";
+//    String url3 = "https://firebasestorage.googleapis.com/v0/b/iit-foundation.appspot.com/o/All%20Courses%20Image%2Fdemo%2Fsubscription3.jpg?alt=media&token=31121357-58b4-45b9-9935-e64e922c57b5";
 
 
-    RecyclerView topCatRecyclerView,popularCoursesRecyclerView;
-    public static  ArrayList<TopCategoriesModel> catItemsList;
-    ArrayList<popularCoursesModel> popCoursesList;
-    LinearLayoutManager HorizontalLayout,HorizontalLayout2;
+    private RecyclerView topCatRecyclerView,popularCoursesRecyclerView;
+    public  static ArrayList<TopCategoriesModel> catItemsList;
+    private ArrayList<popularCoursesModel> popCoursesList;
+    private LinearLayoutManager HorizontalLayout,HorizontalLayout2;
 
-   static public ArrayList<MyLeaningMainModel> activeSubscriptionList;
-   private RelativeLayout activeSubViewALL;
-    MyLearningMainAdapter activeSubscriptionMainAdapter;
-    TextView courseName,topCatSeeAll,courseStartDate,courseEndDate,courseTypeName,popularCoursesViewAll;
+    static  public ArrayList<MyLeaningMainModel> activeSubscriptionList;
+    private RelativeLayout activeSubViewALL;
+    private TextView courseName,topCatSeeAll,courseStartDate,courseEndDate,courseTypeName,popularCoursesViewAll;
     private CardView activeSubCard1,activeSubCard2;
     private RelativeLayout unlockButton;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
 
 
     @Override
@@ -70,6 +73,8 @@ public class Home_sub_screen_fragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_home_sub_screen_fragment, container, false);
 
         SliderView homeSliderView = view.findViewById(R.id.Home_imageSlider);
+        loadingDialog=new LoadingDialog(getActivity());
+        errorStatusDialog=new ErrorStatusDialog(getActivity());
 
 
         topCatRecyclerView=view.findViewById(R.id.Home_top_categories_recyclerview);
@@ -119,34 +124,16 @@ public class Home_sub_screen_fragment extends Fragment {
         AddItemsToTopCatRecyclerView();
         addPopularCoursesToRecyclerView();
 
-
         ArrayList<HomeSliderModel> sliderDataArrayList = new ArrayList<>();
         sliderDataArrayList.add(new HomeSliderModel(url1));
-        sliderDataArrayList.add(new HomeSliderModel(url2));
-        sliderDataArrayList.add(new HomeSliderModel(url3));
+//        sliderDataArrayList.add(new HomeSliderModel(url2));
+//        sliderDataArrayList.add(new HomeSliderModel(url3));
         HomeSliderAdapter adapter = new HomeSliderAdapter(getContext(), sliderDataArrayList);
-
-        // below method is used to set auto cycle direction in left to
-        // right direction you can change according to requirement.
         homeSliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
-
-        // below method is used to
-        // set adapter to slider view.
         homeSliderView.setSliderAdapter(adapter);
-
-        // below method is use to set
-        // scroll time in seconds.
         homeSliderView.setScrollTimeInSec(3);
-
-        // to set it scrollable automatically
-        // we use below method.
         homeSliderView.setAutoCycle(true);
-
-        // to start auto cycle below method is used.
         homeSliderView.startAutoCycle();
-
-
-
 
         /////////////////GET ACTIVE Subscription  Details//////////////////////////
         courseName=view.findViewById(R.id.Active_subscription_course_name_id);
@@ -174,8 +161,7 @@ public class Home_sub_screen_fragment extends Fragment {
     }
 
     private void getActiveSubscriptionDetails() {
-
-
+        loadingDialog.startLoadingDialog();
         String Url= StaticFile.Url+"/api/v1/cil/user_subscriptions/get/all/by/user_id?";
         Url=Url+"user_id="+ StaticFile.userId;
 
@@ -185,7 +171,7 @@ public class Home_sub_screen_fragment extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                       loadingDialog.dismissDialog();
                         // Handle success response from the server
                         for (int i = 0; i < response.length(); i++) {
                             try {
@@ -207,9 +193,6 @@ public class Home_sub_screen_fragment extends Fragment {
                                 e.printStackTrace();
                             }
                         }
-
-
-                        Log.d("size",String.valueOf(activeSubscriptionList.size()));
                         if (activeSubscriptionList.size()>0)
                         {
                             activeSubCard2.setVisibility(View.GONE);
@@ -220,14 +203,13 @@ public class Home_sub_screen_fragment extends Fragment {
                             courseTypeName.setText(activeSubscriptionList.get(0).getSubscription_type());
                         }
 
-
-//                        activeSubscriptionMainAdapter = new MyLearningMainAdapter(activeSubscriptionList, getContext());
-//                        recyclerView.setAdapter(myLearningMainAdapter);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
@@ -249,9 +231,7 @@ public class Home_sub_screen_fragment extends Fragment {
 
     }
 
-
     private void AddItemsToTopCatRecyclerView() {
-
         String url=StaticFile.Url+"/api/v1/cil/course_category/get/all";
 
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
@@ -283,22 +263,9 @@ public class Home_sub_screen_fragment extends Fragment {
                // Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
- requestQueue.add(arrayRequest);
-
-//        catItemsList.add(new TopCategoriesModel("JEE & NEET Exam",url11));
-//        catItemsList.add(new TopCategoriesModel("State Boards Exam",url12));
-//        catItemsList.add(new TopCategoriesModel("UPSC & MPSC Exam",url13));
-//        TopCategoriesAdapter topCategoriesAdapter=new TopCategoriesAdapter(catItemsList,getContext());
-//        topCatRecyclerView.setAdapter(topCategoriesAdapter);
-
-//
-//                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-//
-//
+        requestQueue.add(arrayRequest);
 
     }
-
-
 
     private void addPopularCoursesToRecyclerView() {
         Log.d("addPopularCoursesToRecyclerView","addPopularCoursesToRecyclerView1");
@@ -357,16 +324,5 @@ public class Home_sub_screen_fragment extends Fragment {
             }
         };
         requestQueue.add(jsonObjectRequest);
-
-
-
-
-//        popCoursesList.add(new popularCoursesModel(url1,"50% off","SSC 10th Test series"));
-//        popCoursesList.add(new popularCoursesModel(url2,"70% off","HSC 11th Test series"));
-//        popCoursesList.add(new popularCoursesModel(url3,"30% off","CBSC 12th Test series"));
-//        PopularCoursesAdapter popCoursesAdapter=new PopularCoursesAdapter(popCoursesList,getContext());
-//        popularCoursesRecyclerView.setAdapter(popCoursesAdapter);
-
-
     }
 }

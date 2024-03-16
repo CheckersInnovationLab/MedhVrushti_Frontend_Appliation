@@ -36,7 +36,6 @@ public class Chapter_Level_Assessment extends Fragment  {
     AllAssessmentAdapter allAssessmentAdapter;
     int chapAssCount=0;
     private ProgressBar chapterLevelPb;
-    private String Url="https://medhvrushti.checkerslab.com/api/v1/cil/assessments/get/all/by/chapter_id?chapter_id=101";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -105,7 +104,6 @@ public class Chapter_Level_Assessment extends Fragment  {
                         chapterLevelPb.setVisibility(ProgressBar.GONE);
                         allAssessmentAdapter = new AllAssessmentAdapter(chapterAssessmentList, getContext());
                         recyclerView.setAdapter(allAssessmentAdapter);
-                        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -118,8 +116,7 @@ public class Chapter_Level_Assessment extends Fragment  {
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
+                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

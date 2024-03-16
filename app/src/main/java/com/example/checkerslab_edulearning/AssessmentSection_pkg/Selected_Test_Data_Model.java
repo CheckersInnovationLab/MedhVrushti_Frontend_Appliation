@@ -3,7 +3,7 @@ package com.example.checkerslab_edulearning.AssessmentSection_pkg;
 public class Selected_Test_Data_Model {
 
     int questionId,marks;
-    String questionType,question,option1,option2,option3,option4,answer,answerDescription,status,selectedAnswer,questionDiagrams,descriptionDiagrams,questionTypeId;
+    String questionType,question,option1,option2,option3,option4,answer,answerDescription,status,selectedAnswer,questionDiagrams,descriptionDiagrams,questionTypeId,obtainedMarks;
     Boolean bookmarkStatus;
 
 
@@ -43,6 +43,23 @@ public class Selected_Test_Data_Model {
         this.questionDiagrams = questionDiagrams;
         this.descriptionDiagrams = descriptionDiagrams;
         this.questionTypeId = questionTypeId;
+    }
+
+    public Selected_Test_Data_Model(int questionId, int marks, String questionType, String question, String option1, String option2, String option3, String option4, String answer, String answerDescription,  String questionDiagrams, String descriptionDiagrams, String questionTypeId, String obtainedMarks) {
+        this.questionId = questionId;
+        this.marks = marks;
+        this.questionType = questionType;
+        this.question = question;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.option4 = option4;
+        this.answer = answer;
+        this.answerDescription = answerDescription;
+        this.questionDiagrams = questionDiagrams;
+        this.descriptionDiagrams = descriptionDiagrams;
+        this.questionTypeId = questionTypeId;
+        this.obtainedMarks = obtainedMarks;
     }
 
     public int getQuestionId() {
@@ -172,5 +189,13 @@ public class Selected_Test_Data_Model {
 
     public void setBookmarkStatus(Boolean bookmarkStatus) {
         this.bookmarkStatus = bookmarkStatus;
+    }
+
+    public String getObtainedMarks() {
+        return obtainedMarks;
+    }
+
+    public void setObtainedMarks(String obtainedMarks) {
+        this.obtainedMarks = obtainedMarks;
     }
 }

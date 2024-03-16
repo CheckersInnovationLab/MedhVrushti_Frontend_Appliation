@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,6 +21,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Selected_Test_Data_Model;
 import com.example.checkerslab_edulearning.AssessmentSection_pkg.Test_Reminder_activity;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 
@@ -31,17 +34,19 @@ import java.util.ArrayList;
 
 public class Assessment_Solution_Screen extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    Selected_Test_Data_Model modelClass;
-    TextView toolbarTitle;
-    ImageView back;
+    private RecyclerView recyclerView;
+    private TextView toolbarTitle;
+    private ImageView back;
     public static ArrayList<Selected_Test_Data_Model> testDataList;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment_solution_screen);
-
+        loadingDialog=new LoadingDialog(Assessment_Solution_Screen.this);
+        errorStatusDialog=new ErrorStatusDialog(Assessment_Solution_Screen.this);
 
         Intent intent=getIntent();
         String assessment_id=intent.getStringExtra("assessment_id");
@@ -60,10 +65,6 @@ public class Assessment_Solution_Screen extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.Assessment_solution_recyclerView);
         testDataList=new ArrayList<>();
-//
-//        Assessment_solution_adapter myAdapter = new Assessment_solution_adapter(Test_Reminder_activity.testDataList, getApplicationContext());
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-//        recyclerView.setAdapter(myAdapter);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,13 +79,12 @@ public class Assessment_Solution_Screen extends AppCompatActivity {
 
     private void getAssessmentSolutions(String assessment_id) {
 
-        Log.d("getAssessmentSolutions","Log1");
-
+        loadingDialog.startLoadingDialog();
         String Url = "http://89.116.33.21:5000/user/assessment/detail";
         JSONObject requestData = new JSONObject();
         try {
             requestData.put("user_id", Integer.valueOf(StaticFile.userId));
-            requestData.put("assessment_id", Integer.valueOf(100015));
+            requestData.put("assessment_id", Integer.valueOf(assessment_id));
             requestData.put("bearer_token", StaticFile.bearToken);
 
         } catch (JSONException e) {
@@ -97,9 +97,7 @@ public class Assessment_Solution_Screen extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("getAssessmentSolutions","Log2");
-
-
+                        loadingDialog.dismissDialog();
                         try {
                             JSONArray jsonArray = response.getJSONArray("question_paper");
 
@@ -112,7 +110,8 @@ public class Assessment_Solution_Screen extends AppCompatActivity {
                                 for (int j = 0; j < questionsArray.length(); j++) {
                                     Log.d("QuestionPaperGenerator", "log5");
                                     JSONObject question = questionsArray.getJSONObject(j);
-                                    Selected_Test_Data_Model model = new Selected_Test_Data_Model(question.getInt("question_id"),
+                                    Selected_Test_Data_Model model = new Selected_Test_Data_Model(
+                                            question.getInt("question_id"),
                                             question.getInt("marks"),
                                             question.getString("question_type"),
                                             question.getString("ques_line_by_latex"),
@@ -124,24 +123,16 @@ public class Assessment_Solution_Screen extends AppCompatActivity {
                                             question.getString("desc_line_by_latex"),
                                             question.getString("question_diagrams_url"),
                                             question.getString("description_diagrams_url"),
-                                            question.getString("question_type_id")
+                                            question.getString("question_type_id"),
+                                            question.getString("obtained_marks")
                                     );
 
                                     testDataList.add(model);
-                                    Log.d("QuestionPaperGenerator", "log6");
-
                                 }
 
-
-                                //
                                     Assessment_solution_adapter myAdapter = new Assessment_solution_adapter(testDataList, getApplicationContext());
                                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                                     recyclerView.setAdapter(myAdapter);
-
-//                                questionPaperLoadingBar.setVisibility(View.GONE);
-//                                StartButton.setVisibility(View.VISIBLE);
-//                                Log.d("QuestionPaperGenerator", "log7");
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -151,20 +142,15 @@ public class Assessment_Solution_Screen extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                      //  Log.d("getAssessmentSolutions",error.getMessage());
-                        byte[] errorResponseData = error.networkResponse.data; // Error response data
-                        String errorMessage = new String(errorResponseData);
-                        Log.d("getAssessmentSolutions", errorMessage);
-
-//                        // Handle error response
-//                        if (error.networkResponse != null) {
-////                            questionPaperLoadingBar.setVisibility(View.GONE);
-//                            int statusCode = error.networkResponse.statusCode;
-//                            byte[] errorResponseData = error.networkResponse.data; // Error response data
-//                            String errorMessage = new String(errorResponseData); // Convert error data to string
-//                            // Print the error details
-//                            Log.d("QuestionPaperGenerator", errorMessage);
-//                        }
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
+                        Toast.makeText(Assessment_Solution_Screen.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        // Handle error response
+                        if (error.networkResponse != null) {
+                            int statusCode = error.networkResponse.statusCode;
+                            byte[] errorResponseData = error.networkResponse.data; // Error response data
+                            String errorMessage = new String(errorResponseData); // Convert error data to string
+                        }
                     }
                 }
         ) {

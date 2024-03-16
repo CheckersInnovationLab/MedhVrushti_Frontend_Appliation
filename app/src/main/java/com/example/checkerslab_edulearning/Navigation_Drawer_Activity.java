@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -66,12 +67,13 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
     private RelativeLayout editButton;
     private RelativeLayout laterButton;
     Dialog dialog;
-    public static  String BearerToken="";
     private TextView userName,emailId,mobileNo,courseName;
     private ImageView userProfileImage;
     public static  String studName="",studEmailId="",studMobileNo="",studProfileImage="",userProfileStatus="";
     public static String studCourseName="";
-   // public static String userId="100001";
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +82,8 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        BearerToken=StaticFile.bearToken;
+        loadingDialog=new LoadingDialog(Navigation_Drawer_Activity.this);
+        errorStatusDialog=new ErrorStatusDialog(Navigation_Drawer_Activity.this);
 
         //**************** edit profile Dialog box
 
@@ -158,13 +160,13 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                 transaction.commit();
                 break;
 
-            case R.id.nav_subscription_id:
-
-                User_Subscription_screen subscriptionFragment=new User_Subscription_screen();
-                FragmentTransaction transaction1=getSupportFragmentManager().beginTransaction();
-                transaction1.replace(R.id.content_id,subscriptionFragment);
-                transaction1.commit();
-                break;
+//            case R.id.nav_subscription_id:
+//
+//                User_Subscription_screen subscriptionFragment=new User_Subscription_screen();
+//                FragmentTransaction transaction1=getSupportFragmentManager().beginTransaction();
+//                transaction1.replace(R.id.content_id,subscriptionFragment);
+//                transaction1.commit();
+//                break;
 
 
             case R.id.nav_profile:
@@ -228,6 +230,7 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
     }
 
     private void getUserDetails() {
+        loadingDialog.startLoadingDialog();
         String url=StaticFile.Url+"/api/v1/cil/users/get?"+"user_id="+StaticFile.userId;
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -235,8 +238,7 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("ProfileStatus","success");
-                        // Handle success response from the server
+                       loadingDialog.dismissDialog();
                         try {
                             studName = response.getString("first_name");
                             studEmailId=response.getString("email_id");
@@ -245,12 +247,10 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                             studProfileImage=response.getString("profile_image_url");
                             userProfileStatus=response.getString("profile_status");
 
-                            // Display or handle the message as needed
                             setUserDetails(studName,studEmailId,studCourseName,studMobileNo,studProfileImage);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Log.d("userProfileStatus",userProfileStatus);
                         if (!(userProfileStatus=="Completed"|| userProfileStatus.equals("Completed")))
                         {
                             dialog.show();
@@ -260,7 +260,8 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle error response
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
@@ -291,8 +292,6 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
     private void setUserDetails(String studName, String studEmailId, String studCourseName, String studMobileNo, String studProfileImage)
     {
 
-
-        Log.d("ProfileStatus",studName+","+studMobileNo);
         if (!(studName =="null"))
         {
             userName.setText(studName);
@@ -322,25 +321,28 @@ public class Navigation_Drawer_Activity extends AppCompatActivity implements Nav
 //        dialog.setContentView(R.layout.dialog_message_layout);
 //        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 //        dialog.setCancelable(false);
-////
-////        StartLearningButton=dialog.findViewById(R.id.successful_layout_OkButton_id);
-////        StartLearningButton.setText("Start Learning");
-////        StartLearningButton.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                dialog.cancel();
-////                FragmentManager fragmentManager = getSupportFragmentManager();
-////                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-////                fragmentTransaction.replace(R.id.payment_layout_id, new MyLearningMainFragment());
-////                fragmentTransaction.addToBackStack(null);
-////                fragmentTransaction.commit();
-////            }
-////        });
+
+
+//
+//        StartLearningButton=dialog.findViewById(R.id.successful_layout_OkButton_id);
+//        StartLearningButton.setText("Start Learning");
+//        StartLearningButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dialog.cancel();
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.payment_layout_id, new MyLearningMainFragment());
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
+//        });
 //        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
 //        dialog.show();
 
-//        Intent intent=new Intent(getApplicationContext(),Welcome_Screen_Activity.class);
-//        startActivity(intent);
+        Intent intent=new Intent(getApplicationContext(),Welcome_Screen_Activity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 

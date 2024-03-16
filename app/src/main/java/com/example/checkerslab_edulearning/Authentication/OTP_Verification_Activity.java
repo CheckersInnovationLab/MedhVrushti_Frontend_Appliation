@@ -22,8 +22,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.chaos.view.PinView;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
@@ -45,15 +48,21 @@ public class OTP_Verification_Activity extends AppCompatActivity {
     private PinView pinView;
     private Button verify;
     String enteredPin="";
-    String generated_otp,mobileNumber="";
+    String mobileNumber="";
 
     private TextView mobileNumberText,otpTimingText,resendButton;
     private CountDownTimer countDownTimer;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_verification);
+
+        loadingDialog=new LoadingDialog(OTP_Verification_Activity.this);
+        errorStatusDialog=new ErrorStatusDialog(OTP_Verification_Activity.this);
 
         back=findViewById(R.id.Verify_OTP_arrow_back_id2);
         pinView=findViewById(R.id.PinView_id);
@@ -63,9 +72,17 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         resendButton=findViewById(R.id.otp_Resend_button_id);
 
         Intent intent=getIntent();
-//        generated_otp=intent.getStringExtra("Generated_otp").toString();
         mobileNumber=intent.getStringExtra("Mobile_number");
         mobileNumberText.setText("We've sent it on the number: "+mobileNumber);
+
+
+        resendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resendOTPMethode(mobileNumber);
+            }
+
+        });
 
         setOTPTime();
 
@@ -97,15 +114,8 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 RegisteredUser();
 
-//                if (generated_otp.equals(enteredPin)){
-//
-//                }
-//                else {
-//                    Toast.makeText(OTP_Verification_Activity.this, "OTP doesn't matched", Toast.LENGTH_SHORT).show();
-//                }
             }
         });
     }
@@ -119,22 +129,16 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         countDownTimer = new CountDownTimer(totalTimeInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                // Update the timer display on each tick
                 updateTimerDisplay(millisUntilFinished);
             }
 
             @Override
             public void onFinish() {
-                // Handle the timer finish event (e.g., quiz submission)
-                //otpTimingText.setText("Timer: 00:00");
-                // Add any actions to perform when the timer finishes
                 otpTimingText.setVisibility(View.GONE);
                 resendButton.setVisibility(View.VISIBLE);
 
             }
         };
-
-        // Start the countdown timer
         countDownTimer.start();
     }
 
@@ -148,6 +152,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         otpTimingText.setText("Resend OTP in " + timeLeftFormatted+"s");
     }
     private void RegisteredUser() {
+        loadingDialog.startLoadingDialog();
 
         String userRegisterURL= StaticFile.Url+"/api/v1/cil/user-auth/otp/verify?enter_otp="+enteredPin;
 
@@ -166,9 +171,7 @@ public class OTP_Verification_Activity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("ErrorMessage","success");
-
-                        // Handle success response from the server
+                        loadingDialog.dismissDialog();
                         try {
                             String token = response.getString("jwt_token");
                             String userId=response.getString("user_id");
@@ -196,6 +199,8 @@ public class OTP_Verification_Activity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
@@ -216,5 +221,36 @@ public class OTP_Verification_Activity extends AppCompatActivity {
         };
         requestQueue.add(jsonObjectRequest);
 
+    }
+
+    private void resendOTPMethode(String mobileNumber) {
+        loadingDialog.startLoadingDialog();
+
+        String url="https://medhvrushti.checkerslab.com/api/v1/cil/user-auth/otp/send?mobile_number=91"+mobileNumber;
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                loadingDialog.dismissDialog();
+                Toast.makeText(OTP_Verification_Activity.this, "OTP Re-Sent TO Entered Mobile Number", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(OTP_Verification_Activity.this,OTP_Verification_Activity.class);
+                intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
+                startActivity(intent);
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                loadingDialog.dismissDialog();
+                errorStatusDialog.showErrorMessage();
+                if (error.networkResponse != null) {
+                    int statusCode = error.networkResponse.statusCode;
+                    byte[] errorResponseData = error.networkResponse.data; // Error response data
+                    String errorMessage = new String(errorResponseData); // Convert error data to string
+                    Toast.makeText(OTP_Verification_Activity.this, errorMessage, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        requestQueue.add(request);
     }
 }

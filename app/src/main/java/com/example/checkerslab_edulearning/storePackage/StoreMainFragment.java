@@ -20,6 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.Navigation_Drawer_Activity;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
@@ -38,10 +40,12 @@ import java.util.List;
 public class StoreMainFragment extends Fragment {
 
 
-    RecyclerView recyclerView1;
-    ArrayList<storeCoursesParentModel> storeCoursesList;
-    LinearLayoutManager HorizontalLayout;
-   private String Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
+    private RecyclerView recyclerView1;
+    private ArrayList<storeCoursesParentModel> storeCoursesList;
+    private LinearLayoutManager HorizontalLayout;
+    private String Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
 
 
     @Override
@@ -49,6 +53,10 @@ public class StoreMainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main__store_fragment, container, false);
+
+        loadingDialog=new LoadingDialog(getActivity());
+        errorStatusDialog=new ErrorStatusDialog(getActivity());
+
 
         recyclerView1 = view.findViewById(R.id.Store_courses_recycler_id);
         storeCoursesList = new ArrayList<>();
@@ -67,9 +75,7 @@ public class StoreMainFragment extends Fragment {
 
     private void AddItemsToTopCatRecyclerView() {
 
-        //Log.d("studcourseName",Navigation_Drawer_Activity.studCourseName);
-       // Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
-
+        loadingDialog.startLoadingDialog();
         if (Navigation_Drawer_Activity.studCourseName.isEmpty() )
         {
             Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
@@ -86,11 +92,12 @@ public class StoreMainFragment extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+
+                        loadingDialog.dismissDialog();
                         List<StoreCoursesModel> ChildItemList
                                 = new ArrayList<>();
                         List<StoreCoursesModel> StudyMaterialList
                                 = new ArrayList<>();
-
 
                         List<storeCoursesParentModel> itemList
                                = new ArrayList<>();
@@ -98,8 +105,6 @@ public class StoreMainFragment extends Fragment {
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject object = response.getJSONObject(i);
-
-
                                 StoreCoursesModel storeCoursesModel=new StoreCoursesModel(
                                 object.getString("subscription_id"),
                                         object.getString("subscription_code"),
@@ -114,18 +119,6 @@ public class StoreMainFragment extends Fragment {
                                         object.getString("subscription_img_url"),
                                         object.getString("total_validity"));
 
-
-//                                if (object.getString("subscription_type").equals("Assessment"))
-//                                {
-//                                    ChildItemList.add(storeCoursesModel);
-//                                }
-//                                else if (object.getString("subscription_type").equals("study material"))
-//                                {
-//                                    StudyMaterialList.add(storeCoursesModel);
-//
-//                                }
-
-
                                 if(!(object.getString("subject_id")=="null"))
                                 {
                                     ChildItemList.add(storeCoursesModel);
@@ -135,7 +128,6 @@ public class StoreMainFragment extends Fragment {
                                     Log.d("subject_id", object.getString("subject_id"));
                                     StudyMaterialList.add(storeCoursesModel);
                                 }
-
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -162,13 +154,14 @@ public class StoreMainFragment extends Fragment {
                         storeCoursesParentAdapter myLearningMainAdapter = new storeCoursesParentAdapter(itemList, getContext());
                         recyclerView1.setAdapter(myLearningMainAdapter);
 
-                        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle error response
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
@@ -186,6 +179,5 @@ public class StoreMainFragment extends Fragment {
             }
         };
         requestQueue.add(jsonObjectRequest);
-
     }
 }

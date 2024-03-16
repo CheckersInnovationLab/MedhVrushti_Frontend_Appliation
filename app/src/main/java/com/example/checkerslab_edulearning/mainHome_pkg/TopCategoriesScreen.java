@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class TopCategoriesScreen extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    ArrayList<TopCategoriesModel> catItemsList;
+    private ArrayList<TopCategoriesModel> catItemsList;
     private ImageView backButton;
 
     @Override
@@ -56,40 +56,6 @@ public class TopCategoriesScreen extends AppCompatActivity {
 
     private void getAllTopCategories() {
 
-
-
-
-//        String url= StaticFile.Url+"/api/v1/cil/course_category/get/all";
-//
-//        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-//        JsonArrayRequest arrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-//            @Override
-//            public void onResponse(JSONArray response) {
-//                for (int i=0;i<=response.length();i++)
-//                {
-//                    try {
-//                        JSONObject object=response.getJSONObject(i);
-//                        TopCategoriesModel model=new TopCategoriesModel(
-//                                object.getString("course_cat_name"),
-//                                object.getString("course_cat_img_url"));
-//
-//                        catItemsList.add(model);
-//                    }catch (Exception e)
-//                    {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//
-//
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        requestQueue.add(arrayRequest);
         TopCategoriesAdapter topCategoriesAdapter=new TopCategoriesAdapter(Home_sub_screen_fragment.catItemsList,getApplicationContext());
         recyclerView.setAdapter(topCategoriesAdapter);
 

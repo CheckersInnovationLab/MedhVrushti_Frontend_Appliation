@@ -90,7 +90,6 @@ public class AllAssessmentAdapter extends RecyclerView.Adapter<AllAssessmentAdap
         return list.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView assessmentName,assessmentStatus,totalMarks,totalTime,totalQuestion;
         Button start,checkResult;

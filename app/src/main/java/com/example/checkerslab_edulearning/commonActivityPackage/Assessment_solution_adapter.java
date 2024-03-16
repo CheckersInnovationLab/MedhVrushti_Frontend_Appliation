@@ -55,12 +55,9 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
 
         holder.questionNumber.setText(String.valueOf(position+1)+")");
 
-
-
         String finalQuestion="";
         String imgUrl="";
         String UpdatedQuestion= model.getQuestion();
-        //String UpdatedQuestion="[{\"type\": \"text\", \"text\": \"The region shaded horizontally is represented by the\"}, {\"type\": \"text\",  \"text\": \" inequations\"}, {\"type\": \"chart\", \"texdt\": \"line\"}]";
         UpdatedQuestion = UpdatedQuestion.replace("\\", "\\\\");
         try {
             JSONArray jsonArray = new JSONArray(UpdatedQuestion);
@@ -95,8 +92,6 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
                                 .into(holder.questionDiagram);
 
                     }
-
-
                 }
                 finalQuestion=finalQuestion+textValue;
 
@@ -106,8 +101,6 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
         {
             Log.d("latexQuestion",e.getMessage());
         }
-
-
         holder.descDiagram.setVisibility(View.GONE);
         String finalDesc="";
         String descImgUrl="";
@@ -127,15 +120,12 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
                 {
                     textValue = item.getString("text");
                 }
-
-
                 if (item.getString("type").equals("chart") || item.getString("type").equals("diagram"))
                 {
 
                     JSONArray jsonArray2 = new JSONArray(model.getDescriptionDiagrams());
                     for (int j = 0; j < 1; j++)
                     {
-
                         String questionSt = jsonArray2.getString(j);
                         String diagram=questionSt.replace("\\/","/");
                         holder.descDiagram.setVisibility(View.VISIBLE);
@@ -145,10 +135,7 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
                                 .load(descImgUrl)
                                 .fitCenter()
                                 .into(holder.descDiagram);
-
                     }
-
-
                 }
                 finalDesc=finalDesc+textValue;
 
@@ -158,25 +145,6 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
         {
             Log.d("latexQuestion",e.getMessage());
         }
-
-
-//        holder.descText.getSettings().setJavaScriptEnabled(true);
-//        holder.descText.setWebViewClient(new WebViewClient());
-//
-//        String htmlDataDesc = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\">" +
-//                "<script type=\"text/x-mathjax-config\">" +
-//                "MathJax.Hub.Config({" +
-//                "  messageStyle: 'none'," +
-//                "  tex2jax: {preview: 'none'}" +
-//                "});" +
-//                "</script>" +
-//                "<script type=\"text/javascript\" src=\"file:///android_asset/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>" +
-//                "</head><body>" + finalDesc + "</body></html>";
-//
-//        holder.descText.loadDataWithBaseURL(null, htmlDataDesc, "text/html", "UTF-8", null);
-//        Log.d("descTextINPUT",model.getAnswerDescription());
-//        Log.d("descText",finalDesc);
-//
         String finalUpdatedQuestion=finalQuestion.replace("\\n","<br>");
         setupWebView(holder.ques,finalUpdatedQuestion);
         setupWebView(holder.opt1, model.getOption1());
@@ -205,6 +173,18 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
                 }
             }
         });
+
+        int obtainedMarks=Integer.valueOf(model.getObtainedMarks());
+        int actualMarks=model.getMarks();
+
+       if (obtainedMarks==actualMarks)
+       {
+           holder.questionCheckingStatus.setImageResource(R.drawable.correct_icon);
+       }
+       else
+       {
+           holder.questionCheckingStatus.setImageResource(R.drawable.wrong_icon);
+       }
     }
     @Override
     public int getItemCount() {
@@ -218,8 +198,7 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
         Button descriptionButton;
         LinearLayout descLayout;
         TextView questionNumber;
-        ImageView questionDiagram,descDiagram;
-        LinearLayout answerStatusOption1,answerStatusOption2,answerStatusOption3,answerStatusOption4;
+        ImageView questionDiagram,descDiagram,questionCheckingStatus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -235,11 +214,7 @@ public class Assessment_solution_adapter extends RecyclerView.Adapter<Assessment
             questionNumber=itemView.findViewById(R.id.Competitive_Solution_questionNumber_id);
             questionDiagram=itemView.findViewById(R.id.Solution_question_image_id);
             descDiagram=itemView.findViewById(R.id.Solution_description_image_id);
-//            answerStatusOption1=itemView.findViewById(R.id.Competitive_Solution_option1_layout);
-//            answerStatusOption2=itemView.findViewById(R.id.Competitive_Solution_option2_layout);
-//            answerStatusOption3=itemView.findViewById(R.id.Competitive_Solution_option3_layout);
-//            answerStatusOption4=itemView.findViewById(R.id.Competitive_Solution_option4_layout);
-
+            questionCheckingStatus=itemView.findViewById(R.id.QuestionCheckingStatus_id);
         }
     }
     private void setupWebView(WebView webView, String content) {

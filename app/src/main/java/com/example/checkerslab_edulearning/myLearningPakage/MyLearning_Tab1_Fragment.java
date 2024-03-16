@@ -54,14 +54,6 @@ public class MyLearning_Tab1_Fragment extends Fragment {
         enrollButton=view.findViewById(R.id.MyLearning_EnrollButton_id);
 
 
-
-
-
-
-
-
-
-
         enrollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

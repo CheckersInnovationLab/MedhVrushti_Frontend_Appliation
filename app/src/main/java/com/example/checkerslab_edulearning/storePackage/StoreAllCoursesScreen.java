@@ -16,6 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.checkerslab_edulearning.ErrorStatusDialog;
+import com.example.checkerslab_edulearning.LoadingDialog;
 import com.example.checkerslab_edulearning.R;
 import com.example.checkerslab_edulearning.StaticFile;
 
@@ -27,14 +29,20 @@ import java.util.List;
 
 public class StoreAllCoursesScreen extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-     List<StoreCoursesModel> coursesItemList;
+     private RecyclerView recyclerView;
+     private List<StoreCoursesModel> coursesItemList;
      private ImageView backButton;
+     private LoadingDialog loadingDialog;
+     private ErrorStatusDialog errorStatusDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_all_courses_screen);
+
+        loadingDialog=new LoadingDialog(StoreAllCoursesScreen.this);
+        errorStatusDialog=new ErrorStatusDialog(StoreAllCoursesScreen.this);
+
         recyclerView=findViewById(R.id.AllCourses_RecyclerView_id);
         backButton=findViewById(R.id.allCourses_Toolbar_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -44,21 +52,15 @@ public class StoreAllCoursesScreen extends AppCompatActivity {
             }
         });
 
-
-
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
         coursesItemList=new ArrayList<>();
-
         getAllCourses();
-
-
-
-
 
     }
 
     private void getAllCourses() {
+        loadingDialog.startLoadingDialog();
        String Url = StaticFile.Url+"/api/v1/cil/main_subscriptions/get/all";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -66,15 +68,9 @@ public class StoreAllCoursesScreen extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        List<StoreCoursesModel> ChildItemList
-                                = new ArrayList<>();
-                        List<StoreCoursesModel> StudyMaterialList
-                                = new ArrayList<>();
 
+                        loadingDialog.dismissDialog();
 
-                        List<storeCoursesParentModel> itemList
-                                = new ArrayList<>();
-                        // Handle success response from the server
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject object = response.getJSONObject(i);
@@ -94,15 +90,12 @@ public class StoreAllCoursesScreen extends AppCompatActivity {
                                         object.getString("subscription_img_url"),
                                         object.getString("total_validity"));
 
-
                                coursesItemList.add(storeCoursesModel);
 
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
-
-
                         StoreCoursesAdapter storeCoursesAdapter
                                 = new StoreCoursesAdapter(coursesItemList,getApplicationContext());
                         recyclerView.setAdapter(storeCoursesAdapter);
@@ -112,6 +105,8 @@ public class StoreAllCoursesScreen extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissDialog();
+                        errorStatusDialog.showErrorMessage();
                         // Handle error response
                         if (error.networkResponse != null) {
                             int statusCode = error.networkResponse.statusCode;

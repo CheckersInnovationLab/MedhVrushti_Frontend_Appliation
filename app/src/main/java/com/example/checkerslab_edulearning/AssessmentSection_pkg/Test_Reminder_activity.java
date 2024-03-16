@@ -137,9 +137,7 @@ public class Test_Reminder_activity extends AppCompatActivity {
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                            Log.d("userSubscription :",errorMessage);
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
+                            Toast.makeText(Test_Reminder_activity.this, errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -204,8 +202,7 @@ public class Test_Reminder_activity extends AppCompatActivity {
                             byte[] errorResponseData = error.networkResponse.data; // Error response data
                             String errorMessage = new String(errorResponseData); // Convert error data to string
                             // Print the error details
-                            System.out.println("Error Status Code: " + statusCode);
-                            System.out.println("Error Response Data: " + errorMessage);
+                            Toast.makeText(Test_Reminder_activity.this, errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -228,7 +225,7 @@ public class Test_Reminder_activity extends AppCompatActivity {
 
     }
     private void generateQuestionPaper(String assessmentId) {
-        String Url = "http://89.116.33.21:5000/assessment/question/paper/generator?assessment_id=100015";
+        String Url = "http://89.116.33.21:5000/assessment/question/paper/generator?assessment_id="+assessmentId;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, Url, null,

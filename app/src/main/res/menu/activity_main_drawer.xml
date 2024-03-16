@@ -14,10 +14,10 @@
             android:icon="@drawable/profile_icon"
             android:title="Profile" />
 
-        <item
-            android:id="@+id/nav_subscription_id"
-            android:icon="@drawable/nav_subscriptions_icon"
-            android:title="Subscription" />
+<!--        <item-->
+<!--            android:id="@+id/nav_subscription_id"-->
+<!--            android:icon="@drawable/nav_subscriptions_icon"-->
+<!--            android:title="Subscription" />-->
 
 
 

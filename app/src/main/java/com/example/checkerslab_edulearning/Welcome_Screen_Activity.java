@@ -39,12 +39,17 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
     private Button getStarted;
     private Dialog dialog;
     private String mobileNumber;
+    private LoadingDialog loadingDialog;
+    private ErrorStatusDialog errorStatusDialog;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+//    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
+
+        loadingDialog=new LoadingDialog(Welcome_Screen_Activity.this);
+        errorStatusDialog=new ErrorStatusDialog(Welcome_Screen_Activity.this);
         getStarted=findViewById(R.id.welcome_screen_getStarted_button_id);
         dialog=new Dialog(this);
 
@@ -122,13 +127,14 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
 
     }
     private void SendOTP(String mobileNumber) {
+        loadingDialog.startLoadingDialog();
 
         String url="https://medhvrushti.checkerslab.com/api/v1/cil/user-auth/otp/send?mobile_number=91"+mobileNumber;
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("ErrorMessage", response);
+               loadingDialog.dismissDialog();
                 Toast.makeText(Welcome_Screen_Activity.this, "OTP Sent TO Entered Mobile Number", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(Welcome_Screen_Activity.this,OTP_Verification_Activity.class);
                 intent.putExtra("Mobile_number",String.valueOf(mobileNumber));
@@ -139,15 +145,13 @@ public class Welcome_Screen_Activity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                loadingDialog.dismissDialog();
+                errorStatusDialog.showErrorMessage();
                 Toast.makeText(Welcome_Screen_Activity.this, "Error! Please Check Internet Connection Or Restart Activity", Toast.LENGTH_SHORT).show();
                 if (error.networkResponse != null) {
                     int statusCode = error.networkResponse.statusCode;
                     byte[] errorResponseData = error.networkResponse.data; // Error response data
                     String errorMessage = new String(errorResponseData); // Convert error data to string
-                    // Print the error details
-                    System.out.println("Error Status Code: " + statusCode);
-                    System.out.println("Error Response Data: " + errorMessage);
-
                 }
             }
         });

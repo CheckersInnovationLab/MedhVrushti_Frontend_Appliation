@@ -14,8 +14,8 @@ import com.example.checkerslab_edulearning.R;
 public class ActiveSubscriptionActivity extends AppCompatActivity {
 
 
-    RecyclerView recyclerView;
-    ImageView backButton;
+    private RecyclerView recyclerView;
+    private  ImageView backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +29,6 @@ public class ActiveSubscriptionActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-        Log.d("Active Subscriptio",String.valueOf(Home_sub_screen_fragment.activeSubscriptionList.size()));
         ActiveSubscriptionAdapter adapter = new ActiveSubscriptionAdapter(Home_sub_screen_fragment.activeSubscriptionList, getApplicationContext());
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);

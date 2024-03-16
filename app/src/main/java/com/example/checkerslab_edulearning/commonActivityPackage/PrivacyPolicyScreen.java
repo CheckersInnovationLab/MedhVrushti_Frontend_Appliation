@@ -18,7 +18,7 @@ import java.util.List;
 
 public class PrivacyPolicyScreen extends Fragment {
 
-    String url="https://freeprivacypolicy.com/blog/privacy-policy-url/";
+    String url="https://checkerslab.com/#privacy_policy";
     private RecyclerView recyclerView;
 
     List<String> privacyPolicyList;
