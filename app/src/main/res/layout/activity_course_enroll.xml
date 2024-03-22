@@ -6,29 +6,50 @@
     android:layout_height="match_parent"
     android:id="@+id/Enroll_layout_id"
     tools:context=".Course_Enroll_Activity">
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/Enroll_subscription_first_layout_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:orientation="horizontal">
+        android:layout_height="@dimen/_45sdp"
+        android:background="@color/purple_700"
+        app.background="@color/purple_700"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <ImageView
-            android:id="@+id/Enroll_subscription_arrow_back_button_id"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/arrow_back_black"
-            android:layout_marginLeft="@dimen/_7sdp"/>
-    </LinearLayout>
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/Enroll_subscription_arrow_back_button_id"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/back_icon_white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Course Details"
+                android:layout_toRightOf="@id/Enroll_subscription_arrow_back_button_id"
+                android:id="@+id/edit_personal_detailsToolbar_title"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:textSize="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:id="@+id/Enroll_Course_Image_id"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
         android:layout_below="@+id/Enroll_subscription_first_layout_id"
-        android:layout_marginTop="@dimen/_7sdp"
-        android:src="@drawable/profile_image"/>
+        android:scaleType="fitXY"/>
 
     <LinearLayout
         android:id="@+id/Enroll_Course_details_layout_id"
@@ -88,63 +109,63 @@
 
 
                 </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/course_reviews_count_ic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_below="@+id/Header_id">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/course_reviews_count_ic"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="2"-->
+<!--                    android:layout_marginRight="@dimen/_10sdp"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    android:layout_below="@+id/Header_id">-->
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="horizontal"-->
 
-                        android:layout_weight="1">
+<!--                        android:layout_weight="1">-->
 
-                        <ImageView
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
-                            android:src="@drawable/rating_icon" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_25sdp"-->
+<!--                            android:layout_height="@dimen/_25sdp"-->
+<!--                            android:src="@drawable/rating_icon" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="50354 reviews"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:textSize="15sp"
-                            android:textStyle="italic"
-                            android:textColor="#041787"/>
-                    </LinearLayout>
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="50354 reviews"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            android:layout_marginLeft="5dp"-->
+<!--                            android:textSize="15sp"-->
+<!--                            android:textStyle="italic"-->
+<!--                            android:textColor="#041787"/>-->
+<!--                    </LinearLayout>-->
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_weight="1">-->
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/total_ue_id"
-                            android:layout_marginLeft="10dp"/>
+<!--                        <ImageView-->
+<!--                            android:layout_width="40dp"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:src="@drawable/total_ue_id"-->
+<!--                            android:layout_marginLeft="10dp"/>-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="7506354 Users"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:textSize="15sp"
-                            android:textStyle="italic"
-                            android:textColor="#041787"/>
-                    </LinearLayout>
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="7506354 Users"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            android:layout_marginLeft="5dp"-->
+<!--                            android:textSize="15sp"-->
+<!--                            android:textStyle="italic"-->
+<!--                            android:textColor="#041787"/>-->
+<!--                    </LinearLayout>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -174,7 +195,7 @@
 <!--                        android:textColor="#757575"-->
 <!--                        android:textStyle="normal" />-->
                     <com.borjabravo.readmoretextview.ReadMoreTextView
-                        android:id="@+id/text1"
+                        android:id="@+id/CourseDescription_id"
                         android:layout_below="@+id/fff_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -224,9 +245,10 @@
                         </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/Notes_access_text_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="200+ Notes"
+                            android:text="Notes: Not Present"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:textSize="16sp"
@@ -258,6 +280,7 @@
                         </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/VideoLectures_access_text_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="5000+ Video lectures"
@@ -292,6 +315,7 @@
                         </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/MCQChapterTestSeries_access_text_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="400+ Test Series"
@@ -314,7 +338,6 @@
                             android:background="@drawable/cart_back"
                             android:backgroundTint="#0368B8"
                             android:layout_marginLeft="20dp"
-
                             app:backgroundTint="#C50808">
 
 
@@ -328,6 +351,7 @@
                         </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/MCQOverallTestSeries_access_text_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="400+ Test Series"
@@ -337,14 +361,6 @@
                             android:textStyle="italic|bold"
                             android:textColor="#6A6969"/>
                     </LinearLayout>
-
-
-
-
-
-
-
-
                 </LinearLayout>
 
 
@@ -412,20 +428,20 @@
         android:padding="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_5sdp"
         >
-        <RelativeLayout
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_marginLeft="15dp"
-            android:padding="@dimen/_3sdp"
-            android:background="@drawable/cart_back">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="@dimen/_40sdp"-->
+<!--            android:layout_height="@dimen/_30sdp"-->
+<!--            android:layout_marginLeft="15dp"-->
+<!--            android:padding="@dimen/_3sdp"-->
+<!--            android:background="@drawable/cart_back">-->
 
 
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:src="@drawable/y_cart_icon"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
+<!--            <ImageView-->
+<!--                android:layout_width="@dimen/_35sdp"-->
+<!--                android:layout_height="@dimen/_35sdp"-->
+<!--                android:src="@drawable/y_cart_icon"-->
+<!--                android:layout_centerInParent="true"/>-->
+<!--        </RelativeLayout>-->
 
         <Button
             android:id="@+id/Enroll_Course_button_id"

@@ -6,40 +6,37 @@
     android:background="@drawable/back1"
     android:gravity="bottom"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
 <LinearLayout
-    android:layout_width="@dimen/_70sdp"
+    android:layout_width="@dimen/_90sdp"
     android:layout_height="match_parent"
     android:gravity="center">
     <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/User_profile_image_id"
-        android:layout_width="@dimen/_70sdp"
-        android:layout_height="@dimen/_90sdp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_100sdp"
         android:src="@drawable/profile_image"
         app:civ_border_width="0.1dp"
+        android:layout_marginStart="@dimen/_5sdp"
         app:civ_border_color="#FF000000"/>
 </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_15sdp"
         android:gravity="center_vertical"
         android:orientation="vertical">
         <TextView
             android:id="@+id/nav_student_name_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Name"
+            android:text="@string/Name_message"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:layout_marginTop="@dimen/_10sdp"
             android:textStyle="bold|italic"
@@ -49,29 +46,31 @@
             android:id="@+id/nav_student_email_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Email Id"
             android:layout_marginTop="@dimen/_10sdp"
-            android:textStyle="italic"
+            android:text="@string/Email_message"
+            android:textColor="#E3F2FD"
             android:textSize="@dimen/_12ssp"
-           />
+            android:textStyle="italic" />
         <TextView
             android:id="@+id/nav_student_mobileNo_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mobile Number"
+            android:text="@string/Mobile_No_message"
             android:textSize="@dimen/_12ssp"
             android:textStyle="italic"
+            android:textColor="#E3F2FD"
             android:layout_marginTop="@dimen/_3sdp"
            />
+
         <TextView
             android:id="@+id/nav_student_CourseNo_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Selected Course"
-            android:textSize="@dimen/_12ssp"
             android:layout_marginTop="@dimen/_3sdp"
-            android:textStyle="italic"
-            />
+            android:text="@string/selected_Course_message"
+            android:textColor="#E3F2FD"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="italic" />
 
     </LinearLayout>
 

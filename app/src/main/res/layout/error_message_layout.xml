@@ -35,7 +35,7 @@
             android:id="@+id/successful_layout_message_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="We Are getting error! please restart the application"
+            android:text="We Are getting error! please Check Internet Connection"
             android:layout_below="@+id/successful_layout_Title_id"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_centerHorizontal="true"

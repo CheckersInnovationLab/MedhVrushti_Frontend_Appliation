@@ -21,62 +21,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/Main_toolbar_id"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/_45sdp"-->
-<!--        android:background="#1731C3"-->
-<!--        app.background="#fff"-->
-<!--        android:minHeight="?attr/actionBarSize"-->
-<!--        android:theme="?attr/actionBarTheme" >-->
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-
-<!--            android:orientation="horizontal">-->
-
-<!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:id="@+id/edit_personal_detailsToolbar_back_button"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_width="@dimen/_27sdp"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_height="@dimen/_28sdp"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_centerVertical="true"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_gravity="center_vertical"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:src="@drawable/menu_bar_icon"/>&ndash;&gt;-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="IIT FOUNDATION"-->
-<!--                android:id="@+id/MainToolbar_title"-->
-<!--                android:layout_marginLeft="@dimen/_15sdp"-->
-<!--                android:textSize="@dimen/_16sdp"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:layout_gravity="center_vertical"-->
-
-<!--                />-->
-
-<!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:id="@+id/Home_option_menu_id"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_height="@dimen/_26sdp"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_centerVertical="true"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_alignParentEnd="true"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_gravity="center_vertical"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:src="@drawable/option_menu_vert"/>&ndash;&gt;-->
-
-<!--        </RelativeLayout>-->
-<!--    </androidx.appcompat.widget.Toolbar>-->
-
     <include layout="@layout/content_navigation_drawer" />
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom|end"-->
-<!--        android:layout_marginEnd="@dimen/fab_margin"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

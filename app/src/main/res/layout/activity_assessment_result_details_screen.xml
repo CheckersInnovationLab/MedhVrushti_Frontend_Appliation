@@ -152,7 +152,7 @@
                         android:id="@+id/AssessmentResultDetails_ObtainedMarks_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:text="--"
                         android:textSize="@dimen/_20ssp"
                         android:textColor="@color/white"
                         android:textStyle="bold"/>
@@ -161,7 +161,7 @@
                         android:id="@+id/AssessmentResultDetails_OutOfMarks_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Out Of 200"
+                        android:text="Out Of --"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:textSize="@dimen/_13ssp"
                         android:textColor="#E1E3E4"
@@ -194,7 +194,7 @@
                         android:id="@+id/AssessmentResultDetails_Ranking_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="152"
+                        android:text="--"
                         android:textSize="@dimen/_20ssp"
                         android:textColor="@color/white"
                         android:textStyle="bold"/>
@@ -202,7 +202,7 @@
                         android:id="@+id/AssessmentResultDetails_Ranking_OutOf_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Out Of 200"
+                        android:text="Out Of --"
                         android:textSize="@dimen/_13ssp"
                         android:textColor="#E1E3E4"
                         android:layout_marginTop="@dimen/_5sdp"
@@ -271,7 +271,7 @@
                     android:id="@+id/AssessmentResultDetails_CorrectQuestionCount_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="30"
+                    android:text="--"
                     android:layout_gravity="center"
                     android:textSize="@dimen/_18ssp"
                     android:textColor="#108E15"
@@ -326,7 +326,7 @@
                     android:id="@+id/AssessmentResultDetails_WrongQuestionCount_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="7"
+                    android:text="--"
                     android:layout_gravity="center"
                     android:textSize="@dimen/_18ssp"
                     android:textColor="#CC0303"
@@ -381,7 +381,7 @@
                     android:id="@+id/AssessmentResultDetails_UnAnsweredCountCount_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="30"
+                    android:text="--"
                     android:layout_gravity="center"
                     android:textSize="@dimen/_18ssp"
                     android:textColor="#A57C04"
@@ -519,39 +519,39 @@
                     android:padding="20dp"
                     custom:progress_unreached_bar_height="2dp"
                     custom:progress_reached_bar_height="5dp"
-                    custom:progress_current="50"
+                    custom:progress_max="100"
                     style="@style/NumberProgressBar_Default"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="5"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="5"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Time"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/_10sdp"/>
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Time"-->
+<!--                    android:layout_weight="4"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"/>-->
 
-                <com.daimajia.numberprogressbar.NumberProgressBar
-                    android:id="@+id/numberbar2"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:layout_weight="1"
-                    custom:progress_current="20"
-                    custom:progress_unreached_bar_height="2dp"
-                    custom:progress_reached_bar_height="5dp"
-                    android:layout_width="match_parent"
-                    style="@style/NumberProgressBar_Passing_Green"
-                    />
-            </LinearLayout>
+<!--                <com.daimajia.numberprogressbar.NumberProgressBar-->
+<!--                    android:id="@+id/numberbar2"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="20dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    custom:progress_current="20"-->
+<!--                    custom:progress_unreached_bar_height="2dp"-->
+<!--                    custom:progress_reached_bar_height="5dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    style="@style/NumberProgressBar_Passing_Green"-->
+<!--                    />-->
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -574,7 +574,7 @@
                     android:layout_margin="20dp"
                     android:layout_weight="1"
                     style="@style/NumberProgressBar_Relax_Blue"
-                    custom:progress_current="30"
+                    custom:progress_max="100"
                     custom:progress_unreached_bar_height="2dp"
                     custom:progress_reached_bar_height="5dp"
                     android:layout_height="wrap_content" />
@@ -603,7 +603,7 @@
                     android:layout_margin="20dp"
                     android:layout_weight="1"
                     style="@style/NumberProgressBar_Grace_Yellow"
-                    custom:progress_current="40"
+                    custom:progress_max="100"
                     custom:progress_unreached_bar_height="2dp"
                     custom:progress_reached_bar_height="7dp"
                     android:layout_height="wrap_content" />
@@ -618,7 +618,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Preview"
+                    android:text="Un-Answered"
                     android:layout_weight="4"
                     android:gravity="center"
                     android:layout_gravity="center"
@@ -627,6 +627,7 @@
 
 
                 <com.daimajia.numberprogressbar.NumberProgressBar
+                    android:id="@+id/numberbar5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -643,7 +644,6 @@
                     custom:progress_text_visibility="visible"
 
                     custom:progress_max="100"
-                    custom:progress_current="80"
                     />
             </LinearLayout>
 
@@ -653,23 +653,22 @@
     </androidx.cardview.widget.CardView>
 
 
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/_35sdp"-->
+<!--            android:layout_below="@+id/Result_details_card_3_id"-->
+<!--            android:background="#787878">-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/Result_details_card_3_id"
-            android:background="#787878">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Check Leader-board"
-                android:textSize="@dimen/_15ssp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_centerInParent="true"
-                android:textColor="@color/white"/>
-        </RelativeLayout>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Check Leader-board"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="@dimen/_15ssp"-->
+<!--                android:textStyle="bold" />-->
+<!--        </RelativeLayout>-->
 
 
     </RelativeLayout>

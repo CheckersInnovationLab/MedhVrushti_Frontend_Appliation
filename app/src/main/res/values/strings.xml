@@ -11,4 +11,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Name_message">Your Name</string>
+    <string name="Email_message">Your Email</string>
+    <string name="Mobile_No_message">Mobile Number</string>
+    <string name="selected_Course_message">Selected Course</string>
 </resources>

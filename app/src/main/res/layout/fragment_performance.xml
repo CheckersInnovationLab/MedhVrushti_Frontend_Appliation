@@ -4,115 +4,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     tools:context=".NavigationDrawerPkg.PerformanceFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_id">
 
 
 
-<!--        <RelativeLayout-->
-<!--           android:id="@+id/assessment_history_layout_id"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="@dimen/_120sdp"-->
-<!--            android:background="#233CCC">-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/assessment_history_text_id"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Your Assessment History"-->
-<!--                android:textSize="@dimen/_20ssp"-->
-<!--                android:textStyle="bold"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_marginTop="@dimen/_10sdp"/>-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Performance_empty_Message_details2_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_15sdp"
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@+id/assessment_history_text_id"-->
-<!--                android:weightSum="2"-->
-<!--                android:layout_marginTop="@dimen/_10sdp"-->
-<!--                android:orientation="horizontal">-->
+        android:layout_margin="@dimen/_10sdp">
 
-
-<!--                <LinearLayout-->
-
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:layout_marginTop="@dimen/_10sdp">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Total Submitted"-->
-<!--                        android:gravity="center"-->
-<!--                        android:textSize="@dimen/_15ssp"-->
-<!--                        android:textStyle="bold|italic"-->
-<!--                        android:textColor="@color/white"/>-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="20"-->
-<!--                        android:textSize="@dimen/_15ssp"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textStyle="bold|italic"-->
-<!--                        android:gravity="center"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#EEF3F8">
 
 
 
-<!--                </LinearLayout>-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="@dimen/_1sdp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:background="@color/white"/>-->
-<!--                <LinearLayout-->
 
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                    android:layout_weight="1"-->
-<!--                android:layout_marginTop="@dimen/_10sdp"-->
+            <TextView
+                android:id="@+id/MyLearning_heading2_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#3C1A78"
+                android:text="No Assessment Details"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_15sdp"/>
 
-<!--                android:weightSum="2">-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Checked"-->
-<!--                    android:gravity="center"-->
-<!--                    android:textSize="@dimen/_15ssp"-->
-<!--                    android:textStyle="bold|italic"-->
-<!--                    android:textColor="@color/white"/>-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="20"-->
-<!--                    android:textSize="@dimen/_15ssp"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textStyle="bold|italic"-->
-<!--                    android:gravity="center"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You don't have any assessment history details.Please unlock course to start learning journey"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_centerInParent="true"/>
 
 
+            <RelativeLayout
+                android:id="@+id/Performance_startButton_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_below="@+id/Home_subscriptionDetails_heading2_id"
+                android:background="@drawable/button_back_view"
+                android:backgroundTint="#AA9A0C"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp">
 
-<!--            </LinearLayout>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start Learning"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
 
-<!--            </LinearLayout>-->
-
-
-<!--        </RelativeLayout>-->
-
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Assessment_history_recycler_id"/>
-
-
-
-
-
-
+    </RelativeLayout>
 </RelativeLayout>

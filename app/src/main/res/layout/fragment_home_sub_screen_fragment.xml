@@ -65,9 +65,6 @@
                          android:layout_height="match_parent"
                          android:background="#EEF3F8">
 
-
-
-
                          <TextView
                              android:id="@+id/Home_subscriptionDetails_heading_id"
                              android:layout_width="wrap_content"
